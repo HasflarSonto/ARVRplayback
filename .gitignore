@@ -61,6 +61,10 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# Build output folders (should not be committed)
+New test_BackUpThisFolder_ButDontShipItWithYourGame/
+Vrtest_BurstDebugInformation_DoNotShip/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
