@@ -18,16 +18,26 @@ namespace VRInteractionRecording
         [Tooltip("Reference to VisualCueManager")]
         private VisualCueManager visualCueManager;
 
+        [SerializeField]
+        [Tooltip("Maximum distance (in Unity units) from target position to consider placement correct")]
+        private float placementThreshold = 0.5f;
+
+        [SerializeField]
+        [Tooltip("Maximum rotation difference (in degrees) to consider placement correct")]
+        private float rotationThreshold = 45f;
+
         private RecordingData currentRecording;
         private bool isPlaybackActive = false;
         private int currentInteractionIndex = 0;
         private Dictionary<string, bool> objectInteractionCompleted = new Dictionary<string, bool>();
+        private Dictionary<string, InteractionEvent> targetReleaseEvents = new Dictionary<string, InteractionEvent>(); // Cache target positions
 
         // Events
         public System.Action OnPlaybackStarted;
         public System.Action OnPlaybackStopped;
         public System.Action<string> OnObjectHighlighted; // Passes object ID
         public System.Action<string> OnObjectInteractionCompleted; // Passes object ID
+        public System.Action<string, float, float> OnObjectIncorrectlyPlaced; // Passes object ID, distance, rotation difference
 
         private void Start()
         {
@@ -62,6 +72,7 @@ namespace VRInteractionRecording
             isPlaybackActive = true;
             currentInteractionIndex = 0;
             objectInteractionCompleted.Clear();
+            targetReleaseEvents.Clear(); // Clear cached target positions
 
             // Reset all objects to initial states
             ResetToInitialStates();
@@ -84,6 +95,7 @@ namespace VRInteractionRecording
             currentRecording = null;
             currentInteractionIndex = 0;
             objectInteractionCompleted.Clear();
+            targetReleaseEvents.Clear();
 
             // Clear all visual cues
             if (visualCueManager != null)
@@ -188,6 +200,9 @@ namespace VRInteractionRecording
             
             if (releaseEvent != null)
             {
+                // Cache the target event for later distance checking
+                targetReleaseEvents[objectId] = releaseEvent;
+
                 // Show ghost at target location
                 if (visualCueManager != null)
                 {
@@ -198,7 +213,7 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Called when an object is released during playback
-        /// Simplified for single interaction mode - just hides ghost and marks complete
+        /// Checks if object is placed within threshold of target position
         /// </summary>
         public void OnObjectReleasedDuringPlayback(GameObject releasedObject)
         {
@@ -206,23 +221,58 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
 
-            // Hide ghost
-            if (visualCueManager != null)
+            // Find the target release event (where it should be placed)
+            InteractionEvent targetReleaseEvent = FindReleaseEventForObject(objectId);
+
+            if (targetReleaseEvent != null)
             {
-                visualCueManager.HideGhostObject(releasedObject);
+                // Get current position and rotation of the released object
+                Vector3 currentPosition = releasedObject.transform.position;
+                Quaternion currentRotation = releasedObject.transform.rotation;
+
+                // Calculate distance from target position
+                float distance = Vector3.Distance(currentPosition, targetReleaseEvent.position);
+
+                // Calculate rotation difference
+                float rotationAngle = Quaternion.Angle(currentRotation, targetReleaseEvent.rotation);
+
+                // Check if within threshold
+                bool isCorrectPlacement = distance <= placementThreshold && rotationAngle <= rotationThreshold;
+
+                if (isCorrectPlacement)
+                {
+                    // Correct placement! Hide ghost and mark as complete
+                    if (visualCueManager != null)
+                    {
+                        visualCueManager.HideGhostObject(releasedObject);
+                        visualCueManager.RemoveHighlight(releasedObject);
+                    }
+
+                    objectInteractionCompleted[objectId] = true;
+                    OnObjectInteractionCompleted?.Invoke(objectId);
+                    
+                    Debug.Log($"InteractionPlaybackManager: Object placed correctly! Distance: {distance:F2}m, Rotation: {rotationAngle:F1}°");
+                }
+                else
+                {
+                    // Not close enough - keep ghost visible as guidance
+                    Debug.Log($"InteractionPlaybackManager: Object not close enough. Distance: {distance:F2}m (threshold: {placementThreshold}m), Rotation: {rotationAngle:F1}° (threshold: {rotationThreshold}°)");
+                    
+                    // Trigger incorrect placement event
+                    OnObjectIncorrectlyPlaced?.Invoke(objectId, distance, rotationAngle);
+                    
+                    // Ghost stays visible to guide user to correct position
+                    // User can grab the object again and try placing it closer
+                }
             }
-
-            // Mark this interaction as completed
-            objectInteractionCompleted[objectId] = true;
-
-            // Clear highlight since interaction is complete
-            if (visualCueManager != null)
+            else
             {
-                visualCueManager.RemoveHighlight(releasedObject);
+                // No target found, just hide ghost
+                if (visualCueManager != null)
+                {
+                    visualCueManager.HideGhostObject(releasedObject);
+                }
             }
-
-            OnObjectInteractionCompleted?.Invoke(objectId);
-            Debug.Log("InteractionPlaybackManager: Single interaction completed");
         }
 
         /// <summary>

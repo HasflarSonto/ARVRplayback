@@ -96,6 +96,7 @@ namespace VRInteractionRecording
                 playbackManager.OnPlaybackStopped += OnPlaybackStopped;
                 playbackManager.OnObjectHighlighted += OnObjectHighlighted;
                 playbackManager.OnObjectInteractionCompleted += OnObjectInteractionCompleted;
+                playbackManager.OnObjectIncorrectlyPlaced += OnObjectIncorrectlyPlaced;
             }
 
             // Initialize UI state
@@ -117,6 +118,7 @@ namespace VRInteractionRecording
                 playbackManager.OnPlaybackStopped -= OnPlaybackStopped;
                 playbackManager.OnObjectHighlighted -= OnObjectHighlighted;
                 playbackManager.OnObjectInteractionCompleted -= OnObjectInteractionCompleted;
+                playbackManager.OnObjectIncorrectlyPlaced -= OnObjectIncorrectlyPlaced;
             }
         }
 
@@ -410,7 +412,15 @@ namespace VRInteractionRecording
         {
             if (instructionText != null)
             {
-                instructionText.text = "Interaction completed! Press Reset to try again.";
+                instructionText.text = "Perfect! Object placed correctly. Press Reset to try again.";
+            }
+        }
+
+        private void OnObjectIncorrectlyPlaced(string objectId, float distance, float rotationAngle)
+        {
+            if (instructionText != null)
+            {
+                instructionText.text = $"Not quite right. Get closer to the green ghost. (Distance: {distance:F2}m)";
             }
         }
     }
