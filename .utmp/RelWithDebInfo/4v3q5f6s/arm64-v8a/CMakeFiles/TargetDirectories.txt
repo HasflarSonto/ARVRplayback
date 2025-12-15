@@ -1,0 +1,5 @@
+/Users/antonioli/Desktop/Vrtest/.utmp/RelWithDebInfo/4v3q5f6s/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/antonioli/Desktop/Vrtest/.utmp/RelWithDebInfo/4v3q5f6s/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/antonioli/Desktop/Vrtest/.utmp/RelWithDebInfo/4v3q5f6s/arm64-v8a/GameActivity/CMakeFiles/game.dir
+/Users/antonioli/Desktop/Vrtest/.utmp/RelWithDebInfo/4v3q5f6s/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+/Users/antonioli/Desktop/Vrtest/.utmp/RelWithDebInfo/4v3q5f6s/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

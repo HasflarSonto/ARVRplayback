@@ -24,13 +24,14 @@ namespace VRInteractionRecording
 
         [SerializeField]
         [Tooltip("Maximum rotation difference (in degrees) to consider placement correct")]
-        private float rotationThreshold = 45f;
+        private float rotationThreshold = 120f; // More relaxed - allows up to 120 degrees difference
 
         private RecordingData currentRecording;
         private bool isPlaybackActive = false;
         private int currentInteractionIndex = 0;
         private Dictionary<string, bool> objectInteractionCompleted = new Dictionary<string, bool>();
         private Dictionary<string, InteractionEvent> targetReleaseEvents = new Dictionary<string, InteractionEvent>(); // Cache target positions
+        private List<InteractionSequence> interactionSequences = new List<InteractionSequence>(); // List of grab-release pairs in order
 
         // Events
         public System.Action OnPlaybackStarted;
@@ -38,6 +39,8 @@ namespace VRInteractionRecording
         public System.Action<string> OnObjectHighlighted; // Passes object ID
         public System.Action<string> OnObjectInteractionCompleted; // Passes object ID
         public System.Action<string, float, float> OnObjectIncorrectlyPlaced; // Passes object ID, distance, rotation difference
+        public System.Action<int, int> OnInteractionSequenceProgress; // Passes current step, total steps
+        public System.Action OnAllInteractionsCompleted; // Fired when all tasks are finished
 
         private void Start()
         {
@@ -73,6 +76,9 @@ namespace VRInteractionRecording
             currentInteractionIndex = 0;
             objectInteractionCompleted.Clear();
             targetReleaseEvents.Clear(); // Clear cached target positions
+
+            // Build interaction sequences (grab-release pairs)
+            BuildInteractionSequences();
 
             // Reset all objects to initial states
             ResetToInitialStates();
@@ -138,51 +144,113 @@ namespace VRInteractionRecording
         }
 
         /// <summary>
-        /// Highlights the object that should be interacted with
-        /// Simplified for single interaction mode
+        /// Builds a list of interaction sequences (grab-release pairs) in chronological order
         /// </summary>
-        private void HighlightNextObject()
+        private void BuildInteractionSequences()
         {
+            interactionSequences.Clear();
+
             if (currentRecording == null || currentRecording.interactionEvents.Count == 0)
             {
                 return;
             }
 
-            // Find the first grab event (single interaction mode)
-            InteractionEvent grabEvent = null;
+            // Find all grab-release pairs in order
+            Dictionary<string, InteractionEvent> pendingGrabs = new Dictionary<string, InteractionEvent>();
+
             foreach (InteractionEvent interactionEvent in currentRecording.interactionEvents)
             {
                 if (interactionEvent.eventType == InteractionEventType.Grab)
                 {
-                    grabEvent = interactionEvent;
-                    break;
+                    // Store the grab event for this object
+                    pendingGrabs[interactionEvent.objectId] = interactionEvent;
+                }
+                else if (interactionEvent.eventType == InteractionEventType.Release)
+                {
+                    // If we have a matching grab, create a sequence
+                    if (pendingGrabs.ContainsKey(interactionEvent.objectId))
+                    {
+                        InteractionSequence sequence = new InteractionSequence
+                        {
+                            objectId = interactionEvent.objectId,
+                            grabEvent = pendingGrabs[interactionEvent.objectId],
+                            releaseEvent = interactionEvent
+                        };
+                        interactionSequences.Add(sequence);
+                        pendingGrabs.Remove(interactionEvent.objectId);
+                    }
                 }
             }
 
-            if (grabEvent != null)
+            Debug.Log($"InteractionPlaybackManager: Built {interactionSequences.Count} interaction sequences");
+        }
+
+        /// <summary>
+        /// Highlights the next object that should be interacted with in the sequence
+        /// </summary>
+        private void HighlightNextObject()
+        {
+            if (currentRecording == null || interactionSequences.Count == 0)
             {
-                // Check if already completed
-                if (objectInteractionCompleted.ContainsKey(grabEvent.objectId) &&
-                    objectInteractionCompleted[grabEvent.objectId])
+                Debug.Log("InteractionPlaybackManager: No interaction sequences available");
+                return;
+            }
+
+            // Find the next incomplete interaction
+            for (int i = 0; i < interactionSequences.Count; i++)
+            {
+                InteractionSequence sequence = interactionSequences[i];
+                
+                // Check if this interaction is already completed
+                if (objectInteractionCompleted.ContainsKey(sequence.objectId) &&
+                    objectInteractionCompleted[sequence.objectId])
                 {
-                    Debug.Log("InteractionPlaybackManager: Interaction already completed");
-                    return;
+                    continue; // Skip completed interactions
                 }
 
+                // This is the next interaction to highlight
+                currentInteractionIndex = i;
+                
                 // Highlight the object
                 if (visualCueManager != null)
                 {
-                    GameObject obj = objectStateManager.GetObjectFromId(grabEvent.objectId);
+                    GameObject obj = objectStateManager.GetObjectFromId(sequence.objectId);
                     if (obj != null)
                     {
                         visualCueManager.HighlightObject(obj);
-                        OnObjectHighlighted?.Invoke(grabEvent.objectId);
+                        OnObjectHighlighted?.Invoke(sequence.objectId);
+                        
+                        // Notify progress
+                        OnInteractionSequenceProgress?.Invoke(i + 1, interactionSequences.Count);
+                        
+                        Debug.Log($"InteractionPlaybackManager: Highlighting object for step {i + 1} of {interactionSequences.Count}");
                         return;
                     }
                 }
             }
 
-            Debug.Log("InteractionPlaybackManager: No grab event found in recording");
+            // All interactions completed
+            Debug.Log("InteractionPlaybackManager: All interactions completed!");
+            OnInteractionSequenceProgress?.Invoke(interactionSequences.Count, interactionSequences.Count);
+        }
+
+        /// <summary>
+        /// Checks if all interactions in the sequence have been completed
+        /// </summary>
+        private bool AreAllInteractionsComplete()
+        {
+            if (interactionSequences.Count == 0) return false;
+
+            foreach (InteractionSequence sequence in interactionSequences)
+            {
+                if (!objectInteractionCompleted.ContainsKey(sequence.objectId) ||
+                    !objectInteractionCompleted[sequence.objectId])
+                {
+                    return false; // Found an incomplete interaction
+                }
+            }
+
+            return true; // All interactions are complete
         }
 
         /// <summary>
@@ -252,6 +320,19 @@ namespace VRInteractionRecording
                     OnObjectInteractionCompleted?.Invoke(objectId);
                     
                     Debug.Log($"InteractionPlaybackManager: Object placed correctly! Distance: {distance:F2}m, Rotation: {rotationAngle:F1}°");
+                    
+                    // Check if all interactions are complete
+                    if (AreAllInteractionsComplete())
+                    {
+                        Debug.Log("InteractionPlaybackManager: All interactions completed! Stopping playback.");
+                        OnAllInteractionsCompleted?.Invoke();
+                        StopPlayback();
+                    }
+                    else
+                    {
+                        // Move to next interaction in sequence
+                        HighlightNextObject();
+                    }
                 }
                 else
                 {
@@ -311,6 +392,26 @@ namespace VRInteractionRecording
         /// Gets the current recording being played back
         /// </summary>
         public RecordingData CurrentRecording => currentRecording;
+
+        /// <summary>
+        /// Gets the current interaction step (1-based)
+        /// </summary>
+        public int CurrentStep => currentInteractionIndex + 1;
+
+        /// <summary>
+        /// Gets the total number of interaction steps
+        /// </summary>
+        public int TotalSteps => interactionSequences.Count;
+
+        /// <summary>
+        /// Data structure for an interaction sequence (grab-release pair)
+        /// </summary>
+        private class InteractionSequence
+        {
+            public string objectId;
+            public InteractionEvent grabEvent;
+            public InteractionEvent releaseEvent;
+        }
     }
 }
 

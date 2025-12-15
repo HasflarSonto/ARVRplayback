@@ -75,12 +75,12 @@ namespace VRInteractionRecording
             // Find managers if not assigned
             if (recordingManager == null)
             {
-                recordingManager = FindObjectOfType<InteractionRecordingManager>();
+                recordingManager = FindFirstObjectByType<InteractionRecordingManager>();
             }
 
             if (playbackManager == null)
             {
-                playbackManager = FindObjectOfType<InteractionPlaybackManager>();
+                playbackManager = FindFirstObjectByType<InteractionPlaybackManager>();
             }
 
             // Setup button listeners
@@ -234,14 +234,14 @@ namespace VRInteractionRecording
             }
 
             // Reset objects
-            ObjectStateManager objectStateManager = FindObjectOfType<ObjectStateManager>();
+            ObjectStateManager objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             if (objectStateManager != null)
             {
                 objectStateManager.ResetAllObjects();
             }
 
             // Clear visual cues
-            VisualCueManager visualCueManager = FindObjectOfType<VisualCueManager>();
+            VisualCueManager visualCueManager = FindFirstObjectByType<VisualCueManager>();
             if (visualCueManager != null)
             {
                 visualCueManager.ClearAllHighlights();

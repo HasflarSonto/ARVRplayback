@@ -22,12 +22,16 @@ namespace VRInteractionRecording
         [SerializeField]
         public List<TransformSnapshot> transformSnapshots = new List<TransformSnapshot>();
 
+        [SerializeField]
+        public List<PlayerPoseSnapshot> playerPoseSnapshots = new List<PlayerPoseSnapshot>(); // Headset and controller positions
+
         public RecordingData()
         {
             recordingDuration = 0f;
             initialStates = new List<ObjectInitialState>();
             interactionEvents = new List<InteractionEvent>();
             transformSnapshots = new List<TransformSnapshot>();
+            playerPoseSnapshots = new List<PlayerPoseSnapshot>();
         }
     }
 
@@ -126,6 +130,46 @@ namespace VRInteractionRecording
             position = pos;
             rotation = rot;
             scale = scl;
+        }
+    }
+
+    /// <summary>
+    /// Snapshot of player's pose (headset and controllers) at a specific time
+    /// </summary>
+    [Serializable]
+    public class PlayerPoseSnapshot
+    {
+        [SerializeField]
+        public float timestamp;
+
+        [SerializeField]
+        public Vector3 headsetPosition;
+
+        [SerializeField]
+        public Quaternion headsetRotation;
+
+        [SerializeField]
+        public Vector3 leftControllerPosition;
+
+        [SerializeField]
+        public Quaternion leftControllerRotation;
+
+        [SerializeField]
+        public Vector3 rightControllerPosition;
+
+        [SerializeField]
+        public Quaternion rightControllerRotation;
+
+        public PlayerPoseSnapshot(float time, Vector3 headPos, Quaternion headRot, 
+            Vector3 leftPos, Quaternion leftRot, Vector3 rightPos, Quaternion rightRot)
+        {
+            timestamp = time;
+            headsetPosition = headPos;
+            headsetRotation = headRot;
+            leftControllerPosition = leftPos;
+            leftControllerRotation = leftRot;
+            rightControllerPosition = rightPos;
+            rightControllerRotation = rightRot;
         }
     }
 }

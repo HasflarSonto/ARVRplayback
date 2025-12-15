@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 namespace VRInteractionRecording
 {
@@ -23,15 +24,27 @@ namespace VRInteractionRecording
         private bool recordContinuousTransforms = true;
 
         [SerializeField]
-        [Tooltip("Stop recording automatically after first object is released (single interaction mode)")]
-        private bool stopAfterFirstRelease = true;
+        [Tooltip("Stop recording automatically after first object is released (single interaction mode). Set to false for multi-interaction sequences.")]
+        private bool stopAfterFirstRelease = false;
 
         private bool isRecording = false;
         private float recordingStartTime = 0f;
         private RecordingData currentRecording;
         private Dictionary<string, float> lastRecordedTime = new Dictionary<string, float>();
         private float timeBetweenSnapshots;
-        private bool hasRecordedRelease = false; // Track if we've recorded a release event
+        private float lastPlayerPoseRecordTime = 0f;
+
+        [SerializeField]
+        [Tooltip("Reference to XR Origin (for headset/controller tracking). Auto-finds if null.")]
+        private UnityEngine.Object xrOrigin; // Using Object to avoid namespace issues
+
+        [SerializeField]
+        [Tooltip("Reference to left controller. Auto-finds if null.")]
+        private UnityEngine.XR.Interaction.Toolkit.XRController leftController;
+
+        [SerializeField]
+        [Tooltip("Reference to right controller. Auto-finds if null.")]
+        private UnityEngine.XR.Interaction.Toolkit.XRController rightController;
 
         // Events
         public System.Action OnRecordingStarted;
@@ -43,6 +56,36 @@ namespace VRInteractionRecording
             if (objectStateManager == null)
             {
                 objectStateManager = FindObjectOfType<ObjectStateManager>();
+            }
+
+            if (xrOrigin == null)
+            {
+                // Try to find XR Origin using reflection to avoid namespace issues
+                System.Type xrOriginType = System.Type.GetType("UnityEngine.XR.CoreUtils.XROrigin, Unity.XR.CoreUtils");
+                if (xrOriginType != null)
+                {
+                    UnityEngine.Object[] origins = FindObjectsOfType(xrOriginType);
+                    if (origins.Length > 0)
+                    {
+                        xrOrigin = origins[0];
+                    }
+                }
+            }
+
+            if (leftController == null || rightController == null)
+            {
+                UnityEngine.XR.Interaction.Toolkit.XRController[] controllers = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.XRController>();
+                foreach (var controller in controllers)
+                {
+                    if (controller.name.ToLower().Contains("left") && leftController == null)
+                    {
+                        leftController = controller;
+                    }
+                    else if (controller.name.ToLower().Contains("right") && rightController == null)
+                    {
+                        rightController = controller;
+                    }
+                }
             }
 
             timeBetweenSnapshots = 1f / recordingFrequency;
@@ -59,6 +102,9 @@ namespace VRInteractionRecording
                 {
                     RecordTransforms(currentTime);
                 }
+
+                // Record player pose (headset and controllers)
+                RecordPlayerPose(currentTime);
 
                 // Notify progress
                 OnRecordingProgress?.Invoke(currentTime);
@@ -87,7 +133,13 @@ namespace VRInteractionRecording
             recordingStartTime = Time.time;
             isRecording = true;
             lastRecordedTime.Clear();
-            hasRecordedRelease = false;
+
+            // Ensure multi-interaction mode is enabled (disable auto-stop)
+            if (stopAfterFirstRelease)
+            {
+                Debug.LogWarning("InteractionRecordingManager: stopAfterFirstRelease is enabled! Disabling for multi-interaction mode.");
+                stopAfterFirstRelease = false;
+            }
 
             // Capture initial states
             CaptureInitialStates();
@@ -95,7 +147,7 @@ namespace VRInteractionRecording
             // Subscribe to interaction events
             SubscribeToInteractionEvents();
 
-            Debug.Log("InteractionRecordingManager: Recording started (single interaction mode)");
+            Debug.Log("InteractionRecordingManager: Recording started (multi-interaction mode - click button again to stop)");
             OnRecordingStarted?.Invoke();
         }
 
@@ -245,14 +297,16 @@ namespace VRInteractionRecording
             );
 
             currentRecording.interactionEvents.Add(releaseEvent);
-            hasRecordedRelease = true;
-            Debug.Log($"InteractionRecordingManager: Object {objectId} released at {timestamp:F2}s");
+            Debug.Log($"InteractionRecordingManager: Object {objectId} released at {timestamp:F2}s. Recording continues... (Click Record button to stop)");
 
-            // Auto-stop recording after first release if enabled
+            // Auto-stop recording after first release if enabled (for single interaction mode)
+            // NOTE: This should be false for multi-interaction sequences
             if (stopAfterFirstRelease)
             {
+                Debug.LogWarning("InteractionRecordingManager: Auto-stopping after release (stopAfterFirstRelease is true). Set to false in Inspector for multi-interaction mode.");
                 StopRecording();
             }
+            // Otherwise, continue recording for multiple interactions
         }
 
         /// <summary>
@@ -272,6 +326,76 @@ namespace VRInteractionRecording
         /// Gets current recording duration
         /// </summary>
         public float CurrentRecordingDuration => isRecording ? Time.time - recordingStartTime : 0f;
+
+        /// <summary>
+        /// Records the player's pose (headset and controllers) at current time
+        /// </summary>
+        private void RecordPlayerPose(float timestamp)
+        {
+            // Only record if enough time has passed
+            if (timestamp - lastPlayerPoseRecordTime < timeBetweenSnapshots)
+            {
+                return;
+            }
+
+            Vector3 headsetPos = Vector3.zero;
+            Quaternion headsetRot = Quaternion.identity;
+            Vector3 leftControllerPos = Vector3.zero;
+            Quaternion leftControllerRot = Quaternion.identity;
+            Vector3 rightControllerPos = Vector3.zero;
+            Quaternion rightControllerRot = Quaternion.identity;
+
+            // Get headset position (from XR Origin Camera)
+            if (xrOrigin != null)
+            {
+                // Use reflection to get Camera property
+                System.Type xrOriginType = xrOrigin.GetType();
+                var cameraProperty = xrOriginType.GetProperty("Camera");
+                if (cameraProperty != null)
+                {
+                    Camera cam = cameraProperty.GetValue(xrOrigin) as Camera;
+                    if (cam != null)
+                    {
+                        headsetPos = cam.transform.position;
+                        headsetRot = cam.transform.rotation;
+                    }
+                }
+            }
+            
+            // Fallback: try to find main camera
+            if (headsetPos == Vector3.zero && Camera.main != null)
+            {
+                headsetPos = Camera.main.transform.position;
+                headsetRot = Camera.main.transform.rotation;
+            }
+
+            // Get left controller position
+            if (leftController != null)
+            {
+                leftControllerPos = leftController.transform.position;
+                leftControllerRot = leftController.transform.rotation;
+            }
+
+            // Get right controller position
+            if (rightController != null)
+            {
+                rightControllerPos = rightController.transform.position;
+                rightControllerRot = rightController.transform.rotation;
+            }
+
+            PlayerPoseSnapshot snapshot = new PlayerPoseSnapshot(
+                timestamp,
+                headsetPos,
+                headsetRot,
+                leftControllerPos,
+                leftControllerRot,
+                rightControllerPos,
+                rightControllerRot
+            );
+
+            currentRecording.playerPoseSnapshots.Add(snapshot);
+            lastPlayerPoseRecordTime = timestamp;
+        }
     }
 }
 

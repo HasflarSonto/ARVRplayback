@@ -13,7 +13,7 @@ namespace VRInteractionRecording
         [ContextMenu("Auto-Find and Assign UI Elements")]
         public void AutoFindAndAssignUIElements()
         {
-            InteractionRecordingUIController controller = FindObjectOfType<InteractionRecordingUIController>();
+            InteractionRecordingUIController controller = FindFirstObjectByType<InteractionRecordingUIController>();
             if (controller == null)
             {
                 Debug.LogError("UIHelper: InteractionRecordingUIController not found! Create it first.");
@@ -142,7 +142,7 @@ namespace VRInteractionRecording
         public void CreateBasicUISetup()
         {
             // Find or create Canvas
-            Canvas canvas = FindObjectOfType<Canvas>();
+            Canvas canvas = FindFirstObjectByType<Canvas>();
             if (canvas == null)
             {
                 GameObject canvasObj = new GameObject("Canvas");

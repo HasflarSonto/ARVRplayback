@@ -32,6 +32,10 @@ namespace VRInteractionRecording
         [Tooltip("Text Poke Button for Reset (the main button GameObject)")]
         private GameObject resetButton;
 
+        [SerializeField]
+        [Tooltip("Text Poke Button for Edit (the main button GameObject)")]
+        private GameObject editButton;
+
         [Header("Button Text (Optional - for Button Front/Back)")]
         [SerializeField]
         [Tooltip("Text on Button Front of Record button (optional)")]
@@ -58,30 +62,52 @@ namespace VRInteractionRecording
         [Tooltip("Text to display instructions to the user")]
         private TextMeshProUGUI instructionText;
 
+        [Header("Edit Mode")]
+        [SerializeField]
+        [Tooltip("Panel for edit mode UI (timeline, controls, etc.)")]
+        private GameObject editModePanel;
+
+        [SerializeField]
+        [Tooltip("Reference to RecordingPlaybackEditor")]
+        private RecordingPlaybackEditor playbackEditor;
+
         private bool isRecording = false;
         private bool isPlaybackActive = false;
+        private bool isEditModeActive = false;
         private RecordingData currentRecording;
 
         // Button components (will be found automatically)
         private Button recordButtonComponent;
         private Button playbackButtonComponent;
         private Button resetButtonComponent;
+        private Button editButtonComponent;
 
         private void Start()
         {
             // Find managers if not assigned
             if (recordingManager == null)
             {
-                recordingManager = FindObjectOfType<InteractionRecordingManager>();
+                recordingManager = FindFirstObjectByType<InteractionRecordingManager>();
             }
 
             if (playbackManager == null)
             {
-                playbackManager = FindObjectOfType<InteractionPlaybackManager>();
+                playbackManager = FindFirstObjectByType<InteractionPlaybackManager>();
+            }
+
+            if (playbackEditor == null)
+            {
+                playbackEditor = FindFirstObjectByType<RecordingPlaybackEditor>();
             }
 
             // Find button components
             SetupButtons();
+
+            // Hide edit mode panel by default
+            if (editModePanel != null)
+            {
+                editModePanel.SetActive(false);
+            }
 
             // Subscribe to manager events
             if (recordingManager != null)
@@ -97,6 +123,8 @@ namespace VRInteractionRecording
                 playbackManager.OnObjectHighlighted += OnObjectHighlighted;
                 playbackManager.OnObjectInteractionCompleted += OnObjectInteractionCompleted;
                 playbackManager.OnObjectIncorrectlyPlaced += OnObjectIncorrectlyPlaced;
+                playbackManager.OnInteractionSequenceProgress += OnInteractionSequenceProgress;
+                playbackManager.OnAllInteractionsCompleted += OnAllInteractionsCompleted;
             }
 
             // Initialize UI state
@@ -119,6 +147,8 @@ namespace VRInteractionRecording
                 playbackManager.OnObjectHighlighted -= OnObjectHighlighted;
                 playbackManager.OnObjectInteractionCompleted -= OnObjectInteractionCompleted;
                 playbackManager.OnObjectIncorrectlyPlaced -= OnObjectIncorrectlyPlaced;
+                playbackManager.OnInteractionSequenceProgress -= OnInteractionSequenceProgress;
+                playbackManager.OnAllInteractionsCompleted -= OnAllInteractionsCompleted;
             }
         }
 
@@ -184,6 +214,25 @@ namespace VRInteractionRecording
                     Debug.LogWarning("SimpleInteractionUIController: Reset button has no Button component!");
                 }
             }
+
+            // Edit button
+            if (editButton != null)
+            {
+                editButtonComponent = editButton.GetComponent<Button>();
+                if (editButtonComponent == null)
+                {
+                    editButtonComponent = editButton.GetComponentInChildren<Button>();
+                }
+
+                if (editButtonComponent != null)
+                {
+                    editButtonComponent.onClick.AddListener(OnEditButtonClicked);
+                }
+                else
+                {
+                    Debug.LogWarning("SimpleInteractionUIController: Edit button has no Button component!");
+                }
+            }
         }
 
         /// <summary>
@@ -191,6 +240,9 @@ namespace VRInteractionRecording
         /// </summary>
         private void OnRecordButtonClicked()
         {
+            // Don't allow record button to work while in edit mode
+            if (isEditModeActive) return;
+            
             if (recordingManager == null) return;
 
             if (isRecording)
@@ -220,6 +272,9 @@ namespace VRInteractionRecording
         /// </summary>
         private void OnPlaybackButtonClicked()
         {
+            // Don't allow playback button to work while in edit mode
+            if (isEditModeActive) return;
+            
             if (playbackManager == null) return;
 
             if (isPlaybackActive)
@@ -256,10 +311,95 @@ namespace VRInteractionRecording
         }
 
         /// <summary>
+        /// Called when edit button is clicked
+        /// </summary>
+        private void OnEditButtonClicked()
+        {
+            // Prevent accidental toggles - only allow if not currently recording or playing back
+            if (isRecording || isPlaybackActive)
+            {
+                Debug.LogWarning("SimpleInteractionUIController: Cannot enter edit mode while recording or playing back!");
+                return;
+            }
+            
+            if (currentRecording == null)
+            {
+                Debug.LogWarning("SimpleInteractionUIController: No recording available to edit!");
+                if (instructionText != null)
+                {
+                    instructionText.text = "No recording available. Please record an interaction first.";
+                }
+                return;
+            }
+
+            // Toggle edit mode
+            isEditModeActive = !isEditModeActive;
+
+            if (isEditModeActive)
+            {
+                // Enter edit mode
+                // Stop any active playback
+                if (isPlaybackActive && playbackManager != null)
+                {
+                    playbackManager.StopPlayback();
+                    isPlaybackActive = false;
+                }
+
+                // Stop any active recording
+                if (isRecording && recordingManager != null)
+                {
+                    currentRecording = recordingManager.StopRecording();
+                    isRecording = false;
+                }
+
+                // Show edit mode panel
+                if (editModePanel != null && !editModePanel.activeSelf)
+                {
+                    editModePanel.SetActive(true);
+                }
+
+                // Start edit playback
+                if (playbackEditor != null)
+                {
+                    playbackEditor.StartEditPlayback(currentRecording);
+                }
+
+                if (instructionText != null)
+                {
+                    instructionText.text = "Edit Mode: Use timeline to scrub through recording. Click Edit again to exit.";
+                }
+            }
+            else
+            {
+                // Exit edit mode
+                if (playbackEditor != null)
+                {
+                    playbackEditor.StopEditPlayback();
+                }
+                
+                // Hide panel AFTER stopping playback
+                if (editModePanel != null && editModePanel.activeSelf)
+                {
+                    editModePanel.SetActive(false);
+                }
+
+                if (instructionText != null)
+                {
+                    instructionText.text = "Edit mode closed.";
+                }
+            }
+
+            UpdateUIState();
+        }
+
+        /// <summary>
         /// Called when reset button is clicked
         /// </summary>
         private void OnResetButtonClicked()
         {
+            // Don't allow reset button to work while in edit mode (user should exit edit mode first)
+            if (isEditModeActive) return;
+            
             // Stop recording if active
             if (isRecording && recordingManager != null)
             {
@@ -274,15 +414,29 @@ namespace VRInteractionRecording
                 isPlaybackActive = false;
             }
 
+            // Exit edit mode if active
+            if (isEditModeActive)
+            {
+                isEditModeActive = false;
+                if (editModePanel != null && editModePanel.activeSelf)
+                {
+                    editModePanel.SetActive(false);
+                }
+                if (playbackEditor != null)
+                {
+                    playbackEditor.StopEditPlayback();
+                }
+            }
+
             // Reset objects
-            ObjectStateManager objectStateManager = FindObjectOfType<ObjectStateManager>();
+            ObjectStateManager objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             if (objectStateManager != null)
             {
                 objectStateManager.ResetAllObjects();
             }
 
             // Clear visual cues
-            VisualCueManager visualCueManager = FindObjectOfType<VisualCueManager>();
+            VisualCueManager visualCueManager = FindFirstObjectByType<VisualCueManager>();
             if (visualCueManager != null)
             {
                 visualCueManager.ClearAllHighlights();
@@ -293,81 +447,149 @@ namespace VRInteractionRecording
             UpdateUIState();
         }
 
+        private bool isUpdatingUI = false; // Prevent recursive calls
+        private Coroutine uiUpdateCoroutine = null; // Track coroutine to prevent multiple
+        
         /// <summary>
         /// Updates the UI state based on current mode
+        /// Uses a single batched update to prevent layout jumps
         /// </summary>
         private void UpdateUIState()
         {
-            // Update button interactability
-            if (recordButtonComponent != null)
+            // Prevent recursive calls that could cause layout jumps
+            if (isUpdatingUI) return;
+            
+            // Cancel any existing update coroutine
+            if (uiUpdateCoroutine != null)
             {
-                recordButtonComponent.interactable = !isPlaybackActive;
+                StopCoroutine(uiUpdateCoroutine);
             }
-
-            if (playbackButtonComponent != null)
+            
+            // Start a new batched update
+            uiUpdateCoroutine = StartCoroutine(UpdateUIStateDelayed());
+        }
+        
+        /// <summary>
+        /// Batches all UI updates together to prevent layout jumps
+        /// </summary>
+        private System.Collections.IEnumerator UpdateUIStateDelayed()
+        {
+            isUpdatingUI = true;
+            
+            // Wait one frame to batch all updates
+            yield return null;
+            
+            try
             {
-                playbackButtonComponent.interactable = !isRecording && currentRecording != null;
-            }
-
-            if (resetButtonComponent != null)
-            {
-                resetButtonComponent.interactable = true; // Always available
-            }
-
-            // Update button text (if assigned)
-            if (recordButtonFrontText != null)
-            {
-                recordButtonFrontText.text = isRecording ? "Stop Recording" : "Start Recording";
-            }
-            if (recordButtonBackText != null)
-            {
-                recordButtonBackText.text = isRecording ? "Stop Recording" : "Start Recording";
-            }
-
-            if (playbackButtonFrontText != null)
-            {
-                playbackButtonFrontText.text = isPlaybackActive ? "Stop Playback" : "Start Playback";
-            }
-            if (playbackButtonBackText != null)
-            {
-                playbackButtonBackText.text = isPlaybackActive ? "Stop Playback" : "Start Playback";
-            }
-
-            // Update status text
-            if (statusText != null)
-            {
-                if (isRecording)
+                // CRITICAL: Ensure edit mode panel stays visible when in edit mode
+                // Do this FIRST before any other updates
+                if (isEditModeActive && editModePanel != null)
                 {
-                    statusText.text = "Status: RECORDING";
-                    statusText.color = Color.red;
+                    if (!editModePanel.activeSelf)
+                    {
+                        editModePanel.SetActive(true);
+                    }
                 }
-                else if (isPlaybackActive)
+                
+                // Update button interactability
+                if (recordButtonComponent != null)
                 {
-                    statusText.text = "Status: PLAYBACK";
-                    statusText.color = Color.green;
+                    recordButtonComponent.interactable = !isPlaybackActive && !isEditModeActive;
                 }
-                else
+
+                if (playbackButtonComponent != null)
                 {
-                    statusText.text = "Status: IDLE";
-                    statusText.color = Color.white;
+                    playbackButtonComponent.interactable = !isRecording && currentRecording != null && !isEditModeActive;
+                }
+
+                if (resetButtonComponent != null)
+                {
+                    resetButtonComponent.interactable = !isEditModeActive;
+                }
+
+                if (editButtonComponent != null)
+                {
+                    editButtonComponent.interactable = !isRecording && currentRecording != null && !isPlaybackActive;
+                }
+
+                // Update all text elements (batched together to minimize layout recalculations)
+                if (recordButtonFrontText != null)
+                {
+                    recordButtonFrontText.text = isRecording ? "Stop Recording" : "Start Recording";
+                }
+                if (recordButtonBackText != null)
+                {
+                    recordButtonBackText.text = isRecording ? "Stop Recording" : "Start Recording";
+                }
+
+                if (playbackButtonFrontText != null)
+                {
+                    playbackButtonFrontText.text = isPlaybackActive ? "Stop Playback" : "Start Playback";
+                }
+                if (playbackButtonBackText != null)
+                {
+                    playbackButtonBackText.text = isPlaybackActive ? "Stop Playback" : "Start Playback";
+                }
+
+                if (statusText != null)
+                {
+                    if (isEditModeActive)
+                    {
+                        statusText.text = "Status: EDIT MODE";
+                        statusText.color = Color.cyan;
+                    }
+                    else if (isRecording)
+                    {
+                        statusText.text = "Status: RECORDING";
+                        statusText.color = Color.red;
+                    }
+                    else if (isPlaybackActive)
+                    {
+                        statusText.text = "Status: PLAYBACK";
+                        statusText.color = Color.green;
+                    }
+                    else
+                    {
+                        statusText.text = "Status: IDLE";
+                        statusText.color = Color.white;
+                    }
+                }
+
+                if (instructionText != null)
+                {
+                    if (isRecording)
+                    {
+                        instructionText.text = "Recording... Interact with objects. Click Record again to stop.";
+                    }
+                    else if (isPlaybackActive)
+                    {
+                        int currentStep = playbackManager != null ? playbackManager.CurrentStep : 0;
+                        int totalSteps = playbackManager != null ? playbackManager.TotalSteps : 0;
+                        if (totalSteps > 0)
+                        {
+                            instructionText.text = $"Step {currentStep} of {totalSteps}: Pick up the highlighted object and place it at the green ghost location.";
+                        }
+                        else
+                        {
+                            instructionText.text = "Playback active. Pick up the highlighted object and place it at the green ghost location.";
+                        }
+                    }
+                    else
+                    {
+                        instructionText.text = "Ready. Press Record to capture multiple interactions. Click Record again to stop.";
+                    }
+                }
+                
+                // Double-check panel visibility after all updates
+                if (isEditModeActive && editModePanel != null && !editModePanel.activeSelf)
+                {
+                    editModePanel.SetActive(true);
                 }
             }
-
-            // Update instruction text
-            if (instructionText != null)
+            finally
             {
-                if (isRecording)
-                {
-                    instructionText.text = "Recording... Grab an object, move it, and release it.";
-                }
-                else if (isPlaybackActive)
-                {
-                    instructionText.text = "Playback active. Pick up the highlighted object and place it at the green ghost location.";
-                }
-                else
-                {
-                    instructionText.text = "Ready. Press Record to capture a single interaction (grab, move, release).";
-                }
+                isUpdatingUI = false;
+                uiUpdateCoroutine = null;
             }
         }
 
@@ -410,9 +632,27 @@ namespace VRInteractionRecording
 
         private void OnObjectInteractionCompleted(string objectId)
         {
+            if (instructionText != null && playbackManager != null)
+            {
+                int currentStep = playbackManager.CurrentStep;
+                int totalSteps = playbackManager.TotalSteps;
+                
+                if (currentStep > totalSteps)
+                {
+                    instructionText.text = "Perfect! All steps completed. Press Reset to try again.";
+                }
+                else
+                {
+                    instructionText.text = $"Perfect! Step {currentStep - 1} completed. Continue to step {currentStep} of {totalSteps}.";
+                }
+            }
+        }
+
+        private void OnInteractionSequenceProgress(int currentStep, int totalSteps)
+        {
             if (instructionText != null)
             {
-                instructionText.text = "Perfect! Object placed correctly. Press Reset to try again.";
+                instructionText.text = $"Step {currentStep} of {totalSteps}: Pick up the highlighted object.";
             }
         }
 
@@ -422,6 +662,24 @@ namespace VRInteractionRecording
             {
                 instructionText.text = $"Not quite right. Get closer to the green ghost. (Distance: {distance:F2}m)";
             }
+        }
+
+        private void OnAllInteractionsCompleted()
+        {
+            if (instructionText != null)
+            {
+                instructionText.text = "🎉 All tasks completed! Great job!";
+            }
+
+            if (statusText != null)
+            {
+                statusText.text = "Status: COMPLETE";
+                statusText.color = Color.green;
+            }
+
+            // Playback will automatically stop, but we update UI here
+            isPlaybackActive = false;
+            UpdateUIState();
         }
     }
 }

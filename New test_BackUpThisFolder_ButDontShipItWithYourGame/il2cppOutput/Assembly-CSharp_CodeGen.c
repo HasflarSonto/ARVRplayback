@@ -213,6 +213,10 @@ extern void ObjectStateManager_ResetAllObjects_m3D536A76A727D9E356CEC2283EFC3A26
 extern void ObjectStateManager_ResetObject_m6B609EEDA6D90798840111E252E2A2F6857FD9AB (void);
 extern void ObjectStateManager_CaptureCurrentStatesAsInitial_m55E42E2D29438C2AE27EF87D3D1FFE9A25B372C7 (void);
 extern void ObjectStateManager__ctor_m7CDE6CE9314A1FE78491F553B3BDB042956C55DF (void);
+extern void PlacementFeedback_Start_mFC2EC84CC29350FDE3A909635E733C79F21DD9C5 (void);
+extern void PlacementFeedback_OnCorrectPlacement_m7142CE7EF26324583D60DA8EC16A8CC14FEEE9BF (void);
+extern void PlacementFeedback_OnIncorrectPlacement_mC434174C6B4CF0028B761C4CD57F5EC65F0E989F (void);
+extern void PlacementFeedback__ctor_mB53549DB2B0115EAB9574B7258D4C3D357223C0F (void);
 extern void RecordingData__ctor_m8F7D04DE0E09DCC3F2B2EDB446E80661F6470CDC (void);
 extern void ObjectInitialState__ctor_m478902DB2A77CE19099A5CAF200A409329085AC2 (void);
 extern void InteractionEvent__ctor_m5E5DB6F589FC6643D5069A7F0CD2DF504A5A2017 (void);
@@ -235,6 +239,7 @@ extern void SimpleInteractionUIController_OnPlaybackStarted_m5EE17C8186B203AEDA1
 extern void SimpleInteractionUIController_OnPlaybackStopped_m768B2EA18BE64BC5508D4DF93B8E3468A9912E69 (void);
 extern void SimpleInteractionUIController_OnObjectHighlighted_m8868FA8F9241946DBA9173BB17612923E6A23F6B (void);
 extern void SimpleInteractionUIController_OnObjectInteractionCompleted_mD96BC8BE1814FF156DB9F0E58E0327D10C754DA5 (void);
+extern void SimpleInteractionUIController_OnObjectIncorrectlyPlaced_m5429D5DDF1CFEE45D0C6E95AF7F4981663A96E9B (void);
 extern void SimpleInteractionUIController__ctor_m6553BBEB5EE379C7B70DA30E7F0F978FFF192162 (void);
 extern void UIHelper_AutoFindAndAssignUIElements_mE40A1A502A0C0378D465332FA915F09DDC15B154 (void);
 extern void UIHelper_CreateBasicUISetup_mD771C533DFD334D64C2AA658A29AAFBEC893B7C1 (void);
@@ -259,7 +264,7 @@ extern void VisualCueManager_RemoveMaterialHighlight_m147EE605A35B76E8F7DBA82EA4
 extern void VisualCueManager_UpdatePulsing_m06BFBBC8FA1A23AE596B53D7F3612B25194B4E42 (void);
 extern void VisualCueManager__ctor_m2E67F8180EB1C8E0548D1F7ECFF5170F76329B47 (void);
 extern void HighlightData__ctor_m4A798B6BBC0EDF75EB25372805ED7FD560CD6667 (void);
-static Il2CppMethodPointer s_methodPointers[252] = 
+static Il2CppMethodPointer s_methodPointers[257] = 
 {
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
@@ -467,6 +472,10 @@ static Il2CppMethodPointer s_methodPointers[252] =
 	ObjectStateManager_ResetObject_m6B609EEDA6D90798840111E252E2A2F6857FD9AB,
 	ObjectStateManager_CaptureCurrentStatesAsInitial_m55E42E2D29438C2AE27EF87D3D1FFE9A25B372C7,
 	ObjectStateManager__ctor_m7CDE6CE9314A1FE78491F553B3BDB042956C55DF,
+	PlacementFeedback_Start_mFC2EC84CC29350FDE3A909635E733C79F21DD9C5,
+	PlacementFeedback_OnCorrectPlacement_m7142CE7EF26324583D60DA8EC16A8CC14FEEE9BF,
+	PlacementFeedback_OnIncorrectPlacement_mC434174C6B4CF0028B761C4CD57F5EC65F0E989F,
+	PlacementFeedback__ctor_mB53549DB2B0115EAB9574B7258D4C3D357223C0F,
 	RecordingData__ctor_m8F7D04DE0E09DCC3F2B2EDB446E80661F6470CDC,
 	ObjectInitialState__ctor_m478902DB2A77CE19099A5CAF200A409329085AC2,
 	InteractionEvent__ctor_m5E5DB6F589FC6643D5069A7F0CD2DF504A5A2017,
@@ -489,6 +498,7 @@ static Il2CppMethodPointer s_methodPointers[252] =
 	SimpleInteractionUIController_OnPlaybackStopped_m768B2EA18BE64BC5508D4DF93B8E3468A9912E69,
 	SimpleInteractionUIController_OnObjectHighlighted_m8868FA8F9241946DBA9173BB17612923E6A23F6B,
 	SimpleInteractionUIController_OnObjectInteractionCompleted_mD96BC8BE1814FF156DB9F0E58E0327D10C754DA5,
+	SimpleInteractionUIController_OnObjectIncorrectlyPlaced_m5429D5DDF1CFEE45D0C6E95AF7F4981663A96E9B,
 	SimpleInteractionUIController__ctor_m6553BBEB5EE379C7B70DA30E7F0F978FFF192162,
 	UIHelper_AutoFindAndAssignUIElements_mE40A1A502A0C0378D465332FA915F09DDC15B154,
 	UIHelper_CreateBasicUISetup_mD771C533DFD334D64C2AA658A29AAFBEC893B7C1,
@@ -525,7 +535,7 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] =
 	{ 0x0600007B, TrackedRotation_SetBaseFromVector_m0CAD68507FD5C7AA3C7CAE09720645F033F1D26E_AdjustorThunk },
 	{ 0x0600007C, TrackedRotation_SetTargetFromVector_m42F1586C38A41E0FB628220D326B1572BB8F80D7_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[252] = 
+static const int32_t s_InvokerIndices[257] = 
 {
 	27050,
 	15691,
@@ -734,6 +744,10 @@ static const int32_t s_InvokerIndices[252] =
 	15691,
 	15691,
 	15691,
+	15691,
+	15691,
+	15691,
+	15691,
 	1937,
 	950,
 	993,
@@ -755,6 +769,7 @@ static const int32_t s_InvokerIndices[252] =
 	15691,
 	11911,
 	11911,
+	2711,
 	15691,
 	15691,
 	15691,
@@ -784,7 +799,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	252,
+	257,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,
