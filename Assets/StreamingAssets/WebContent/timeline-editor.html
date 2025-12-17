@@ -1532,131 +1532,108 @@
         }
 
         function makeDraggable(block, step) {
-            let isDragging = false;
-            let startX = 0;
-            let startLeft = 0;
+            // VR-friendly: Use click to select block, then scroll to move it
+            let isSelected = false;
 
-            // Handler for starting drag (works for both mouse and pointer events)
-            const onDragStart = (e) => {
-                // Don't drag if clicking on resize handle
-                if (e.target.classList.contains('resize-handle')) return;
+            block.addEventListener('click', (e) => {
+                e.stopPropagation();
 
-                isDragging = true;
-                startX = e.clientX;
-                startLeft = parseFloat(block.style.left);
-                block.style.cursor = 'grabbing';
+                // Toggle selection
+                isSelected = !isSelected;
+
+                if (isSelected) {
+                    block.style.border = '3px solid #f48771';
+                    block.style.background = block.style.background.replace('0.8', '1.0'); // Brighter
+                } else {
+                    block.style.border = '1px solid transparent';
+                    block.style.background = block.style.background.replace('1.0', '0.8'); // Normal
+                }
+
+                console.log(`[BLOCK] ${step.action} ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
+            });
+
+            // Use wheel/scroll events to move selected block
+            block.addEventListener('wheel', (e) => {
+                if (!isSelected) return;
+
                 e.preventDefault();
-            };
+                e.stopPropagation();
 
-            // Handler for dragging (works for both mouse and pointer events)
-            const onDragMove = (e) => {
-                if (!isDragging) return;
-                const deltaX = e.clientX - startX;
                 const labelWidth = 100;
-                const newLeft = startLeft + deltaX;
+                const scrollAmount = -e.deltaY * 0.1; // Convert scroll to pixels (invert direction)
 
-                // For PickUp/PutDown blocks (60px wide), calculate timestamp from center
+                console.log(`[BLOCK SCROLL] deltaY=${e.deltaY}, scrollAmount=${scrollAmount}`);
+
+                // For PickUp/PutDown blocks, adjust timestamp
                 if (step.action === 'PickUp' || step.action === 'PutDown') {
                     const blockWidth = 60;
-                    // Block left edge is at (timestamp position - blockWidth/2)
-                    // So: timestamp position = block left edge + blockWidth/2
-                    const timestampPosition = newLeft + blockWidth / 2;
-                    const timestamp = (timestampPosition - labelWidth) / pixelsPerSecond;
-                    step.timestamp = Math.max(0, timestamp);
+                    const timestampDelta = scrollAmount / pixelsPerSecond;
+                    step.timestamp = Math.max(0, step.timestamp + timestampDelta);
 
                     // Recenter block on new timestamp
                     const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
                     block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
                 } else {
-                    // Other blocks: left edge at timestamp position
-                    const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
-                    step.timestamp = Math.max(0, timestamp);
+                    const timestampDelta = scrollAmount / pixelsPerSecond;
+                    step.timestamp = Math.max(0, step.timestamp + timestampDelta);
                     block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
                 }
 
                 updateJSONOutput();
-                renderTimeline(); // Re-render to update playhead position
-            };
-
-            // Handler for ending drag (works for both mouse and pointer events)
-            const onDragEnd = () => {
-                if (isDragging) {
-                    isDragging = false;
-                    block.style.cursor = 'move';
-                }
-            };
-
-            // Add both mouse and pointer event listeners for maximum compatibility
-            // Pointer events work for: mouse, touch, stylus, AND VR controllers
-            block.addEventListener('mousedown', onDragStart);
-            block.addEventListener('pointerdown', onDragStart);
-
-            document.addEventListener('mousemove', onDragMove);
-            document.addEventListener('pointermove', onDragMove);
-
-            document.addEventListener('mouseup', onDragEnd);
-            document.addEventListener('pointerup', onDragEnd);
+            });
         }
 
         function makeMoveBlockDraggable(block, step) {
-            let isDragging = false;
-            let startX = 0;
-            let startLeft = 0;
-            let startStartTime = 0;
-            let startEndTime = 0;
+            // VR-friendly: Use click to select block, then scroll to move it
+            let isSelected = false;
 
-            // Handler for starting drag (works for both mouse and pointer events)
-            const onDragStart = (e) => {
-                // Don't drag if clicking on resize handle
+            block.addEventListener('click', (e) => {
+                // Don't select if clicking on resize handle
                 if (e.target.classList.contains('resize-handle')) return;
 
-                isDragging = true;
-                startX = e.clientX;
-                startLeft = parseFloat(block.style.left);
-                startStartTime = step.startTime;
-                startEndTime = step.endTime;
-                block.style.cursor = 'grabbing';
+                e.stopPropagation();
+
+                // Toggle selection
+                isSelected = !isSelected;
+
+                if (isSelected) {
+                    block.style.border = '3px solid #f48771';
+                    block.style.opacity = '1.0';
+                } else {
+                    block.style.border = '1px solid transparent';
+                    block.style.opacity = '0.9';
+                }
+
+                console.log(`[MOVE BLOCK] ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
+            });
+
+            // Use wheel/scroll events to move selected block
+            block.addEventListener('wheel', (e) => {
+                if (!isSelected) return;
+
                 e.preventDefault();
-            };
-
-            // Handler for dragging (works for both mouse and pointer events)
-            const onDragMove = (e) => {
-                if (!isDragging) return;
-                const deltaX = e.clientX - startX;
-                const deltaTime = deltaX / pixelsPerSecond;
-                const newStartTime = Math.max(0, startStartTime + deltaTime);
-                const newEndTime = Math.max(newStartTime + 0.1, startEndTime + deltaTime); // Min 0.1s duration
-
-                step.startTime = newStartTime;
-                step.endTime = newEndTime;
+                e.stopPropagation();
 
                 const labelWidth = 100;
-                const newLeft = labelWidth + newStartTime * pixelsPerSecond;
-                const width = (newEndTime - newStartTime) * pixelsPerSecond;
+                const scrollAmount = -e.deltaY * 0.1; // Convert scroll to pixels
+                const timeDelta = scrollAmount / pixelsPerSecond;
+
+                console.log(`[MOVE BLOCK SCROLL] deltaY=${e.deltaY}, timeDelta=${timeDelta}`);
+
+                // Move both start and end time
+                const newStartTime = Math.max(0, step.startTime + timeDelta);
+                const newEndTime = step.endTime + timeDelta;
+
+                step.startTime = newStartTime;
+                step.endTime = Math.max(newStartTime + 0.1, newEndTime); // Min 0.1s duration
+
+                const newLeft = labelWidth + step.startTime * pixelsPerSecond;
+                const width = (step.endTime - step.startTime) * pixelsPerSecond;
                 block.style.left = newLeft + 'px';
                 block.style.width = Math.max(20, width) + 'px';
 
                 updateJSONOutput();
-            };
-
-            // Handler for ending drag (works for both mouse and pointer events)
-            const onDragEnd = () => {
-                if (isDragging) {
-                    isDragging = false;
-                    block.style.cursor = 'default';
-                }
-            };
-
-            // Add both mouse and pointer event listeners for maximum compatibility
-            // Pointer events work for: mouse, touch, stylus, AND VR controllers
-            block.addEventListener('mousedown', onDragStart);
-            block.addEventListener('pointerdown', onDragStart);
-
-            document.addEventListener('mousemove', onDragMove);
-            document.addEventListener('pointermove', onDragMove);
-
-            document.addEventListener('mouseup', onDragEnd);
-            document.addEventListener('pointerup', onDragEnd);
+            });
         }
 
         function startResize(block, step, side, e) {
@@ -2248,89 +2225,49 @@
             }
         });
 
-        // Draggable test circle for VR testing
+        // VR-friendly test circle using click + scroll
         (function() {
             const circle = document.getElementById('testCircle');
             if (!circle) return;
 
-            let isDragging = false;
+            let isSelected = false;
             let currentX = window.innerWidth / 2;
             let currentY = window.innerHeight / 2;
-            let lastEventX = 0;
-            let lastEventY = 0;
 
-            // Log all events for debugging
-            function logEvent(name, e) {
-                console.log(`[TEST CIRCLE] ${name}:`, {
-                    type: e.type,
-                    clientX: e.clientX,
-                    clientY: e.clientY,
-                    pageX: e.pageX,
-                    pageY: e.pageY,
-                    isPrimary: e.isPrimary,
-                    pointerType: e.pointerType,
-                    button: e.button,
-                    buttons: e.buttons
-                });
-            }
-
-            function onPointerDown(e) {
-                logEvent('DOWN', e);
-                isDragging = true;
-                lastEventX = e.clientX;
-                lastEventY = e.clientY;
-                circle.style.cursor = 'grabbing';
-                circle.style.background = '#2ecc71'; // Green when dragging
-                e.preventDefault();
-            }
-
-            function onPointerMove(e) {
-                if (!isDragging) return;
-
-                logEvent('MOVE', e);
-
-                const deltaX = e.clientX - lastEventX;
-                const deltaY = e.clientY - lastEventY;
-
-                currentX += deltaX;
-                currentY += deltaY;
-
-                lastEventX = e.clientX;
-                lastEventY = e.clientY;
-
-                // Update position directly without transform
-                circle.style.left = currentX + 'px';
-                circle.style.top = currentY + 'px';
-                circle.style.transform = 'translate(-50%, -50%)';
-
-                e.preventDefault();
-            }
-
-            function onPointerUp(e) {
-                if (isDragging) {
-                    logEvent('UP', e);
-                    isDragging = false;
-                    circle.style.cursor = 'move';
-                    circle.style.background = '#e74c3c'; // Back to red
-                }
-            }
-
-            // Try ONLY pointer events (might work better in VR)
-            circle.addEventListener('pointerdown', onPointerDown);
-            document.addEventListener('pointermove', onPointerMove);
-            document.addEventListener('pointerup', onPointerUp);
-            document.addEventListener('pointercancel', onPointerUp);
-
-            // Also try click event to see if that fires in VR
+            // Click to select/deselect
             circle.addEventListener('click', (e) => {
-                console.log('[TEST CIRCLE] CLICK event fired!', e);
-                circle.style.background = '#3498db'; // Blue on click
-                setTimeout(() => {
-                    if (!isDragging) circle.style.background = '#e74c3c';
-                }, 200);
+                isSelected = !isSelected;
+
+                if (isSelected) {
+                    circle.style.background = '#2ecc71'; // Green when selected
+                    circle.textContent = 'SELECTED\nSCROLL ME';
+                } else {
+                    circle.style.background = '#e74c3c'; // Red when not selected
+                    circle.textContent = 'DRAG TEST';
+                }
+
+                console.log(`[TEST CIRCLE] ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
+                e.preventDefault();
             });
 
-            console.log('[TEST CIRCLE] Drag listeners initialized - pointerdown, pointermove, pointerup');
+            // Scroll to move when selected
+            circle.addEventListener('wheel', (e) => {
+                if (!isSelected) return;
+
+                console.log(`[TEST CIRCLE SCROLL] deltaX=${e.deltaX}, deltaY=${e.deltaY}`);
+
+                // Move based on scroll direction
+                currentX -= e.deltaX * 0.5;
+                currentY -= e.deltaY * 0.5;
+
+                circle.style.left = currentX + 'px';
+                circle.style.top = currentY + 'px';
+
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+            console.log('[TEST CIRCLE] Click + scroll mode enabled');
         })();
     </script>
 </body>
