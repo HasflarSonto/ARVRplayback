@@ -682,11 +682,6 @@
 
     <input type="file" id="fileInput" accept=".json" style="display: none;">
 
-    <!-- Draggable Test Circle for VR -->
-    <div id="testCircle" style="position: fixed; left: 50%; top: 50%; width: 100px; height: 100px; background: #e74c3c; border-radius: 50%; transform: translate(-50%, -50%); cursor: move; z-index: 10000; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; user-select: none; touch-action: none;">
-        DRAG TEST
-    </div>
-
     <!-- Debug Panel -->
     <div class="debug-panel" id="debugPanel">
         <div class="debug-header">
@@ -1569,8 +1564,8 @@
                 // Clamp deltaY to prevent huge jumps from fast scrolling
                 const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
 
-                // Accumulate scroll with increased sensitivity
-                scrollAccumulator += clampedDeltaY * 0.2; // Increased sensitivity
+                // Accumulate scroll with damping
+                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
 
                 // Apply movement
                 const labelWidth = 100;
@@ -1639,8 +1634,8 @@
                 // Clamp deltaY to prevent huge jumps from fast scrolling
                 const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
 
-                // Accumulate scroll with increased sensitivity
-                scrollAccumulator += clampedDeltaY * 0.2; // Increased sensitivity
+                // Accumulate scroll with damping
+                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
 
                 const labelWidth = 100;
                 const timestampDelta = -scrollAccumulator / pixelsPerSecond;
@@ -2255,54 +2250,6 @@
             }
         });
 
-        // VR-friendly test circle using click + scroll
-        (function() {
-            const circle = document.getElementById('testCircle');
-            if (!circle) return;
-
-            let isSelected = false;
-            let currentX = window.innerWidth / 2;
-            let currentY = window.innerHeight / 2;
-
-            // Click to select/deselect
-            circle.addEventListener('click', (e) => {
-                isSelected = !isSelected;
-
-                if (isSelected) {
-                    circle.style.background = '#2ecc71'; // Green when selected
-                    circle.textContent = 'SELECTED\nSCROLL ME';
-                } else {
-                    circle.style.background = '#e74c3c'; // Red when not selected
-                    circle.textContent = 'DRAG TEST';
-                }
-
-                console.log(`[TEST CIRCLE] ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
-                e.preventDefault();
-            });
-
-            // Scroll to move when selected
-            circle.addEventListener('wheel', (e) => {
-                if (!isSelected) return;
-
-                // Clamp delta values to prevent huge jumps
-                const clampedDeltaX = Math.max(-100, Math.min(100, e.deltaX));
-                const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
-
-                console.log(`[TEST CIRCLE SCROLL] deltaX=${e.deltaX}, deltaY=${e.deltaY}, clamped=(${clampedDeltaX}, ${clampedDeltaY})`);
-
-                // Move based on scroll direction with increased sensitivity
-                currentX -= clampedDeltaX * 1.0;
-                currentY -= clampedDeltaY * 1.0;
-
-                circle.style.left = currentX + 'px';
-                circle.style.top = currentY + 'px';
-
-                e.preventDefault();
-                e.stopPropagation();
-            });
-
-            console.log('[TEST CIRCLE] Click + scroll mode enabled');
-        })();
     </script>
 </body>
 </html>
