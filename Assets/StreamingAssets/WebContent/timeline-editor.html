@@ -951,17 +951,8 @@
                     if (typeof message.currentTime === 'number') {
                         currentTime = message.currentTime;
 
-                        // CRITICAL DEBUG: Display debug info on screen
-                        const webViewDuration = taskData?.totalDuration || 0;
-                        const unityDuration = message.totalDuration || 0;
-                        const normalizedValue = message.value || 0;
-                        const durMatch = Math.abs(webViewDuration - unityDuration) < 0.01;
-
-                        // Show debug info on screen
-                        const debugInfo = document.getElementById('debugInfo');
-                        if (debugInfo) {
-                            debugInfo.textContent = `Time:${message.currentTime.toFixed(2)}s | Norm:${normalizedValue.toFixed(3)} | WebDur:${webViewDuration.toFixed(2)}s | UnityDur:${unityDuration.toFixed(2)}s | ${durMatch ? '✓ MATCH' : '✗ MISMATCH'}`;
-                        }
+                        // Note: debugInfo now shows movement goal status, not time info
+                        // Don't overwrite it with time data
 
                         updatePlayhead();
 
@@ -2335,11 +2326,8 @@
                     });
                 }
 
-                if (closestEvent && minDiff < 1.0) {
-                    debugInfo.textContent = `Time: ${currentTime.toFixed(2)}s | Nearest: ${closestEvent.action} @ ${closestEvent.timestamp.toFixed(2)}s | Diff: ${minDiff.toFixed(2)}s`;
-                } else {
-                    debugInfo.textContent = `Time: ${currentTime.toFixed(2)}s | Zoom: ${pixelsPerSecond}px/s`;
-                }
+                // Note: debugInfo now shows movement goal status, not time/zoom info
+                // Don't overwrite it here
             }
         }
 
