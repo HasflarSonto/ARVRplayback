@@ -30,26 +30,43 @@ namespace VRInteractionRecording
     }
 
     /// <summary>
-    /// Represents a single instruction step (PickUp or PutDown)
+    /// Represents a single instruction step (PickUp, PutDown, or Move)
     /// </summary>
     [Serializable]
     public class InstructionStep
     {
         public int stepNumber;
-        public string action; // "PickUp" or "PutDown"
+        public string action; // "PickUp", "PutDown", or "Move"
         public string objectId;
         public string objectName;
         public float timestamp;
-        
+
         // For PutDown actions (using classes instead of nullable for JsonUtility compatibility)
         public SerializableVector3 position;
         public SerializableQuaternion rotation;
         public SerializableTolerance tolerance;
-        
+
+        // For Move actions (duration-based events)
+        public float startTime;
+        public float endTime;
+        public List<SerializableVector3> pathPoints; // Waypoints for movement validation
+
         // Helper to check if this is a PutDown with position data
         public bool HasPositionData()
         {
             return position != null && rotation != null;
+        }
+
+        // Helper to check if this is a Move action
+        public bool IsMove()
+        {
+            return action == "Move";
+        }
+
+        // Helper to check if Move has path data
+        public bool HasPathData()
+        {
+            return pathPoints != null && pathPoints.Count > 0;
         }
 
         public InstructionStep()
@@ -62,6 +79,9 @@ namespace VRInteractionRecording
             position = null;
             rotation = null;
             tolerance = null;
+            startTime = 0f;
+            endTime = 0f;
+            pathPoints = null;
         }
 
         // Helper method to clear position data (for PickUp steps)
@@ -70,6 +90,14 @@ namespace VRInteractionRecording
             position = null;
             rotation = null;
             tolerance = null;
+        }
+
+        // Helper method to clear Move data
+        public void ClearMoveData()
+        {
+            startTime = 0f;
+            endTime = 0f;
+            pathPoints = null;
         }
     }
 

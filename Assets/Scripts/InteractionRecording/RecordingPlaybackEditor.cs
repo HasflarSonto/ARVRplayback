@@ -728,6 +728,14 @@ namespace VRInteractionRecording
         public bool IsPlaying => isPlaying;
 
         /// <summary>
+        /// Gets the current recording data (for external systems like MovementGoalManager)
+        /// </summary>
+        public RecordingData GetCurrentRecording()
+        {
+            return currentRecording;
+        }
+
+        /// <summary>
         /// Builds interaction sequences (grab-release pairs)
         /// </summary>
         private void BuildInteractionSequences()

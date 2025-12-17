@@ -1244,6 +1244,21 @@
             }
         }
 
+        // Notify Unity when Move block is added (creates bright green movement goal visualization)
+        function notifyUnityOfMoveBlockAdded(moveStep) {
+            if (typeof window.vuplex !== 'undefined' && window.vuplex.postMessage) {
+                const message = {
+                    type: 'moveBlockAdded',
+                    objectId: moveStep.objectId,
+                    objectName: moveStep.objectName,
+                    startTime: moveStep.startTime,
+                    endTime: moveStep.endTime
+                };
+                window.vuplex.postMessage(JSON.stringify(message));
+                console.log(`[UNITY MSG] Sent moveBlockAdded: ${moveStep.objectId} [${moveStep.startTime.toFixed(3)}s → ${moveStep.endTime.toFixed(3)}s]`);
+            }
+        }
+
         function renderTimeline() {
             logDebugMessage('renderTimeline()', 'Function called');
 
@@ -1493,6 +1508,11 @@
             // Add to task data
             if (!taskData.steps) taskData.steps = [];
             taskData.steps.push(newStep);
+
+            // Notify Unity when Move block is added (so it can create bright green path visualization)
+            if (action === 'Move') {
+                notifyUnityOfMoveBlockAdded(newStep);
+            }
             
             // Sort and renumber (use startTime for Move)
             taskData.steps.sort((a, b) => {

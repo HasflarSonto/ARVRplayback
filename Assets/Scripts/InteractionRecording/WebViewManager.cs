@@ -1225,6 +1225,11 @@ namespace VRInteractionRecording
                             HandlePutDownTimestampChange(message, playbackEditor);
                             break;
 
+                        case "moveBlockAdded":
+                            Debug.LogError("🎯 Move block added from timeline editor");
+                            HandleMoveBlockAdded(message, playbackEditor);
+                            break;
+
                         default:
                             Debug.LogError($"⚠️ Unknown message type: {messageObj.type}");
                             break;
@@ -1327,6 +1332,92 @@ namespace VRInteractionRecording
             {
                 Debug.LogError($"❌ Error handling putdown timestamp change: {e.Message}");
             }
+        }
+
+        private void HandleMoveBlockAdded(string message, RecordingPlaybackEditor playbackEditor)
+        {
+            try
+            {
+                var msg = JsonUtility.FromJson<MoveBlockMessage>(message);
+
+                Debug.LogError($"🎯 Move Block Added:");
+                Debug.LogError($"   Object: {msg.objectId}");
+                Debug.LogError($"   Start Time: {msg.startTime:F3}s");
+                Debug.LogError($"   End Time: {msg.endTime:F3}s");
+
+                // Get MovementGoalManager
+                var movementGoalManager = FindFirstObjectByType<MovementGoalManager>();
+                if (movementGoalManager == null)
+                {
+                    Debug.LogError("❌ MovementGoalManager not found! Make sure it's in the scene.");
+                    return;
+                }
+
+                // Get ObjectStateManager to get object snapshots
+                var objectStateManager = FindFirstObjectByType<ObjectStateManager>();
+                if (objectStateManager == null)
+                {
+                    Debug.LogError("❌ ObjectStateManager not found!");
+                    return;
+                }
+
+                // Extract path snapshots from recording data between startTime and endTime
+                var recordingData = playbackEditor.GetCurrentRecording();
+                if (recordingData == null)
+                {
+                    Debug.LogError("❌ No recording data available!");
+                    return;
+                }
+
+                // Get snapshots for this object in the time range
+                List<TransformSnapshot> pathSnapshots = new List<TransformSnapshot>();
+                foreach (var snapshot in recordingData.transformSnapshots)
+                {
+                    if (snapshot.objectId == msg.objectId &&
+                        snapshot.timestamp >= msg.startTime &&
+                        snapshot.timestamp <= msg.endTime)
+                    {
+                        pathSnapshots.Add(snapshot);
+                    }
+                }
+
+                if (pathSnapshots.Count < 2)
+                {
+                    Debug.LogError($"❌ Insufficient snapshots for Move block ({pathSnapshots.Count} found)");
+                    return;
+                }
+
+                // Create InstructionStep for the Move action
+                InstructionStep moveStep = new InstructionStep
+                {
+                    action = "Move",
+                    objectId = msg.objectId,
+                    objectName = msg.objectName,
+                    startTime = msg.startTime,
+                    endTime = msg.endTime,
+                    timestamp = msg.startTime
+                };
+
+                // Create movement goal
+                movementGoalManager.CreateMovementGoal(moveStep, pathSnapshots);
+                movementGoalManager.ShowMovementGoal(msg.objectId);
+
+                Debug.LogError($"✅ Movement goal created and displayed for {msg.objectId}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"❌ Error handling move block added: {e.Message}\n{e.StackTrace}");
+            }
+        }
+
+        [System.Serializable]
+        private class MoveBlockMessage
+        {
+            public string type;
+            public string objectId;
+            public string objectName;
+            public float startTime;
+            public float endTime;
         }
 
         [System.Serializable]
