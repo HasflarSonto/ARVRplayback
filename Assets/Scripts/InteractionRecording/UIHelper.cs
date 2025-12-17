@@ -21,7 +21,7 @@ namespace VRInteractionRecording
             }
 
             // Find buttons
-            Button[] allButtons = FindObjectsOfType<Button>(true);
+            Button[] allButtons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             Button recordButton = null;
             Button playbackButton = null;
             Button resetButton = null;
@@ -62,7 +62,7 @@ namespace VRInteractionRecording
             }
 
             // Find text elements
-            TextMeshProUGUI[] allTexts = FindObjectsOfType<TextMeshProUGUI>(true);
+            TextMeshProUGUI[] allTexts = FindObjectsByType<TextMeshProUGUI>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             TextMeshProUGUI statusText = null;
             TextMeshProUGUI progressText = null;
             TextMeshProUGUI instructionText = null;

@@ -71,6 +71,10 @@ namespace VRInteractionRecording
         [Tooltip("Reference to RecordingPlaybackEditor")]
         private RecordingPlaybackEditor playbackEditor;
 
+        [SerializeField]
+        [Tooltip("Reference to WebViewManager for displaying JSON")]
+        private WebViewManager webViewManager;
+
         private bool isRecording = false;
         private bool isPlaybackActive = false;
         private bool isEditModeActive = false;
@@ -82,8 +86,21 @@ namespace VRInteractionRecording
         private Button resetButtonComponent;
         private Button editButtonComponent;
 
+        private void Awake()
+        {
+            // Clean up broken Affordance components to reduce console errors
+            // Run in Awake to catch components before they start
+            GlobalAffordanceCleanup cleanup = GetComponent<GlobalAffordanceCleanup>();
+            if (cleanup == null)
+            {
+                cleanup = gameObject.AddComponent<GlobalAffordanceCleanup>();
+            }
+            cleanup.CleanupAllAffordances();
+        }
+
         private void Start()
         {
+
             // Find managers if not assigned
             if (recordingManager == null)
             {
@@ -98,6 +115,11 @@ namespace VRInteractionRecording
             if (playbackEditor == null)
             {
                 playbackEditor = FindFirstObjectByType<RecordingPlaybackEditor>();
+            }
+
+            if (webViewManager == null)
+            {
+                webViewManager = FindFirstObjectByType<WebViewManager>();
             }
 
             // Find button components
@@ -364,6 +386,29 @@ namespace VRInteractionRecording
                     playbackEditor.StartEditPlayback(currentRecording);
                 }
 
+                // Generate and display JSON in timeline editor when entering edit mode
+                if (currentRecording != null && webViewManager != null)
+                {
+                    Debug.LogError("═══════════════════════════════════════════");
+                    Debug.LogError("📋 EDIT MODE ACTIVATED - Scheduling JSON Generation");
+                    Debug.LogError($"   Recording has {currentRecording.interactionEvents.Count} events");
+                    Debug.LogError($"   WebViewManager exists: {webViewManager != null}");
+                    Debug.LogError("   Calling GenerateAndDisplayJSON in 3 seconds...");
+                    Debug.LogError("   (Longer delay to ensure Vuplex APIs are injected)");
+                    Debug.LogError("═══════════════════════════════════════════");
+                    // INCREASED delay to ensure WebView AND Vuplex APIs are fully ready
+                    // The WebView HTML loads first, but Vuplex needs time to inject its JavaScript APIs
+                    Invoke(nameof(GenerateAndDisplayJSON), 3f);
+                }
+                else
+                {
+                    Debug.LogError("═══════════════════════════════════════════");
+                    Debug.LogError("❌ EDIT MODE - Cannot generate JSON!");
+                    Debug.LogError($"   currentRecording is null: {currentRecording == null}");
+                    Debug.LogError($"   webViewManager is null: {webViewManager == null}");
+                    Debug.LogError("═══════════════════════════════════════════");
+                }
+
                 if (instructionText != null)
                 {
                     instructionText.text = "Edit Mode: Use timeline to scrub through recording. Click Edit again to exit.";
@@ -602,12 +647,121 @@ namespace VRInteractionRecording
 
         private void OnRecordingStopped()
         {
+            Debug.LogError("═══════════════════════════════════════════");
+            Debug.LogError("⏹️ OnRecordingStopped CALLED");
+            Debug.LogError("═══════════════════════════════════════════");
+
             isRecording = false;
             if (recordingManager != null)
             {
                 currentRecording = recordingManager.GetCurrentRecording();
+
+                Debug.LogError($"   Recording retrieved: {currentRecording != null}");
+                if (currentRecording != null)
+                {
+                    Debug.LogError($"   Recording has {currentRecording.interactionEvents.Count} events");
+                }
+
+                // Generate and display JSON with delay to ensure WebView is ready
+                // Same delay as Edit mode (WebView needs time to initialize and for Vuplex APIs to inject)
+                if (currentRecording != null && webViewManager != null)
+                {
+                    Debug.LogError($"   WebViewManager exists: {webViewManager != null}");
+                    Debug.LogError("   Scheduling JSON generation in 5 seconds...");
+                    Debug.LogError("   (Waiting for WebView page to load)");
+                    Invoke(nameof(GenerateAndDisplayJSON), 5f);
+                }
+                else
+                {
+                    Debug.LogError("❌ Cannot generate JSON:");
+                    Debug.LogError($"   currentRecording is null: {currentRecording == null}");
+                    Debug.LogError($"   webViewManager is null: {webViewManager == null}");
+                }
             }
+            else
+            {
+                Debug.LogError("❌ recordingManager is NULL!");
+            }
+
+            Debug.LogError("═══════════════════════════════════════════");
             UpdateUIState();
+        }
+
+        /// <summary>
+        /// Generates JSON from recording and displays it
+        /// </summary>
+        private void GenerateAndDisplayJSON()
+        {
+            Debug.LogError("═══════════════════════════════════════════");
+            Debug.LogError("🔄 GenerateAndDisplayJSON() CALLED");
+            Debug.LogError("═══════════════════════════════════════════");
+
+            if (currentRecording == null)
+            {
+                Debug.LogError("❌ No recording data!");
+                return;
+            }
+
+            Debug.LogError($"✅ Recording exists: {currentRecording.interactionEvents.Count} events");
+
+            // Get ObjectStateManager
+            ObjectStateManager objectStateManager = FindFirstObjectByType<ObjectStateManager>();
+            if (objectStateManager == null)
+            {
+                Debug.LogError("❌ ObjectStateManager not found!");
+                Debug.LogWarning("SimpleInteractionUIController: ObjectStateManager not found. Cannot generate JSON.");
+                return;
+            }
+
+            Debug.LogError("✅ ObjectStateManager found");
+
+            // Generate task instruction
+            TaskInstruction task = TaskInstructionGenerator.GenerateFromRecording(
+                currentRecording,
+                objectStateManager,
+                "Recorded Task"
+            );
+
+            if (task == null)
+            {
+                Debug.LogError("❌ Task generation failed!");
+                Debug.LogWarning("SimpleInteractionUIController: Failed to generate task instruction.");
+                return;
+            }
+
+            Debug.LogError($"✅ Task generated: {task.steps.Count} steps");
+
+            // Convert to JSON
+            string json = TaskInstructionGenerator.ToFormattedJSON(task);
+            Debug.LogError($"✅ JSON created: {json.Length} characters");
+            Debug.LogError("------FULL JSON START------");
+            Debug.LogError(json);
+            Debug.LogError("------FULL JSON END------");
+            Debug.LogError($"📄 JSON Preview: {json.Substring(0, Mathf.Min(200, json.Length))}...");
+
+            // Display in WebView
+            if (webViewManager != null)
+            {
+                Debug.LogError("✅ WebViewManager exists - calling DisplayJSON()");
+                // Get total duration from the task
+                float duration = task.totalDuration;
+                Debug.LogError($"   Duration: {duration}s");
+                Debug.LogError($"   JSON length: {json.Length}");
+                Debug.LogError($"   Recording events: {currentRecording.interactionEvents.Count}");
+
+                // Pass both task JSON and recording data to timeline editor
+                webViewManager.DisplayJSON(json, duration, currentRecording);
+                Debug.LogError("✅ DisplayJSON() called!");
+                Debug.Log("SimpleInteractionUIController: JSON generated and displayed");
+            }
+            else
+            {
+                Debug.LogError("❌ WebViewManager is NULL!");
+                // Fallback: log to console
+                Debug.Log($"SimpleInteractionUIController: Generated JSON:\n{json}");
+            }
+
+            Debug.LogError("═══════════════════════════════════════════");
         }
 
         private void OnPlaybackStarted()

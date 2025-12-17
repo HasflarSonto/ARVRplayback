@@ -19,7 +19,7 @@ namespace VRInteractionRecording
             
             if (playbackManager == null)
             {
-                playbackManager = FindObjectOfType<InteractionPlaybackManager>();
+                playbackManager = FindFirstObjectByType<InteractionPlaybackManager>();
             }
 
             // Subscribe to grab/release events

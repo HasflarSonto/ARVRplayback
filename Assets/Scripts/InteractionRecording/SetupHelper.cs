@@ -12,7 +12,7 @@ namespace VRInteractionRecording
         [ContextMenu("Setup All Interactables with Playback Hooks")]
         public void SetupAllInteractables()
         {
-            UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable[] interactables = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+            UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable[] interactables = FindObjectsByType<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>(FindObjectsSortMode.None);
 
             int addedCount = 0;
             foreach (UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable in interactables)
@@ -55,10 +55,10 @@ namespace VRInteractionRecording
         [ContextMenu("Link All Managers")]
         public void LinkAllManagers()
         {
-            ObjectStateManager objectStateManager = FindObjectOfType<ObjectStateManager>();
-            InteractionRecordingManager recordingManager = FindObjectOfType<InteractionRecordingManager>();
-            InteractionPlaybackManager playbackManager = FindObjectOfType<InteractionPlaybackManager>();
-            VisualCueManager visualCueManager = FindObjectOfType<VisualCueManager>();
+            ObjectStateManager objectStateManager = FindFirstObjectByType<ObjectStateManager>();
+            InteractionRecordingManager recordingManager = FindFirstObjectByType<InteractionRecordingManager>();
+            InteractionPlaybackManager playbackManager = FindFirstObjectByType<InteractionPlaybackManager>();
+            VisualCueManager visualCueManager = FindFirstObjectByType<VisualCueManager>();
 
             if (objectStateManager == null || recordingManager == null || playbackManager == null || visualCueManager == null)
             {
@@ -95,7 +95,7 @@ namespace VRInteractionRecording
         [ContextMenu("Find and Assign Interactables Container")]
         public void FindAndAssignInteractablesContainer()
         {
-            ObjectStateManager objectStateManager = FindObjectOfType<ObjectStateManager>();
+            ObjectStateManager objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             if (objectStateManager == null)
             {
                 Debug.LogError("SetupHelper: ObjectStateManager not found!");

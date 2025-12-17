@@ -165,6 +165,32 @@ namespace VRInteractionRecording
         }
 
         /// <summary>
+        /// Updates the placement indicator position (called from timeline editor)
+        /// </summary>
+        public void UpdatePlacementIndicator(GameObject originalObject, Vector3 newPosition, Quaternion newRotation)
+        {
+            if (originalObject == null) return;
+
+            // If ghost exists, update its position
+            if (ghostObjects.ContainsKey(originalObject))
+            {
+                GameObject ghost = ghostObjects[originalObject];
+                if (ghost != null)
+                {
+                    ghost.transform.position = newPosition;
+                    ghost.transform.rotation = newRotation;
+                    Debug.Log($"Updated ghost position for {originalObject.name} to {newPosition}");
+                }
+            }
+            else
+            {
+                // Create new ghost at the specified position
+                ShowGhostObject(originalObject, newPosition, newRotation);
+                Debug.Log($"Created new ghost for {originalObject.name} at {newPosition}");
+            }
+        }
+
+        /// <summary>
         /// Creates a ghost object duplicate
         /// </summary>
         private GameObject CreateGhostObject(GameObject original, Vector3 position, Quaternion rotation)

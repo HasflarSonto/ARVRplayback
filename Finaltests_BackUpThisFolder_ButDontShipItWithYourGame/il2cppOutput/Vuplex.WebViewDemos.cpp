@@ -1,0 +1,5290 @@
+﻿#include "pch-cpp.hpp"
+
+
+
+
+
+struct InterfaceActionInvoker0
+{
+	typedef void (*Action)(void*, const RuntimeMethod*);
+
+	static inline void Invoke (Il2CppMethodSlot slot, RuntimeClass* declaringInterface, RuntimeObject* obj)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_interface_invoke_data(slot, obj, declaringInterface);
+		((Action)invokeData.methodPtr)(obj, invokeData.method);
+	}
+};
+template <typename T1>
+struct InterfaceActionInvoker1
+{
+	typedef void (*Action)(void*, T1, const RuntimeMethod*);
+
+	static inline void Invoke (Il2CppMethodSlot slot, RuntimeClass* declaringInterface, RuntimeObject* obj, T1 p1)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_interface_invoke_data(slot, obj, declaringInterface);
+		((Action)invokeData.methodPtr)(obj, p1, invokeData.method);
+	}
+};
+template <typename R>
+struct InterfaceFuncInvoker0
+{
+	typedef R (*Func)(void*, const RuntimeMethod*);
+
+	static inline R Invoke (Il2CppMethodSlot slot, RuntimeClass* declaringInterface, RuntimeObject* obj)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_interface_invoke_data(slot, obj, declaringInterface);
+		return ((Func)invokeData.methodPtr)(obj, invokeData.method);
+	}
+};
+
+struct Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87;
+struct CachingGetter_1_t4BEA38B28E16BE9F81B5384288E3CDCA5EF41CE3;
+struct Dictionary_2_t403063CE4960B4F46C688912237C6A27E550FF55;
+struct EventArgs_1_t47782FD286CF156BCC1ADB013283780167512067;
+struct EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8;
+struct EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A;
+struct EventHandler_1_t0D73927EC99E8ECCF343F14D079516A3BFBA5FE2;
+struct EventHandler_1_tD8C4A5BE1F7C91B1A7E99AE87AFD2F5432C38746;
+struct EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651;
+struct EventHandler_1_t45028FD5A2F48128958AD91C9B7A2E88D1C47446;
+struct EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7;
+struct Func_1_tD59A12717D79BFB403BF973694B1BE5B85474BD1;
+struct Predicate_1_t8342C85FF4E41CD1F7024AC0CDC3E5312A32CB12;
+struct Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED;
+struct TaskFactory_1_tFAEAC22A1E986463E6956C344A78A7C7197288E0;
+struct Task_1_t824317F4B958F7512E8F7300511752937A6C6043;
+struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031;
+struct CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB;
+struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
+struct IntPtrU5BU5D_tFD177F8C806A6921AD7150264CCC62FA00CAD832;
+struct StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF;
+struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248;
+struct TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3;
+struct WebPluginTypeU5BU5D_tC0629638325BE844268D19AC089A977EEAED3C9D;
+struct Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07;
+struct AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892;
+struct BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5;
+struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184;
+struct CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E;
+struct CancellationTokenSource_tAAE1E0033BCFC233801F8CB4CED5C852B350CB7B;
+struct CanvasPopupDemo_tB326E70D3AC301F8EB83E4761965C450687084D0;
+struct CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E;
+struct CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2;
+struct CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01;
+struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3;
+struct ContextCallback_tE8AFBDBFCC040FDA8DA8C1EEFE9BD66B16BDA007;
+struct Delegate_t;
+struct DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E;
+struct EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377;
+struct EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82;
+struct Exception_t;
+struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F;
+struct Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E;
+struct HardwareKeyboardListener_t3B998E1632770918CDFD2172E88A95D9691C685E;
+struct IAsyncStateMachine_t0680C7F905C553076B552D5A1A6E39E2F0F36AA2;
+struct IDictionary_t6D03155AF1FA9083817AA5B6AD7DEEACC26AB220;
+struct IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6;
+struct IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03;
+struct Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292;
+struct Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3;
+struct MethodInfo_t;
+struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71;
+struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C;
+struct PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6;
+struct PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3;
+struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5;
+struct SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6;
+struct SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04;
+struct StackGuard_tACE063A1B7374BDF4AD472DE4585D05AD8745352;
+struct String_t;
+struct SynchronizationContext_tCDB842BBE53B050802CBBB59C6E6DC45B5B06DC0;
+struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572;
+struct TaskFactory_tF781BD37BE23917412AD83424D1497C7C1509DF0;
+struct TaskScheduler_t3F0550EBEF7C41F74EC8C08FF4BED0D8CE66006E;
+struct Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1;
+struct UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tE0FAE8CDCB14DA9FB41D6FAE7C6E4CAA467C8192;
+struct UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6;
+struct ViewportMaterialView_t810F60D1F272A98FCC11E3DED4C255955F60C4BF;
+struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915;
+struct WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4;
+struct CameraCallback_t844E527BFE37BC0495E7F67993E43C07642DA9DD;
+struct U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A;
+struct U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE;
+struct U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A;
+struct U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482;
+struct U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C;
+struct U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828;
+struct ReapplyDrivenProperties_t3482EA130A01FF7EE2EEFE37F66A5215D08CFE24;
+struct U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23;
+struct ContingentProperties_t3FA59480914505CEA917B1002EC675F29D0CB540;
+
+IL2CPP_EXTERN_C RuntimeClass* Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Exception_t_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____3067F2CAF4D2B77771077C817E0919F96448424A2C016A490E1EC5948220702B_FieldInfo_var;
+IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____A3E50E2DBD414DA457D7967A0BEF6250A34B23CD2CA5C3D291F3ACA47F2E7860_FieldInfo_var;
+IL2CPP_EXTERN_C String_t* _stringLiteral007E7EE5EBD7C1E490257BA7824284176038D552;
+IL2CPP_EXTERN_C String_t* _stringLiteral1642322F58A5CD7E86E778C39558C0A224ABDECF;
+IL2CPP_EXTERN_C String_t* _stringLiteral16DD21BE77B115D392226EB71A2D3A9FDC29E3F0;
+IL2CPP_EXTERN_C String_t* _stringLiteral224BEC8A0DCC957FB753E55221B9D421220231DD;
+IL2CPP_EXTERN_C String_t* _stringLiteral29B1328AC65552D50952E80542A7CA315F3BD1F8;
+IL2CPP_EXTERN_C String_t* _stringLiteral309ACA92EC1C0148117159FE165A9ABC3ACC6866;
+IL2CPP_EXTERN_C String_t* _stringLiteral49BFB05E473D2584D1C60C2E146EC1B28A6C561C;
+IL2CPP_EXTERN_C String_t* _stringLiteral59EA6AB031F987E7930700D26A18FEDC80746357;
+IL2CPP_EXTERN_C String_t* _stringLiteral5AB53B58C6703EE7CC4844960E2E06E97B9A260B;
+IL2CPP_EXTERN_C String_t* _stringLiteral60229673F65DBD4CFD3E012FC6A50D6F5CC17BB8;
+IL2CPP_EXTERN_C String_t* _stringLiteral624680CF43A758F7BA992C7A896E612BF23FA850;
+IL2CPP_EXTERN_C String_t* _stringLiteral68BF5671EF3A8F0FDE32FE7A9BEFA57C828CF851;
+IL2CPP_EXTERN_C String_t* _stringLiteral88BEE283254D7094E258B3A88730F4CC4F1E4AC7;
+IL2CPP_EXTERN_C String_t* _stringLiteral9791E08A89114ED4219B5B52F6E2F1E88C0A9B93;
+IL2CPP_EXTERN_C String_t* _stringLiteral98F35BE03885D91D5007136006E304D1222027FF;
+IL2CPP_EXTERN_C String_t* _stringLiteralBC40892290738E4230D7D5ECFE429CD4564F7B05;
+IL2CPP_EXTERN_C String_t* _stringLiteralBE55DD4F314E2F7BCF0E097474CC3A2D9C26890D;
+IL2CPP_EXTERN_C String_t* _stringLiteralC46837993623CF1FD23858D9C4A1DB2A0E4FA14D;
+IL2CPP_EXTERN_C String_t* _stringLiteralC9A03A4E451AABB2563FE5FA83D2241953EB5F79;
+IL2CPP_EXTERN_C String_t* _stringLiteralCB9DEC4BB422E4FB7D60AF8B79864395C4E9AF83;
+IL2CPP_EXTERN_C String_t* _stringLiteralD798EE7C4C9AF33C5BEA2196B40C2DB50563DBEC;
+IL2CPP_EXTERN_C String_t* _stringLiteralE07CC5D74752E6FB4743A35F314FAEB824C9096C;
+IL2CPP_EXTERN_C String_t* _stringLiteralEE15183AFCE7EFBB325C543A4691716C23895A26;
+IL2CPP_EXTERN_C String_t* _stringLiteralFC075BC3DFE942623230E78DC9D41126E9C003CA;
+IL2CPP_EXTERN_C const RuntimeMethod* AdvancedWebViewDemo_Controls_MessageEmitted_m4B5167AE53480B43E01AF16E5E202D89A2EBFF8E_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AdvancedWebViewDemo_U3CStartU3Eb__2_0_m6C4F8731CFFC0EEFCC1DF4FCDAE9E2C595C435C1_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* EventArgs_1_get_Value_mFC72913A5B9525BAE8660B8C4891E8152F2D28A1_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* GameObject_GetComponent_TisWebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_m0355866DF5A5286E2A33CF45893A5BD5246056A2_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3CStartU3Eb__1_0_m4FB73328E0C1F07ECF40FD3910EA0792C735B4DF_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3CStartU3Eb__1_0_m63C694D5BEEBB79C4B2959252B66E6FBFC6B57EE_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3CStartU3Eb__1_0_mABAE7DE44C6521FFF3DB17C62BCA5D0DDB86AF9C_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_m0F779BA1A2A2C989345282B6FC27BD30B53D85CE_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_mF32BF9C172BF258853B64A84AA5227D4FA722628_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m43A11DC55139DF6D4FB668F22AEE47E780EAB545_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m5E792B02463EC4E7652783E96F3759CCBE0C9F28_RuntimeMethod_var;
+struct Delegate_t_marshaled_com;
+struct Delegate_t_marshaled_pinvoke;
+struct Exception_t_marshaled_com;
+struct Exception_t_marshaled_pinvoke;
+
+struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031;
+struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248;
+struct TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3;
+
+IL2CPP_EXTERN_C_BEGIN
+IL2CPP_EXTERN_C_END
+
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+struct U3CModuleU3E_tDB59F4B4C9586AB5E545D6E9FECA58481418F4D5 
+{
+};
+struct U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819  : public RuntimeObject
+{
+};
+struct EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377  : public RuntimeObject
+{
+};
+struct Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E  : public RuntimeObject
+{
+	int32_t ___m_GyroIndex;
+};
+struct HardwareKeyboardListener_t3B998E1632770918CDFD2172E88A95D9691C685E  : public RuntimeObject
+{
+};
+struct String_t  : public RuntimeObject
+{
+	int32_t ____stringLength;
+	Il2CppChar ____firstChar;
+};
+struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572  : public RuntimeObject
+{
+	int32_t ___m_taskId;
+	Delegate_t* ___m_action;
+	RuntimeObject* ___m_stateObject;
+	TaskScheduler_t3F0550EBEF7C41F74EC8C08FF4BED0D8CE66006E* ___m_taskScheduler;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_parent;
+	int32_t ___m_stateFlags;
+	RuntimeObject* ___m_continuationObject;
+	ContingentProperties_t3FA59480914505CEA917B1002EC675F29D0CB540* ___m_contingentProperties;
+};
+struct UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tE0FAE8CDCB14DA9FB41D6FAE7C6E4CAA467C8192  : public RuntimeObject
+{
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F  : public RuntimeObject
+{
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_pinvoke
+{
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_com
+{
+};
+struct U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A  : public RuntimeObject
+{
+	CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* ___mainWebViewPrefab;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___canvas;
+};
+struct U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE  : public RuntimeObject
+{
+	CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* ___popupPrefab;
+};
+struct U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A  : public RuntimeObject
+{
+};
+struct U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482  : public RuntimeObject
+{
+};
+struct U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C  : public RuntimeObject
+{
+	WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* ___mainWebViewPrefab;
+	PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* ___U3CU3E4__this;
+};
+struct U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828  : public RuntimeObject
+{
+	WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* ___popupPrefab;
+};
+struct U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23  : public RuntimeObject
+{
+};
+struct EventArgs_1_t47782FD286CF156BCC1ADB013283780167512067  : public EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377
+{
+	RuntimeObject* ___U3CValueU3Ek__BackingField;
+};
+struct EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8  : public EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377
+{
+	String_t* ___U3CValueU3Ek__BackingField;
+};
+struct TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 
+{
+	Task_1_t824317F4B958F7512E8F7300511752937A6C6043* ___m_task;
+};
+struct Task_1_t824317F4B958F7512E8F7300511752937A6C6043  : public Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572
+{
+	bool ___m_result;
+};
+struct AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF 
+{
+	RuntimeObject* ___m_stateMachine;
+	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___m_defaultContextAction;
+};
+struct AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF_marshaled_pinvoke
+{
+	RuntimeObject* ___m_stateMachine;
+	Il2CppMethodPointer ___m_defaultContextAction;
+};
+struct AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF_marshaled_com
+{
+	RuntimeObject* ___m_stateMachine;
+	Il2CppMethodPointer ___m_defaultContextAction;
+};
+struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22 
+{
+	bool ___m_value;
+};
+struct Byte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3 
+{
+	uint8_t ___m_value;
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2  : public ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F
+{
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2_marshaled_pinvoke
+{
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2_marshaled_com
+{
+};
+struct Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C 
+{
+	int32_t ___m_value;
+};
+struct IntPtr_t 
+{
+	void* ___m_value;
+};
+struct PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3  : public EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377
+{
+	String_t* ___Url;
+	RuntimeObject* ___WebView;
+};
+struct Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 
+{
+	float ___x;
+	float ___y;
+	float ___z;
+	float ___w;
+};
+struct Single_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C 
+{
+	float ___m_value;
+};
+struct TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 
+{
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_marshaled_pinvoke
+{
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_marshaled_com
+{
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6  : public EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377
+{
+	String_t* ___Url;
+	String_t* ___Title;
+	String_t* ___Type;
+};
+struct Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 
+{
+	float ___x;
+	float ___y;
+};
+struct Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 
+{
+	float ___x;
+	float ___y;
+	float ___z;
+};
+struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915 
+{
+	union
+	{
+		struct
+		{
+		};
+		uint8_t Void_t4861ACF8F4594C3437BB48B6E56783494B843915__padding[1];
+	};
+};
+struct WebViewOptions_t1A20BEF4029F7BDC4EA5B65BE35A2F51141E5D8E 
+{
+	bool ___clickWithoutStealingFocus;
+	bool ___disableVideo;
+	WebPluginTypeU5BU5D_tC0629638325BE844268D19AC089A977EEAED3C9D* ___preferredPlugins;
+};
+struct WebViewOptions_t1A20BEF4029F7BDC4EA5B65BE35A2F51141E5D8E_marshaled_pinvoke
+{
+	int32_t ___clickWithoutStealingFocus;
+	int32_t ___disableVideo;
+	int32_t* ___preferredPlugins;
+};
+struct WebViewOptions_t1A20BEF4029F7BDC4EA5B65BE35A2F51141E5D8E_marshaled_com
+{
+	int32_t ___clickWithoutStealingFocus;
+	int32_t ___disableVideo;
+	int32_t* ___preferredPlugins;
+};
+#pragma pack(push, tp, 1)
+struct __StaticArrayInitTypeSizeU3D286_t82FE462C99E9D3EF891FA74931FDAFCA995A07BC 
+{
+	union
+	{
+		struct
+		{
+			union
+			{
+			};
+		};
+		uint8_t __StaticArrayInitTypeSizeU3D286_t82FE462C99E9D3EF891FA74931FDAFCA995A07BC__padding[286];
+	};
+};
+#pragma pack(pop, tp)
+#pragma pack(push, tp, 1)
+struct __StaticArrayInitTypeSizeU3D518_t9324C1AD9BE7ABB3F9960C252A488A4B89591D5B 
+{
+	union
+	{
+		struct
+		{
+			union
+			{
+			};
+		};
+		uint8_t __StaticArrayInitTypeSizeU3D518_t9324C1AD9BE7ABB3F9960C252A488A4B89591D5B__padding[518];
+	};
+};
+#pragma pack(pop, tp)
+struct MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1 
+{
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___FilePathsData;
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	bool ___IsEditorOnly;
+};
+struct MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_pinvoke
+{
+	Il2CppSafeArray* ___FilePathsData;
+	Il2CppSafeArray* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	int32_t ___IsEditorOnly;
+};
+struct MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_com
+{
+	Il2CppSafeArray* ___FilePathsData;
+	Il2CppSafeArray* ___TypesData;
+	int32_t ___TotalTypes;
+	int32_t ___TotalFiles;
+	int32_t ___IsEditorOnly;
+};
+struct AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D 
+{
+	SynchronizationContext_tCDB842BBE53B050802CBBB59C6E6DC45B5B06DC0* ___m_synchronizationContext;
+	AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF ___m_coreState;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D_marshaled_pinvoke
+{
+	SynchronizationContext_tCDB842BBE53B050802CBBB59C6E6DC45B5B06DC0* ___m_synchronizationContext;
+	AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF_marshaled_pinvoke ___m_coreState;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D_marshaled_com
+{
+	SynchronizationContext_tCDB842BBE53B050802CBBB59C6E6DC45B5B06DC0* ___m_synchronizationContext;
+	AsyncMethodBuilderCore_tD5ABB3A2536319A3345B32A5481E37E23DD8CEDF_marshaled_com ___m_coreState;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___m_task;
+};
+struct Delegate_t  : public RuntimeObject
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	RuntimeObject* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	bool ___method_is_virtual;
+};
+struct Delegate_t_marshaled_pinvoke
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	Il2CppIUnknown* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	int32_t ___method_is_virtual;
+};
+struct Delegate_t_marshaled_com
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	Il2CppIUnknown* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	int32_t ___method_is_virtual;
+};
+struct DragMode_t361230953795F46D325D36BCF0A74AC4C199563A 
+{
+	int32_t ___value__;
+};
+struct Exception_t  : public RuntimeObject
+{
+	String_t* ____className;
+	String_t* ____message;
+	RuntimeObject* ____data;
+	Exception_t* ____innerException;
+	String_t* ____helpURL;
+	RuntimeObject* ____stackTrace;
+	String_t* ____stackTraceString;
+	String_t* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	RuntimeObject* ____dynamicMethods;
+	int32_t ____HResult;
+	String_t* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	IntPtrU5BU5D_tFD177F8C806A6921AD7150264CCC62FA00CAD832* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct Exception_t_marshaled_pinvoke
+{
+	char* ____className;
+	char* ____message;
+	RuntimeObject* ____data;
+	Exception_t_marshaled_pinvoke* ____innerException;
+	char* ____helpURL;
+	Il2CppIUnknown* ____stackTrace;
+	char* ____stackTraceString;
+	char* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	Il2CppIUnknown* ____dynamicMethods;
+	int32_t ____HResult;
+	char* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	Il2CppSafeArray* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct Exception_t_marshaled_com
+{
+	Il2CppChar* ____className;
+	Il2CppChar* ____message;
+	RuntimeObject* ____data;
+	Exception_t_marshaled_com* ____innerException;
+	Il2CppChar* ____helpURL;
+	Il2CppIUnknown* ____stackTrace;
+	Il2CppChar* ____stackTraceString;
+	Il2CppChar* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	Il2CppIUnknown* ____dynamicMethods;
+	int32_t ____HResult;
+	Il2CppChar* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	Il2CppSafeArray* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct KeyCode_t75B9ECCC26D858F55040DDFF9523681E996D17E9 
+{
+	int32_t ___value__;
+};
+struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C  : public RuntimeObject
+{
+	intptr_t ___m_CachedPtr;
+};
+struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_marshaled_pinvoke
+{
+	intptr_t ___m_CachedPtr;
+};
+struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_marshaled_com
+{
+	intptr_t ___m_CachedPtr;
+};
+struct PopupMode_t35F481462F03F2E6E054928F4D5A830F78F305FE 
+{
+	int32_t ___value__;
+};
+struct RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 
+{
+	intptr_t ___value;
+};
+struct WebPluginType_tB3FBA405983CFF23325E5D56F5E845213A01F393 
+{
+	int32_t ___value__;
+};
+struct Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
+{
+};
+struct GameObject_t76FEDD663AB33C991A9C9A23129337651094216F  : public Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C
+{
+};
+struct MulticastDelegate_t  : public Delegate_t
+{
+	DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771* ___delegates;
+};
+struct MulticastDelegate_t_marshaled_pinvoke : public Delegate_t_marshaled_pinvoke
+{
+	Delegate_t_marshaled_pinvoke** ___delegates;
+};
+struct MulticastDelegate_t_marshaled_com : public Delegate_t_marshaled_com
+{
+	Delegate_t_marshaled_com** ___delegates;
+};
+struct U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* ___U3CU3E4__this;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* ___U3CU3E4__this;
+	bool ___U3CcanGoBackU3E5__2;
+	TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 ___U3CU3Eu__1;
+};
+struct U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* ___U3CU3E8__1;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* ___U3CU3E4__this;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* ___U3CU3E4__this;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* ___U3CU3E4__this;
+	U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* ___U3CU3E8__1;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* ___U3CU3E4__this;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* ___eventArgs;
+	U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* ___U3CU3E4__this;
+	U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* ___U3CU3E8__1;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB 
+{
+	int32_t ___U3CU3E1__state;
+	AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D ___U3CU3Et__builder;
+	PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* ___eventArgs;
+	U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* ___U3CU3E4__this;
+	U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* ___U3CU3E8__1;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 ___U3CU3Eu__1;
+};
+struct EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A  : public MulticastDelegate_t
+{
+};
+struct EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651  : public MulticastDelegate_t
+{
+};
+struct EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7  : public MulticastDelegate_t
+{
+};
+struct Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
+{
+};
+struct EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82  : public MulticastDelegate_t
+{
+};
+struct Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
+{
+};
+struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
+{
+	uint32_t ___m_NonSerializedVersion;
+};
+struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
+{
+	CancellationTokenSource_tAAE1E0033BCFC233801F8CB4CED5C852B350CB7B* ___m_CancellationTokenSource;
+};
+struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5  : public Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1
+{
+};
+struct AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* ___controlsWebViewPrefab;
+	WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* ___mainWebViewPrefab;
+};
+struct BaseKeyboard_tB1A93891D06DFC7FEBACC4E3F344AB0C91214E30  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A* ___KeyPressed;
+	EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* ___Initialized;
+	String_t* ___CustomKeyboardUrl;
+	bool ____isInitialized;
+	BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5* ____webViewPrefab;
+	EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A* ___InputReceived;
+};
+struct BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	EventHandler_1_t0D73927EC99E8ECCF343F14D079516A3BFBA5FE2* ___Clicked;
+	EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* ___Initialized;
+	EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* ___PointerEntered;
+	EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* ___PointerExited;
+	EventHandler_1_t45028FD5A2F48128958AD91C9B7A2E88D1C47446* ___Scrolled;
+	bool ___ClickingEnabled;
+	bool ___CursorIconsEnabled;
+	int32_t ___DragMode;
+	float ___DragThreshold;
+	bool ___HoveringEnabled;
+	String_t* ___InitialUrl;
+	bool ___KeyboardEnabled;
+	bool ___LogConsoleMessages;
+	float ___PixelDensity;
+	bool ___RemoteDebuggingEnabled;
+	bool ___ScrollingEnabled;
+	float ____appliedResolution;
+	ViewportMaterialView_t810F60D1F272A98FCC11E3DED4C255955F60C4BF* ____cachedView;
+	RuntimeObject* ____cachedWebView;
+	bool ____consoleMessageLoggedHandlerAttached;
+	bool ____dragThresholdReached;
+	bool ____dragToScrollClickIsPending;
+	bool ____hasOverriddenCursorIcon;
+	bool ____keyboardHasBeenEnabled;
+	bool ____loggedDragWarning;
+	WebViewOptions_t1A20BEF4029F7BDC4EA5B65BE35A2F51141E5D8E ____options;
+	MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* ____pointerInputDetectorMonoBehaviour;
+	bool ____pointerIsDown;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____pointerDownNormalizedPoint;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____previousNormalizedDragPoint;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____previousMovePointerPoint;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____sizeInUnityUnits;
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ____viewMaterial;
+	bool ____visible;
+	RuntimeObject* ____webViewForInitialization;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____webViewGameObject;
+	float ___U3CDragToScrollThresholdU3Ek__BackingField;
+};
+struct CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___InstructionMessage;
+	bool ____legacyInputManagerDisabled;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____rotationFromMouse;
+};
+struct CanvasPopupDemo_tB326E70D3AC301F8EB83E4761965C450687084D0  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+};
+struct CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* ___canvasWebViewPrefab;
+};
+struct CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* ___canvasWebViewPrefab;
+};
+struct PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+};
+struct SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* ___webViewPrefab;
+};
+struct CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2  : public BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5
+{
+	bool ___Native2DModeEnabled;
+	bool ___NativeOnScreenKeyboardEnabled;
+	float ___Resolution;
+	float ___ScrollingSensitivity;
+	RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* ____cachedRectTransform;
+	CachingGetter_1_t4BEA38B28E16BE9F81B5384288E3CDCA5EF41CE3* ____canvasGetter;
+	bool ____native2DModeEnabledAtInitialization;
+};
+struct Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292  : public BaseKeyboard_tB1A93891D06DFC7FEBACC4E3F344AB0C91214E30
+{
+	float ___Resolution;
+};
+struct WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4  : public BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5
+{
+	bool ___NativeOnScreenKeyboardEnabled;
+	float ___Resolution;
+	float ___ScrollingSensitivity;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ____sizeForInitialization;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ____viewResizer;
+};
+struct U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819_StaticFields
+{
+	__StaticArrayInitTypeSizeU3D286_t82FE462C99E9D3EF891FA74931FDAFCA995A07BC ___3067F2CAF4D2B77771077C817E0919F96448424A2C016A490E1EC5948220702B;
+	__StaticArrayInitTypeSizeU3D518_t9324C1AD9BE7ABB3F9960C252A488A4B89591D5B ___A3E50E2DBD414DA457D7967A0BEF6250A34B23CD2CA5C3D291F3ACA47F2E7860;
+};
+struct EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377_StaticFields
+{
+	EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377* ___Empty;
+};
+struct String_t_StaticFields
+{
+	String_t* ___Empty;
+};
+struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_StaticFields
+{
+	int32_t ___s_taskIdCounter;
+	RuntimeObject* ___s_taskCompletionSentinel;
+	bool ___s_asyncDebuggingEnabled;
+	Action_1_t6F9EB113EB3F16226AEF811A2744F4111C116C87* ___s_taskCancelCallback;
+	Func_1_tD59A12717D79BFB403BF973694B1BE5B85474BD1* ___s_createContingentProperties;
+	TaskFactory_tF781BD37BE23917412AD83424D1497C7C1509DF0* ___U3CFactoryU3Ek__BackingField;
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___U3CCompletedTaskU3Ek__BackingField;
+	Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED* ___s_IsExceptionObservedByParentPredicate;
+	ContextCallback_tE8AFBDBFCC040FDA8DA8C1EEFE9BD66B16BDA007* ___s_ecCallback;
+	Predicate_1_t8342C85FF4E41CD1F7024AC0CDC3E5312A32CB12* ___s_IsTaskContinuationNullPredicate;
+	Dictionary_2_t403063CE4960B4F46C688912237C6A27E550FF55* ___s_currentActiveTasks;
+	RuntimeObject* ___s_activeTasksLock;
+};
+struct Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_ThreadStaticFields
+{
+	Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* ___t_currentTask;
+	StackGuard_tACE063A1B7374BDF4AD472DE4585D05AD8745352* ___t_stackGuard;
+};
+struct U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields
+{
+	U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* ___U3CU3E9;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* ___U3CU3E9__1_0;
+};
+struct U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields
+{
+	U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* ___U3CU3E9;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* ___U3CU3E9__1_0;
+};
+struct U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields
+{
+	U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* ___U3CU3E9;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* ___U3CU3E9__1_0;
+};
+struct Task_1_t824317F4B958F7512E8F7300511752937A6C6043_StaticFields
+{
+	TaskFactory_1_tFAEAC22A1E986463E6956C344A78A7C7197288E0* ___s_defaultFactory;
+};
+struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_StaticFields
+{
+	String_t* ___TrueString;
+	String_t* ___FalseString;
+};
+struct IntPtr_t_StaticFields
+{
+	intptr_t ___Zero;
+};
+struct Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_StaticFields
+{
+	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___identityQuaternion;
+};
+struct Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_StaticFields
+{
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___zeroVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___oneVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___upVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___downVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___leftVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___rightVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___positiveInfinityVector;
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___negativeInfinityVector;
+};
+struct Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_StaticFields
+{
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___zeroVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___oneVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___upVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___downVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___leftVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___rightVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___forwardVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___backVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___positiveInfinityVector;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___negativeInfinityVector;
+};
+struct Exception_t_StaticFields
+{
+	RuntimeObject* ___s_EDILock;
+};
+struct Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_StaticFields
+{
+	int32_t ___OffsetOfInstanceIDInCPlusPlusObject;
+};
+struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184_StaticFields
+{
+	CameraCallback_t844E527BFE37BC0495E7F67993E43C07642DA9DD* ___onPreCull;
+	CameraCallback_t844E527BFE37BC0495E7F67993E43C07642DA9DD* ___onPreRender;
+	CameraCallback_t844E527BFE37BC0495E7F67993E43C07642DA9DD* ___onPostRender;
+};
+struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_StaticFields
+{
+	ReapplyDrivenProperties_t3482EA130A01FF7EE2EEFE37F66A5215D08CFE24* ___reapplyDrivenProperties;
+};
+struct BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5_StaticFields
+{
+	bool ____loggedHoverWarning;
+	bool ____remoteDebuggingEnabled;
+};
+struct WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_StaticFields
+{
+	float ___ScrollSensitivity;
+};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031  : public RuntimeArray
+{
+	ALIGN_FIELD (8) uint8_t m_Items[1];
+
+	inline uint8_t GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline uint8_t* GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, uint8_t value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+	}
+	inline uint8_t GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline uint8_t* GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, uint8_t value)
+	{
+		m_Items[index] = value;
+	}
+};
+struct TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3  : public RuntimeArray
+{
+	ALIGN_FIELD (8) Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* m_Items[1];
+
+	inline Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572** GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+	inline Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572** GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* value)
+	{
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+};
+struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248  : public RuntimeArray
+{
+	ALIGN_FIELD (8) String_t* m_Items[1];
+
+	inline String_t* GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline String_t** GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, String_t* value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+	inline String_t* GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline String_t** GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, String_t* value)
+	{
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+};
+
+
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* EventArgs_1_get_Value_m80E525C8C44666EDC26CA8775C2E57D9BCEBB2C1_gshared_inline (EventArgs_1_t47782FD286CF156BCC1ADB013283780167512067* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EventHandler_1__ctor_mBA2E748CFBA7A0EEC0A373A6F634D3B5774EA370_gshared (EventHandler_1_tD8C4A5BE1F7C91B1A7E99AE87AFD2F5432C38746* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_gshared (Task_1_t824317F4B958F7512E8F7300511752937A6C6043* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_gshared (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* ___0_awaiter, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_gshared (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* ___1_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A_gshared (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* ___1_stateMachine, const RuntimeMethod* method) ;
+
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B (RuntimeArray* ___0_array, RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 ___1_fldHandle, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67 (const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30_gshared)(__this, ___0_stateMachine, method);
+}
+inline void AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6_gshared)(__this, ___0_stateMachine, method);
+}
+inline String_t* EventArgs_1_get_Value_mFC72913A5B9525BAE8660B8C4891E8152F2D28A1_inline (EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8* __this, const RuntimeMethod* method)
+{
+	return ((  String_t* (*) (EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8*, const RuntimeMethod*))EventArgs_1_get_Value_m80E525C8C44666EDC26CA8775C2E57D9BCEBB2C1_gshared_inline)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1 (String_t* ___0_a, String_t* ___1_b, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865 (BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B (String_t* ___0_str0, String_t* ___1_str1, String_t* ___2_str2, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo__setDisplayedUrl_m6854EA8290847DD16179293FC07D97F32A983FAE (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, String_t* ___0_url, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour_Invoke_mF724350C59362B0F1BFE26383209A274A29A63FB (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, String_t* ___0_methodName, float ___1_time, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Web_SetUserAgent_m6E7453DA5B374F7731D58C61551654BA96081D4E (bool ___0_mobile, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* WebViewPrefab_Instantiate_m1600DCCEBCF71599366DC668085EA104DF87C7C0 (float ___0_width, float ___1_height, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_parent_m9BD5E563B539DD5BEC342736B03F97B38A243234 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* Keyboard_Instantiate_m29EEDC5B5641EE0418096E2665F0886ACCA5AA82 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___0_parent, bool ___1_worldPositionStays, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3 (BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* Task_WhenAll_mF5EC0950A443287DF9B67B00EF56977149429342 (TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3* ___0_tasks, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29 (Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8 (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* __this, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* __this, const RuntimeMethod* method) ;
+inline void EventHandler_1__ctor_m36603453A72EA568E255A3A56F3E58AABBBA65EC (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7*, RuntimeObject*, intptr_t, const RuntimeMethod*))EventHandler_1__ctor_mBA2E748CFBA7A0EEC0A373A6F634D3B5774EA370_gshared)(__this, ___0_object, ___1_method, method);
+}
+inline void EventHandler_1__ctor_mF5C0BF12513B251C89C2804E51343F5427A3B726 (EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A*, RuntimeObject*, intptr_t, const RuntimeMethod*))EventHandler_1__ctor_mBA2E748CFBA7A0EEC0A373A6F634D3B5774EA370_gshared)(__this, ___0_object, ___1_method, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BaseWebViewPrefab_SetRenderBlackAsTransparent_mD6B83524630AEDC428D85E590812FABA8DB9B519 (BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5* __this, bool ___0_enabled, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, Exception_t* ___0_exception, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__2_MoveNext_m1BCBB2FF4F5EFCEDBF0651EB9C650D6CC38B9B18 (U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__2_SetStateMachine_m35258DE6BDB3ADFE7151E8ABE7C679DC9235CC4B (U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+inline TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935 (Task_1_t824317F4B958F7512E8F7300511752937A6C6043* __this, const RuntimeMethod* method)
+{
+	return ((  TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 (*) (Task_1_t824317F4B958F7512E8F7300511752937A6C6043*, const RuntimeMethod*))Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_gshared)(__this, method);
+}
+inline bool TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9 (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35*, const RuntimeMethod*))TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_gshared)(__this, method);
+}
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* ___0_awaiter, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35*, U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+inline bool TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35*, const RuntimeMethod*))TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_gshared)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Boolean_ToString_m6646C8026B1DF381A1EE8CD13549175E9703CC63 (bool* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_ToLowerInvariant_mBE32C93DE27C5353FEA3FA654FC1DDBE3D0EB0F2 (String_t* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m647EBF831F54B6DF7D5AFA5FD012CF4EE7571B6A (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___0_values, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3C_refreshBackForwardStateU3Ed__3_MoveNext_mCBA392C220ED7D6A8FC60E79751404E2B6FF2ABB (U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3C_refreshBackForwardStateU3Ed__3_SetStateMachine_mC507C133B70DAF99EBCFB3D6DC4C09C52BF91A4B (U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CameraRotator__warnIfVisionOS_m853F9E9C32672A75337003B9ECA9177B4F63D47A (CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool XRSettings_get_enabled_mC22ABF5BF7D835DAB861A1FA384DBB8904D15E70 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* Input_get_gyro_m895498B803FE9A3124FBFE3C05966431F8840548 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Gyroscope_set_enabled_m2B22BC93369BA61034A80350405FE1B493822DAB (Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* __this, bool ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Application_get_isEditor_mEAC51E3ACE6DCE438087FB14BD75A3C219D354D0 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_x, Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___1_y, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, bool ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Input_GetMouseButtonDown_m8DFC792D15FFF15D311614D5CC6C5D055E5A1DE3 (int32_t ___0_button, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool SystemInfo_get_supportsGyroscope_m98477EC99D88396F076A93EF5C28A6129DC4E211 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Gyroscope_get_rotationRateUnbiased_m6B54A5F9A866E1F5005EA8B1575607DF2F3AB7A3 (Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_Rotate_m7EA47AD57F43D478CCB0523D179950EE49CDA3E2 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, float ___0_xAngle, float ___1_yAngle, float ___2_zAngle, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Input_GetKey_mE5681EF775F3CEBA7EAD7C63984F7B34C8E8D434 (int32_t ___0_key, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Input_GetAxis_m10372E6C5FF591668D2DC5F58C58D213CC598A62 (String_t* ___0_axisName, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Repeat_m6F1560A163481BB311D685294E1B463C3E4EB3BA_inline (float ___0_t, float ___1_length, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp_mEB9AEA827D27D20FCC787F7375156AF46BB12BBF_inline (float ___0_value, float ___1_min, float ___2_max, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline (float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_value, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA_gshared)(__this, ___0_stateMachine, method);
+}
+inline void AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC_gshared)(__this, ___0_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1__ctor_m5068C0D394722D859878AE2F8599B9CCB798424D (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m9E3155FB84015C823606188F53B47CB44C444991 (String_t* ___0_str0, String_t* ___1_str1, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* CanvasWebViewPrefab_Instantiate_m9B826E90EF6DDC976A2550411BA34BB9FA6EB007 (RuntimeObject* ___0_webView, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RectTransform_set_anchoredPosition3D_m214FBDBA019743FAED8FA03857475073AA0539C4 (RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9 (RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* __this, Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D (RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* __this, Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EventHandler__ctor_m95444CE8D5A6F1AFC9793866C3FE884E732DCEB2 (EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_MoveNext_mC3774098EFE630606E11F45DC02E407A9BAD8DAA (U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_mBBC22601159A71A32AC1D62567FB47E9BC565FB3 (U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BaseWebViewPrefab_Destroy_m56B4A9BCBCFFEA74ACF2FAACF587BCEF555DE7ED (BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0__ctor_m5CED42561387FF0B8AA8EADA90751E0FF63F7F3E (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300 (String_t* ___0_name, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* CanvasWebViewPrefab_Instantiate_m26835222B1E92521233AB2EFFF7B5960206F9706 (const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+inline void EventHandler_1__ctor_m59B1AC6C2239751241E5838B2B05D2359CFCCD50 (EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651*, RuntimeObject*, intptr_t, const RuntimeMethod*))EventHandler_1__ctor_mBA2E748CFBA7A0EEC0A373A6F634D3B5774EA370_gshared)(__this, ___0_object, ___1_method, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_MoveNext_mBAEB4FB19F1473FDB6AC905C20BC6AD50E6D982C (U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_SetStateMachine_m51B7296434DE0B202FF06A658A92FC066CE3FE5B (U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB_gshared)(__this, ___0_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mFBA97D7A78ADE824E9001EFFB0977F9F28C53129 (U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* __this, const RuntimeMethod* method) ;
+inline CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
+{
+	return ((  CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
+}
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_mEB588C1D24E085C26AD9E3BEC5139845968E2F4F (U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_mC81B41E86DE3481F34D5394EF03C5F8307FFD2E9 (U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917_gshared)(__this, ___0_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mF7C866190C42C1690AAF3EC3FE5B6BDF38C57FAB (U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* __this, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_m4F7414540B53250132BE189FB95DA8240FA45D2B (U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_m4DB36896F541C804545936C893046C364CF8969F (U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E_gshared)(__this, ___0_stateMachine, method);
+}
+inline void AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C_gshared)(__this, ___0_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1__ctor_mE5007E87CA9D0EA9BF245556A6821A053189B6D3 (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* WebViewPrefab_Instantiate_m812CC0F0C3712CA84F0DC0AEF32B152845682671 (RuntimeObject* ___0_webView, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_MoveNext_m7E3622CC1454B75170CCB8729DEA3AB56EC7D30D (U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_m220831B0AE92936154AB875ED7A9DF0F60413177 (U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0__ctor_m0DD785B1959DD58C4B071FFA6BC3AFEAD557FBB3 (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* __this, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_MoveNext_m304E94400D3DB556FB727F42D11B85099241CA3D (U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_SetStateMachine_m67BAD1B1B8F0A3DF5E562D59B05D27479AF61745 (U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+inline void AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4 (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* ___0_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096*, const RuntimeMethod*))AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4_gshared)(__this, ___0_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mF5947BB6AE16EA4FA7972E285E1161DC8D424FE0 (U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* __this, const RuntimeMethod* method) ;
+inline WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* GameObject_GetComponent_TisWebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_m0355866DF5A5286E2A33CF45893A5BD5246056A2 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
+{
+	return ((  WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_GetComponent_TisRuntimeObject_m6EAED4AA356F0F48288F67899E5958792395563B_gshared)(__this, method);
+}
+inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* __this, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* ___0_awaiter, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* ___1_stateMachine, const RuntimeMethod* method)
+{
+	((  void (*) (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*, TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*, U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096*, const RuntimeMethod*))AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A_gshared)(__this, ___0_awaiter, ___1_stateMachine, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_m4463919E615E8BA406147F3C428771EA65984C9E (U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_mE9C21D5A72591C1BB01D19B137DFA080E824765D (U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_a, float ___1_d, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Internal_FromEulerRad_m66D4475341F53949471E6870FB5C5E4A5E9BA93E (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_euler, const RuntimeMethod* method) ;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92384
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1 UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m08C1C4FF0423D2604EFFD029C2BBCFA05DBCD976 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____3067F2CAF4D2B77771077C817E0919F96448424A2C016A490E1EC5948220702B_FieldInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____A3E50E2DBD414DA457D7967A0BEF6250A34B23CD2CA5C3D291F3ACA47F2E7860_FieldInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		il2cpp_codegen_initobj((&V_0), sizeof(MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1));
+		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_0 = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)SZArrayNew(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var, (uint32_t)((int32_t)518));
+		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_1 = L_0;
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_2 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____A3E50E2DBD414DA457D7967A0BEF6250A34B23CD2CA5C3D291F3ACA47F2E7860_FieldInfo_var) };
+		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_1, L_2, NULL);
+		(&V_0)->___FilePathsData = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___FilePathsData), (void*)L_1);
+		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_3 = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)SZArrayNew(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031_il2cpp_TypeInfo_var, (uint32_t)((int32_t)286));
+		ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* L_4 = L_3;
+		RuntimeFieldHandle_t6E4C45B6D2EA12FC99185805A7E77527899B25C5 L_5 = { reinterpret_cast<intptr_t> (U3CPrivateImplementationDetailsU3E_tF0BA7C0C6FD924E03AE3DBD8AC4FEDDEF0EFE819____3067F2CAF4D2B77771077C817E0919F96448424A2C016A490E1EC5948220702B_FieldInfo_var) };
+		RuntimeHelpers_InitializeArray_m751372AA3F24FBF6DA9B9D687CBFA2DE436CAB9B((RuntimeArray*)L_4, L_5, NULL);
+		(&V_0)->___TypesData = L_4;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___TypesData), (void*)L_4);
+		(&V_0)->___TotalFiles = 8;
+		(&V_0)->___TotalTypes = 8;
+		(&V_0)->___IsEditorOnly = (bool)0;
+		MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1 L_6 = V_0;
+		return L_6;
+	}
+}
+// Method Definition Index: 92385
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mD7B6E29F086EB040B06544D5D3E875506B00AA99 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tE0FAE8CDCB14DA9FB41D6FAE7C6E4CAA467C8192* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_pinvoke(const MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1& unmarshaled, MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_pinvoke& marshaled)
+{
+	marshaled.___FilePathsData = il2cpp_codegen_com_marshal_safe_array(IL2CPP_VT_I1, unmarshaled.___FilePathsData);
+	marshaled.___TypesData = il2cpp_codegen_com_marshal_safe_array(IL2CPP_VT_I1, unmarshaled.___TypesData);
+	marshaled.___TotalTypes = unmarshaled.___TotalTypes;
+	marshaled.___TotalFiles = unmarshaled.___TotalFiles;
+	marshaled.___IsEditorOnly = static_cast<int32_t>(unmarshaled.___IsEditorOnly);
+}
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_pinvoke_back(const MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_pinvoke& marshaled, MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1& unmarshaled)
+{
+	unmarshaled.___FilePathsData = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___FilePathsData);
+	Il2CppCodeGenWriteBarrier((void**)(&unmarshaled.___FilePathsData), (void*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___FilePathsData));
+	unmarshaled.___TypesData = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___TypesData);
+	Il2CppCodeGenWriteBarrier((void**)(&unmarshaled.___TypesData), (void*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___TypesData));
+	int32_t unmarshaledTotalTypes_temp_2 = 0;
+	unmarshaledTotalTypes_temp_2 = marshaled.___TotalTypes;
+	unmarshaled.___TotalTypes = unmarshaledTotalTypes_temp_2;
+	int32_t unmarshaledTotalFiles_temp_3 = 0;
+	unmarshaledTotalFiles_temp_3 = marshaled.___TotalFiles;
+	unmarshaled.___TotalFiles = unmarshaledTotalFiles_temp_3;
+	bool unmarshaledIsEditorOnly_temp_4 = false;
+	unmarshaledIsEditorOnly_temp_4 = static_cast<bool>(marshaled.___IsEditorOnly);
+	unmarshaled.___IsEditorOnly = unmarshaledIsEditorOnly_temp_4;
+}
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_pinvoke_cleanup(MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_pinvoke& marshaled)
+{
+	il2cpp_codegen_com_destroy_safe_array(marshaled.___FilePathsData);
+	marshaled.___FilePathsData = NULL;
+	il2cpp_codegen_com_destroy_safe_array(marshaled.___TypesData);
+	marshaled.___TypesData = NULL;
+}
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_com(const MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1& unmarshaled, MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_com& marshaled)
+{
+	marshaled.___FilePathsData = il2cpp_codegen_com_marshal_safe_array(IL2CPP_VT_I1, unmarshaled.___FilePathsData);
+	marshaled.___TypesData = il2cpp_codegen_com_marshal_safe_array(IL2CPP_VT_I1, unmarshaled.___TypesData);
+	marshaled.___TotalTypes = unmarshaled.___TotalTypes;
+	marshaled.___TotalFiles = unmarshaled.___TotalFiles;
+	marshaled.___IsEditorOnly = static_cast<int32_t>(unmarshaled.___IsEditorOnly);
+}
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_com_back(const MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_com& marshaled, MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1& unmarshaled)
+{
+	unmarshaled.___FilePathsData = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___FilePathsData);
+	Il2CppCodeGenWriteBarrier((void**)(&unmarshaled.___FilePathsData), (void*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___FilePathsData));
+	unmarshaled.___TypesData = (ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___TypesData);
+	Il2CppCodeGenWriteBarrier((void**)(&unmarshaled.___TypesData), (void*)(ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031*)il2cpp_codegen_com_marshal_safe_array_result(IL2CPP_VT_I1, il2cpp_defaults.byte_class, marshaled.___TypesData));
+	int32_t unmarshaledTotalTypes_temp_2 = 0;
+	unmarshaledTotalTypes_temp_2 = marshaled.___TotalTypes;
+	unmarshaled.___TotalTypes = unmarshaledTotalTypes_temp_2;
+	int32_t unmarshaledTotalFiles_temp_3 = 0;
+	unmarshaledTotalFiles_temp_3 = marshaled.___TotalFiles;
+	unmarshaled.___TotalFiles = unmarshaledTotalFiles_temp_3;
+	bool unmarshaledIsEditorOnly_temp_4 = false;
+	unmarshaledIsEditorOnly_temp_4 = static_cast<bool>(marshaled.___IsEditorOnly);
+	unmarshaled.___IsEditorOnly = unmarshaledIsEditorOnly_temp_4;
+}
+IL2CPP_EXTERN_C void MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshal_com_cleanup(MonoScriptData_t9689774D5876CD430B87D670422EE349D9117BD1_marshaled_com& marshaled)
+{
+	il2cpp_codegen_com_destroy_safe_array(marshaled.___FilePathsData);
+	marshaled.___FilePathsData = NULL;
+	il2cpp_codegen_com_destroy_safe_array(marshaled.___TypesData);
+	marshaled.___TypesData = NULL;
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92386
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HardwareKeyboardListener__ctor_m24DBF58069A42D7FA1860868E53E4F2FC6695E8F (HardwareKeyboardListener_t3B998E1632770918CDFD2172E88A95D9691C685E* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92387
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo_Start_mF3E465A7B088D3A03117A95DD5AEACD471D5A24D (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m5424E4AA0CAA8E4E5ADC6F8FFC89762152170B30_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92388
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo__refreshBackForwardState_m034E102FCC40EA4FFEB9DA0B3AD7005076C85AED (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_m4473BF6B3F103B581C8999AA3C760F6D3AF03EA6_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92389
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo_Controls_MessageEmitted_m4B5167AE53480B43E01AF16E5E202D89A2EBFF8E (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, RuntimeObject* ___0_sender, EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventArgs_1_get_Value_mFC72913A5B9525BAE8660B8C4891E8152F2D28A1_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral1642322F58A5CD7E86E778C39558C0A224ABDECF);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE07CC5D74752E6FB4743A35F314FAEB824C9096C);
+		s_Il2CppMethodInitialized = true;
+	}
+	String_t* V_0 = NULL;
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:124>
+		EventArgs_1_t9F26BE103997951FAFDCA656AB0486339AA50BB8* L_0 = ___1_eventArgs;
+		NullCheck(L_0);
+		String_t* L_1;
+		L_1 = EventArgs_1_get_Value_mFC72913A5B9525BAE8660B8C4891E8152F2D28A1_inline(L_0, EventArgs_1_get_Value_mFC72913A5B9525BAE8660B8C4891E8152F2D28A1_RuntimeMethod_var);
+		V_0 = L_1;
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:125>
+		String_t* L_2 = V_0;
+		bool L_3;
+		L_3 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_2, _stringLiteralE07CC5D74752E6FB4743A35F314FAEB824C9096C, NULL);
+		if (!L_3)
+		{
+			goto IL_0025;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:126>
+		WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_4 = __this->___mainWebViewPrefab;
+		NullCheck(L_4);
+		RuntimeObject* L_5;
+		L_5 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_4, NULL);
+		NullCheck(L_5);
+		InterfaceActionInvoker0::Invoke(40, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_5);
+		return;
+	}
+
+IL_0025:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:127>
+		String_t* L_6 = V_0;
+		bool L_7;
+		L_7 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_6, _stringLiteral1642322F58A5CD7E86E778C39558C0A224ABDECF, NULL);
+		if (!L_7)
+		{
+			goto IL_0042;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:128>
+		WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_8 = __this->___mainWebViewPrefab;
+		NullCheck(L_8);
+		RuntimeObject* L_9;
+		L_9 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_8, NULL);
+		NullCheck(L_9);
+		InterfaceActionInvoker0::Invoke(41, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_9);
+	}
+
+IL_0042:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:130>
+		return;
+	}
+}
+// Method Definition Index: 92390
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo__setDisplayedUrl_m6854EA8290847DD16179293FC07D97F32A983FAE (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, String_t* ___0_url, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral007E7EE5EBD7C1E490257BA7824284176038D552);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC9A03A4E451AABB2563FE5FA83D2241953EB5F79);
+		s_Il2CppMethodInitialized = true;
+	}
+	String_t* V_0 = NULL;
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:134>
+		WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_0 = __this->___controlsWebViewPrefab;
+		NullCheck(L_0);
+		RuntimeObject* L_1;
+		L_1 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_0, NULL);
+		if (!L_1)
+		{
+			goto IL_002f;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:135>
+		String_t* L_2 = ___0_url;
+		String_t* L_3;
+		L_3 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral007E7EE5EBD7C1E490257BA7824284176038D552, L_2, _stringLiteralC9A03A4E451AABB2563FE5FA83D2241953EB5F79, NULL);
+		V_0 = L_3;
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:136>
+		WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_4 = __this->___controlsWebViewPrefab;
+		NullCheck(L_4);
+		RuntimeObject* L_5;
+		L_5 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_4, NULL);
+		String_t* L_6 = V_0;
+		NullCheck(L_5);
+		InterfaceActionInvoker1< String_t* >::Invoke(49, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_5, L_6);
+	}
+
+IL_002f:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:138>
+		return;
+	}
+}
+// Method Definition Index: 92391
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo__ctor_mFE5842254E01F064A1C65E0465304B9CC487B37A (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92392
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdvancedWebViewDemo_U3CStartU3Eb__2_0_m6C4F8731CFFC0EEFCC1DF4FCDAE9E2C595C435C1 (AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* __this, RuntimeObject* ___0_sender, UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral68BF5671EF3A8F0FDE32FE7A9BEFA57C828CF851);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:93>
+		UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* L_0 = ___1_eventArgs;
+		NullCheck(L_0);
+		String_t* L_1 = L_0->___Url;
+		AdvancedWebViewDemo__setDisplayedUrl_m6854EA8290847DD16179293FC07D97F32A983FAE(__this, L_1, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:95>
+		MonoBehaviour_Invoke_mF724350C59362B0F1BFE26383209A274A29A63FB(__this, _stringLiteral68BF5671EF3A8F0FDE32FE7A9BEFA57C828CF851, (1.0f), NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:96>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92393
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__2_MoveNext_m1BCBB2FF4F5EFCEDBF0651EB9C650D6CC38B9B18 (U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AdvancedWebViewDemo_Controls_MessageEmitted_m4B5167AE53480B43E01AF16E5E202D89A2EBFF8E_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AdvancedWebViewDemo_U3CStartU3Eb__2_0_m6C4F8731CFFC0EEFCC1DF4FCDAE9E2C595C435C1_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral309ACA92EC1C0148117159FE165A9ABC3ACC6866);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral624680CF43A758F7BA992C7A896E612BF23FA850);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBE55DD4F314E2F7BCF0E097474CC3A2D9C26890D);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* V_1 = NULL;
+	int32_t V_2 = 0;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_3;
+	memset((&V_3), 0, sizeof(V_3));
+	Exception_t* V_4 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_01c6_1;
+			}
+		}
+		{
+			int32_t L_3 = V_0;
+			if ((((int32_t)L_3) == ((int32_t)1)))
+			{
+				goto IL_028d_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:54>
+			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral309ACA92EC1C0148117159FE165A9ABC3ACC6866, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:58>
+			il2cpp_codegen_runtime_class_init_inline(Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+			Web_SetUserAgent_m6E7453DA5B374F7731D58C61551654BA96081D4E((bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:62>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_4 = V_1;
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_5;
+			L_5 = WebViewPrefab_Instantiate_m1600DCCEBCF71599366DC668085EA104DF87C7C0((0.600000024f), (0.300000012f), NULL);
+			NullCheck(L_4);
+			L_4->___mainWebViewPrefab = L_5;
+			Il2CppCodeGenWriteBarrier((void**)(&L_4->___mainWebViewPrefab), (void*)L_5);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:63>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_6 = V_1;
+			NullCheck(L_6);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_7 = L_6->___mainWebViewPrefab;
+			NullCheck(L_7);
+			((BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5*)L_7)->___PixelDensity = (2.0f);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:64>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_8 = V_1;
+			NullCheck(L_8);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_9 = L_8->___mainWebViewPrefab;
+			NullCheck(L_9);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10;
+			L_10 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_9, NULL);
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_11 = V_1;
+			NullCheck(L_11);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12;
+			L_12 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_11, NULL);
+			NullCheck(L_10);
+			Transform_set_parent_m9BD5E563B539DD5BEC342736B03F97B38A243234(L_10, L_12, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:65>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_13 = V_1;
+			NullCheck(L_13);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_14 = L_13->___mainWebViewPrefab;
+			NullCheck(L_14);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
+			L_15 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_14, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
+			memset((&L_16), 0, sizeof(L_16));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_16), (0.0f), (-0.0500000007f), (0.400000006f), NULL);
+			NullCheck(L_15);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_15, L_16, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:66>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_17 = V_1;
+			NullCheck(L_17);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_18 = L_17->___mainWebViewPrefab;
+			NullCheck(L_18);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_19;
+			L_19 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_18, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20;
+			memset((&L_20), 0, sizeof(L_20));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_20), (0.0f), (180.0f), (0.0f), NULL);
+			NullCheck(L_19);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_19, L_20, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:70>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_21 = V_1;
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_22;
+			L_22 = WebViewPrefab_Instantiate_m1600DCCEBCF71599366DC668085EA104DF87C7C0((0.600000024f), (0.0500000007f), NULL);
+			NullCheck(L_21);
+			L_21->___controlsWebViewPrefab = L_22;
+			Il2CppCodeGenWriteBarrier((void**)(&L_21->___controlsWebViewPrefab), (void*)L_22);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:71>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_23 = V_1;
+			NullCheck(L_23);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_24 = L_23->___controlsWebViewPrefab;
+			NullCheck(L_24);
+			((BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5*)L_24)->___KeyboardEnabled = (bool)0;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:72>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_25 = V_1;
+			NullCheck(L_25);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_26 = L_25->___controlsWebViewPrefab;
+			NullCheck(L_26);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_27;
+			L_27 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_26, NULL);
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_28 = V_1;
+			NullCheck(L_28);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_29 = L_28->___mainWebViewPrefab;
+			NullCheck(L_29);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30;
+			L_30 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_29, NULL);
+			NullCheck(L_27);
+			Transform_set_parent_m9BD5E563B539DD5BEC342736B03F97B38A243234(L_27, L_30, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:73>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_31 = V_1;
+			NullCheck(L_31);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_32 = L_31->___controlsWebViewPrefab;
+			NullCheck(L_32);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_33;
+			L_33 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_32, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_34;
+			memset((&L_34), 0, sizeof(L_34));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_34), (0.0f), (0.0599999987f), (0.0f), NULL);
+			NullCheck(L_33);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_33, L_34, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:74>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_35 = V_1;
+			NullCheck(L_35);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_36 = L_35->___controlsWebViewPrefab;
+			NullCheck(L_36);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_37;
+			L_37 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_36, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_38;
+			L_38 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
+			NullCheck(L_37);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_37, L_38, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:78>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_39;
+			L_39 = Keyboard_Instantiate_m29EEDC5B5641EE0418096E2665F0886ACCA5AA82(NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:79>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_40 = L_39;
+			NullCheck(L_40);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_41;
+			L_41 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_40, NULL);
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_42 = V_1;
+			NullCheck(L_42);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_43 = L_42->___mainWebViewPrefab;
+			NullCheck(L_43);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_44;
+			L_44 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_43, NULL);
+			NullCheck(L_41);
+			Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_41, L_44, (bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:80>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_45 = L_40;
+			NullCheck(L_45);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_46;
+			L_46 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_45, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_47;
+			memset((&L_47), 0, sizeof(L_47));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_47), (0.0f), (-0.310000002f), (0.0f), NULL);
+			NullCheck(L_46);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_46, L_47, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:81>
+			NullCheck(L_45);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_48;
+			L_48 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_45, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_49;
+			L_49 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
+			NullCheck(L_48);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_48, L_49, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:85>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:86>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:87>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:88>
+			TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3* L_50 = (TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3*)(TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3*)SZArrayNew(TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3_il2cpp_TypeInfo_var, (uint32_t)2);
+			TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3* L_51 = L_50;
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_52 = V_1;
+			NullCheck(L_52);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_53 = L_52->___mainWebViewPrefab;
+			NullCheck(L_53);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_54;
+			L_54 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_53, NULL);
+			NullCheck(L_51);
+			ArrayElementTypeCheck (L_51, L_54);
+			(L_51)->SetAt(static_cast<il2cpp_array_size_t>(0), (Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572*)L_54);
+			TaskU5BU5D_t368E447BD9A179BA9A26BAAABF1BAE9CA79F60B3* L_55 = L_51;
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_56 = V_1;
+			NullCheck(L_56);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_57 = L_56->___controlsWebViewPrefab;
+			NullCheck(L_57);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_58;
+			L_58 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_57, NULL);
+			NullCheck(L_55);
+			ArrayElementTypeCheck (L_55, L_58);
+			(L_55)->SetAt(static_cast<il2cpp_array_size_t>(1), (Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572*)L_58);
+			il2cpp_codegen_runtime_class_init_inline(Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_59;
+			L_59 = Task_WhenAll_mF5EC0950A443287DF9B67B00EF56977149429342(L_55, NULL);
+			NullCheck(L_59);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_60;
+			L_60 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_59, NULL);
+			V_3 = L_60;
+			bool L_61;
+			L_61 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_3), NULL);
+			if (L_61)
+			{
+				goto IL_01e2_1;
+			}
+		}
+		{
+			int32_t L_62 = 0;
+			V_0 = L_62;
+			__this->___U3CU3E1__state = L_62;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_63 = V_3;
+			__this->___U3CU3Eu__1 = L_63;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_64 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E(L_64, (&V_3), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_RuntimeMethod_var);
+			goto IL_031a;
+		}
+
+IL_01c6_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_65 = __this->___U3CU3Eu__1;
+			V_3 = L_65;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_66 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_66, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_67 = (-1);
+			V_0 = L_67;
+			__this->___U3CU3E1__state = L_67;
+		}
+
+IL_01e2_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_3), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:92>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:93>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:94>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:95>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:96>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_68 = V_1;
+			NullCheck(L_68);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_69 = L_68->___mainWebViewPrefab;
+			NullCheck(L_69);
+			RuntimeObject* L_70;
+			L_70 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_69, NULL);
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_71 = V_1;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_72 = (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7*)il2cpp_codegen_object_new(EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m36603453A72EA568E255A3A56F3E58AABBBA65EC(L_72, L_71, (intptr_t)((void*)AdvancedWebViewDemo_U3CStartU3Eb__2_0_m6C4F8731CFFC0EEFCC1DF4FCDAE9E2C595C435C1_RuntimeMethod_var), NULL);
+			NullCheck(L_70);
+			InterfaceActionInvoker1< EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* >::Invoke(18, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_70, L_72);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:97>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_73 = V_1;
+			NullCheck(L_73);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_74 = L_73->___mainWebViewPrefab;
+			NullCheck(L_74);
+			RuntimeObject* L_75;
+			L_75 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_74, NULL);
+			NullCheck(L_75);
+			InterfaceActionInvoker1< String_t* >::Invoke(44, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_75, _stringLiteral624680CF43A758F7BA992C7A896E612BF23FA850);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:99>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_76 = V_1;
+			NullCheck(L_76);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_77 = L_76->___controlsWebViewPrefab;
+			NullCheck(L_77);
+			RuntimeObject* L_78;
+			L_78 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_77, NULL);
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_79 = V_1;
+			EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A* L_80 = (EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A*)il2cpp_codegen_object_new(EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_mF5C0BF12513B251C89C2804E51343F5427A3B726(L_80, L_79, (intptr_t)((void*)AdvancedWebViewDemo_Controls_MessageEmitted_m4B5167AE53480B43E01AF16E5E202D89A2EBFF8E_RuntimeMethod_var), NULL);
+			NullCheck(L_78);
+			InterfaceActionInvoker1< EventHandler_1_tFD1046E18569C36DB585CC7C21C447D312231F4A* >::Invoke(12, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_78, L_80);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:100>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_81 = V_1;
+			NullCheck(L_81);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_82 = L_81->___controlsWebViewPrefab;
+			NullCheck(L_82);
+			RuntimeObject* L_83;
+			L_83 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_82, NULL);
+			NullCheck(L_83);
+			InterfaceActionInvoker1< String_t* >::Invoke(43, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_83, _stringLiteralBE55DD4F314E2F7BCF0E097474CC3A2D9C26890D);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:101>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_84 = V_1;
+			NullCheck(L_84);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_85 = L_84->___controlsWebViewPrefab;
+			NullCheck(L_85);
+			RuntimeObject* L_86;
+			L_86 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_85, NULL);
+			NullCheck(L_86);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_87;
+			L_87 = InterfaceFuncInvoker0< Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* >::Invoke(61, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_86);
+			NullCheck(L_87);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_88;
+			L_88 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_87, NULL);
+			V_3 = L_88;
+			bool L_89;
+			L_89 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_3), NULL);
+			if (L_89)
+			{
+				goto IL_02a9_1;
+			}
+		}
+		{
+			int32_t L_90 = 1;
+			V_0 = L_90;
+			__this->___U3CU3E1__state = L_90;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_91 = V_3;
+			__this->___U3CU3Eu__1 = L_91;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_92 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E(L_92, (&V_3), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2_m6D03C1B7FD75BB1CB3FF62C715C41EC23AB9C89E_RuntimeMethod_var);
+			goto IL_031a;
+		}
+
+IL_028d_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_93 = __this->___U3CU3Eu__1;
+			V_3 = L_93;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_94 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_94, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_95 = (-1);
+			V_0 = L_95;
+			__this->___U3CU3E1__state = L_95;
+		}
+
+IL_02a9_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_3), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:102>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_96 = V_1;
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_97 = V_1;
+			NullCheck(L_97);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_98 = L_97->___mainWebViewPrefab;
+			NullCheck(L_98);
+			RuntimeObject* L_99;
+			L_99 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_98, NULL);
+			NullCheck(L_99);
+			String_t* L_100;
+			L_100 = InterfaceFuncInvoker0< String_t* >::Invoke(27, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_99);
+			NullCheck(L_96);
+			AdvancedWebViewDemo__setDisplayedUrl_m6854EA8290847DD16179293FC07D97F32A983FAE(L_96, L_100, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:106>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_101 = V_1;
+			NullCheck(L_101);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_102 = L_101->___controlsWebViewPrefab;
+			NullCheck(L_102);
+			RuntimeObject* L_103;
+			L_103 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_102, NULL);
+			NullCheck(L_103);
+			int32_t L_104;
+			L_104 = InterfaceFuncInvoker0< int32_t >::Invoke(23, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_103);
+			V_2 = L_104;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:107>
+			int32_t L_105 = V_2;
+			if ((((int32_t)L_105) == ((int32_t)1)))
+			{
+				goto IL_02e0_1;
+			}
+		}
+		{
+			int32_t L_106 = V_2;
+			if ((!(((uint32_t)L_106) == ((uint32_t)((int32_t)9)))))
+			{
+				goto IL_02ec_1;
+			}
+		}
+
+IL_02e0_1:
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:108>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_107 = V_1;
+			NullCheck(L_107);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_108 = L_107->___controlsWebViewPrefab;
+			NullCheck(L_108);
+			BaseWebViewPrefab_SetRenderBlackAsTransparent_mD6B83524630AEDC428D85E590812FABA8DB9B519(L_108, (bool)1, NULL);
+		}
+
+IL_02ec_1:
+		{
+			goto IL_0307;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_02ee;
+		}
+		throw e;
+	}
+
+CATCH_02ee:
+	{
+		Exception_t* L_109 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_4 = L_109;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_110 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_111 = V_4;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_110, L_111, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_031a;
+	}
+
+IL_0307:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:110>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_112 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_112, NULL);
+	}
+
+IL_031a:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__2_MoveNext_m1BCBB2FF4F5EFCEDBF0651EB9C650D6CC38B9B18_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2*>(__this + _offset);
+	U3CStartU3Ed__2_MoveNext_m1BCBB2FF4F5EFCEDBF0651EB9C650D6CC38B9B18(_thisAdjusted, method);
+}
+// Method Definition Index: 92394
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__2_SetStateMachine_m35258DE6BDB3ADFE7151E8ABE7C679DC9235CC4B (U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__2_SetStateMachine_m35258DE6BDB3ADFE7151E8ABE7C679DC9235CC4B_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__2_t8D31314566CB3C60F9589737B88BABF1F74130C2*>(__this + _offset);
+	U3CStartU3Ed__2_SetStateMachine_m35258DE6BDB3ADFE7151E8ABE7C679DC9235CC4B(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92395
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3C_refreshBackForwardStateU3Ed__3_MoveNext_mCBA392C220ED7D6A8FC60E79751404E2B6FF2ABB (U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral49BFB05E473D2584D1C60C2E146EC1B28A6C561C);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC46837993623CF1FD23858D9C4A1DB2A0E4FA14D);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCB9DEC4BB422E4FB7D60AF8B79864395C4E9AF83);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* V_1 = NULL;
+	bool V_2 = false;
+	String_t* V_3 = NULL;
+	bool V_4 = false;
+	TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 V_5;
+	memset((&V_5), 0, sizeof(V_5));
+	Exception_t* V_6 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_005c_1;
+			}
+		}
+		{
+			int32_t L_3 = V_0;
+			if ((((int32_t)L_3) == ((int32_t)1)))
+			{
+				goto IL_00ce_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:116>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_4 = V_1;
+			NullCheck(L_4);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_5 = L_4->___mainWebViewPrefab;
+			NullCheck(L_5);
+			RuntimeObject* L_6;
+			L_6 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_5, NULL);
+			NullCheck(L_6);
+			Task_1_t824317F4B958F7512E8F7300511752937A6C6043* L_7;
+			L_7 = InterfaceFuncInvoker0< Task_1_t824317F4B958F7512E8F7300511752937A6C6043* >::Invoke(28, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_6);
+			NullCheck(L_7);
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_8;
+			L_8 = Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935(L_7, Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_RuntimeMethod_var);
+			V_5 = L_8;
+			bool L_9;
+			L_9 = TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9((&V_5), TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_RuntimeMethod_var);
+			if (L_9)
+			{
+				goto IL_0079_1;
+			}
+		}
+		{
+			int32_t L_10 = 0;
+			V_0 = L_10;
+			__this->___U3CU3E1__state = L_10;
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_11 = V_5;
+			__this->___U3CU3Eu__1 = L_11;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_12 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46(L_12, (&V_5), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_RuntimeMethod_var);
+			goto IL_0178;
+		}
+
+IL_005c_1:
+		{
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_13 = __this->___U3CU3Eu__1;
+			V_5 = L_13;
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* L_14 = (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_14, sizeof(TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35));
+			int32_t L_15 = (-1);
+			V_0 = L_15;
+			__this->___U3CU3E1__state = L_15;
+		}
+
+IL_0079_1:
+		{
+			bool L_16;
+			L_16 = TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B((&V_5), TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_RuntimeMethod_var);
+			V_4 = L_16;
+			bool L_17 = V_4;
+			__this->___U3CcanGoBackU3E5__2 = L_17;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:117>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_18 = V_1;
+			NullCheck(L_18);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_19 = L_18->___mainWebViewPrefab;
+			NullCheck(L_19);
+			RuntimeObject* L_20;
+			L_20 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_19, NULL);
+			NullCheck(L_20);
+			Task_1_t824317F4B958F7512E8F7300511752937A6C6043* L_21;
+			L_21 = InterfaceFuncInvoker0< Task_1_t824317F4B958F7512E8F7300511752937A6C6043* >::Invoke(29, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_20);
+			NullCheck(L_21);
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_22;
+			L_22 = Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935(L_21, Task_1_GetAwaiter_m2245DA7A0F2185DD5617D63F1544165AE6101935_RuntimeMethod_var);
+			V_5 = L_22;
+			bool L_23;
+			L_23 = TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9((&V_5), TaskAwaiter_1_get_IsCompleted_mCAA0D1EB5A6601DF81D5ED06BB0720D47C520DF9_RuntimeMethod_var);
+			if (L_23)
+			{
+				goto IL_00eb_1;
+			}
+		}
+		{
+			int32_t L_24 = 1;
+			V_0 = L_24;
+			__this->___U3CU3E1__state = L_24;
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_25 = V_5;
+			__this->___U3CU3Eu__1 = L_25;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_26 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46(L_26, (&V_5), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35_TisU3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C_mD7CE2468D396E40B005AA311DE3A7DB2C15CBF46_RuntimeMethod_var);
+			goto IL_0178;
+		}
+
+IL_00ce_1:
+		{
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35 L_27 = __this->___U3CU3Eu__1;
+			V_5 = L_27;
+			TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35* L_28 = (TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_28, sizeof(TaskAwaiter_1_t1F3F1A2BD44A71ED705D6586CA2594868672DE35));
+			int32_t L_29 = (-1);
+			V_0 = L_29;
+			__this->___U3CU3E1__state = L_29;
+		}
+
+IL_00eb_1:
+		{
+			bool L_30;
+			L_30 = TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B((&V_5), TaskAwaiter_1_GetResult_mB0D209154690F6972CF22B23275167F6A404B08B_RuntimeMethod_var);
+			V_2 = L_30;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:118>
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_31 = (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)SZArrayNew(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var, (uint32_t)5);
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_32 = L_31;
+			NullCheck(L_32);
+			(L_32)->SetAt(static_cast<il2cpp_array_size_t>(0), (String_t*)_stringLiteral49BFB05E473D2584D1C60C2E146EC1B28A6C561C);
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_33 = L_32;
+			bool* L_34 = (bool*)(&__this->___U3CcanGoBackU3E5__2);
+			il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.boolean_class);
+			String_t* L_35;
+			L_35 = Boolean_ToString_m6646C8026B1DF381A1EE8CD13549175E9703CC63(L_34, NULL);
+			NullCheck(L_35);
+			String_t* L_36;
+			L_36 = String_ToLowerInvariant_mBE32C93DE27C5353FEA3FA654FC1DDBE3D0EB0F2(L_35, NULL);
+			NullCheck(L_33);
+			(L_33)->SetAt(static_cast<il2cpp_array_size_t>(1), (String_t*)L_36);
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_37 = L_33;
+			NullCheck(L_37);
+			(L_37)->SetAt(static_cast<il2cpp_array_size_t>(2), (String_t*)_stringLiteralC46837993623CF1FD23858D9C4A1DB2A0E4FA14D);
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_38 = L_37;
+			String_t* L_39;
+			L_39 = Boolean_ToString_m6646C8026B1DF381A1EE8CD13549175E9703CC63((&V_2), NULL);
+			NullCheck(L_39);
+			String_t* L_40;
+			L_40 = String_ToLowerInvariant_mBE32C93DE27C5353FEA3FA654FC1DDBE3D0EB0F2(L_39, NULL);
+			NullCheck(L_38);
+			(L_38)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)L_40);
+			StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_41 = L_38;
+			NullCheck(L_41);
+			(L_41)->SetAt(static_cast<il2cpp_array_size_t>(4), (String_t*)_stringLiteralCB9DEC4BB422E4FB7D60AF8B79864395C4E9AF83);
+			String_t* L_42;
+			L_42 = String_Concat_m647EBF831F54B6DF7D5AFA5FD012CF4EE7571B6A(L_41, NULL);
+			V_3 = L_42;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:119>
+			AdvancedWebViewDemo_t202F06ED4C68F8BD61262D1B1B89468B2B8D0892* L_43 = V_1;
+			NullCheck(L_43);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_44 = L_43->___controlsWebViewPrefab;
+			NullCheck(L_44);
+			RuntimeObject* L_45;
+			L_45 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_44, NULL);
+			String_t* L_46 = V_3;
+			NullCheck(L_45);
+			InterfaceActionInvoker1< String_t* >::Invoke(49, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_45, L_46);
+			goto IL_0165;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_014c;
+		}
+		throw e;
+	}
+
+CATCH_014c:
+	{
+		Exception_t* L_47 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_6 = L_47;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_48 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_49 = V_6;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_48, L_49, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_0178;
+	}
+
+IL_0165:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/AdvancedWebViewDemo.cs:120>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_50 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_50, NULL);
+	}
+
+IL_0178:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3C_refreshBackForwardStateU3Ed__3_MoveNext_mCBA392C220ED7D6A8FC60E79751404E2B6FF2ABB_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C*>(__this + _offset);
+	U3C_refreshBackForwardStateU3Ed__3_MoveNext_mCBA392C220ED7D6A8FC60E79751404E2B6FF2ABB(_thisAdjusted, method);
+}
+// Method Definition Index: 92396
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3C_refreshBackForwardStateU3Ed__3_SetStateMachine_mC507C133B70DAF99EBCFB3D6DC4C09C52BF91A4B (U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3C_refreshBackForwardStateU3Ed__3_SetStateMachine_mC507C133B70DAF99EBCFB3D6DC4C09C52BF91A4B_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3C_refreshBackForwardStateU3Ed__3_t8B8B4821F790A01B6AACC1BFB8EE926133D7015C*>(__this + _offset);
+	U3C_refreshBackForwardStateU3Ed__3_SetStateMachine_mC507C133B70DAF99EBCFB3D6DC4C09C52BF91A4B(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92397
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CameraRotator_Start_mFAFC451E4A42EA4BAB82589D2AA9B51AAEC8D532 (CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:34>
+		CameraRotator__warnIfVisionOS_m853F9E9C32672A75337003B9ECA9177B4F63D47A(__this, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:36>
+		bool L_0;
+		L_0 = XRSettings_get_enabled_mC22ABF5BF7D835DAB861A1FA384DBB8904D15E70(NULL);
+		if (L_0)
+		{
+			goto IL_0018;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:37>
+		Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* L_1;
+		L_1 = Input_get_gyro_m895498B803FE9A3124FBFE3C05966431F8840548(NULL);
+		NullCheck(L_1);
+		Gyroscope_set_enabled_m2B22BC93369BA61034A80350405FE1B493822DAB(L_1, (bool)1, NULL);
+	}
+
+IL_0018:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:40>
+		__this->____legacyInputManagerDisabled = (bool)1;
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:44>
+		il2cpp_codegen_runtime_class_init_inline(Application_tDB03BE91CDF0ACA614A5E0B67CFB77C44EB19B21_il2cpp_TypeInfo_var);
+		bool L_2;
+		L_2 = Application_get_isEditor_mEAC51E3ACE6DCE438087FB14BD75A3C219D354D0(NULL);
+		if (!L_2)
+		{
+			goto IL_0049;
+		}
+	}
+	{
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___InstructionMessage;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_4;
+		L_4 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_3, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_4)
+		{
+			goto IL_0049;
+		}
+	}
+	{
+		bool L_5 = __this->____legacyInputManagerDisabled;
+		if (L_5)
+		{
+			goto IL_0049;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:45>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___InstructionMessage;
+		NullCheck(L_6);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)1, NULL);
+		return;
+	}
+
+IL_0049:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:47>
+		__this->___InstructionMessage = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___InstructionMessage), (void*)(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:49>
+		return;
+	}
+}
+// Method Definition Index: 92398
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CameraRotator_Update_m32836D3A105774ECD2412762F31434282729B2E4 (CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral16DD21BE77B115D392226EB71A2D3A9FDC29E3F0);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral88BEE283254D7094E258B3A88730F4CC4F1E4AC7);
+		s_Il2CppMethodInitialized = true;
+	}
+	float V_0 = 0.0f;
+	float V_1 = 0.0f;
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:59>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = __this->___InstructionMessage;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_1;
+		L_1 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_1)
+		{
+			goto IL_0031;
+		}
+	}
+	{
+		bool L_2 = __this->____legacyInputManagerDisabled;
+		if (L_2)
+		{
+			goto IL_0031;
+		}
+	}
+	{
+		bool L_3;
+		L_3 = Input_GetMouseButtonDown_m8DFC792D15FFF15D311614D5CC6C5D055E5A1DE3(0, NULL);
+		if (!L_3)
+		{
+			goto IL_0031;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:60>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___InstructionMessage;
+		NullCheck(L_4);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)0, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:61>
+		__this->___InstructionMessage = (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___InstructionMessage), (void*)(GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL);
+	}
+
+IL_0031:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:64>
+		bool L_5;
+		L_5 = XRSettings_get_enabled_mC22ABF5BF7D835DAB861A1FA384DBB8904D15E70(NULL);
+		if (!L_5)
+		{
+			goto IL_0039;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:66>
+		return;
+	}
+
+IL_0039:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:69>
+		bool L_6;
+		L_6 = SystemInfo_get_supportsGyroscope_m98477EC99D88396F076A93EF5C28A6129DC4E211(NULL);
+		if (!L_6)
+		{
+			goto IL_007f;
+		}
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:70>
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:71>
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:72>
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:73>
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:74>
+		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_7;
+		L_7 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
+		NullCheck(L_7);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8;
+		L_8 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_7, NULL);
+		Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* L_9;
+		L_9 = Input_get_gyro_m895498B803FE9A3124FBFE3C05966431F8840548(NULL);
+		NullCheck(L_9);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10;
+		L_10 = Gyroscope_get_rotationRateUnbiased_m6B54A5F9A866E1F5005EA8B1575607DF2F3AB7A3(L_9, NULL);
+		float L_11 = L_10.___x;
+		Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* L_12;
+		L_12 = Input_get_gyro_m895498B803FE9A3124FBFE3C05966431F8840548(NULL);
+		NullCheck(L_12);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_13;
+		L_13 = Gyroscope_get_rotationRateUnbiased_m6B54A5F9A866E1F5005EA8B1575607DF2F3AB7A3(L_12, NULL);
+		float L_14 = L_13.___y;
+		Gyroscope_tA4CEC0F47FFB4CEB90410CC6B860D052BB35BE9E* L_15;
+		L_15 = Input_get_gyro_m895498B803FE9A3124FBFE3C05966431F8840548(NULL);
+		NullCheck(L_15);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16;
+		L_16 = Gyroscope_get_rotationRateUnbiased_m6B54A5F9A866E1F5005EA8B1575607DF2F3AB7A3(L_15, NULL);
+		float L_17 = L_16.___z;
+		NullCheck(L_8);
+		Transform_Rotate_m7EA47AD57F43D478CCB0523D179950EE49CDA3E2(L_8, ((-L_11)), ((-L_14)), L_17, NULL);
+		return;
+	}
+
+IL_007f:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:75>
+		bool L_18 = __this->____legacyInputManagerDisabled;
+		if (L_18)
+		{
+			goto IL_0154;
+		}
+	}
+	{
+		bool L_19;
+		L_19 = Input_GetKey_mE5681EF775F3CEBA7EAD7C63984F7B34C8E8D434(((int32_t)306), NULL);
+		if (L_19)
+		{
+			goto IL_00a5;
+		}
+	}
+	{
+		bool L_20;
+		L_20 = Input_GetKey_mE5681EF775F3CEBA7EAD7C63984F7B34C8E8D434(((int32_t)305), NULL);
+		if (!L_20)
+		{
+			goto IL_0154;
+		}
+	}
+
+IL_00a5:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:76>
+		V_0 = (10.0f);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:77>
+		V_1 = (80.0f);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:78>
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_21 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float* L_22 = (float*)(&L_21->___x);
+		float* L_23 = L_22;
+		float L_24 = *((float*)L_23);
+		float L_25;
+		L_25 = Input_GetAxis_m10372E6C5FF591668D2DC5F58C58D213CC598A62(_stringLiteral88BEE283254D7094E258B3A88730F4CC4F1E4AC7, NULL);
+		float L_26 = V_0;
+		*((float*)L_23) = (float)((float)il2cpp_codegen_add(L_24, ((float)il2cpp_codegen_multiply(L_25, L_26))));
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:79>
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_27 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float* L_28 = (float*)(&L_27->___y);
+		float* L_29 = L_28;
+		float L_30 = *((float*)L_29);
+		float L_31;
+		L_31 = Input_GetAxis_m10372E6C5FF591668D2DC5F58C58D213CC598A62(_stringLiteral16DD21BE77B115D392226EB71A2D3A9FDC29E3F0, NULL);
+		float L_32 = V_0;
+		*((float*)L_29) = (float)((float)il2cpp_codegen_subtract(L_30, ((float)il2cpp_codegen_multiply(L_31, L_32))));
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:80>
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_33 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_34 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float L_35 = L_34->___x;
+		float L_36;
+		L_36 = Mathf_Repeat_m6F1560A163481BB311D685294E1B463C3E4EB3BA_inline(L_35, (360.0f), NULL);
+		L_33->___x = L_36;
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:81>
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_37 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_38 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float L_39 = L_38->___y;
+		float L_40 = V_1;
+		float L_41 = V_1;
+		float L_42;
+		L_42 = Mathf_Clamp_mEB9AEA827D27D20FCC787F7375156AF46BB12BBF_inline(L_39, ((-L_40)), L_41, NULL);
+		L_37->___y = L_42;
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:82>
+		Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* L_43;
+		L_43 = Camera_get_main_m52C992F18E05355ABB9EEB64A4BF2215E12762DF(NULL);
+		NullCheck(L_43);
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_44;
+		L_44 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_43, NULL);
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_45 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float L_46 = L_45->___y;
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7* L_47 = (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7*)(&__this->____rotationFromMouse);
+		float L_48 = L_47->___x;
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_49;
+		L_49 = Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline(L_46, L_48, (0.0f), NULL);
+		NullCheck(L_44);
+		Transform_set_rotation_m61340DE74726CF0F9946743A727C4D444397331D(L_44, L_49, NULL);
+	}
+
+IL_0154:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:84>
+		return;
+	}
+}
+// Method Definition Index: 92399
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CameraRotator__warnIfVisionOS_m853F9E9C32672A75337003B9ECA9177B4F63D47A (CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CameraRotator.cs:92>
+		return;
+	}
+}
+// Method Definition Index: 92400
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CameraRotator__ctor_mC0C5EA61BD604CB88901C2442E50FAE0488F7646 (CameraRotator_tD104BF273C821407B8921BC0B1C9F2A83EE0B09E* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92401
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasPopupDemo_Start_mB64600A2626BA4512FAEED40EE08979840BE36FD (CanvasPopupDemo_tB326E70D3AC301F8EB83E4761965C450687084D0* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_m5B1B4F5CACA801BF65DEE5F9530B389262698BBA_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92402
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasPopupDemo__ctor_m13B53F3817D0A1A3B46FB3ECA011A35E82D8D7C8 (CanvasPopupDemo_tB326E70D3AC301F8EB83E4761965C450687084D0* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92403
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0__ctor_m5CED42561387FF0B8AA8EADA90751E0FF63F7F3E (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92404
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_mF32BF9C172BF258853B64A84AA5227D4FA722628 (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* __this, RuntimeObject* ___0_webView, PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_1 = ___1_eventArgs;
+		(&V_0)->___eventArgs = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___eventArgs), (void*)L_1);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_2 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC(L_2, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_mE60BCB1961282F0E5A31FFA2449B40DFCBC7FBAC_RuntimeMethod_var);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92405
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_MoveNext_mC3774098EFE630606E11F45DC02E407A9BAD8DAA (U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m43A11DC55139DF6D4FB668F22AEE47E780EAB545_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral98F35BE03885D91D5007136006E304D1222027FF);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* V_1 = NULL;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_3;
+	memset((&V_3), 0, sizeof(V_3));
+	Exception_t* V_4 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0159_1;
+			}
+		}
+		{
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_3 = (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE_il2cpp_TypeInfo_var);
+			U3CU3Ec__DisplayClass0_1__ctor_m5068C0D394722D859878AE2F8599B9CCB798424D(L_3, NULL);
+			__this->___U3CU3E8__1 = L_3;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)L_3);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:65>
+			PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_4 = __this->___eventArgs;
+			NullCheck(L_4);
+			String_t* L_5 = L_4->___Url;
+			String_t* L_6;
+			L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral98F35BE03885D91D5007136006E304D1222027FF, L_5, NULL);
+			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_6, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:66>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_7 = __this->___U3CU3E8__1;
+			PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_8 = __this->___eventArgs;
+			NullCheck(L_8);
+			RuntimeObject* L_9 = L_8->___WebView;
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_10;
+			L_10 = CanvasWebViewPrefab_Instantiate_m9B826E90EF6DDC976A2550411BA34BB9FA6EB007(L_9, NULL);
+			NullCheck(L_7);
+			L_7->___popupPrefab = L_10;
+			Il2CppCodeGenWriteBarrier((void**)(&L_7->___popupPrefab), (void*)L_10);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:67>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_11 = __this->___U3CU3E8__1;
+			NullCheck(L_11);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_12 = L_11->___popupPrefab;
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_13 = V_1;
+			NullCheck(L_13);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_14 = L_13->___mainWebViewPrefab;
+			NullCheck(L_14);
+			float L_15 = L_14->___Resolution;
+			NullCheck(L_12);
+			L_12->___Resolution = L_15;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:68>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_16 = __this->___U3CU3E8__1;
+			NullCheck(L_16);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_17 = L_16->___popupPrefab;
+			NullCheck(L_17);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
+			L_18 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_17, NULL);
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_19 = V_1;
+			NullCheck(L_19);
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = L_19->___canvas;
+			NullCheck(L_20);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+			L_21 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_20, NULL);
+			NullCheck(L_18);
+			Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_18, L_21, (bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:69>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_22 = __this->___U3CU3E8__1;
+			NullCheck(L_22);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_23 = L_22->___popupPrefab;
+			NullCheck(L_23);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_24;
+			L_24 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_23, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:70>
+			RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_25 = ((RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5*)IsInstSealed((RuntimeObject*)L_24, RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var));
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_26;
+			L_26 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
+			NullCheck(L_25);
+			RectTransform_set_anchoredPosition3D_m214FBDBA019743FAED8FA03857475073AA0539C4(L_25, L_26, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:71>
+			RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_27 = L_25;
+			Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_28;
+			L_28 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
+			NullCheck(L_27);
+			RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9(L_27, L_28, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:72>
+			Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_29;
+			L_29 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
+			NullCheck(L_27);
+			RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D(L_27, L_29, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:73>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_30 = __this->___U3CU3E8__1;
+			NullCheck(L_30);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_31 = L_30->___popupPrefab;
+			NullCheck(L_31);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32;
+			L_32 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_31, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33;
+			L_33 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
+			NullCheck(L_32);
+			Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_32, L_33, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:75>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_34 = __this->___U3CU3E8__1;
+			NullCheck(L_34);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_35 = L_34->___popupPrefab;
+			NullCheck(L_35);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_36;
+			L_36 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_35, NULL);
+			NullCheck(L_36);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_37;
+			L_37 = Transform_get_localPosition_mA9C86B990DF0685EA1061A120218993FDCC60A95(L_36, NULL);
+			V_2 = L_37;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:76>
+			(&V_2)->___z = (0.100000001f);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:77>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_38 = __this->___U3CU3E8__1;
+			NullCheck(L_38);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_39 = L_38->___popupPrefab;
+			NullCheck(L_39);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_40;
+			L_40 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_39, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_41 = V_2;
+			NullCheck(L_40);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_40, L_41, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:79>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_42 = __this->___U3CU3E8__1;
+			NullCheck(L_42);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_43 = L_42->___popupPrefab;
+			NullCheck(L_43);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_44;
+			L_44 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_43, NULL);
+			NullCheck(L_44);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_45;
+			L_45 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_44, NULL);
+			V_3 = L_45;
+			bool L_46;
+			L_46 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_3), NULL);
+			if (L_46)
+			{
+				goto IL_0175_1;
+			}
+		}
+		{
+			int32_t L_47 = 0;
+			V_0 = L_47;
+			__this->___U3CU3E1__state = L_47;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_48 = V_3;
+			__this->___U3CU3Eu__1 = L_48;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_49 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F(L_49, (&V_3), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012_m238D220E9D35256E33C65947D064A3507754F77F_RuntimeMethod_var);
+			goto IL_01de;
+		}
+
+IL_0159_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_50 = __this->___U3CU3Eu__1;
+			V_3 = L_50;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_51 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_51, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_52 = (-1);
+			V_0 = L_52;
+			__this->___U3CU3E1__state = L_52;
+		}
+
+IL_0175_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_3), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:80>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:81>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:82>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:83>
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_53 = __this->___U3CU3E8__1;
+			NullCheck(L_53);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_54 = L_53->___popupPrefab;
+			NullCheck(L_54);
+			RuntimeObject* L_55;
+			L_55 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_54, NULL);
+			U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* L_56 = __this->___U3CU3E8__1;
+			EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* L_57 = (EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82*)il2cpp_codegen_object_new(EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82_il2cpp_TypeInfo_var);
+			EventHandler__ctor_m95444CE8D5A6F1AFC9793866C3FE884E732DCEB2(L_57, L_56, (intptr_t)((void*)U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m43A11DC55139DF6D4FB668F22AEE47E780EAB545_RuntimeMethod_var), NULL);
+			NullCheck(L_55);
+			InterfaceActionInvoker1< EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* >::Invoke(0, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_55, L_57);
+			goto IL_01c4;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_01a4;
+		}
+		throw e;
+	}
+
+CATCH_01a4:
+	{
+		Exception_t* L_58 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_4 = L_58;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_59 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_60 = V_4;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_59, L_60, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_01de;
+	}
+
+IL_01c4:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:84>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_61 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_61, NULL);
+	}
+
+IL_01de:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CU3CStartU3Eb__0U3Ed_MoveNext_mC3774098EFE630606E11F45DC02E407A9BAD8DAA_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012*>(__this + _offset);
+	U3CU3CStartU3Eb__0U3Ed_MoveNext_mC3774098EFE630606E11F45DC02E407A9BAD8DAA(_thisAdjusted, method);
+}
+// Method Definition Index: 92406
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_mBBC22601159A71A32AC1D62567FB47E9BC565FB3 (U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_mBBC22601159A71A32AC1D62567FB47E9BC565FB3_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CU3CStartU3Eb__0U3Ed_tC25184977340EA73227D41B11BB3C187D1E88012*>(__this + _offset);
+	U3CU3CStartU3Eb__0U3Ed_SetStateMachine_mBBC22601159A71A32AC1D62567FB47E9BC565FB3(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92407
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1__ctor_m5068C0D394722D859878AE2F8599B9CCB798424D (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92408
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m43A11DC55139DF6D4FB668F22AEE47E780EAB545 (U3CU3Ec__DisplayClass0_1_tF3CA1BA1FFB12B2C1CBE890E0396C6F8557F71EE* __this, RuntimeObject* ___0_popupWebView, EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377* ___1_closeEventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral59EA6AB031F987E7930700D26A18FEDC80746357);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:81>
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral59EA6AB031F987E7930700D26A18FEDC80746357, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:82>
+		CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_0 = __this->___popupPrefab;
+		NullCheck(L_0);
+		BaseWebViewPrefab_Destroy_m56B4A9BCBCFFEA74ACF2FAACF587BCEF555DE7ED(L_0, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:83>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92409
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_MoveNext_mBAEB4FB19F1473FDB6AC905C20BC6AD50E6D982C (U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_mF32BF9C172BF258853B64A84AA5227D4FA722628_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral60229673F65DBD4CFD3E012FC6A50D6F5CC17BB8);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9791E08A89114ED4219B5B52F6E2F1E88C0A9B93);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD798EE7C4C9AF33C5BEA2196B40C2DB50563DBEC);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFC075BC3DFE942623230E78DC9D41126E9C003CA);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	RuntimeObject* V_1 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	Exception_t* V_3 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+	}
+	try
+	{
+		{
+			int32_t L_1 = V_0;
+			if (!L_1)
+			{
+				goto IL_012f_1;
+			}
+		}
+		{
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_2 = (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A_il2cpp_TypeInfo_var);
+			U3CU3Ec__DisplayClass0_0__ctor_m5CED42561387FF0B8AA8EADA90751E0FF63F7F3E(L_2, NULL);
+			__this->___U3CU3E8__1 = L_2;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)L_2);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:34>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_3 = __this->___U3CU3E8__1;
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
+			L_4 = GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300(_stringLiteralFC075BC3DFE942623230E78DC9D41126E9C003CA, NULL);
+			NullCheck(L_3);
+			L_3->___canvas = L_4;
+			Il2CppCodeGenWriteBarrier((void**)(&L_3->___canvas), (void*)L_4);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:36>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_5 = __this->___U3CU3E8__1;
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_6;
+			L_6 = CanvasWebViewPrefab_Instantiate_m26835222B1E92521233AB2EFFF7B5960206F9706(NULL);
+			NullCheck(L_5);
+			L_5->___mainWebViewPrefab = L_6;
+			Il2CppCodeGenWriteBarrier((void**)(&L_5->___mainWebViewPrefab), (void*)L_6);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:37>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_7 = __this->___U3CU3E8__1;
+			NullCheck(L_7);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_8 = L_7->___mainWebViewPrefab;
+			NullCheck(L_8);
+			L_8->___Resolution = (1.5f);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:38>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_9 = __this->___U3CU3E8__1;
+			NullCheck(L_9);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_10 = L_9->___mainWebViewPrefab;
+			NullCheck(L_10);
+			((BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5*)L_10)->___PixelDensity = (2.0f);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:39>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_11 = __this->___U3CU3E8__1;
+			NullCheck(L_11);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_12 = L_11->___mainWebViewPrefab;
+			NullCheck(L_12);
+			L_12->___Native2DModeEnabled = (bool)1;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:40>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_13 = __this->___U3CU3E8__1;
+			NullCheck(L_13);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_14 = L_13->___mainWebViewPrefab;
+			NullCheck(L_14);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_15;
+			L_15 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_14, NULL);
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_16 = __this->___U3CU3E8__1;
+			NullCheck(L_16);
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = L_16->___canvas;
+			NullCheck(L_17);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
+			L_18 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_17, NULL);
+			NullCheck(L_15);
+			Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_15, L_18, (bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:42>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_19 = __this->___U3CU3E8__1;
+			NullCheck(L_19);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_20 = L_19->___mainWebViewPrefab;
+			NullCheck(L_20);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+			L_21 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_20, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:43>
+			RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_22 = ((RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5*)IsInstSealed((RuntimeObject*)L_21, RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_il2cpp_TypeInfo_var));
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_23;
+			L_23 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
+			NullCheck(L_22);
+			RectTransform_set_anchoredPosition3D_m214FBDBA019743FAED8FA03857475073AA0539C4(L_22, L_23, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:44>
+			RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_24 = L_22;
+			Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_25;
+			L_25 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
+			NullCheck(L_24);
+			RectTransform_set_offsetMin_m07F38B4105C7CA9CC9FBDC9ED0DB008602880AB9(L_24, L_25, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:45>
+			Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_26;
+			L_26 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
+			NullCheck(L_24);
+			RectTransform_set_offsetMax_m5514D09D86516F2C0E25FA6D11A3A4274D3D002D(L_24, L_26, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:46>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_27 = __this->___U3CU3E8__1;
+			NullCheck(L_27);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_28 = L_27->___mainWebViewPrefab;
+			NullCheck(L_28);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_29;
+			L_29 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_28, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_30;
+			L_30 = Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline(NULL);
+			NullCheck(L_29);
+			Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_29, L_30, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:50>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_31 = __this->___U3CU3E8__1;
+			NullCheck(L_31);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_32 = L_31->___mainWebViewPrefab;
+			NullCheck(L_32);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_33;
+			L_33 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_32, NULL);
+			NullCheck(L_33);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_34;
+			L_34 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_33, NULL);
+			V_2 = L_34;
+			bool L_35;
+			L_35 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_2), NULL);
+			if (L_35)
+			{
+				goto IL_014b_1;
+			}
+		}
+		{
+			int32_t L_36 = 0;
+			V_0 = L_36;
+			__this->___U3CU3E1__state = L_36;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_37 = V_2;
+			__this->___U3CU3Eu__1 = L_37;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_38 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73(L_38, (&V_2), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174_mDCA6F9DD1FAB53D520C297C6FC7B9A415124FF73_RuntimeMethod_var);
+			goto IL_0203;
+		}
+
+IL_012f_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_39 = __this->___U3CU3Eu__1;
+			V_2 = L_39;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_40 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_40, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_41 = (-1);
+			V_0 = L_41;
+			__this->___U3CU3E1__state = L_41;
+		}
+
+IL_014b_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_2), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:54>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_42 = __this->___U3CU3E8__1;
+			NullCheck(L_42);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_43 = L_42->___mainWebViewPrefab;
+			NullCheck(L_43);
+			RuntimeObject* L_44;
+			L_44 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_43, NULL);
+			V_1 = ((RuntimeObject*)IsInst((RuntimeObject*)L_44, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var));
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:55>
+			RuntimeObject* L_45 = V_1;
+			if (L_45)
+			{
+				goto IL_0187_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:56>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_46 = __this->___U3CU3E8__1;
+			NullCheck(L_46);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_47 = L_46->___mainWebViewPrefab;
+			NullCheck(L_47);
+			RuntimeObject* L_48;
+			L_48 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_47, NULL);
+			NullCheck(L_48);
+			InterfaceActionInvoker1< String_t* >::Invoke(43, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_48, _stringLiteral60229673F65DBD4CFD3E012FC6A50D6F5CC17BB8);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:57>
+			goto IL_01e9;
+		}
+
+IL_0187_1:
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:60>
+			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral9791E08A89114ED4219B5B52F6E2F1E88C0A9B93, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:61>
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_49 = __this->___U3CU3E8__1;
+			NullCheck(L_49);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_50 = L_49->___mainWebViewPrefab;
+			NullCheck(L_50);
+			RuntimeObject* L_51;
+			L_51 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_50, NULL);
+			NullCheck(L_51);
+			InterfaceActionInvoker1< String_t* >::Invoke(44, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_51, _stringLiteralD798EE7C4C9AF33C5BEA2196B40C2DB50563DBEC);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:63>
+			RuntimeObject* L_52 = V_1;
+			NullCheck(L_52);
+			InterfaceActionInvoker1< int32_t >::Invoke(0, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var, L_52, 1);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:64>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:65>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:66>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:67>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:68>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:69>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:70>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:71>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:72>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:73>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:74>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:75>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:76>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:77>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:78>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:79>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:80>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:81>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:82>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:83>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:84>
+			RuntimeObject* L_53 = V_1;
+			U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A* L_54 = __this->___U3CU3E8__1;
+			EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651* L_55 = (EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651*)il2cpp_codegen_object_new(EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m59B1AC6C2239751241E5838B2B05D2359CFCCD50(L_55, L_54, (intptr_t)((void*)U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_mF32BF9C172BF258853B64A84AA5227D4FA722628_RuntimeMethod_var), NULL);
+			NullCheck(L_53);
+			InterfaceActionInvoker1< EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651* >::Invoke(1, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var, L_53, L_55);
+			goto IL_01e9;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_01cb;
+		}
+		throw e;
+	}
+
+CATCH_01cb:
+	{
+		Exception_t* L_56 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_3 = L_56;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_57 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_58 = V_3;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_57, L_58, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_0203;
+	}
+
+IL_01e9:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasPopupDemo.cs:85>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_0_t60AEDE80770449A75AD0C199E06D91C4827CD94A*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_59 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_59, NULL);
+	}
+
+IL_0203:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__0_MoveNext_mBAEB4FB19F1473FDB6AC905C20BC6AD50E6D982C_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174*>(__this + _offset);
+	U3CStartU3Ed__0_MoveNext_mBAEB4FB19F1473FDB6AC905C20BC6AD50E6D982C(_thisAdjusted, method);
+}
+// Method Definition Index: 92410
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_SetStateMachine_m51B7296434DE0B202FF06A658A92FC066CE3FE5B (U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__0_SetStateMachine_m51B7296434DE0B202FF06A658A92FC066CE3FE5B_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__0_t249206B73DA11863D83389EE64EC97173F642174*>(__this + _offset);
+	U3CStartU3Ed__0_SetStateMachine_m51B7296434DE0B202FF06A658A92FC066CE3FE5B(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92411
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasWebViewDemo_Start_mEA6C59CED120A95F40480E0EEA622847EFA9C8FC (CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m9923A2BC5B3EA30CB8D67015154B63A84FDF57CB_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92412
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasWebViewDemo__ctor_m5DABA0C76AE343F6D3CE47D7F4BE66082B7121B6 (CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92413
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_mDD02BB3B2DF6F0D46064B710A532785F0C3CD650 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* L_0 = (U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A*)il2cpp_codegen_object_new(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var);
+		U3CU3Ec__ctor_mFBA97D7A78ADE824E9001EFFB0977F9F28C53129(L_0, NULL);
+		((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 92414
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mFBA97D7A78ADE824E9001EFFB0977F9F28C53129 (U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92415
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartU3Eb__1_0_mABAE7DE44C6521FFF3DB17C62BCA5D0DDB86AF9C (U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* __this, RuntimeObject* ___0_sender, UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralEE15183AFCE7EFBB325C543A4691716C23895A26);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:48>
+		UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* L_0 = ___1_eventArgs;
+		NullCheck(L_0);
+		String_t* L_1 = L_0->___Url;
+		String_t* L_2;
+		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteralEE15183AFCE7EFBB325C543A4691716C23895A26, L_1, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:49>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92416
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_mEB588C1D24E085C26AD9E3BEC5139845968E2F4F (U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CStartU3Eb__1_0_mABAE7DE44C6521FFF3DB17C62BCA5D0DDB86AF9C_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5AB53B58C6703EE7CC4844960E2E06E97B9A260B);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* V_1 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	Exception_t* V_3 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B7_0 = NULL;
+	RuntimeObject* G_B7_1 = NULL;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B6_0 = NULL;
+	RuntimeObject* G_B6_1 = NULL;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0060_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:39>
+			CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* L_3 = V_1;
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
+			L_4 = GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300(_stringLiteral5AB53B58C6703EE7CC4844960E2E06E97B9A260B, NULL);
+			NullCheck(L_4);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_5;
+			L_5 = GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40(L_4, GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40_RuntimeMethod_var);
+			NullCheck(L_3);
+			L_3->___canvasWebViewPrefab = L_5;
+			Il2CppCodeGenWriteBarrier((void**)(&L_3->___canvasWebViewPrefab), (void*)L_5);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:43>
+			CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* L_6 = V_1;
+			NullCheck(L_6);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_7 = L_6->___canvasWebViewPrefab;
+			NullCheck(L_7);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_8;
+			L_8 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_7, NULL);
+			NullCheck(L_8);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_9;
+			L_9 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_8, NULL);
+			V_2 = L_9;
+			bool L_10;
+			L_10 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_2), NULL);
+			if (L_10)
+			{
+				goto IL_007c_1;
+			}
+		}
+		{
+			int32_t L_11 = 0;
+			V_0 = L_11;
+			__this->___U3CU3E1__state = L_11;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_12 = V_2;
+			__this->___U3CU3Eu__1 = L_12;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_13 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0(L_13, (&V_2), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876_m263692226C899F0AE58C64053A70BECBC67FC1F0_RuntimeMethod_var);
+			goto IL_00de;
+		}
+
+IL_0060_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_14 = __this->___U3CU3Eu__1;
+			V_2 = L_14;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_15 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_15, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_16 = (-1);
+			V_0 = L_16;
+			__this->___U3CU3E1__state = L_16;
+		}
+
+IL_007c_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_2), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:47>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:48>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:49>
+			CanvasWebViewDemo_tCA5A52F39CCD8EF34AF9F6A770318911835B3C2E* L_17 = V_1;
+			NullCheck(L_17);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_18 = L_17->___canvasWebViewPrefab;
+			NullCheck(L_18);
+			RuntimeObject* L_19;
+			L_19 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_18, NULL);
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_20 = ((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9__1_0;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_21 = L_20;
+			if (L_21)
+			{
+				G_B7_0 = L_21;
+				G_B7_1 = L_19;
+				goto IL_00ad_1;
+			}
+			G_B6_0 = L_21;
+			G_B6_1 = L_19;
+		}
+		{
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var);
+			U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A* L_22 = ((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_23 = (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7*)il2cpp_codegen_object_new(EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m36603453A72EA568E255A3A56F3E58AABBBA65EC(L_23, L_22, (intptr_t)((void*)U3CU3Ec_U3CStartU3Eb__1_0_mABAE7DE44C6521FFF3DB17C62BCA5D0DDB86AF9C_RuntimeMethod_var), NULL);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_24 = L_23;
+			((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9__1_0 = L_24;
+			Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tDD643FDF8ACB362D95C744E049656DEB7DEE6A0A_il2cpp_TypeInfo_var))->___U3CU3E9__1_0), (void*)L_24);
+			G_B7_0 = L_24;
+			G_B7_1 = G_B6_1;
+		}
+
+IL_00ad_1:
+		{
+			NullCheck(G_B7_1);
+			InterfaceActionInvoker1< EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* >::Invoke(18, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, G_B7_1, G_B7_0);
+			goto IL_00cb;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_00b4;
+		}
+		throw e;
+	}
+
+CATCH_00b4:
+	{
+		Exception_t* L_25 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_3 = L_25;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_26 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_27 = V_3;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_26, L_27, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_00de;
+	}
+
+IL_00cb:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWebViewDemo.cs:50>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_28 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_28, NULL);
+	}
+
+IL_00de:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_MoveNext_mEB588C1D24E085C26AD9E3BEC5139845968E2F4F_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876*>(__this + _offset);
+	U3CStartU3Ed__1_MoveNext_mEB588C1D24E085C26AD9E3BEC5139845968E2F4F(_thisAdjusted, method);
+}
+// Method Definition Index: 92417
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_mC81B41E86DE3481F34D5394EF03C5F8307FFD2E9 (U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_SetStateMachine_mC81B41E86DE3481F34D5394EF03C5F8307FFD2E9_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_t65B907CF54E510EC3208A0743AB031B337B88876*>(__this + _offset);
+	U3CStartU3Ed__1_SetStateMachine_mC81B41E86DE3481F34D5394EF03C5F8307FFD2E9(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92418
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasWorldSpaceDemo_Start_mEB30430EB0D32BC6319C37CCFF88EEA0120219F3 (CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m3794C78DF3CC25E5A315F1446B5F904DBBE4C917_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92419
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CanvasWorldSpaceDemo__ctor_m165EE9A6217480F77B751848B6A1128F03715D3A (CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92420
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_mB9E4789BDBAB02F63912228D18FE92500F657D3B (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* L_0 = (U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482*)il2cpp_codegen_object_new(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var);
+		U3CU3Ec__ctor_mF7C866190C42C1690AAF3EC3FE5B6BDF38C57FAB(L_0, NULL);
+		((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 92421
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mF7C866190C42C1690AAF3EC3FE5B6BDF38C57FAB (U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92422
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartU3Eb__1_0_m63C694D5BEEBB79C4B2959252B66E6FBFC6B57EE (U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* __this, RuntimeObject* ___0_sender, UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral224BEC8A0DCC957FB753E55221B9D421220231DD);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:45>
+		UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* L_0 = ___1_eventArgs;
+		NullCheck(L_0);
+		String_t* L_1 = L_0->___Url;
+		String_t* L_2;
+		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral224BEC8A0DCC957FB753E55221B9D421220231DD, L_1, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:46>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92423
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_m4F7414540B53250132BE189FB95DA8240FA45D2B (U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CStartU3Eb__1_0_m63C694D5BEEBB79C4B2959252B66E6FBFC6B57EE_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5AB53B58C6703EE7CC4844960E2E06E97B9A260B);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* V_1 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	Exception_t* V_3 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B7_0 = NULL;
+	RuntimeObject* G_B7_1 = NULL;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B6_0 = NULL;
+	RuntimeObject* G_B6_1 = NULL;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0066_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:32>
+			il2cpp_codegen_runtime_class_init_inline(Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+			Web_SetUserAgent_m6E7453DA5B374F7731D58C61551654BA96081D4E((bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:36>
+			CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* L_3 = V_1;
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
+			L_4 = GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300(_stringLiteral5AB53B58C6703EE7CC4844960E2E06E97B9A260B, NULL);
+			NullCheck(L_4);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_5;
+			L_5 = GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40(L_4, GameObject_GetComponent_TisCanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2_mBFC7F1E254B57947BCF1A03BCF695EDD913F0A40_RuntimeMethod_var);
+			NullCheck(L_3);
+			L_3->___canvasWebViewPrefab = L_5;
+			Il2CppCodeGenWriteBarrier((void**)(&L_3->___canvasWebViewPrefab), (void*)L_5);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:40>
+			CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* L_6 = V_1;
+			NullCheck(L_6);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_7 = L_6->___canvasWebViewPrefab;
+			NullCheck(L_7);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_8;
+			L_8 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_7, NULL);
+			NullCheck(L_8);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_9;
+			L_9 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_8, NULL);
+			V_2 = L_9;
+			bool L_10;
+			L_10 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_2), NULL);
+			if (L_10)
+			{
+				goto IL_0082_1;
+			}
+		}
+		{
+			int32_t L_11 = 0;
+			V_0 = L_11;
+			__this->___U3CU3E1__state = L_11;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_12 = V_2;
+			__this->___U3CU3Eu__1 = L_12;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_13 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7(L_13, (&V_2), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14_m132DAF3A84504141650C950154D63E4DDCD32DC7_RuntimeMethod_var);
+			goto IL_00e4;
+		}
+
+IL_0066_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_14 = __this->___U3CU3Eu__1;
+			V_2 = L_14;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_15 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_15, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_16 = (-1);
+			V_0 = L_16;
+			__this->___U3CU3E1__state = L_16;
+		}
+
+IL_0082_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_2), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:44>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:45>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:46>
+			CanvasWorldSpaceDemo_t9A76CA27BFDE60E7AD87F417ECDE4C3700E4AA01* L_17 = V_1;
+			NullCheck(L_17);
+			CanvasWebViewPrefab_t469B9A9B8F07E984C2DBD4FE212B36EA3876BAE2* L_18 = L_17->___canvasWebViewPrefab;
+			NullCheck(L_18);
+			RuntimeObject* L_19;
+			L_19 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_18, NULL);
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_20 = ((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9__1_0;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_21 = L_20;
+			if (L_21)
+			{
+				G_B7_0 = L_21;
+				G_B7_1 = L_19;
+				goto IL_00b3_1;
+			}
+			G_B6_0 = L_21;
+			G_B6_1 = L_19;
+		}
+		{
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var);
+			U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482* L_22 = ((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_23 = (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7*)il2cpp_codegen_object_new(EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m36603453A72EA568E255A3A56F3E58AABBBA65EC(L_23, L_22, (intptr_t)((void*)U3CU3Ec_U3CStartU3Eb__1_0_m63C694D5BEEBB79C4B2959252B66E6FBFC6B57EE_RuntimeMethod_var), NULL);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_24 = L_23;
+			((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9__1_0 = L_24;
+			Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_tCB43558678BD2D141127D16E53224767ECCD5482_il2cpp_TypeInfo_var))->___U3CU3E9__1_0), (void*)L_24);
+			G_B7_0 = L_24;
+			G_B7_1 = G_B6_1;
+		}
+
+IL_00b3_1:
+		{
+			NullCheck(G_B7_1);
+			InterfaceActionInvoker1< EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* >::Invoke(18, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, G_B7_1, G_B7_0);
+			goto IL_00d1;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_00ba;
+		}
+		throw e;
+	}
+
+CATCH_00ba:
+	{
+		Exception_t* L_25 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_3 = L_25;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_26 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_27 = V_3;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_26, L_27, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_00e4;
+	}
+
+IL_00d1:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/CanvasWorldSpaceDemo.cs:47>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_28 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_28, NULL);
+	}
+
+IL_00e4:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_MoveNext_m4F7414540B53250132BE189FB95DA8240FA45D2B_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14*>(__this + _offset);
+	U3CStartU3Ed__1_MoveNext_m4F7414540B53250132BE189FB95DA8240FA45D2B(_thisAdjusted, method);
+}
+// Method Definition Index: 92424
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_m4DB36896F541C804545936C893046C364CF8969F (U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_SetStateMachine_m4DB36896F541C804545936C893046C364CF8969F_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_tAEC9FD92F9EC2B07AE40390CE0F37D1830C86D14*>(__this + _offset);
+	U3CStartU3Ed__1_SetStateMachine_m4DB36896F541C804545936C893046C364CF8969F(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92425
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PopupDemo_Start_m7AA26FC34C7ABD4A3071EFFD25607BC2583C572A (PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8275F719FDB09183A3494A741B6C60CA15120B6E_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92426
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PopupDemo__ctor_m9551A64E7E0F02F9B24FF0F0045A7BB6FCAC7AE4 (PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92427
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0__ctor_m0DD785B1959DD58C4B071FFA6BC3AFEAD557FBB3 (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92428
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_m0F779BA1A2A2C989345282B6FC27BD30B53D85CE (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* __this, RuntimeObject* ___0_webView, PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_1 = ___1_eventArgs;
+		(&V_0)->___eventArgs = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___eventArgs), (void*)L_1);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_2 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C(L_2, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m694BBE69FFEC3C81F75CB98389F618D6C8D0E16C_RuntimeMethod_var);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92429
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_MoveNext_m7E3622CC1454B75170CCB8729DEA3AB56EC7D30D (U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m5E792B02463EC4E7652783E96F3759CCBE0C9F28_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral98F35BE03885D91D5007136006E304D1222027FF);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* V_1 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	Exception_t* V_3 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0123_1;
+			}
+		}
+		{
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_3 = (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828_il2cpp_TypeInfo_var);
+			U3CU3Ec__DisplayClass0_1__ctor_mE5007E87CA9D0EA9BF245556A6821A053189B6D3(L_3, NULL);
+			__this->___U3CU3E8__1 = L_3;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)L_3);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:69>
+			PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_4 = __this->___eventArgs;
+			NullCheck(L_4);
+			String_t* L_5 = L_4->___Url;
+			String_t* L_6;
+			L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral98F35BE03885D91D5007136006E304D1222027FF, L_5, NULL);
+			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_6, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:70>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_7 = __this->___U3CU3E8__1;
+			PopupRequestedEventArgs_t5559665C1028219B016F5D2FBE997D77CB254EA3* L_8 = __this->___eventArgs;
+			NullCheck(L_8);
+			RuntimeObject* L_9 = L_8->___WebView;
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_10;
+			L_10 = WebViewPrefab_Instantiate_m812CC0F0C3712CA84F0DC0AEF32B152845682671(L_9, NULL);
+			NullCheck(L_7);
+			L_7->___popupPrefab = L_10;
+			Il2CppCodeGenWriteBarrier((void**)(&L_7->___popupPrefab), (void*)L_10);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:71>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_11 = __this->___U3CU3E8__1;
+			NullCheck(L_11);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_12 = L_11->___popupPrefab;
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_13 = V_1;
+			NullCheck(L_13);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_14 = L_13->___mainWebViewPrefab;
+			NullCheck(L_14);
+			float L_15 = L_14->___Resolution;
+			NullCheck(L_12);
+			L_12->___Resolution = L_15;
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:72>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_16 = __this->___U3CU3E8__1;
+			NullCheck(L_16);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_17 = L_16->___popupPrefab;
+			NullCheck(L_17);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_18;
+			L_18 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_17, NULL);
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_19 = V_1;
+			NullCheck(L_19);
+			PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* L_20 = L_19->___U3CU3E4__this;
+			NullCheck(L_20);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+			L_21 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_20, NULL);
+			NullCheck(L_18);
+			Transform_set_parent_m9BD5E563B539DD5BEC342736B03F97B38A243234(L_18, L_21, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:74>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_22 = __this->___U3CU3E8__1;
+			NullCheck(L_22);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_23 = L_22->___popupPrefab;
+			NullCheck(L_23);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_24;
+			L_24 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_23, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_25;
+			memset((&L_25), 0, sizeof(L_25));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_25), (0.0f), (0.0f), (0.389999986f), NULL);
+			NullCheck(L_24);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_24, L_25, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:75>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_26 = __this->___U3CU3E8__1;
+			NullCheck(L_26);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_27 = L_26->___popupPrefab;
+			NullCheck(L_27);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28;
+			L_28 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_27, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_29;
+			memset((&L_29), 0, sizeof(L_29));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_29), (0.0f), (180.0f), (0.0f), NULL);
+			NullCheck(L_28);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_28, L_29, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:76>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_30 = __this->___U3CU3E8__1;
+			NullCheck(L_30);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_31 = L_30->___popupPrefab;
+			NullCheck(L_31);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_32;
+			L_32 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_31, NULL);
+			NullCheck(L_32);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_33;
+			L_33 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_32, NULL);
+			V_2 = L_33;
+			bool L_34;
+			L_34 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_2), NULL);
+			if (L_34)
+			{
+				goto IL_013f_1;
+			}
+		}
+		{
+			int32_t L_35 = 0;
+			V_0 = L_35;
+			__this->___U3CU3E1__state = L_35;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_36 = V_2;
+			__this->___U3CU3Eu__1 = L_36;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_37 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC(L_37, (&V_2), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB_m75DB898C83C44E4B979D7EE84BC70CFFC7138BFC_RuntimeMethod_var);
+			goto IL_01a6;
+		}
+
+IL_0123_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_38 = __this->___U3CU3Eu__1;
+			V_2 = L_38;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_39 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_39, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_40 = (-1);
+			V_0 = L_40;
+			__this->___U3CU3E1__state = L_40;
+		}
+
+IL_013f_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_2), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:77>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:78>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:79>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:80>
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_41 = __this->___U3CU3E8__1;
+			NullCheck(L_41);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_42 = L_41->___popupPrefab;
+			NullCheck(L_42);
+			RuntimeObject* L_43;
+			L_43 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_42, NULL);
+			U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* L_44 = __this->___U3CU3E8__1;
+			EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* L_45 = (EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82*)il2cpp_codegen_object_new(EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82_il2cpp_TypeInfo_var);
+			EventHandler__ctor_m95444CE8D5A6F1AFC9793866C3FE884E732DCEB2(L_45, L_44, (intptr_t)((void*)U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m5E792B02463EC4E7652783E96F3759CCBE0C9F28_RuntimeMethod_var), NULL);
+			NullCheck(L_43);
+			InterfaceActionInvoker1< EventHandler_tC6323FD7E6163F965259C33D72612C0E5B9BAB82* >::Invoke(0, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_43, L_45);
+			goto IL_018c;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_016e;
+		}
+		throw e;
+	}
+
+CATCH_016e:
+	{
+		Exception_t* L_46 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_3 = L_46;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_47 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_48 = V_3;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_47, L_48, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_01a6;
+	}
+
+IL_018c:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:81>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_49 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_49, NULL);
+	}
+
+IL_01a6:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CU3CStartU3Eb__0U3Ed_MoveNext_m7E3622CC1454B75170CCB8729DEA3AB56EC7D30D_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB*>(__this + _offset);
+	U3CU3CStartU3Eb__0U3Ed_MoveNext_m7E3622CC1454B75170CCB8729DEA3AB56EC7D30D(_thisAdjusted, method);
+}
+// Method Definition Index: 92430
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_m220831B0AE92936154AB875ED7A9DF0F60413177 (U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CU3CStartU3Eb__0U3Ed_SetStateMachine_m220831B0AE92936154AB875ED7A9DF0F60413177_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CU3CStartU3Eb__0U3Ed_t44F9C4978BA78B7E185832B4C1C3D9E455C67EFB*>(__this + _offset);
+	U3CU3CStartU3Eb__0U3Ed_SetStateMachine_m220831B0AE92936154AB875ED7A9DF0F60413177(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92431
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1__ctor_mE5007E87CA9D0EA9BF245556A6821A053189B6D3 (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92432
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass0_1_U3CStartU3Eb__1_m5E792B02463EC4E7652783E96F3759CCBE0C9F28 (U3CU3Ec__DisplayClass0_1_t363D9C54E92C4CF5F8651A93E4277DFE26924828* __this, RuntimeObject* ___0_popupWebView, EventArgs_t37273F03EAC87217701DD431B190FBD84AD7C377* ___1_closeEventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral59EA6AB031F987E7930700D26A18FEDC80746357);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:78>
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral59EA6AB031F987E7930700D26A18FEDC80746357, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:79>
+		WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_0 = __this->___popupPrefab;
+		NullCheck(L_0);
+		BaseWebViewPrefab_Destroy_m56B4A9BCBCFFEA74ACF2FAACF587BCEF555DE7ED(L_0, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:80>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92433
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_MoveNext_m304E94400D3DB556FB727F42D11B85099241CA3D (U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_m0F779BA1A2A2C989345282B6FC27BD30B53D85CE_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral60229673F65DBD4CFD3E012FC6A50D6F5CC17BB8);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9791E08A89114ED4219B5B52F6E2F1E88C0A9B93);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD798EE7C4C9AF33C5BEA2196B40C2DB50563DBEC);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* V_1 = NULL;
+	RuntimeObject* V_2 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_3;
+	memset((&V_3), 0, sizeof(V_3));
+	Exception_t* V_4 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0163_1;
+			}
+		}
+		{
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_3 = (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C_il2cpp_TypeInfo_var);
+			U3CU3Ec__DisplayClass0_0__ctor_m0DD785B1959DD58C4B071FFA6BC3AFEAD557FBB3(L_3, NULL);
+			__this->___U3CU3E8__1 = L_3;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)L_3);
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_4 = __this->___U3CU3E8__1;
+			PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* L_5 = __this->___U3CU3E4__this;
+			NullCheck(L_4);
+			L_4->___U3CU3E4__this = L_5;
+			Il2CppCodeGenWriteBarrier((void**)(&L_4->___U3CU3E4__this), (void*)L_5);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:36>
+			il2cpp_codegen_runtime_class_init_inline(Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+			Web_SetUserAgent_m6E7453DA5B374F7731D58C61551654BA96081D4E((bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:39>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_6 = __this->___U3CU3E8__1;
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_7;
+			L_7 = WebViewPrefab_Instantiate_m1600DCCEBCF71599366DC668085EA104DF87C7C0((0.600000024f), (0.300000012f), NULL);
+			NullCheck(L_6);
+			L_6->___mainWebViewPrefab = L_7;
+			Il2CppCodeGenWriteBarrier((void**)(&L_6->___mainWebViewPrefab), (void*)L_7);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:40>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_8 = __this->___U3CU3E8__1;
+			NullCheck(L_8);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_9 = L_8->___mainWebViewPrefab;
+			NullCheck(L_9);
+			((BaseWebViewPrefab_t61D5F3A8C1F32684F6238279DD1232FD2006C1A5*)L_9)->___PixelDensity = (2.0f);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:41>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_10 = __this->___U3CU3E8__1;
+			NullCheck(L_10);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_11 = L_10->___mainWebViewPrefab;
+			NullCheck(L_11);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_12;
+			L_12 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_11, NULL);
+			PopupDemo_t804255B31336B6951FB2896B59F73C6E0BDE02A6* L_13 = V_1;
+			NullCheck(L_13);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_14;
+			L_14 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_13, NULL);
+			NullCheck(L_12);
+			Transform_set_parent_m9BD5E563B539DD5BEC342736B03F97B38A243234(L_12, L_14, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:42>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_15 = __this->___U3CU3E8__1;
+			NullCheck(L_15);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_16 = L_15->___mainWebViewPrefab;
+			NullCheck(L_16);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_17;
+			L_17 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_16, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_18;
+			memset((&L_18), 0, sizeof(L_18));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_18), (0.0f), (0.0f), (0.400000006f), NULL);
+			NullCheck(L_17);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_17, L_18, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:43>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_19 = __this->___U3CU3E8__1;
+			NullCheck(L_19);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_20 = L_19->___mainWebViewPrefab;
+			NullCheck(L_20);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_21;
+			L_21 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_20, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22;
+			memset((&L_22), 0, sizeof(L_22));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_22), (0.0f), (180.0f), (0.0f), NULL);
+			NullCheck(L_21);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_21, L_22, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:47>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_23;
+			L_23 = Keyboard_Instantiate_m29EEDC5B5641EE0418096E2665F0886ACCA5AA82(NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:48>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_24 = L_23;
+			NullCheck(L_24);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_25;
+			L_25 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_24, NULL);
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_26 = __this->___U3CU3E8__1;
+			NullCheck(L_26);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_27 = L_26->___mainWebViewPrefab;
+			NullCheck(L_27);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_28;
+			L_28 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_27, NULL);
+			NullCheck(L_25);
+			Transform_SetParent_m9BDD7B7476714B2D7919B10BDC22CE75C0A0A195(L_25, L_28, (bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:49>
+			Keyboard_tAE8D2F1DAA44444C58F55658AF695DFC0F22A292* L_29 = L_24;
+			NullCheck(L_29);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_30;
+			L_30 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_29, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_31;
+			memset((&L_31), 0, sizeof(L_31));
+			Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_31), (0.0f), (-0.310000002f), (0.0f), NULL);
+			NullCheck(L_30);
+			Transform_set_localPosition_mDE1C997F7D79C0885210B7732B4BA50EE7D73134(L_30, L_31, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:50>
+			NullCheck(L_29);
+			Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_32;
+			L_32 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_29, NULL);
+			Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_33;
+			L_33 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
+			NullCheck(L_32);
+			Transform_set_localEulerAngles_m0458551662A1A51FDCA4C0417282B25D391661DF(L_32, L_33, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:54>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_34 = __this->___U3CU3E8__1;
+			NullCheck(L_34);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_35 = L_34->___mainWebViewPrefab;
+			NullCheck(L_35);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_36;
+			L_36 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_35, NULL);
+			NullCheck(L_36);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_37;
+			L_37 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_36, NULL);
+			V_3 = L_37;
+			bool L_38;
+			L_38 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_3), NULL);
+			if (L_38)
+			{
+				goto IL_017f_1;
+			}
+		}
+		{
+			int32_t L_39 = 0;
+			V_0 = L_39;
+			__this->___U3CU3E1__state = L_39;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_40 = V_3;
+			__this->___U3CU3Eu__1 = L_40;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_41 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53(L_41, (&V_3), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD_m8B1BE1A5162030BCECFB85A8862CA45BEF04EC53_RuntimeMethod_var);
+			goto IL_0239;
+		}
+
+IL_0163_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_42 = __this->___U3CU3Eu__1;
+			V_3 = L_42;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_43 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_43, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_44 = (-1);
+			V_0 = L_44;
+			__this->___U3CU3E1__state = L_44;
+		}
+
+IL_017f_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_3), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:58>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_45 = __this->___U3CU3E8__1;
+			NullCheck(L_45);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_46 = L_45->___mainWebViewPrefab;
+			NullCheck(L_46);
+			RuntimeObject* L_47;
+			L_47 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_46, NULL);
+			V_2 = ((RuntimeObject*)IsInst((RuntimeObject*)L_47, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var));
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:59>
+			RuntimeObject* L_48 = V_2;
+			if (L_48)
+			{
+				goto IL_01bb_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:60>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_49 = __this->___U3CU3E8__1;
+			NullCheck(L_49);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_50 = L_49->___mainWebViewPrefab;
+			NullCheck(L_50);
+			RuntimeObject* L_51;
+			L_51 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_50, NULL);
+			NullCheck(L_51);
+			InterfaceActionInvoker1< String_t* >::Invoke(43, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_51, _stringLiteral60229673F65DBD4CFD3E012FC6A50D6F5CC17BB8);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:61>
+			goto IL_021f;
+		}
+
+IL_01bb_1:
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:64>
+			il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+			Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral9791E08A89114ED4219B5B52F6E2F1E88C0A9B93, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:65>
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_52 = __this->___U3CU3E8__1;
+			NullCheck(L_52);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_53 = L_52->___mainWebViewPrefab;
+			NullCheck(L_53);
+			RuntimeObject* L_54;
+			L_54 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_53, NULL);
+			NullCheck(L_54);
+			InterfaceActionInvoker1< String_t* >::Invoke(44, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, L_54, _stringLiteralD798EE7C4C9AF33C5BEA2196B40C2DB50563DBEC);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:67>
+			RuntimeObject* L_55 = V_2;
+			NullCheck(L_55);
+			InterfaceActionInvoker1< int32_t >::Invoke(0, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var, L_55, 1);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:68>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:69>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:70>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:71>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:72>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:73>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:74>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:75>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:76>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:77>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:78>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:79>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:80>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:81>
+			RuntimeObject* L_56 = V_2;
+			U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C* L_57 = __this->___U3CU3E8__1;
+			EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651* L_58 = (EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651*)il2cpp_codegen_object_new(EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m59B1AC6C2239751241E5838B2B05D2359CFCCD50(L_58, L_57, (intptr_t)((void*)U3CU3Ec__DisplayClass0_0_U3CStartU3Eb__0_m0F779BA1A2A2C989345282B6FC27BD30B53D85CE_RuntimeMethod_var), NULL);
+			NullCheck(L_56);
+			InterfaceActionInvoker1< EventHandler_1_t66B9A9A74BCE639E7EC8BC7CCA6ED6D3B3A36651* >::Invoke(1, IWithPopups_t40471AE3B7D9FCCB2381DECA41F977353ED71C03_il2cpp_TypeInfo_var, L_56, L_58);
+			goto IL_021f;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_01ff;
+		}
+		throw e;
+	}
+
+CATCH_01ff:
+	{
+		Exception_t* L_59 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_4 = L_59;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_60 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_61 = V_4;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_60, L_61, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_0239;
+	}
+
+IL_021f:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/PopupDemo.cs:82>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		__this->___U3CU3E8__1 = (U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C*)NULL;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E8__1), (void*)(U3CU3Ec__DisplayClass0_0_t599B6AB08B81589F5BFBB7E32949E755B07DE13C*)NULL);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_62 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_62, NULL);
+	}
+
+IL_0239:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__0_MoveNext_m304E94400D3DB556FB727F42D11B85099241CA3D_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD*>(__this + _offset);
+	U3CStartU3Ed__0_MoveNext_m304E94400D3DB556FB727F42D11B85099241CA3D(_thisAdjusted, method);
+}
+// Method Definition Index: 92434
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__0_SetStateMachine_m67BAD1B1B8F0A3DF5E562D59B05D27479AF61745 (U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__0_SetStateMachine_m67BAD1B1B8F0A3DF5E562D59B05D27479AF61745_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__0_tE5ED565ED52B330FA6CD872C71E543C67FEAFCDD*>(__this + _offset);
+	U3CStartU3Ed__0_SetStateMachine_m67BAD1B1B8F0A3DF5E562D59B05D27479AF61745(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92435
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleWebViewDemo_Start_mFC06F306F194C518A898A010AD0F7AFF45EA91A8 (SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D L_0;
+		L_0 = AsyncVoidMethodBuilder_Create_m13D0B23DD350C14035918384E10AF641E6B9EE67(NULL);
+		(&V_0)->___U3CU3Et__builder = L_0;
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_synchronizationContext), (void*)NULL);
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_stateMachine), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&((&(((&(&V_0)->___U3CU3Et__builder))->___m_coreState))->___m_defaultContextAction), (void*)NULL);
+		#endif
+		#if IL2CPP_ENABLE_STRICT_WRITE_BARRIERS
+		Il2CppCodeGenWriteBarrier((void**)&(((&(&V_0)->___U3CU3Et__builder))->___m_task), (void*)NULL);
+		#endif
+		(&V_0)->___U3CU3E4__this = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&(&V_0)->___U3CU3E4__this), (void*)__this);
+		(&V_0)->___U3CU3E1__state = (-1);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_1 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&(&V_0)->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4(L_1, (&V_0), AsyncVoidMethodBuilder_Start_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_m51973EAC6CA9753A6F0D9BD81E82827AD7E7B4D4_RuntimeMethod_var);
+		return;
+	}
+}
+// Method Definition Index: 92436
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SimpleWebViewDemo__ctor_mADBD7AE1EC49DD6A3A5EA141C4D495A8EBE35246 (SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92437
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_mD05D686E37C2EDB95A6F7E812A13803F27C1AFB0 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* L_0 = (U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23*)il2cpp_codegen_object_new(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var);
+		U3CU3Ec__ctor_mF5947BB6AE16EA4FA7972E285E1161DC8D424FE0(L_0, NULL);
+		((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 92438
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_mF5947BB6AE16EA4FA7972E285E1161DC8D424FE0 (U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 92439
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartU3Eb__1_0_m4FB73328E0C1F07ECF40FD3910EA0792C735B4DF (U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* __this, RuntimeObject* ___0_sender, UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* ___1_eventArgs, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral29B1328AC65552D50952E80542A7CA315F3BD1F8);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:49>
+		UrlChangedEventArgs_t95020D16785399D5CD28D09529488615752793C6* L_0 = ___1_eventArgs;
+		NullCheck(L_0);
+		String_t* L_1 = L_0->___Url;
+		String_t* L_2;
+		L_2 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral29B1328AC65552D50952E80542A7CA315F3BD1F8, L_1, NULL);
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_2, NULL);
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:50>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 92440
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_MoveNext_m4463919E615E8BA406147F3C428771EA65984C9E (U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisWebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_m0355866DF5A5286E2A33CF45893A5BD5246056A2_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3CStartU3Eb__1_0_m4FB73328E0C1F07ECF40FD3910EA0792C735B4DF_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBC40892290738E4230D7D5ECFE429CD4564F7B05);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* V_1 = NULL;
+	TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 V_2;
+	memset((&V_2), 0, sizeof(V_2));
+	Exception_t* V_3 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B7_0 = NULL;
+	RuntimeObject* G_B7_1 = NULL;
+	EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* G_B6_0 = NULL;
+	RuntimeObject* G_B6_1 = NULL;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state;
+		V_0 = L_0;
+		SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* L_1 = __this->___U3CU3E4__this;
+		V_1 = L_1;
+	}
+	try
+	{
+		{
+			int32_t L_2 = V_0;
+			if (!L_2)
+			{
+				goto IL_0066_1;
+			}
+		}
+		{
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:36>
+			il2cpp_codegen_runtime_class_init_inline(Web_tBBF4851D472CC353D5CAD604723388990A438AE6_il2cpp_TypeInfo_var);
+			Web_SetUserAgent_m6E7453DA5B374F7731D58C61551654BA96081D4E((bool)0, NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:40>
+			SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* L_3 = V_1;
+			GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4;
+			L_4 = GameObject_Find_m7A669B4EEC2617AB82F6E3FF007CDCD9F21DB300(_stringLiteralBC40892290738E4230D7D5ECFE429CD4564F7B05, NULL);
+			NullCheck(L_4);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_5;
+			L_5 = GameObject_GetComponent_TisWebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_m0355866DF5A5286E2A33CF45893A5BD5246056A2(L_4, GameObject_GetComponent_TisWebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4_m0355866DF5A5286E2A33CF45893A5BD5246056A2_RuntimeMethod_var);
+			NullCheck(L_3);
+			L_3->___webViewPrefab = L_5;
+			Il2CppCodeGenWriteBarrier((void**)(&L_3->___webViewPrefab), (void*)L_5);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:44>
+			SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* L_6 = V_1;
+			NullCheck(L_6);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_7 = L_6->___webViewPrefab;
+			NullCheck(L_7);
+			Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572* L_8;
+			L_8 = BaseWebViewPrefab_WaitUntilInitialized_m8A2685573F80ED33DE39025F2B17EF00800857C3(L_7, NULL);
+			NullCheck(L_8);
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_9;
+			L_9 = Task_GetAwaiter_m08B368EAC939DD35D0AC428180822255A442CA29(L_8, NULL);
+			V_2 = L_9;
+			bool L_10;
+			L_10 = TaskAwaiter_get_IsCompleted_mC236D276FBE3A271B56EE13FCAF2C96E48453ED8((&V_2), NULL);
+			if (L_10)
+			{
+				goto IL_0082_1;
+			}
+		}
+		{
+			int32_t L_11 = 0;
+			V_0 = L_11;
+			__this->___U3CU3E1__state = L_11;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_12 = V_2;
+			__this->___U3CU3Eu__1 = L_12;
+			Il2CppCodeGenWriteBarrier((void**)&(((&__this->___U3CU3Eu__1))->___m_task), (void*)NULL);
+			AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_13 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+			AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A(L_13, (&V_2), __this, AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833_TisU3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096_mF3A33C77AB286DEEDC9AD7D1233B741F8732335A_RuntimeMethod_var);
+			goto IL_00e4;
+		}
+
+IL_0066_1:
+		{
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833 L_14 = __this->___U3CU3Eu__1;
+			V_2 = L_14;
+			TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833* L_15 = (TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833*)(&__this->___U3CU3Eu__1);
+			il2cpp_codegen_initobj(L_15, sizeof(TaskAwaiter_t9B661AC8C2EFA6BAB94C77BB24A5DDA82D61F833));
+			int32_t L_16 = (-1);
+			V_0 = L_16;
+			__this->___U3CU3E1__state = L_16;
+		}
+
+IL_0082_1:
+		{
+			TaskAwaiter_GetResult_mC1D712500AE49B4A89C85D6B79D87D1BA9A6B94D((&V_2), NULL);
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:48>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:49>
+			//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:50>
+			SimpleWebViewDemo_t07D999786B1981A19EBAD859AE4C0E1983606E04* L_17 = V_1;
+			NullCheck(L_17);
+			WebViewPrefab_t18A75F74EDE3B7848C45B1CE263FB04BDF08C5D4* L_18 = L_17->___webViewPrefab;
+			NullCheck(L_18);
+			RuntimeObject* L_19;
+			L_19 = BaseWebViewPrefab_get_WebView_m3DC2927AF99BD1954AD09609E4D17F00D2FF4865(L_18, NULL);
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_20 = ((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9__1_0;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_21 = L_20;
+			if (L_21)
+			{
+				G_B7_0 = L_21;
+				G_B7_1 = L_19;
+				goto IL_00b3_1;
+			}
+			G_B6_0 = L_21;
+			G_B6_1 = L_19;
+		}
+		{
+			il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var);
+			U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23* L_22 = ((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9;
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_23 = (EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7*)il2cpp_codegen_object_new(EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7_il2cpp_TypeInfo_var);
+			EventHandler_1__ctor_m36603453A72EA568E255A3A56F3E58AABBBA65EC(L_23, L_22, (intptr_t)((void*)U3CU3Ec_U3CStartU3Eb__1_0_m4FB73328E0C1F07ECF40FD3910EA0792C735B4DF_RuntimeMethod_var), NULL);
+			EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* L_24 = L_23;
+			((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9__1_0 = L_24;
+			Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t11E9D7EFA525B98C1E1A27E6D08BF3174E601F23_il2cpp_TypeInfo_var))->___U3CU3E9__1_0), (void*)L_24);
+			G_B7_0 = L_24;
+			G_B7_1 = G_B6_1;
+		}
+
+IL_00b3_1:
+		{
+			NullCheck(G_B7_1);
+			InterfaceActionInvoker1< EventHandler_1_tDF1FECB8C1CF8DE0FA2342915DE41B64F65E5DA7* >::Invoke(18, IWebView_t33D228EF6E77842F88A6854DD7903C3248CD51A6_il2cpp_TypeInfo_var, G_B7_1, G_B7_0);
+			goto IL_00d1;
+		}
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_00ba;
+		}
+		throw e;
+	}
+
+CATCH_00ba:
+	{
+		Exception_t* L_25 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		V_3 = L_25;
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_26 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		Exception_t* L_27 = V_3;
+		AsyncVoidMethodBuilder_SetException_mD9A6F5D1A99A62AC9DF322901BFDE05193CB177B(L_26, L_27, NULL);
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_00e4;
+	}
+
+IL_00d1:
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Demos/Scripts/SimpleWebViewDemo.cs:51>
+		__this->___U3CU3E1__state = ((int32_t)-2);
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_28 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		AsyncVoidMethodBuilder_SetResult_m008490FDF057D5F5D871F537C7A58BE36027F3DC(L_28, NULL);
+	}
+
+IL_00e4:
+	{
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_MoveNext_m4463919E615E8BA406147F3C428771EA65984C9E_AdjustorThunk (RuntimeObject* __this, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096*>(__this + _offset);
+	U3CStartU3Ed__1_MoveNext_m4463919E615E8BA406147F3C428771EA65984C9E(_thisAdjusted, method);
+}
+// Method Definition Index: 92441
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartU3Ed__1_SetStateMachine_mE9C21D5A72591C1BB01D19B137DFA080E824765D (U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method) 
+{
+	{
+		AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D* L_0 = (AsyncVoidMethodBuilder_t253E37B63E7E7B504878AE6563347C147F98EF2D*)(&__this->___U3CU3Et__builder);
+		RuntimeObject* L_1 = ___0_stateMachine;
+		AsyncVoidMethodBuilder_SetStateMachine_m48640FB81C34D4C2B5A5BBA7F5AE17DC50BF1A25(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C  void U3CStartU3Ed__1_SetStateMachine_mE9C21D5A72591C1BB01D19B137DFA080E824765D_AdjustorThunk (RuntimeObject* __this, RuntimeObject* ___0_stateMachine, const RuntimeMethod* method)
+{
+	U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096* _thisAdjusted;
+	int32_t _offset = 1;
+	_thisAdjusted = reinterpret_cast<U3CStartU3Ed__1_t045BC63357420C13D83EFEE3D9E92BBA02CD3096*>(__this + _offset);
+	U3CStartU3Ed__1_SetStateMachine_mE9C21D5A72591C1BB01D19B137DFA080E824765D(_thisAdjusted, ___0_stateMachine, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+// Method Definition Index: 51214
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
+{
+	{
+		float L_0 = ___0_x;
+		__this->___x = L_0;
+		float L_1 = ___1_y;
+		__this->___y = L_1;
+		float L_2 = ___2_z;
+		__this->___z = L_2;
+		return;
+	}
+}
+// Method Definition Index: 51238
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ((Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_StaticFields*)il2cpp_codegen_static_fields_for(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var))->___zeroVector;
+		V_0 = L_0;
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = V_0;
+		return L_1;
+	}
+}
+// Method Definition Index: 51344
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Repeat_m6F1560A163481BB311D685294E1B463C3E4EB3BA_inline (float ___0_t, float ___1_length, const RuntimeMethod* method) 
+{
+	float V_0 = 0.0f;
+	{
+		float L_0 = ___0_t;
+		float L_1 = ___0_t;
+		float L_2 = ___1_length;
+		float L_3;
+		L_3 = floorf(((float)(L_1/L_2)));
+		float L_4 = ___1_length;
+		float L_5 = ___1_length;
+		float L_6;
+		L_6 = Mathf_Clamp_mEB9AEA827D27D20FCC787F7375156AF46BB12BBF_inline(((float)il2cpp_codegen_subtract(L_0, ((float)il2cpp_codegen_multiply(L_3, L_4)))), (0.0f), L_5, NULL);
+		V_0 = L_6;
+		goto IL_001b;
+	}
+
+IL_001b:
+	{
+		float L_7 = V_0;
+		return L_7;
+	}
+}
+// Method Definition Index: 51337
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp_mEB9AEA827D27D20FCC787F7375156AF46BB12BBF_inline (float ___0_value, float ___1_min, float ___2_max, const RuntimeMethod* method) 
+{
+	bool V_0 = false;
+	bool V_1 = false;
+	float V_2 = 0.0f;
+	{
+		float L_0 = ___0_value;
+		float L_1 = ___1_min;
+		V_0 = (bool)((((float)L_0) < ((float)L_1))? 1 : 0);
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_000e;
+		}
+	}
+	{
+		float L_3 = ___1_min;
+		___0_value = L_3;
+		goto IL_0019;
+	}
+
+IL_000e:
+	{
+		float L_4 = ___0_value;
+		float L_5 = ___2_max;
+		V_1 = (bool)((((float)L_4) > ((float)L_5))? 1 : 0);
+		bool L_6 = V_1;
+		if (!L_6)
+		{
+			goto IL_0019;
+		}
+	}
+	{
+		float L_7 = ___2_max;
+		___0_value = L_7;
+	}
+
+IL_0019:
+	{
+		float L_8 = ___0_value;
+		V_2 = L_8;
+		goto IL_001d;
+	}
+
+IL_001d:
+	{
+		float L_9 = V_2;
+		return L_9;
+	}
+}
+// Method Definition Index: 51283
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Euler_m9262AB29E3E9CE94EF71051F38A28E82AEC73F90_inline (float ___0_x, float ___1_y, float ___2_z, const RuntimeMethod* method) 
+{
+	Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		float L_0 = ___0_x;
+		float L_1 = ___1_y;
+		float L_2 = ___2_z;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
+		memset((&L_3), 0, sizeof(L_3));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_3), L_0, L_1, L_2, NULL);
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_4;
+		L_4 = Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline(L_3, (0.0174532924f), NULL);
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_5;
+		L_5 = Quaternion_Internal_FromEulerRad_m66D4475341F53949471E6870FB5C5E4A5E9BA93E(L_4, NULL);
+		V_0 = L_5;
+		goto IL_001b;
+	}
+
+IL_001b:
+	{
+		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_6 = V_0;
+		return L_6;
+	}
+}
+// Method Definition Index: 51392
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_0 = ((Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_StaticFields*)il2cpp_codegen_static_fields_for(Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var))->___zeroVector;
+		V_0 = L_0;
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_1 = V_0;
+		return L_1;
+	}
+}
+// Method Definition Index: 51239
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_get_one_mC9B289F1E15C42C597180C9FE6FB492495B51D02_inline (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ((Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_StaticFields*)il2cpp_codegen_static_fields_for(Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var))->___oneVector;
+		V_0 = L_0;
+		goto IL_0009;
+	}
+
+IL_0009:
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = V_0;
+		return L_1;
+	}
+}
+// Method Definition Index: 47765
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* EventArgs_1_get_Value_m80E525C8C44666EDC26CA8775C2E57D9BCEBB2C1_gshared_inline (EventArgs_1_t47782FD286CF156BCC1ADB013283780167512067* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:/Users/antonioli/Desktop/Vrtest/Assets/Vuplex/WebView/Core/Scripts/EventArgs.cs:23>
+		RuntimeObject* L_0 = __this->___U3CValueU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 51249
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 Vector3_op_Multiply_m87BA7C578F96C8E49BB07088DAAC4649F83B0353_inline (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_a, float ___1_d, const RuntimeMethod* method) 
+{
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_0 = ___0_a;
+		float L_1 = L_0.___x;
+		float L_2 = ___1_d;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3 = ___0_a;
+		float L_4 = L_3.___y;
+		float L_5 = ___1_d;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = ___0_a;
+		float L_7 = L_6.___z;
+		float L_8 = ___1_d;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
+		memset((&L_9), 0, sizeof(L_9));
+		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&L_9), ((float)il2cpp_codegen_multiply(L_1, L_2)), ((float)il2cpp_codegen_multiply(L_4, L_5)), ((float)il2cpp_codegen_multiply(L_7, L_8)), NULL);
+		V_0 = L_9;
+		goto IL_0021;
+	}
+
+IL_0021:
+	{
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_10 = V_0;
+		return L_10;
+	}
+}

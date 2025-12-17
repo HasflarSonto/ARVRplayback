@@ -48,7 +48,7 @@ namespace VRInteractionRecording
             }
             else
             {
-                interactables = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+                interactables = FindObjectsByType<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>(FindObjectsSortMode.None);
             }
 
             foreach (UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable in interactables)

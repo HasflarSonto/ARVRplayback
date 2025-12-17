@@ -55,7 +55,7 @@ namespace VRInteractionRecording
         {
             if (objectStateManager == null)
             {
-                objectStateManager = FindObjectOfType<ObjectStateManager>();
+                objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             }
 
             if (xrOrigin == null)
@@ -64,7 +64,7 @@ namespace VRInteractionRecording
                 System.Type xrOriginType = System.Type.GetType("UnityEngine.XR.CoreUtils.XROrigin, Unity.XR.CoreUtils");
                 if (xrOriginType != null)
                 {
-                    UnityEngine.Object[] origins = FindObjectsOfType(xrOriginType);
+                    UnityEngine.Object[] origins = FindObjectsByType(xrOriginType, FindObjectsSortMode.None);
                     if (origins.Length > 0)
                     {
                         xrOrigin = origins[0];
@@ -74,7 +74,9 @@ namespace VRInteractionRecording
 
             if (leftController == null || rightController == null)
             {
-                UnityEngine.XR.Interaction.Toolkit.XRController[] controllers = FindObjectsOfType<UnityEngine.XR.Interaction.Toolkit.XRController>();
+#pragma warning disable CS0618 // XRController is deprecated but still functional
+                UnityEngine.XR.Interaction.Toolkit.XRController[] controllers = FindObjectsByType<UnityEngine.XR.Interaction.Toolkit.XRController>(FindObjectsSortMode.None);
+#pragma warning restore CS0618
                 foreach (var controller in controllers)
                 {
                     if (controller.name.ToLower().Contains("left") && leftController == null)

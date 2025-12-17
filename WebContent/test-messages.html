@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Unity Messages</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0052a3;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Unity Message Tester</h1>
+    <p>Use this page to test messages that Unity sends to the WebView.</p>
+    
+    <div class="test-section">
+        <h2>Test Slider Value</h2>
+        <p>Simulates the timeline slider moving:</p>
+        <button onclick="testSliderValue(0.0)">0.0</button>
+        <button onclick="testSliderValue(0.25)">0.25</button>
+        <button onclick="testSliderValue(0.5)">0.5</button>
+        <button onclick="testSliderValue(0.75)">0.75</button>
+        <button onclick="testSliderValue(1.0)">1.0</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test JSON Display</h2>
+        <p>Simulates displaying task JSON:</p>
+        <button onclick="testJSON()">Display Sample JSON</button>
+        <button onclick="testLargeJSON()">Display Large JSON</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Live Preview</h2>
+        <p>The WebView will appear below:</p>
+        <iframe id="webview" src="index.html"></iframe>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('webview');
+        
+        function testSliderValue(value) {
+            const message = JSON.stringify({
+                type: 'sliderValue',
+                value: value,
+                currentTime: value * 10.0, // Assume 10 second duration
+                totalDuration: 10.0
+            });
+            iframe.contentWindow.postMessage(message, '*');
+            console.log('Sent slider value:', message);
+        }
+        
+        function testJSON() {
+            const sampleJSON = {
+                taskName: "Sample Task",
+                steps: [
+                    {
+                        stepNumber: 1,
+                        action: "PickUp",
+                        objectId: "square",
+                        timestamp: 0.0
+                    },
+                    {
+                        stepNumber: 2,
+                        action: "PutDown",
+                        objectId: "square",
+                        timestamp: 2.5,
+                        position: { x: 1.0, y: 0.5, z: 0.0 }
+                    },
+                    {
+                        stepNumber: 3,
+                        action: "PickUp",
+                        objectId: "triangle",
+                        timestamp: 5.0
+                    }
+                ]
+            };
+            
+            const message = JSON.stringify({
+                type: 'displayJSON',
+                json: JSON.stringify(sampleJSON),
+                totalDuration: 10.0
+            });
+            iframe.contentWindow.postMessage(message, '*');
+            console.log('Sent JSON:', message);
+        }
+        
+        function testLargeJSON() {
+            const largeJSON = {
+                taskName: "Complex Assembly Task",
+                steps: []
+            };
+            
+            // Generate 20 steps
+            for (let i = 1; i <= 20; i++) {
+                largeJSON.steps.push({
+                    stepNumber: i,
+                    action: i % 2 === 1 ? "PickUp" : "PutDown",
+                    objectId: `object_${Math.floor(i/2) + 1}`,
+                    timestamp: (i - 1) * 0.5
+                });
+            }
+            
+            const message = JSON.stringify({
+                type: 'displayJSON',
+                json: JSON.stringify(largeJSON),
+                totalDuration: 10.0
+            });
+            iframe.contentWindow.postMessage(message, '*');
+            console.log('Sent large JSON:', message);
+        }
+        
+        // Listen for messages from iframe (for debugging)
+        window.addEventListener('message', function(event) {
+            if (event.source === iframe.contentWindow) {
+                console.log('Received from iframe:', event.data);
+            }
+        });
+    </script>
+</body>
+</html>
+

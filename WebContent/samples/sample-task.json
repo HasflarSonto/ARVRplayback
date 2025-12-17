@@ -1,0 +1,97 @@
+{
+  "taskName": "Build Simple Structure",
+  "version": "1.0",
+  "createdAt": "2024-01-01T12:00:00Z",
+  "lastModified": "2024-01-01T12:00:00Z",
+  "totalDuration": 12.5,
+  "steps": [
+    {
+      "stepNumber": 1,
+      "action": "PickUp",
+      "objectId": "817075155",
+      "objectName": "Square Block",
+      "timestamp": 0.5
+    },
+    {
+      "stepNumber": 2,
+      "action": "PutDown",
+      "objectId": "817075155",
+      "objectName": "Square Block",
+      "timestamp": 3.2,
+      "position": {
+        "x": 1.0,
+        "y": 0.0,
+        "z": 2.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "tolerance": {
+        "distance": 0.1,
+        "rotation": 15.0
+      }
+    },
+    {
+      "stepNumber": 3,
+      "action": "PickUp",
+      "objectId": "817075156",
+      "objectName": "Triangle Block",
+      "timestamp": 4.0
+    },
+    {
+      "stepNumber": 4,
+      "action": "PutDown",
+      "objectId": "817075156",
+      "objectName": "Triangle Block",
+      "timestamp": 6.8,
+      "position": {
+        "x": 1.5,
+        "y": 0.5,
+        "z": 2.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.707,
+        "z": 0.0,
+        "w": 0.707
+      },
+      "tolerance": {
+        "distance": 0.1,
+        "rotation": 15.0
+      }
+    },
+    {
+      "stepNumber": 5,
+      "action": "PickUp",
+      "objectId": "817075157",
+      "objectName": "Circle Block",
+      "timestamp": 8.0
+    },
+    {
+      "stepNumber": 6,
+      "action": "PutDown",
+      "objectId": "817075157",
+      "objectName": "Circle Block",
+      "timestamp": 10.5,
+      "position": {
+        "x": 2.0,
+        "y": 1.0,
+        "z": 2.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "tolerance": {
+        "distance": 0.1,
+        "rotation": 15.0
+      }
+    }
+  ]
+}
+

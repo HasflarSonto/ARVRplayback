@@ -122,17 +122,17 @@ namespace VRInteractionRecording
         {
             if (recordingManager == null)
             {
-                recordingManager = FindObjectOfType<InteractionRecordingManager>();
+                recordingManager = FindFirstObjectByType<InteractionRecordingManager>();
             }
 
             if (objectStateManager == null)
             {
-                objectStateManager = FindObjectOfType<ObjectStateManager>();
+                objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             }
 
             if (visualCueManager == null)
             {
-                visualCueManager = FindObjectOfType<VisualCueManager>();
+                visualCueManager = FindFirstObjectByType<VisualCueManager>();
             }
 
             // Setup UI
@@ -227,6 +227,10 @@ namespace VRInteractionRecording
         /// </summary>
         public void StopEditPlayback()
         {
+            Debug.LogError("═══════════════════════════════════════════");
+            Debug.LogError("🛑 StopEditPlayback() CALLED");
+            Debug.LogError("═══════════════════════════════════════════");
+
             isPlaying = false;
             currentPlaybackTime = 0f;
             currentRecording = null;
@@ -235,22 +239,31 @@ namespace VRInteractionRecording
             if (playerModelContainer != null)
             {
                 playerModelContainer.SetActive(false);
+                Debug.LogError("✅ Player models hidden");
             }
 
             // Clear visual annotations
             ClearVisualAnnotations();
+            Debug.LogError("✅ Visual annotations cleared");
 
             // Clear timeline markers
             ClearTimelineMarkers();
+            Debug.LogError("✅ Timeline markers cleared");
 
             // Unfreeze objects
+            Debug.LogError("🔓 Calling UnfreezeAllObjects()...");
             UnfreezeAllObjects();
+            Debug.LogError("✅ UnfreezeAllObjects() complete");
 
             // Reset objects
             if (objectStateManager != null)
             {
+                Debug.LogError("🔄 Calling objectStateManager.ResetAllObjects()...");
                 objectStateManager.ResetAllObjects();
+                Debug.LogError("✅ Objects reset");
             }
+
+            Debug.LogError("═══════════════════════════════════════════");
         }
 
         /// <summary>
@@ -537,8 +550,8 @@ namespace VRInteractionRecording
             // Update timeline slider
             if (timelineSlider != null)
             {
-                float normalizedTime = currentRecording.recordingDuration > 0 
-                    ? currentPlaybackTime / currentRecording.recordingDuration 
+                float normalizedTime = currentRecording.recordingDuration > 0
+                    ? currentPlaybackTime / currentRecording.recordingDuration
                     : 0f;
                 timelineSlider.value = normalizedTime;
             }
@@ -550,6 +563,9 @@ namespace VRInteractionRecording
                 string totalTimeStr = FormatTime(currentRecording.recordingDuration);
                 timeDisplayText.text = $"{currentTimeStr} / {totalTimeStr}";
             }
+
+            // Note: WebView timeline editor has its own playback timer
+            // Unity controls WebView, but they don't need to stay perfectly synced
         }
 
         /// <summary>
@@ -996,55 +1012,85 @@ namespace VRInteractionRecording
         /// </summary>
         private void UnfreezeAllObjects()
         {
+            Debug.LogError("───────────────────────────────────────────");
+            Debug.LogError("🔓 UnfreezeAllObjects() STARTED");
+            Debug.LogError($"   Tracked objects: {objectRigidbodies.Count}");
+            Debug.LogError($"   Original states: {originalKinematicStates.Count}");
+
+            int unfrozenCount = 0;
+
             // First, restore any tracked objects
             foreach (var kvp in objectRigidbodies)
             {
                 GameObject obj = kvp.Key;
                 Rigidbody rb = kvp.Value;
-                
+
                 if (rb != null && originalKinematicStates.ContainsKey(obj))
                 {
+                    bool wasKinematic = rb.isKinematic;
                     rb.isKinematic = originalKinematicStates[obj];
                     rb.linearVelocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
+
+                    Debug.LogError($"   ✅ {obj.name}: kinematic {wasKinematic} → {rb.isKinematic}");
+                    unfrozenCount++;
                 }
             }
+
+            Debug.LogError($"   Restored {unfrozenCount} tracked objects");
 
             // FORCE unfreeze ALL objects from ObjectStateManager (comprehensive check)
             if (objectStateManager != null)
             {
+                Debug.LogError($"   ObjectStateManager has {objectStateManager.InteractableObjects.Count} objects");
+                int forcedUnfreezeCount = 0;
+
                 foreach (var kvp in objectStateManager.InteractableObjects)
                 {
                     GameObject obj = kvp.Value.gameObject;
                     if (obj == null) continue;
-                    
+
                     Rigidbody rb = obj.GetComponent<Rigidbody>();
-                    
+
                     if (rb != null)
                     {
+                        bool wasKinematic = rb.isKinematic;
+
                         // If we tracked it, restore original state
                         if (originalKinematicStates.ContainsKey(obj))
                         {
                             rb.isKinematic = originalKinematicStates[obj];
+                            Debug.LogError($"   📝 {obj.name}: restored to original ({rb.isKinematic})");
                         }
                         // Otherwise, FORCE it to be non-kinematic (unfrozen)
                         // This ensures objects are never left frozen after edit mode
                         else if (rb.isKinematic)
                         {
                             rb.isKinematic = false;
+                            Debug.LogError($"   🔓 {obj.name}: FORCED to non-kinematic (was: {wasKinematic})");
+                            forcedUnfreezeCount++;
                         }
-                        
+
                         // Reset velocities to prevent objects from moving unexpectedly
                         rb.linearVelocity = Vector3.zero;
                         rb.angularVelocity = Vector3.zero;
                     }
                 }
+
+                Debug.LogError($"   Forced {forcedUnfreezeCount} objects to non-kinematic");
+            }
+            else
+            {
+                Debug.LogError("   ❌ ObjectStateManager is NULL!");
             }
 
             // Clear tracking dictionaries
             objectRigidbodies.Clear();
             originalKinematicStates.Clear();
-            
+
+            Debug.LogError("✅ Tracking dictionaries cleared");
+            Debug.LogError("✅ ALL OBJECTS UNFROZEN (gravity restored)");
+            Debug.LogError("───────────────────────────────────────────");
             Debug.Log("RecordingPlaybackEditor: All objects unfrozen (gravity restored)");
         }
 

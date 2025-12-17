@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Task Timeline Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            font-size: 11px;
+            font-weight: 600;
+            color: #cccccc;
+        }
+
+        .header button {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 3px 6px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 9px;
+        }
+
+        .header button:hover {
+            background: #1177bb;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Left Panel - Properties Editor */
+        .properties-panel {
+            width: 120px;
+            background: #252526;
+            border-right: 1px solid #3e3e42;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .properties-panel h2 {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 6px 8px;
+            background: #2d2d30;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .properties-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .property-group {
+            margin-bottom: 8px;
+        }
+
+        .property-group label {
+            display: block;
+            font-size: 9px;
+            color: #cccccc;
+            margin-bottom: 3px;
+        }
+
+        .property-group input,
+        .property-group select,
+        .property-group textarea {
+            width: 100%;
+            padding: 3px 4px;
+            background: #3c3c3c;
+            border: 1px solid #3e3e42;
+            border-radius: 2px;
+            color: #d4d4d4;
+            font-size: 9px;
+        }
+
+        .property-group input:focus,
+        .property-group select:focus,
+        .property-group textarea:focus {
+            outline: 1px solid #0e639c;
+            border-color: #0e639c;
+        }
+
+        .property-group .vector-input {
+            display: flex;
+            gap: 4px;
+        }
+
+        .property-group .vector-input input {
+            flex: 1;
+        }
+
+        .no-selection {
+            text-align: center;
+            color: #858585;
+            padding: 20px 10px;
+            font-size: 9px;
+        }
+
+        /* Center Panel - Timeline Editor */
+        .timeline-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+            overflow: hidden;
+        }
+
+        .timeline-controls {
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timeline-controls button {
+            background: #3c3c3c;
+            color: #cccccc;
+            border: 1px solid #3e3e42;
+            padding: 2px 5px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 9px;
+        }
+
+        .timeline-controls button:hover {
+            background: #454545;
+        }
+
+        .timeline-controls button.active {
+            background: #0e639c;
+            color: white;
+        }
+
+        .time-display {
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            color: #cccccc;
+            margin-left: auto;
+        }
+
+        .timeline-container {
+            flex: 1;
+            overflow: auto;
+            position: relative;
+        }
+
+        .timeline-ruler {
+            height: 20px;
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-tracks {
+            position: relative;
+            min-height: 200px;
+        }
+
+        .timeline-track {
+            height: 28px;
+            border-bottom: 1px solid #2d2d30;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 100px;
+        }
+
+        .track-label {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            padding: 0 6px;
+            font-size: 9px;
+            color: #858585;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #252526;
+            height: 100%;
+            border-right: 1px solid #3e3e42;
+            z-index: 5;
+        }
+
+        .action-block {
+            position: absolute;
+            height: 22px;
+            border-radius: 3px;
+            cursor: move;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            font-size: 9px;
+            font-weight: 500;
+            border: 1px solid transparent;
+            user-select: none;
+            touch-action: none; /* Improves pointer event handling for VR/touch */
+        }
+
+        .action-block:hover {
+            border-color: #0e639c;
+        }
+
+        .action-block.selected {
+            border-color: #007acc;
+            box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.3);
+        }
+
+        /* Exact time indicator for PickUp/PutDown (point events) */
+        .action-block.pickup::after,
+        .action-block.putdown::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -2px;
+            bottom: -2px;
+            width: 2px;
+            background: #f48771;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Resize handles for Move blocks (duration events) */
+        .action-block.move {
+            cursor: default;
+        }
+
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10px;
+            cursor: ew-resize;
+            z-index: 20;
+            background: transparent;
+            touch-action: none; /* Improves pointer event handling for VR/touch */
+        }
+
+        .resize-handle.left {
+            left: 0;
+        }
+
+        .resize-handle.right {
+            right: 0;
+        }
+
+        .resize-handle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .resize-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 1px;
+        }
+
+        .resize-handle.left::before {
+            left: 2px;
+        }
+
+        .resize-handle.right::before {
+            right: 2px;
+        }
+
+        .action-block.pickup {
+            background: #e74c3c;
+            color: #1e1e1e;
+        }
+
+        .action-block.putdown {
+            background: #ce9178;
+            color: #1e1e1e;
+        }
+
+        .action-block.move {
+            background: #569cd6;
+            color: #1e1e1e;
+        }
+
+        .action-block.placeexact {
+            background: #c586c0;
+            color: #1e1e1e;
+        }
+
+        .playhead {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #f48771;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .playhead::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #f48771;
+        }
+
+        /* Right Panel - JSON Output */
+        .json-panel {
+            width: 180px;
+            background: #252526;
+            border-left: 1px solid #3e3e42;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .json-panel h2 {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 6px 8px;
+            background: #2d2d30;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .json-panel button {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 2px 5px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 8px;
+        }
+
+        .json-panel button:hover {
+            background: #1177bb;
+        }
+
+        .json-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 9px;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .action-block {
+            background: #2d2d30;
+            border-left: 3px solid #0e639c;
+            margin-bottom: 2px;
+            border-radius: 2px;
+            overflow: visible;
+            flex-shrink: 0;
+            position: relative;
+            width: 100%;
+        }
+
+        .action-header {
+            padding: 4px 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            min-height: 24px;
+        }
+
+        .action-header:hover {
+            background: #3e3e42;
+        }
+
+        .action-title {
+            font-weight: 500;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+        }
+
+        .action-icon {
+            font-size: 10px;
+        }
+
+        .action-details {
+            padding: 4px 6px 6px 6px;
+            font-size: 8px;
+            color: #858585;
+            border-top: 1px solid #3e3e42;
+            display: none;
+            background: #252526;
+        }
+
+        .action-details.expanded {
+            display: block;
+        }
+
+        .action-expand-icon {
+            font-size: 8px;
+            color: #858585;
+            transition: transform 0.2s;
+        }
+
+        .action-block.expanded .action-expand-icon {
+            transform: rotate(90deg);
+        }
+
+        .action-detail-row {
+            padding: 2px 0;
+        }
+
+        .action-detail-label {
+            color: #9cdcfe;
+            margin-right: 4px;
+        }
+
+        .json-node {
+            margin-left: 16px;
+        }
+
+        .json-key {
+            color: #9cdcfe;
+        }
+
+        .json-string {
+            color: #ce9178;
+        }
+
+        .json-number {
+            color: #b5cea8;
+        }
+
+        .json-boolean {
+            color: #569cd6;
+        }
+
+        .json-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            width: 12px;
+            margin-right: 4px;
+        }
+
+        .json-toggle::before {
+            content: '▶';
+            color: #858585;
+            font-size: 10px;
+        }
+
+        .json-toggle.collapsed::before {
+            content: '▼';
+        }
+
+        .json-children {
+            margin-left: 16px;
+        }
+
+        .json-children.collapsed {
+            display: none;
+        }
+
+        /* Debug Panel */
+        .debug-panel {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 500px;
+            max-height: 80vh;
+            background: rgba(30, 30, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(14, 99, 156, 0.5);
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .debug-panel.visible {
+            display: flex;
+        }
+
+        .debug-header {
+            background: rgba(14, 99, 156, 0.8);
+            color: white;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .debug-close {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .debug-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .debug-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .debug-messages {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .debug-message {
+            padding: 6px 8px;
+            margin-bottom: 2px;
+            background: rgba(37, 37, 38, 0.6);
+            border-left: 2px solid #0e639c;
+            border-radius: 2px;
+            font-size: 9px;
+            color: #d4d4d4;
+        }
+
+        .debug-message.error {
+            border-left-color: #f48771;
+            color: #f48771;
+        }
+
+        .action-type-selector {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-type-selector button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #424242;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4e4e4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>VR Task Timeline Editor</h1>
+        <button id="loadTaskBtn">Load Task JSON</button>
+        <button id="loadRecordingBtn">Load Recording Data</button>
+        <button id="exportBtn">Export JSON</button>
+        <button id="debugBtn" style="background: #e74c3c;">Debug</button>
+        <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
+    </div>
+
+    <div class="main-container">
+        <!-- Left Panel - Properties Editor -->
+        <div class="properties-panel">
+            <h2>Properties</h2>
+            <div class="properties-content" id="propertiesContent">
+                <div class="no-selection">Select an action on the timeline to edit properties</div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Timeline Editor -->
+        <div class="timeline-panel">
+            <div class="timeline-controls">
+                <button id="playPauseBtn">▶ Play</button>
+                <button id="stopBtn">⏹ Stop</button>
+                <button id="zoomInBtn">+</button>
+                <button id="zoomOutBtn">-</button>
+                <div class="time-display">
+                    <span id="currentTime">0.00</span> / <span id="totalTime">0.00</span>s
+                </div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-ruler" id="timelineRuler"></div>
+                <div class="timeline-tracks" id="timelineTracks"></div>
+                <div class="playhead" id="playhead"></div>
+            </div>
+        </div>
+
+        <!-- Right Panel - JSON Output -->
+        <div class="json-panel">
+            <h2>
+                <span>Output JSON</span>
+                <button id="copyJsonBtn">Copy</button>
+            </h2>
+            <div class="json-content" id="jsonContent">
+                <div style="color: #858585;">Load a task to see JSON output</div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+
+    <!-- Debug Panel -->
+    <div class="debug-panel" id="debugPanel">
+        <div class="debug-header">
+            <span>Debug Console</span>
+            <button class="debug-close" id="debugCloseBtn">✕</button>
+        </div>
+        <div class="debug-content" id="debugContent">
+            <div class="debug-messages" id="debugMessages"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let taskData = null;
+        let recordingData = null;
+        let selectedStep = null;
+        let isPlaying = false;
+        let currentTime = 0;
+        let playInterval = null;
+        let pixelsPerSecond = 50; // Timeline zoom level
+        let timelineOffset = 0;
+        let moveBlocksGenerated = false; // Track if Move blocks have been auto-generated
+
+        // Debug tracking
+        let messageHistory = [];
+        let unityMessagesReceived = 0;
+        let lastUnityMessageTime = null;
+
+        // Update status bar
+        function updateStatus(message, type = 'info') {
+            const statusBar = document.getElementById('statusBar');
+            if (!statusBar) return;
+
+            statusBar.textContent = message;
+            statusBar.className = 'status-bar';
+
+            if (type === 'waiting') {
+                statusBar.classList.add('waiting');
+            } else if (type === 'error') {
+                statusBar.classList.add('error');
+            } else if (type === 'success') {
+                statusBar.classList.add('success');
+            }
+
+            console.log(`[STATUS] ${message}`);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEventListeners();
+            setupUnityMessageListener();
+
+            updateStatus('🟢 PAGE READY - Waiting for Unity recording data...', 'waiting');
+
+            // Debug: Log current location
+            logDebugMessage('Page Loaded', `Protocol: ${window.location.protocol}, Hostname: ${window.location.hostname || '(empty)'}`);
+            logDebugMessage('URL', `Full href: ${window.location.href}`);
+
+            // IMPORTANT: We are EXCLUSIVELY using Unity data now.
+            // NO sample data loading - all data comes from Unity after recording.
+            logDebugMessage('Mode', 'Unity-only mode - waiting for data from Unity recording');
+
+            // Check for Vuplex API - it loads after page finishes loading
+            // Listen for vuplexready event to know when window.vuplex is available
+            if (typeof window.vuplex !== 'undefined') {
+                logDebugMessage('Vuplex API', 'window.vuplex already available');
+                setupLegacyVuplexListener();
+            } else {
+                logDebugMessage('Vuplex API', 'Waiting for vuplexready event...');
+                window.addEventListener('vuplexready', () => {
+                    logDebugMessage('Vuplex API', 'vuplexready event fired - window.vuplex now available');
+                    setupLegacyVuplexListener();
+                });
+            }
+        });
+
+        // Setup legacy listener for older Vuplex versions (pre-4.11)
+        function setupLegacyVuplexListener() {
+            if (window.vuplex && window.vuplex.addEventListener) {
+                logDebugMessage('Legacy Listener', 'Setting up window.vuplex.addEventListener for pre-4.11 compatibility');
+                window.vuplex.addEventListener('message', (event) => {
+                    logDebugMessage('Legacy Message', 'Received via window.vuplex.addEventListener (pre-4.11)');
+                    // Process the same way as vuplexmessage
+                    processVuplexMessage(event.value || event);
+                });
+            }
+        }
+
+        // Process Vuplex message (shared by both modern and legacy listeners)
+        function processVuplexMessage(rawValue) {
+            try {
+                updateStatus('📨 RECEIVED MESSAGE FROM UNITY! Processing...', 'info');
+
+                // Log raw data for debugging
+                console.log('------RECEIVED MESSAGE START------');
+                console.log('Type:', typeof rawValue);
+                console.log('Length:', (typeof rawValue === 'string' ? rawValue.length : 'N/A'));
+                console.log('FULL RAW VALUE:');
+                console.log(rawValue);
+                console.log('------RECEIVED MESSAGE END------');
+
+                if (typeof rawValue === 'string') {
+                    logDebugMessage('Raw Value String', `Length: ${rawValue.length}, Preview: ${rawValue.substring(0, 150)}`);
+                } else {
+                    logDebugMessage('Raw Value Object', `Type: ${typeof rawValue}, Keys: ${Object.keys(rawValue || {}).join(', ')}`);
+                }
+
+                // Parse the message (Unity sends it as a JSON string)
+                let message;
+                if (typeof rawValue === 'string') {
+                    try {
+                        message = JSON.parse(rawValue);
+                        console.log('------PARSED MESSAGE START------');
+                        console.log('Message type:', message.type);
+                        console.log('Message keys:', Object.keys(message).join(', '));
+                        console.log('Full parsed message:');
+                        console.log(JSON.stringify(message, null, 2));
+                        console.log('------PARSED MESSAGE END------');
+                        logDebugMessage('Parse Success', `Parsed message type: ${message.type || 'unknown'}`);
+                        updateStatus(`📦 Message type: ${message.type} - ${rawValue.length} chars`, 'info');
+                    } catch (e) {
+                        console.warn('Failed to parse message as JSON:', e);
+                        logDebugMessage('Parse Error', `Failed to parse: ${e.message}. Value: ${rawValue.substring(0, 100)}`, true);
+                        updateStatus(`❌ PARSE ERROR: ${e.message}`, 'error');
+                        message = rawValue;
+                    }
+                } else {
+                    message = rawValue;
+                    logDebugMessage('Direct Object', `Received direct object with type: ${message.type || 'unknown'}`);
+                    updateStatus(`📦 Direct object received, type: ${message.type || 'unknown'}`, 'info');
+                }
+
+                // Track Unity messages
+                if (message && message.type) {
+                    unityMessagesReceived++;
+                    lastUnityMessageTime = new Date().toLocaleTimeString();
+
+                    // Log non-spam messages
+                    if (message.type !== 'updateTime' && message.type !== 'sliderValue') {
+                        logDebugMessage(`Unity Message`, `Type: ${message.type}, Fields: ${Object.keys(message).join(', ')}`);
+                    }
+                }
+
+                // Filter out slider/updateTime spam from console
+                if (message && message.type !== 'updateTime' && message.type !== 'sliderValue') {
+                    console.log('════════════════════════════════════════════════');
+                    console.log('📨 RECEIVED MESSAGE FROM UNITY:');
+                    console.log('Message type:', message.type);
+                    console.log('Full message object:');
+                    console.log(JSON.stringify(message, null, 2));
+                    console.log('════════════════════════════════════════════════');
+                }
+
+                if (message && message.type === 'loadTimelineData') {
+                    logDebugMessage('loadTimelineData', 'Processing loadTimelineData message...');
+                    console.log('════════════════════════════════════════════════');
+                    console.log('FULL MESSAGE RECEIVED:');
+                    console.log(JSON.stringify(message, null, 2));
+                    console.log('════════════════════════════════════════════════');
+
+                    // Load task data - handle both object (taskData) and string (taskJSON) formats
+                    if (message.taskData) {
+                        // Unity sends taskData as an object (not a string)
+                        console.log('Found taskData field (object)');
+                        try {
+                            taskData = message.taskData; // Already an object, no parsing needed
+                            console.log('Task data set:', taskData);
+                            console.log('Steps:', taskData.steps);
+                            if (taskData.steps && taskData.steps.length > 0) {
+                                console.log('First step:', taskData.steps[0]);
+                            }
+                            logDebugMessage('Task Data Success', `Loaded task with ${taskData.steps ? taskData.steps.length : 0} steps`);
+                            loadTask();
+                        } catch (e) {
+                            console.error('Error loading task data from Unity:', e);
+                            logDebugMessage('Task Load ERROR', `${e.message}`, true);
+                        }
+                    } else if (message.taskJSON) {
+                        // Fallback: handle taskJSON string format
+                        console.log('------FOUND TASKJSON FIELD------');
+                        console.log('taskJSON type:', typeof message.taskJSON);
+                        console.log('taskJSON length:', message.taskJSON ? message.taskJSON.length : 0);
+                        console.log('taskJSON is empty string?', message.taskJSON === '');
+
+                        if (!message.taskJSON || message.taskJSON === '') {
+                            console.error('------TASKJSON IS EMPTY!------');
+                            logDebugMessage('Empty taskJSON', 'taskJSON field exists but is empty!', true);
+                        } else {
+                            try {
+                                taskData = JSON.parse(message.taskJSON);
+                                console.log('------PARSED TASKJSON SUCCESSFULLY------');
+                                console.log('Full parsed task data:');
+                                console.log(JSON.stringify(taskData, null, 2));
+
+                                if (taskData.steps && taskData.steps.length > 0) {
+                                    console.log('First step structure:');
+                                    console.log(JSON.stringify(taskData.steps[0], null, 2));
+                                }
+
+                                logDebugMessage('Task Parse Success', `Parsed task with ${taskData.steps ? taskData.steps.length : 0} steps`);
+                                loadTask();
+                            } catch (e) {
+                                console.error('------ERROR PARSING TASKJSON------');
+                                console.error('Parse error:', e);
+                                console.error('taskJSON content (first 500 chars):', message.taskJSON.substring(0, 500));
+                                logDebugMessage('Task Parse ERROR', `${e.message}`, true);
+                            }
+                        }
+                    } else {
+                        console.log('------NO TASKJSON OR TASKDATA FIELD------');
+                        logDebugMessage('No taskData', 'loadTimelineData message has no taskData or taskJSON field!', true);
+                        updateStatus('❌ ERROR: No taskJSON or taskData in message!', 'error');
+                    }
+
+                    // Load recording data - handle both object (recordingData) and string (recordingJSON) formats
+                    if (message.recordingData) {
+                        // Unity sends recordingData as an object (not a string)
+                        logDebugMessage('recordingData Field', `Found recordingData object, type: ${typeof message.recordingData}`);
+                        try {
+                            recordingData = message.recordingData; // Already an object, no parsing needed
+                            console.log('Recording data loaded from Unity:', recordingData);
+                            logDebugMessage('Recording Loaded', `${recordingData.interactionEvents ? recordingData.interactionEvents.length : 0} interaction events`);
+                        } catch (e) {
+                            console.error('Error loading recording data from Unity:', e);
+                            logDebugMessage('Recording Load ERROR', `${e.message}`, true);
+                        }
+                    } else if (message.recordingJSON) {
+                        // Fallback: handle recordingJSON string format
+                        logDebugMessage('recordingJSON Field', `Found recordingJSON string, length: ${message.recordingJSON.length || 'N/A'}`);
+                        try {
+                            recordingData = JSON.parse(message.recordingJSON);
+                            console.log('Recording data loaded from Unity:', recordingData);
+                            logDebugMessage('Recording Loaded', `${recordingData.interactionEvents ? recordingData.interactionEvents.length : 0} interaction events`);
+                        } catch (e) {
+                            console.error('Error parsing recording JSON from Unity:', e, message.recordingJSON);
+                            logDebugMessage('Recording Parse ERROR', `${e.message}`, true);
+                        }
+                    } else {
+                        logDebugMessage('No recordingData', 'loadTimelineData message has no recordingData or recordingJSON field (optional)');
+                    }
+                } else if (message && message.type === 'displayJSON') {
+                    // Legacy support for old index.html format
+                    if (message.json) {
+                        try {
+                            taskData = JSON.parse(message.json);
+                            loadTask();
+                            console.log('Task data loaded from Unity (legacy):', taskData);
+                        } catch (e) {
+                            console.error('Error parsing JSON from Unity:', e);
+                        }
+                    }
+                } else if (message && message.type === 'statusUpdate') {
+                    // Unity sent us a status update
+                    if (message.message) {
+                        updateStatus(message.message, 'info');
+                        logDebugMessage('Unity Status', message.message);
+                    }
+                } else if (message && message.type === 'updateTime') {
+                    // Update playhead position
+                    if (typeof message.time === 'number') {
+                        currentTime = message.time;
+                        updatePlayhead();
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing message:', error);
+                logDebugMessage('Processing Error', `${error.message}`, true);
+            }
+        }
+
+        // Listen for messages from Unity WebView
+        function setupUnityMessageListener() {
+            logDebugMessage('Setup', 'Message listener initialized');
+
+            // IMPORTANT: Vuplex v4.11+ uses 'vuplexmessage' event on window
+            // The 'message' event is for generic window messages (not from Unity)
+            window.addEventListener('vuplexmessage', (event) => {
+                logDebugMessage('Vuplex Message', `Received vuplexmessage event (v4.11+) - value type: ${typeof event.value}`);
+                processVuplexMessage(event.value);
+            });
+        }
+
+        function setupEventListeners() {
+            document.getElementById('loadTaskBtn').addEventListener('click', () => loadJSON('task'));
+            document.getElementById('loadRecordingBtn').addEventListener('click', () => loadJSON('recording'));
+            document.getElementById('exportBtn').addEventListener('click', exportJSON);
+            document.getElementById('copyJsonBtn').addEventListener('click', copyJSON);
+            document.getElementById('playPauseBtn').addEventListener('click', togglePlay);
+            document.getElementById('stopBtn').addEventListener('click', stopPlayback);
+            document.getElementById('zoomInBtn').addEventListener('click', () => adjustZoom(1.2));
+            document.getElementById('zoomOutBtn').addEventListener('click', () => adjustZoom(0.8));
+            document.getElementById('fileInput').addEventListener('change', handleFileLoad);
+            document.getElementById('debugBtn').addEventListener('click', toggleDebugPanel);
+            document.getElementById('debugCloseBtn').addEventListener('click', toggleDebugPanel);
+        }
+
+        function toggleDebugPanel() {
+            const panel = document.getElementById('debugPanel');
+            panel.classList.toggle('visible');
+            if (panel.classList.contains('visible')) {
+                updateDebugPanel();
+            }
+        }
+
+        function updateDebugPanel() {
+            const debugContainer = document.getElementById('debugMessages');
+            if (!debugContainer) return;
+
+            if (messageHistory.length === 0) {
+                debugContainer.innerHTML = '<div style="color: #858585; padding: 8px;">No logs yet</div>';
+                return;
+            }
+
+            // Show all messages, newest first
+            debugContainer.innerHTML = '';
+            const recentMessages = messageHistory.slice(-100).reverse(); // Last 100 messages, newest first
+
+            recentMessages.forEach(msg => {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `debug-message ${msg.isError ? 'error' : ''}`;
+                msgDiv.textContent = `[${msg.time}] ${msg.type}: ${msg.message}`;
+                debugContainer.appendChild(msgDiv);
+            });
+        }
+
+        function logDebugMessage(type, message, isError = false) {
+            messageHistory.push({
+                time: new Date().toLocaleTimeString(),
+                type: type,
+                message: message,
+                isError: isError
+            });
+
+            // Keep ALL messages (no limit for debugging)
+            // Will clear when page reloads
+
+            // Also log to browser console for additional debugging
+            if (isError) {
+                console.error(`[${type}] ${message}`);
+            } else {
+                console.log(`[${type}] ${message}`);
+            }
+
+            // Update debug panel if open
+            const panel = document.getElementById('debugPanel');
+            if (panel && panel.classList.contains('visible')) {
+                updateDebugPanel();
+            }
+        }
+
+
+        function loadJSON(type) {
+            const input = document.getElementById('fileInput');
+            input.dataset.type = type;
+            input.click();
+        }
+
+        function handleFileLoad(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const data = JSON.parse(event.target.result);
+                    if (e.target.dataset.type === 'task') {
+                        taskData = data;
+                        loadTask();
+                    } else {
+                        recordingData = data;
+                        console.log('Recording data loaded:', data);
+                    }
+                } catch (error) {
+                    alert('Error parsing JSON: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Sample data loading REMOVED - we exclusively use Unity data now
+        // Data is sent from Unity via WebViewManager.DisplayJSON() after recording finishes
+
+        function loadTask() {
+            console.log('════════════════════════════════════════════════');
+            console.log('🚀 loadTask() CALLED');
+            logDebugMessage('loadTask()', 'Function called');
+
+            if (!taskData) {
+                console.log('❌ taskData is NULL in loadTask()');
+                logDebugMessage('loadTask() ABORT', 'taskData is null or undefined!', true);
+                return;
+            }
+
+            console.log('✅ taskData in loadTask():');
+            console.log(JSON.stringify(taskData, null, 2));
+            console.log('════════════════════════════════════════════════');
+            logDebugMessage('loadTask() Data', `Task: "${taskData.taskName}", Duration: ${taskData.totalDuration}s, Steps: ${taskData.steps?.length || 0}`);
+
+            try {
+                // TEST: Verify JSON panel is accessible
+                const jsonPanel = document.getElementById('jsonContent');
+                if (jsonPanel) {
+                    jsonPanel.style.color = 'lime';
+                    jsonPanel.textContent = 'TEST: JSON panel is accessible and receiving data!';
+                    logDebugMessage('loadTask() TEST', 'JSON panel test message set - should be visible in green');
+                    setTimeout(() => {
+                        jsonPanel.style.color = '';
+                        updateJSONOutput();
+                    }, 2000);
+                } else {
+                    logDebugMessage('loadTask() ERROR', 'jsonContent element NOT FOUND!', true);
+                }
+
+                document.getElementById('taskName').textContent = taskData.taskName || 'Untitled Task';
+                document.getElementById('totalTime').textContent = taskData.totalDuration.toFixed(2);
+                logDebugMessage('loadTask() UI', 'Updated task name and duration');
+
+                renderTimeline();
+                logDebugMessage('loadTask() Timeline', 'renderTimeline() completed');
+
+                // updateJSONOutput will be called after 2 second delay (see above)
+                logDebugMessage('loadTask() JSON', 'updateJSONOutput() will be called after test');
+
+                logDebugMessage('loadTask() SUCCESS', 'Task loaded successfully!');
+            } catch (error) {
+                logDebugMessage('loadTask() ERROR', `${error.message}: ${error.stack}`, true);
+            }
+        }
+
+        function renderTimeline() {
+            logDebugMessage('renderTimeline()', 'Function called');
+
+            if (!taskData) {
+                logDebugMessage('renderTimeline() ABORT', 'taskData is null!', true);
+                return;
+            }
+
+            logDebugMessage('renderTimeline() Start', `Rendering ${taskData.steps?.length || 0} steps`);
+
+            const ruler = document.getElementById('timelineRuler');
+            const tracks = document.getElementById('timelineTracks');
+
+            if (!ruler || !tracks) {
+                logDebugMessage('renderTimeline() ERROR', 'Timeline DOM elements not found!', true);
+                return;
+            }
+
+            // Clear existing
+            ruler.innerHTML = '';
+            tracks.innerHTML = '';
+            logDebugMessage('renderTimeline() Clear', 'Cleared existing timeline content');
+
+            const duration = taskData.totalDuration;
+            const rulerWidth = duration * pixelsPerSecond;
+            ruler.style.width = rulerWidth + 'px';
+            ruler.style.paddingLeft = '100px'; // Start after track labels
+
+            // Draw ruler (offset by track label width)
+            const labelWidth = 100;
+            for (let i = 0; i <= duration; i += 1) {
+                const marker = document.createElement('div');
+                marker.style.position = 'absolute';
+                marker.style.left = (labelWidth + i * pixelsPerSecond) + 'px';
+                marker.style.top = '0';
+                marker.style.height = '100%';
+                marker.style.width = '1px';
+                marker.style.background = i % 5 === 0 ? '#858585' : '#3e3e42';
+                ruler.appendChild(marker);
+
+                if (i % 5 === 0) {
+                    const label = document.createElement('div');
+                    label.textContent = i + 's';
+                    label.style.position = 'absolute';
+                    label.style.left = (labelWidth + i * pixelsPerSecond + 4) + 'px';
+                    label.style.top = '4px';
+                    label.style.fontSize = '11px';
+                    label.style.color = '#858585';
+                    ruler.appendChild(label);
+                }
+            }
+
+            // Group steps by object and sort by timestamp
+            const stepsByObject = {};
+            taskData.steps.forEach(step => {
+                if (!stepsByObject[step.objectId]) {
+                    stepsByObject[step.objectId] = [];
+                }
+                stepsByObject[step.objectId].push(step);
+            });
+
+            logDebugMessage('renderTimeline() Group', `Grouped into ${Object.keys(stepsByObject).length} objects`);
+
+            // Sort steps within each object by timestamp (use startTime for Move)
+            Object.keys(stepsByObject).forEach(objectId => {
+                stepsByObject[objectId].sort((a, b) => {
+                    const timeA = a.action === 'Move' ? (a.startTime || a.timestamp) : a.timestamp;
+                    const timeB = b.action === 'Move' ? (b.startTime || b.timestamp) : b.timestamp;
+                    return timeA - timeB;
+                });
+            });
+            
+            // Don't auto-generate Move blocks - user must add them manually
+            // Move blocks are only created when user clicks "Move" in the action selector
+
+            // Rebuild taskData.steps from grouped steps (to include Move actions)
+            taskData.steps = [];
+            Object.keys(stepsByObject).forEach(objectId => {
+                stepsByObject[objectId].forEach(step => {
+                    taskData.steps.push(step);
+                });
+            });
+            // Sort all steps by timestamp (use startTime for Move) and renumber
+            taskData.steps.sort((a, b) => {
+                const timeA = a.action === 'Move' ? (a.startTime || a.timestamp) : a.timestamp;
+                const timeB = b.action === 'Move' ? (b.startTime || b.timestamp) : b.timestamp;
+                return timeA - timeB;
+            });
+            taskData.steps.forEach((step, idx) => {
+                step.stepNumber = idx + 1;
+            });
+            
+            // Create tracks
+            let trackIndex = 0;
+            let totalBlocks = 0;
+            Object.keys(stepsByObject).forEach(objectId => {
+                const steps = stepsByObject[objectId];
+                const firstStep = steps[0];
+                const track = createTrack(firstStep.objectName || objectId, trackIndex++, objectId);
+                tracks.appendChild(track);
+
+                steps.forEach(step => {
+                    const block = createActionBlock(step);
+                    track.appendChild(block);
+                    totalBlocks++;
+                });
+            });
+
+            logDebugMessage('renderTimeline() Tracks', `Created ${trackIndex} tracks with ${totalBlocks} action blocks`);
+
+            updateJSONOutput();
+
+            updatePlayhead();
+
+            logDebugMessage('renderTimeline() SUCCESS', 'Timeline rendering complete!');
+        }
+
+        function createTrack(label, index, objectId) {
+            const track = document.createElement('div');
+            track.className = 'timeline-track';
+            track.style.top = (index * 40) + 'px';
+            track.dataset.objectId = objectId;
+
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'track-label';
+            labelDiv.textContent = label;
+            track.appendChild(labelDiv);
+
+            // Make track clickable to add new actions
+            track.addEventListener('click', (e) => {
+                // Don't trigger if clicking on a block or label
+                if (e.target.classList.contains('action-block') || 
+                    e.target.classList.contains('track-label') ||
+                    e.target.closest('.action-block')) {
+                    return;
+                }
+                
+                // Calculate timestamp from click position
+                const trackRect = track.getBoundingClientRect();
+                const clickX = e.clientX - trackRect.left - 100; // Subtract label width
+                const timestamp = Math.max(0, clickX / pixelsPerSecond);
+                
+                // Show action type selector
+                showActionTypeSelector(track, timestamp, objectId, label);
+            });
+
+            return track;
+        }
+
+        function showActionTypeSelector(track, timestamp, objectId, objectName) {
+            // Remove existing selector if any
+            const existing = document.querySelector('.action-type-selector');
+            if (existing) existing.remove();
+
+            const selector = document.createElement('div');
+            selector.className = 'action-type-selector';
+            selector.style.position = 'absolute';
+            const labelWidth = 100;
+            selector.style.left = (labelWidth + timestamp * pixelsPerSecond - 40) + 'px';
+            selector.style.top = '4px';
+            selector.style.background = '#2d2d30';
+            selector.style.border = '1px solid #3e3e42';
+            selector.style.borderRadius = '4px';
+            selector.style.padding = '8px';
+            selector.style.zIndex = '1000';
+            selector.style.display = 'flex';
+            selector.style.gap = '4px';
+
+            // Store removeSelector function so we can clean it up
+            let removeSelector = null;
+
+            const actions = ['PickUp', 'Move', 'PutDown'];
+            actions.forEach(action => {
+                const btn = document.createElement('button');
+                btn.textContent = action;
+                btn.style.padding = '4px 8px';
+                // Set colors based on action type
+                let bgColor = '#ce9178'; // Default (PutDown)
+                if (action === 'PickUp') bgColor = '#e74c3c';
+                else if (action === 'Move') bgColor = '#569cd6';
+                btn.style.background = bgColor;
+                btn.style.color = '#1e1e1e';
+                btn.style.border = 'none';
+                btn.style.borderRadius = '3px';
+                btn.style.cursor = 'pointer';
+                btn.style.fontSize = '11px';
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent event from bubbling
+                    createNewAction(track, action, timestamp, objectId, objectName);
+                    selector.remove();
+                    // Clean up the click-outside listener
+                    if (removeSelector) {
+                        document.removeEventListener('click', removeSelector);
+                    }
+                });
+                selector.appendChild(btn);
+            });
+
+            track.appendChild(selector);
+
+            // Remove selector if clicking outside
+            setTimeout(() => {
+                removeSelector = (e) => {
+                    if (!selector.contains(e.target) && !track.contains(e.target)) {
+                        selector.remove();
+                        document.removeEventListener('click', removeSelector);
+                    }
+                };
+                setTimeout(() => document.addEventListener('click', removeSelector), 100);
+            }, 0);
+        }
+
+        function createNewAction(track, action, timestamp, objectId, objectName) {
+            // Find the highest step number
+            let maxStepNumber = 0;
+            if (taskData && taskData.steps) {
+                taskData.steps.forEach(step => {
+                    if (step.stepNumber > maxStepNumber) {
+                        maxStepNumber = step.stepNumber;
+                    }
+                });
+            }
+
+            const newStep = {
+                stepNumber: maxStepNumber + 1,
+                action: action,
+                objectId: objectId,
+                objectName: objectName,
+                timestamp: timestamp
+            };
+
+            // Add position/rotation for PutDown
+            if (action === 'PutDown') {
+                newStep.position = { x: 0, y: 0, z: 0 };
+                newStep.rotation = { x: 0, y: 0, z: 0, w: 1 };
+                newStep.tolerance = { distance: 0.1, rotation: 15.0 };
+            }
+            
+            // Add startTime/endTime for Move (duration event)
+            if (action === 'Move') {
+                newStep.startTime = timestamp;
+                newStep.endTime = timestamp + 1.0; // Default 1 second duration
+            }
+
+            // Add to task data
+            if (!taskData.steps) taskData.steps = [];
+            taskData.steps.push(newStep);
+            
+            // Sort and renumber (use startTime for Move)
+            taskData.steps.sort((a, b) => {
+                const timeA = a.action === 'Move' ? (a.startTime || a.timestamp) : a.timestamp;
+                const timeB = b.action === 'Move' ? (b.startTime || b.timestamp) : b.timestamp;
+                return timeA - timeB;
+            });
+            taskData.steps.forEach((step, idx) => {
+                step.stepNumber = idx + 1;
+            });
+
+            // Create and add block
+            const block = createActionBlock(newStep);
+            track.appendChild(block);
+            
+            // Select the new action
+            selectStep(newStep);
+            
+            updateJSONOutput();
+        }
+
+        function createActionBlock(step) {
+            const block = document.createElement('div');
+            block.className = `action-block ${step.action.toLowerCase()}`;
+            // Just show action name - row label already shows object name
+            block.textContent = step.action;
+            block.dataset.stepNumber = step.stepNumber;
+            block.dataset.objectId = step.objectId;
+            block.dataset.action = step.action;
+
+            const labelWidth = 100;
+            const left = labelWidth + step.timestamp * pixelsPerSecond;
+            
+            // PickUp and PutDown are point events - show as wider blocks with centered time indicator
+            if (step.action === 'PickUp' || step.action === 'PutDown') {
+                block.style.left = (left - 30) + 'px'; // Center the block on the timestamp (60px wide, so -30px offset)
+                block.style.width = '60px';
+                block.style.justifyContent = 'center';
+            } 
+            // Move is a duration event - needs start and end times
+            else if (step.action === 'Move') {
+                // Move blocks need startTime and endTime
+                if (!step.startTime) step.startTime = step.timestamp;
+                if (!step.endTime) step.endTime = step.timestamp + 1.0; // Default 1 second duration
+
+                const labelWidth = 100;
+                const startLeft = labelWidth + step.startTime * pixelsPerSecond;
+                const width = (step.endTime - step.startTime) * pixelsPerSecond;
+                block.style.left = startLeft + 'px';
+                block.style.width = Math.max(20, width) + 'px';
+                
+                // Add resize handles
+                const leftHandle = document.createElement('div');
+                leftHandle.className = 'resize-handle left';
+                // Add both mouse and pointer event listeners for VR compatibility
+                leftHandle.addEventListener('mousedown', (e) => {
+                    e.stopPropagation();
+                    startResize(block, step, 'left', e);
+                });
+                leftHandle.addEventListener('pointerdown', (e) => {
+                    e.stopPropagation();
+                    startResize(block, step, 'left', e);
+                });
+                block.appendChild(leftHandle);
+
+                const rightHandle = document.createElement('div');
+                rightHandle.className = 'resize-handle right';
+                // Add both mouse and pointer event listeners for VR compatibility
+                rightHandle.addEventListener('mousedown', (e) => {
+                    e.stopPropagation();
+                    startResize(block, step, 'right', e);
+                });
+                rightHandle.addEventListener('pointerdown', (e) => {
+                    e.stopPropagation();
+                    startResize(block, step, 'right', e);
+                });
+                block.appendChild(rightHandle);
+            }
+            // Other actions
+            else {
+                const widths = {
+                    'PlaceExact': 60
+                };
+                const width = widths[step.action] || 50;
+                block.style.left = left + 'px';
+                block.style.width = width + 'px';
+            }
+
+            block.addEventListener('click', (e) => {
+                // Don't select if clicking on resize handle
+                if (!e.target.classList.contains('resize-handle') && 
+                    !e.target.closest('.resize-handle')) {
+                    e.stopPropagation();
+                    selectStep(step);
+                }
+            });
+
+            // Make draggable (but not for Move - it uses resize handles)
+            if (step.action !== 'Move') {
+                makeDraggable(block, step);
+            } else {
+                // For Move, allow dragging the whole block (which moves both start and end)
+                makeMoveBlockDraggable(block, step);
+            }
+
+            return block;
+        }
+
+        function makeDraggable(block, step) {
+            let isDragging = false;
+            let startX = 0;
+            let startLeft = 0;
+
+            // Handler for starting drag (works for both mouse and pointer events)
+            const onDragStart = (e) => {
+                // Don't drag if clicking on resize handle
+                if (e.target.classList.contains('resize-handle')) return;
+
+                isDragging = true;
+                startX = e.clientX;
+                startLeft = parseFloat(block.style.left);
+                block.style.cursor = 'grabbing';
+                e.preventDefault();
+            };
+
+            // Handler for dragging (works for both mouse and pointer events)
+            const onDragMove = (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const labelWidth = 100;
+                const newLeft = Math.max(labelWidth, startLeft + deltaX);
+
+                // For PickUp/PutDown, center the block on the timestamp
+                if (step.action === 'PickUp' || step.action === 'PutDown') {
+                    // Account for the -30px offset when calculating timestamp from the block's left edge
+                    // The block is 60px wide and centered, so add 30px to get the center position
+                    const timestamp = (newLeft + 30 - labelWidth) / pixelsPerSecond;
+                    step.timestamp = Math.max(0, timestamp);
+                    block.style.left = (labelWidth + step.timestamp * pixelsPerSecond - 30) + 'px'; // Center 60px wide block
+                } else {
+                    const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
+                    step.timestamp = Math.max(0, timestamp);
+                    block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
+                }
+
+                updateJSONOutput();
+                renderTimeline(); // Re-render to update playhead position
+            };
+
+            // Handler for ending drag (works for both mouse and pointer events)
+            const onDragEnd = () => {
+                if (isDragging) {
+                    isDragging = false;
+                    block.style.cursor = 'move';
+                }
+            };
+
+            // Add both mouse and pointer event listeners for maximum compatibility
+            // Pointer events work for: mouse, touch, stylus, AND VR controllers
+            block.addEventListener('mousedown', onDragStart);
+            block.addEventListener('pointerdown', onDragStart);
+
+            document.addEventListener('mousemove', onDragMove);
+            document.addEventListener('pointermove', onDragMove);
+
+            document.addEventListener('mouseup', onDragEnd);
+            document.addEventListener('pointerup', onDragEnd);
+        }
+
+        function makeMoveBlockDraggable(block, step) {
+            let isDragging = false;
+            let startX = 0;
+            let startLeft = 0;
+            let startStartTime = 0;
+            let startEndTime = 0;
+
+            // Handler for starting drag (works for both mouse and pointer events)
+            const onDragStart = (e) => {
+                // Don't drag if clicking on resize handle
+                if (e.target.classList.contains('resize-handle')) return;
+
+                isDragging = true;
+                startX = e.clientX;
+                startLeft = parseFloat(block.style.left);
+                startStartTime = step.startTime;
+                startEndTime = step.endTime;
+                block.style.cursor = 'grabbing';
+                e.preventDefault();
+            };
+
+            // Handler for dragging (works for both mouse and pointer events)
+            const onDragMove = (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const deltaTime = deltaX / pixelsPerSecond;
+                const newStartTime = Math.max(0, startStartTime + deltaTime);
+                const newEndTime = Math.max(newStartTime + 0.1, startEndTime + deltaTime); // Min 0.1s duration
+
+                step.startTime = newStartTime;
+                step.endTime = newEndTime;
+
+                const labelWidth = 100;
+                const newLeft = labelWidth + newStartTime * pixelsPerSecond;
+                const width = (newEndTime - newStartTime) * pixelsPerSecond;
+                block.style.left = newLeft + 'px';
+                block.style.width = Math.max(20, width) + 'px';
+
+                updateJSONOutput();
+            };
+
+            // Handler for ending drag (works for both mouse and pointer events)
+            const onDragEnd = () => {
+                if (isDragging) {
+                    isDragging = false;
+                    block.style.cursor = 'default';
+                }
+            };
+
+            // Add both mouse and pointer event listeners for maximum compatibility
+            // Pointer events work for: mouse, touch, stylus, AND VR controllers
+            block.addEventListener('mousedown', onDragStart);
+            block.addEventListener('pointerdown', onDragStart);
+
+            document.addEventListener('mousemove', onDragMove);
+            document.addEventListener('pointermove', onDragMove);
+
+            document.addEventListener('mouseup', onDragEnd);
+            document.addEventListener('pointerup', onDragEnd);
+        }
+
+        function startResize(block, step, side, e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            let isResizing = true;
+            let startX = e.clientX;
+            let startStartTime = step.startTime;
+            let startEndTime = step.endTime;
+            let startWidth = parseFloat(block.style.width);
+            let startLeft = parseFloat(block.style.left);
+
+            // Handler for resize move (works for both mouse and pointer events)
+            function onResizeMove(e) {
+                if (!isResizing) return;
+
+                const deltaX = e.clientX - startX;
+                const deltaTime = deltaX / pixelsPerSecond;
+
+                if (side === 'left') {
+                    const newStartTime = Math.max(0, startStartTime + deltaTime);
+                    const newEndTime = Math.max(newStartTime + 0.1, startEndTime); // Min 0.1s duration
+
+                    step.startTime = newStartTime;
+                    step.endTime = newEndTime;
+
+                    const labelWidth = 100;
+                    const newLeft = labelWidth + newStartTime * pixelsPerSecond;
+                    const width = (newEndTime - newStartTime) * pixelsPerSecond;
+                    block.style.left = newLeft + 'px';
+                    block.style.width = Math.max(20, width) + 'px';
+                } else if (side === 'right') {
+                    const newEndTime = Math.max(startStartTime + 0.1, startEndTime + deltaTime); // Min 0.1s duration
+
+                    step.startTime = startStartTime;
+                    step.endTime = newEndTime;
+
+                    const width = (newEndTime - startStartTime) * pixelsPerSecond;
+                    block.style.width = Math.max(20, width) + 'px';
+                }
+
+                updateJSONOutput();
+            }
+
+            // Handler for resize end (works for both mouse and pointer events)
+            function onResizeUp() {
+                isResizing = false;
+                // Remove both mouse and pointer event listeners
+                document.removeEventListener('mousemove', onResizeMove);
+                document.removeEventListener('pointermove', onResizeMove);
+                document.removeEventListener('mouseup', onResizeUp);
+                document.removeEventListener('pointerup', onResizeUp);
+            }
+
+            // Add both mouse and pointer event listeners for maximum compatibility
+            document.addEventListener('mousemove', onResizeMove);
+            document.addEventListener('pointermove', onResizeMove);
+            document.addEventListener('mouseup', onResizeUp);
+            document.addEventListener('pointerup', onResizeUp);
+        }
+
+        function selectStep(step) {
+            selectedStep = step;
+            
+            // Update UI
+            document.querySelectorAll('.action-block').forEach(block => {
+                block.classList.remove('selected');
+            });
+            
+            // Find block by matching step data (more reliable than just stepNumber)
+            document.querySelectorAll('.action-block').forEach(block => {
+                const blockStepNumber = parseInt(block.dataset.stepNumber);
+                const blockAction = block.textContent.trim();
+                const blockObjectId = block.dataset.objectId;
+                
+                // Match by stepNumber, action, and objectId
+                if (blockStepNumber === step.stepNumber && 
+                    blockAction === step.action && 
+                    blockObjectId === step.objectId) {
+                    block.classList.add('selected');
+                }
+            });
+
+            renderProperties();
+        }
+
+        function renderProperties() {
+            const content = document.getElementById('propertiesContent');
+            if (!selectedStep) {
+                content.innerHTML = '<div class="no-selection">Select an action on the timeline to edit properties</div>';
+                return;
+            }
+
+            const step = selectedStep;
+            content.innerHTML = `
+                <div class="property-group" style="margin-bottom: 16px;">
+                    <button id="deleteBtn" style="width: 100%; background: #c41e3a; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">
+                        🗑️ Delete Action
+                    </button>
+                </div>
+                <div class="property-group">
+                    <label>Action Type</label>
+                    <select id="propAction">
+                        <option value="PickUp" ${step.action === 'PickUp' ? 'selected' : ''}>PickUp</option>
+                        <option value="Move" ${step.action === 'Move' ? 'selected' : ''}>Move</option>
+                        <option value="PutDown" ${step.action === 'PutDown' ? 'selected' : ''}>PutDown</option>
+                        <option value="PlaceExact" ${step.action === 'PlaceExact' ? 'selected' : ''}>PlaceExact</option>
+                    </select>
+                </div>
+                <div class="property-group">
+                    <label>Object ID</label>
+                    <input type="text" id="propObjectId" value="${step.objectId}">
+                </div>
+                <div class="property-group">
+                    <label>Object Name</label>
+                    <input type="text" id="propObjectName" value="${step.objectName || ''}">
+                </div>
+                ${step.action === 'Move' ? `
+                <div class="property-group">
+                    <label>Start Time (seconds)</label>
+                    <input type="number" id="propStartTime" value="${step.startTime.toFixed(2)}" step="0.1">
+                </div>
+                <div class="property-group">
+                    <label>End Time (seconds)</label>
+                    <input type="number" id="propEndTime" value="${step.endTime.toFixed(2)}" step="0.1">
+                </div>
+                <div class="property-group">
+                    <label>Duration (seconds)</label>
+                    <input type="number" id="propDuration" value="${(step.endTime - step.startTime).toFixed(2)}" step="0.1" readonly style="background: #2d2d30;">
+                </div>
+                ` : `
+                <div class="property-group">
+                    <label>Timestamp (seconds)</label>
+                    <input type="number" id="propTimestamp" value="${step.timestamp.toFixed(2)}" step="0.1">
+                </div>
+                `}
+                ${step.position ? `
+                <div class="property-group">
+                    <label>Position</label>
+                    <div class="vector-input">
+                        <input type="number" id="propPosX" value="${step.position.x.toFixed(3)}" step="0.001" placeholder="X">
+                        <input type="number" id="propPosY" value="${step.position.y.toFixed(3)}" step="0.001" placeholder="Y">
+                        <input type="number" id="propPosZ" value="${step.position.z.toFixed(3)}" step="0.001" placeholder="Z">
+                    </div>
+                </div>
+                <div class="property-group">
+                    <label>Rotation</label>
+                    <div class="vector-input">
+                        <input type="number" id="propRotX" value="${step.rotation.x.toFixed(3)}" step="0.001" placeholder="X">
+                        <input type="number" id="propRotY" value="${step.rotation.y.toFixed(3)}" step="0.001" placeholder="Y">
+                        <input type="number" id="propRotZ" value="${step.rotation.z.toFixed(3)}" step="0.001" placeholder="Z">
+                        <input type="number" id="propRotW" value="${step.rotation.w.toFixed(3)}" step="0.001" placeholder="W">
+                    </div>
+                </div>
+                ` : ''}
+            `;
+
+            // Add delete button listener
+            document.getElementById('deleteBtn').addEventListener('click', () => {
+                deleteAction(step);
+            });
+
+            // Add event listeners
+            document.getElementById('propAction').addEventListener('change', (e) => {
+                step.action = e.target.value;
+                updateJSONOutput();
+                renderTimeline();
+            });
+            document.getElementById('propObjectId').addEventListener('change', (e) => {
+                step.objectId = e.target.value;
+                updateJSONOutput();
+            });
+            document.getElementById('propObjectName').addEventListener('change', (e) => {
+                step.objectName = e.target.value;
+                updateJSONOutput();
+            });
+            const timestampInput = document.getElementById('propTimestamp');
+            if (timestampInput) {
+                timestampInput.addEventListener('change', (e) => {
+                    step.timestamp = parseFloat(e.target.value);
+                    updateJSONOutput();
+                    renderTimeline();
+                });
+            }
+            
+            // Handle Move-specific time inputs
+            const startTimeInput = document.getElementById('propStartTime');
+            if (startTimeInput) {
+                startTimeInput.addEventListener('change', (e) => {
+                    step.startTime = parseFloat(e.target.value);
+                    if (step.endTime <= step.startTime) {
+                        step.endTime = step.startTime + 0.1;
+                    }
+                    step.timestamp = (step.startTime + step.endTime) / 2; // Update midpoint
+                    updateJSONOutput();
+                    renderTimeline();
+                });
+            }
+            
+            const endTimeInput = document.getElementById('propEndTime');
+            if (endTimeInput) {
+                endTimeInput.addEventListener('change', (e) => {
+                    step.endTime = parseFloat(e.target.value);
+                    if (step.endTime <= step.startTime) {
+                        step.startTime = step.endTime - 0.1;
+                    }
+                    step.timestamp = (step.startTime + step.endTime) / 2; // Update midpoint
+                    updateJSONOutput();
+                    renderTimeline();
+                });
+            }
+        }
+
+        function updateJSONOutput() {
+            console.log('════════════════════════════════════════════════');
+            console.log('🔄 updateJSONOutput() CALLED');
+            logDebugMessage('updateJSONOutput()', 'Function called');
+
+            if (!taskData) {
+                console.log('❌ taskData is NULL or UNDEFINED');
+                logDebugMessage('updateJSONOutput() ABORT', 'taskData is null!', true);
+                return;
+            }
+
+            console.log('✅ taskData exists:');
+            console.log(JSON.stringify(taskData, null, 2));
+
+            const content = document.getElementById('jsonContent');
+            if (!content) {
+                console.log('❌ jsonContent element NOT FOUND in DOM');
+                logDebugMessage('updateJSONOutput() ERROR', 'jsonContent element not found!', true);
+                return;
+            }
+
+            console.log('✅ jsonContent element found in DOM');
+
+            try {
+                // Render as collapsible action blocks
+                const blocksHTML = renderActionBlocks(taskData);
+                content.innerHTML = blocksHTML;
+
+                // Add click handlers for collapsible blocks
+                const headers = content.querySelectorAll('.action-header');
+                headers.forEach(header => {
+                    header.addEventListener('click', function() {
+                        const block = this.parentElement;
+                        const details = this.nextElementSibling;
+                        if (details && details.classList.contains('action-details')) {
+                            details.classList.toggle('expanded');
+                            block.classList.toggle('expanded');
+                        }
+                    });
+                });
+
+                logDebugMessage('updateJSONOutput() SUCCESS', `Rendered ${taskData.steps ? taskData.steps.length : 0} action blocks`);
+            } catch (error) {
+                logDebugMessage('updateJSONOutput() ERROR', `${error.message}: ${error.stack}`, true);
+            }
+        }
+
+        function renderActionBlocks(taskData) {
+            if (!taskData) {
+                return '<div style="color: #858585; padding: 8px;">No task data</div>';
+            }
+
+            if (!taskData.steps || taskData.steps.length === 0) {
+                return '<div style="color: #858585; padding: 8px;">No steps to display</div>';
+            }
+
+            let html = '';
+            // Steps are already in order, just render them top to bottom
+            taskData.steps.forEach((step, index) => {
+                const action = step.action || 'Unknown';
+                const borderColor = getActionColor(action);
+                const timestamp = step.timestamp !== undefined ? step.timestamp.toFixed(2) + 's' : 'N/A';
+                const stepNum = step.stepNumber !== undefined ? step.stepNumber : (index + 1);
+
+                html += `<div class="action-block" style="border-left-color: ${borderColor};" data-step="${index}">`;
+                html += `<div class="action-header">`;
+                html += `<div class="action-title">`;
+                html += `<span class="action-expand-icon">▶</span>`;
+                html += `<span style="color: #858585; margin-right: 4px; font-size: 9px;">${stepNum}.</span>`;
+                html += `<span>${action}</span>`;
+                if (step.objectName) {
+                    html += `<span style="color: #858585; margin-left: 4px; font-size: 9px;">- ${escapeHtml(step.objectName)}</span>`;
+                }
+                html += `</div>`;
+                html += `<span style="font-size: 8px; color: #858585;">${timestamp}</span>`;
+                html += `</div>`;
+                html += `<div class="action-details">`;
+
+                // Show key properties
+                if (step.position) {
+                    const pos = step.position;
+                    html += `<div class="action-detail-row"><span class="action-detail-label">Position:</span>(${pos.x.toFixed(2)}, ${pos.y.toFixed(2)}, ${pos.z.toFixed(2)})</div>`;
+                }
+                if (step.rotation) {
+                    const rot = step.rotation;
+                    html += `<div class="action-detail-row"><span class="action-detail-label">Rotation:</span>(${rot.x.toFixed(2)}, ${rot.y.toFixed(2)}, ${rot.z.toFixed(2)}, ${rot.w.toFixed(2)})</div>`;
+                }
+                if (step.action === 'Move') {
+                    if (step.startTime !== undefined) {
+                        html += `<div class="action-detail-row"><span class="action-detail-label">Start:</span>${step.startTime.toFixed(2)}s</div>`;
+                    }
+                    if (step.endTime !== undefined) {
+                        html += `<div class="action-detail-row"><span class="action-detail-label">End:</span>${step.endTime.toFixed(2)}s</div>`;
+                    }
+                    if (step.duration !== undefined) {
+                        html += `<div class="action-detail-row"><span class="action-detail-label">Duration:</span>${step.duration.toFixed(2)}s</div>`;
+                    }
+                }
+
+                html += `</div>`;
+                html += `</div>`;
+            });
+
+            return html;
+        }
+
+        function getActionColor(action) {
+            const colors = {
+                'PickUp': '#4ec9b0',
+                'PutDown': '#ce9178',
+                'Move': '#569cd6'
+            };
+            return colors[action] || '#858585';
+        }
+
+        function renderJSONNode(obj, depth) {
+            if (obj === null || obj === undefined) {
+                return '<span class="json-boolean">null</span>';
+            }
+
+            if (typeof obj === 'string') {
+                return `<span class="json-string">"${escapeHtml(obj)}"</span>`;
+            }
+
+            if (typeof obj === 'number') {
+                return `<span class="json-number">${obj}</span>`;
+            }
+
+            if (typeof obj === 'boolean') {
+                return `<span class="json-boolean">${obj}</span>`;
+            }
+
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return '[]';
+                let html = '<span class="json-toggle"></span>[\n';
+                html += '<div class="json-children">';
+                obj.forEach((item, i) => {
+                    html += '<div class="json-node">';
+                    html += renderJSONNode(item, depth + 1);
+                    if (i < obj.length - 1) html += ',';
+                    html += '</div>\n';
+                });
+                html += '</div>]';
+                return html;
+            }
+
+            if (typeof obj === 'object') {
+                const keys = Object.keys(obj);
+                if (keys.length === 0) return '{}';
+                let html = '<span class="json-toggle"></span>{\n';
+                html += '<div class="json-children">';
+                keys.forEach((key, i) => {
+                    html += '<div class="json-node">';
+                    html += `<span class="json-key">"${key}"</span>: `;
+                    html += renderJSONNode(obj[key], depth + 1);
+                    if (i < keys.length - 1) html += ',';
+                    html += '</div>\n';
+                });
+                html += '</div>}';
+                return html;
+            }
+
+            return String(obj);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                pausePlayback();
+            } else {
+                startPlayback();
+            }
+        }
+
+        function startPlayback() {
+            isPlaying = true;
+            document.getElementById('playPauseBtn').textContent = '⏸ Pause';
+            document.getElementById('playPauseBtn').classList.add('active');
+
+            playInterval = setInterval(() => {
+                currentTime += 0.1;
+                if (currentTime >= taskData.totalDuration) {
+                    stopPlayback();
+                } else {
+                    updatePlayhead();
+                    document.getElementById('currentTime').textContent = currentTime.toFixed(2);
+                }
+            }, 100);
+        }
+
+        function pausePlayback() {
+            isPlaying = false;
+            document.getElementById('playPauseBtn').textContent = '▶ Play';
+            document.getElementById('playPauseBtn').classList.remove('active');
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+            }
+        }
+
+        function stopPlayback() {
+            pausePlayback();
+            currentTime = 0;
+            updatePlayhead();
+            document.getElementById('currentTime').textContent = '0.00';
+        }
+
+        function updatePlayhead() {
+            const playhead = document.getElementById('playhead');
+            const labelWidth = 100;
+            playhead.style.left = (labelWidth + currentTime * pixelsPerSecond) + 'px';
+        }
+
+        function adjustZoom(factor) {
+            pixelsPerSecond *= factor;
+            pixelsPerSecond = Math.max(10, Math.min(200, pixelsPerSecond));
+            renderTimeline();
+        }
+
+        function exportJSON() {
+            if (!taskData) {
+                alert('No task data to export');
+                return;
+            }
+
+            const json = JSON.stringify(taskData, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `task_${taskData.taskName.replace(/\s+/g, '_')}_${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // generateMoveActions function removed - Move blocks are now only created manually by user
+
+        function copyJSON() {
+            if (!taskData) return;
+            const json = JSON.stringify(taskData, null, 2);
+            navigator.clipboard.writeText(json).then(() => {
+                const btn = document.getElementById('copyJsonBtn');
+                const original = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = original;
+                }, 2000);
+            });
+        }
+
+        function deleteAction(step) {
+            // Remove from task data - use multiple matching strategies
+            let index = -1;
+            
+            // Strategy 1: Exact match by stepNumber, action, and objectId
+            index = taskData.steps.findIndex(s => 
+                s.stepNumber === step.stepNumber && 
+                s.action === step.action && 
+                s.objectId === step.objectId
+            );
+            
+            // Strategy 2: For Move blocks, match by startTime/endTime and objectId
+            if (index === -1 && step.action === 'Move') {
+                const stepStart = step.startTime || step.timestamp;
+                const stepEnd = step.endTime || (step.timestamp + 1.0);
+                index = taskData.steps.findIndex(s => {
+                    if (s.action !== 'Move' || s.objectId !== step.objectId) return false;
+                    const sStart = s.startTime || s.timestamp;
+                    const sEnd = s.endTime || (s.timestamp + 1.0);
+                    return Math.abs(stepStart - sStart) < 0.05 && Math.abs(stepEnd - sEnd) < 0.05;
+                });
+            }
+            
+            // Strategy 3: Match by action, objectId, and timestamp (for point events)
+            if (index === -1 && step.action !== 'Move') {
+                index = taskData.steps.findIndex(s => 
+                    s.action === step.action && 
+                    s.objectId === step.objectId &&
+                    Math.abs(s.timestamp - step.timestamp) < 0.05
+                );
+            }
+            
+            // Strategy 4: Last resort - match by objectId and action only (delete first match)
+            if (index === -1) {
+                index = taskData.steps.findIndex(s => 
+                    s.action === step.action && 
+                    s.objectId === step.objectId
+                );
+            }
+            
+            if (index !== -1) {
+                taskData.steps.splice(index, 1);
+            } else {
+                console.error('Failed to delete step - no match found:', step);
+                console.log('Available steps:', taskData.steps);
+            }
+
+            // Renumber remaining steps
+            taskData.steps.sort((a, b) => {
+                // Sort by timestamp, but for Move use startTime
+                const timeA = a.action === 'Move' ? (a.startTime || a.timestamp) : a.timestamp;
+                const timeB = b.action === 'Move' ? (b.startTime || b.timestamp) : b.timestamp;
+                return timeA - timeB;
+            });
+            taskData.steps.forEach((s, idx) => {
+                s.stepNumber = idx + 1;
+            });
+
+            // Deselect and refresh
+            selectedStep = null;
+            renderTimeline();
+            renderProperties();
+            updateJSONOutput();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Delete key to remove selected action
+            if ((e.key === 'Delete' || e.key === 'Backspace') && selectedStep) {
+                e.preventDefault();
+                deleteAction(selectedStep);
+            }
+        });
+
+        // Click outside to deselect
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.action-block') && 
+                !e.target.closest('.properties-panel') &&
+                !e.target.closest('.action-type-selector')) {
+                selectedStep = null;
+                renderProperties();
+                document.querySelectorAll('.action-block').forEach(block => {
+                    block.classList.remove('selected');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

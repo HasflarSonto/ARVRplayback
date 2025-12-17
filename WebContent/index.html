@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Task Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: white;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            padding: 12px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 6px;
+            flex-shrink: 0;
+        }
+
+        .number-display {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 15px 0;
+            color: #1a1a1a;
+            transition: all 0.2s ease;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .number-display.updated {
+            transform: scale(1.05);
+            color: #0066cc;
+        }
+
+        .label {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #666;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .json-display {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
+            font-size: 11px;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            white-space: pre;
+            word-wrap: break-word;
+            overflow-y: auto;
+            overflow-x: auto;
+            flex: 1;
+            min-height: 0;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .json-display::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .json-display::-webkit-scrollbar-track {
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+
+        .json-display::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .json-display::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* Highlight for current step */
+        .step-highlight {
+            background-color: #fff9e6 !important;
+            border-left: 3px solid #ffa500 !important;
+            padding-left: 6px !important;
+            margin-left: -6px !important;
+            border-radius: 2px;
+        }
+
+        .status {
+            font-size: 12px;
+            margin-top: 8px;
+            color: #666;
+            text-align: center;
+            flex-shrink: 0;
+            padding: 6px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        /* JSON syntax highlighting */
+        .json-key {
+            color: #d73a49;
+            font-weight: 500;
+        }
+
+        .json-string {
+            color: #032f62;
+        }
+
+        .json-number {
+            color: #005cc5;
+        }
+
+        .json-boolean {
+            color: #6f42c1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Instructions</h1>
+        <div class="number-display" id="numberDisplay" style="display: none;">0.00</div>
+        <div class="label" id="label" style="display: none;">Timeline Position</div>
+        <div class="json-display" id="jsonDisplay" style="display: none;"></div>
+        <div class="status" id="status">Ready</div>
+    </div>
+
+    <script>
+        let currentJSONData = null;
+        let totalDuration = 0;
+
+        function receiveMessageFromUnity(message) {
+            try {
+                const data = JSON.parse(message);
+                
+                if (data.type === 'sliderValue') {
+                    updateNumber(data.value, data.currentTime, data.totalDuration);
+                } else if (data.type === 'displayJSON') {
+                    displayJSON(data.json, data.totalDuration);
+                }
+            } catch (e) {
+                console.error('Error parsing Unity message:', e);
+            }
+        }
+
+        function updateNumber(value, currentTime, duration) {
+            const display = document.getElementById('numberDisplay');
+            const label = document.getElementById('label');
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            const status = document.getElementById('status');
+            
+            // If JSON is displayed, highlight the current step
+            if (jsonDisplay.style.display !== 'none' && currentJSONData && currentTime !== undefined) {
+                highlightCurrentStep(currentTime);
+                return;
+            }
+            
+            // Hide JSON display, show number display
+            jsonDisplay.style.display = 'none';
+            display.style.display = 'block';
+            label.style.display = 'block';
+            
+            display.textContent = value.toFixed(2);
+            display.classList.add('updated');
+            setTimeout(() => display.classList.remove('updated'), 200);
+            status.textContent = `Timeline: ${value.toFixed(2)}`;
+        }
+
+        function displayJSON(jsonString, duration) {
+            const display = document.getElementById('numberDisplay');
+            const label = document.getElementById('label');
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            const status = document.getElementById('status');
+            
+            display.style.display = 'none';
+            label.style.display = 'none';
+            jsonDisplay.style.display = 'block';
+            
+            totalDuration = duration || 0;
+            
+            let unescapedJSON = jsonString;
+            if (typeof jsonString === 'string') {
+                unescapedJSON = jsonString
+                    .replace(/\\n/g, '\n')
+                    .replace(/\\r/g, '\r')
+                    .replace(/\\t/g, '\t')
+                    .replace(/\\\\/g, '\\')
+                    .replace(/\\"/g, '"');
+            }
+            
+            try {
+                currentJSONData = JSON.parse(unescapedJSON);
+                const formattedJSON = formatJSONWithHighlighting(currentJSONData);
+                jsonDisplay.innerHTML = formattedJSON;
+                
+                const stepCount = currentJSONData.steps ? currentJSONData.steps.length : 0;
+                status.textContent = `${stepCount} steps loaded`;
+            } catch (e) {
+                jsonDisplay.textContent = unescapedJSON;
+                currentJSONData = null;
+                status.textContent = 'JSON loaded (unformatted)';
+            }
+        }
+
+        function formatJSONWithHighlighting(obj, indent = 0, stepNumber = null) {
+            const indentStr = '  '.repeat(indent);
+            const nextIndent = '  '.repeat(indent + 1);
+            
+            if (obj === null) {
+                return '<span class="json-boolean">null</span>';
+            }
+            
+            if (typeof obj === 'string') {
+                return `<span class="json-string">"${escapeHtml(obj)}"</span>`;
+            }
+            
+            if (typeof obj === 'number') {
+                return `<span class="json-number">${obj}</span>`;
+            }
+            
+            if (typeof obj === 'boolean') {
+                return `<span class="json-boolean">${obj}</span>`;
+            }
+            
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return '[]';
+                let result = '[\n';
+                for (let i = 0; i < obj.length; i++) {
+                    let currentStepNumber = stepNumber;
+                    if (obj[i] && typeof obj[i] === 'object' && obj[i].stepNumber !== undefined) {
+                        currentStepNumber = obj[i].stepNumber;
+                    }
+                    result += nextIndent + `<span class="step-${currentStepNumber || 'none'}" data-step="${currentStepNumber || ''}">`;
+                    result += formatJSONWithHighlighting(obj[i], indent + 1, currentStepNumber);
+                    result += '</span>';
+                    if (i < obj.length - 1) result += ',';
+                    result += '\n';
+                }
+                result += indentStr + ']';
+                return result;
+            }
+            
+            if (typeof obj === 'object') {
+                const keys = Object.keys(obj);
+                if (keys.length === 0) return '{}';
+                
+                let currentStepNumber = stepNumber;
+                if (obj.stepNumber !== undefined) {
+                    currentStepNumber = obj.stepNumber;
+                }
+                
+                let result = currentStepNumber ? `<span class="step-${currentStepNumber}" data-step="${currentStepNumber}">{\n` : '{\n';
+                for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    const value = obj[key];
+                    result += nextIndent + `<span class="json-key">"${escapeHtml(key)}"</span>: `;
+                    result += formatJSONWithHighlighting(value, indent + 1, currentStepNumber);
+                    if (i < keys.length - 1) result += ',';
+                    result += '\n';
+                }
+                result += indentStr + '}';
+                if (currentStepNumber) result += '</span>';
+                return result;
+            }
+            
+            return String(obj);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function highlightCurrentStep(currentTime) {
+            if (!currentJSONData || !currentJSONData.steps) return;
+            
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            jsonDisplay.querySelectorAll('.step-highlight').forEach(el => {
+                el.classList.remove('step-highlight');
+            });
+            
+            let currentStep = null;
+            for (let i = 0; i < currentJSONData.steps.length; i++) {
+                const step = currentJSONData.steps[i];
+                if (step.timestamp <= currentTime) {
+                    currentStep = step;
+                } else {
+                    break;
+                }
+            }
+            
+            if (!currentStep) return;
+            
+            const stepElement = jsonDisplay.querySelector(`[data-step="${currentStep.stepNumber}"]`);
+            if (stepElement) {
+                stepElement.classList.add('step-highlight');
+                stepElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Message handlers
+        if (typeof vuplex !== 'undefined') {
+            vuplex.addEventListener('message', function(event) {
+                receiveMessageFromUnity(event.data);
+            });
+        }
+
+        if (typeof unityWebView !== 'undefined') {
+            unityWebView.onMessage = function(message) {
+                receiveMessageFromUnity(message);
+            };
+        }
+
+        window.addEventListener('message', function(event) {
+            if (event.data && typeof event.data === 'string') {
+                receiveMessageFromUnity(event.data);
+            }
+        });
+
+        // Initialize
+        document.getElementById('status').textContent = 'Ready';
+    </script>
+</body>
+</html>

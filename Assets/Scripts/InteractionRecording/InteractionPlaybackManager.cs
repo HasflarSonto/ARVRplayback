@@ -51,7 +51,7 @@ namespace VRInteractionRecording
 
             if (visualCueManager == null)
             {
-                visualCueManager = FindObjectOfType<VisualCueManager>();
+                visualCueManager = FindFirstObjectByType<VisualCueManager>();
             }
         }
 
