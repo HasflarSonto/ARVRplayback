@@ -1183,6 +1183,11 @@
 
                 if (!pickupBlock) return;
 
+                // Store the original PutDown timestamp if not already stored
+                if (!step.originalTimestamp) {
+                    step.originalTimestamp = step.timestamp;
+                }
+
                 // Create highlight element
                 const rangeHighlight = document.createElement('div');
                 rangeHighlight.style.position = 'absolute';
@@ -1193,9 +1198,10 @@
                 rangeHighlight.style.zIndex = '1';
                 rangeHighlight.className = 'movement-range-highlight';
 
-                // Highlight starts at PickUp time, extends to end of timeline
+                // Highlight range: PickUp time → ORIGINAL PutDown time
+                // This shows the trajectory where PutDown can be placed
                 const startPos = labelWidth + pickupBlock.timestamp * pixelsPerSecond;
-                const endPos = labelWidth + taskData.totalDuration * pixelsPerSecond;
+                const endPos = labelWidth + step.originalTimestamp * pixelsPerSecond;
 
                 rangeHighlight.style.left = startPos + 'px';
                 rangeHighlight.style.width = (endPos - startPos) + 'px';
@@ -1203,7 +1209,7 @@
                 timeline.appendChild(rangeHighlight);
                 rangeHighlights.push(rangeHighlight);
 
-                console.log(`[RANGE] Added permanent range for ${step.objectId}: ${pickupBlock.timestamp.toFixed(2)}s → ${taskData.totalDuration.toFixed(2)}s`);
+                console.log(`[RANGE] Added permanent range for ${step.objectId}: ${pickupBlock.timestamp.toFixed(2)}s → ${step.originalTimestamp.toFixed(2)}s (original)`);
             });
         }
 
@@ -1652,15 +1658,22 @@
                     );
 
                     if (pickupBlock) {
+                        // Store original timestamp if not already stored
+                        if (!step.originalTimestamp) {
+                            step.originalTimestamp = step.timestamp;
+                        }
+
                         // Calculate new timestamp
                         let newTimestamp = step.timestamp + timestampDelta;
 
-                        // RULE: PutDown can only move FORWARD (increase time)
+                        // RULE: PutDown can only move BACKWARD (decrease time)
                         // RULE: PutDown cannot move before its PickUp
+                        // RULE: PutDown cannot move past its ORIGINAL position
                         newTimestamp = Math.max(pickupBlock.timestamp + 0.1, newTimestamp); // Min 0.1s after pickup
-                        newTimestamp = Math.max(step.timestamp, newTimestamp); // Only forward
+                        newTimestamp = Math.min(step.originalTimestamp, newTimestamp); // Cannot go past original
+                        newTimestamp = Math.min(step.timestamp, newTimestamp); // Only backward
 
-                        console.log(`[PUTDOWN SCROLL] old=${step.timestamp.toFixed(3)}s, new=${newTimestamp.toFixed(3)}s, pickup=${pickupBlock.timestamp.toFixed(3)}s`);
+                        console.log(`[PUTDOWN SCROLL] old=${step.timestamp.toFixed(3)}s, new=${newTimestamp.toFixed(3)}s, range=[${pickupBlock.timestamp.toFixed(3)}s → ${step.originalTimestamp.toFixed(3)}s]`);
 
                         step.timestamp = newTimestamp;
 
