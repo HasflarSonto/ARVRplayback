@@ -682,6 +682,11 @@
 
     <input type="file" id="fileInput" accept=".json" style="display: none;">
 
+    <!-- Draggable Test Circle for VR -->
+    <div id="testCircle" style="position: fixed; left: 50%; top: 50%; width: 100px; height: 100px; background: #e74c3c; border-radius: 50%; transform: translate(-50%, -50%); cursor: move; z-index: 10000; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; user-select: none; touch-action: none;">
+        DRAG TEST
+    </div>
+
     <!-- Debug Panel -->
     <div class="debug-panel" id="debugPanel">
         <div class="debug-header">
@@ -2232,7 +2237,7 @@
 
         // Click outside to deselect
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.action-block') && 
+            if (!e.target.closest('.action-block') &&
                 !e.target.closest('.properties-panel') &&
                 !e.target.closest('.action-type-selector')) {
                 selectedStep = null;
@@ -2242,6 +2247,85 @@
                 });
             }
         });
+
+        // Draggable test circle for VR testing
+        (function() {
+            const circle = document.getElementById('testCircle');
+            if (!circle) return;
+
+            let isDragging = false;
+            let startX = 0;
+            let startY = 0;
+            let initialX = 0;
+            let initialY = 0;
+
+            function onDragStart(e) {
+                isDragging = true;
+
+                // Get initial position (account for transform: translate(-50%, -50%))
+                const rect = circle.getBoundingClientRect();
+                initialX = rect.left + rect.width / 2;
+                initialY = rect.top + rect.height / 2;
+
+                // Get start position from event
+                if (e.type === 'mousedown') {
+                    startX = e.clientX;
+                    startY = e.clientY;
+                } else if (e.type === 'pointerdown') {
+                    startX = e.clientX;
+                    startY = e.clientY;
+                }
+
+                circle.style.cursor = 'grabbing';
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function onDragMove(e) {
+                if (!isDragging) return;
+
+                let currentX, currentY;
+                if (e.type === 'mousemove') {
+                    currentX = e.clientX;
+                    currentY = e.clientY;
+                } else if (e.type === 'pointermove') {
+                    currentX = e.clientX;
+                    currentY = e.clientY;
+                }
+
+                const deltaX = currentX - startX;
+                const deltaY = currentY - startY;
+
+                const newX = initialX + deltaX;
+                const newY = initialY + deltaY;
+
+                // Update position (using left/top with transform: translate(-50%, -50%))
+                circle.style.left = newX + 'px';
+                circle.style.top = newY + 'px';
+
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function onDragEnd(e) {
+                if (isDragging) {
+                    isDragging = false;
+                    circle.style.cursor = 'move';
+                }
+            }
+
+            // Add both mouse and pointer event listeners for VR compatibility
+            circle.addEventListener('mousedown', onDragStart);
+            circle.addEventListener('pointerdown', onDragStart);
+
+            document.addEventListener('mousemove', onDragMove);
+            document.addEventListener('pointermove', onDragMove);
+
+            document.addEventListener('mouseup', onDragEnd);
+            document.addEventListener('pointerup', onDragEnd);
+
+            console.log('Test circle drag listeners initialized');
+        })();
     </script>
 </body>
 </html>
