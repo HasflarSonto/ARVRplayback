@@ -2254,77 +2254,83 @@
             if (!circle) return;
 
             let isDragging = false;
-            let startX = 0;
-            let startY = 0;
-            let initialX = 0;
-            let initialY = 0;
+            let currentX = window.innerWidth / 2;
+            let currentY = window.innerHeight / 2;
+            let lastEventX = 0;
+            let lastEventY = 0;
 
-            function onDragStart(e) {
-                isDragging = true;
-
-                // Get initial position (account for transform: translate(-50%, -50%))
-                const rect = circle.getBoundingClientRect();
-                initialX = rect.left + rect.width / 2;
-                initialY = rect.top + rect.height / 2;
-
-                // Get start position from event
-                if (e.type === 'mousedown') {
-                    startX = e.clientX;
-                    startY = e.clientY;
-                } else if (e.type === 'pointerdown') {
-                    startX = e.clientX;
-                    startY = e.clientY;
-                }
-
-                circle.style.cursor = 'grabbing';
-                e.preventDefault();
-                e.stopPropagation();
+            // Log all events for debugging
+            function logEvent(name, e) {
+                console.log(`[TEST CIRCLE] ${name}:`, {
+                    type: e.type,
+                    clientX: e.clientX,
+                    clientY: e.clientY,
+                    pageX: e.pageX,
+                    pageY: e.pageY,
+                    isPrimary: e.isPrimary,
+                    pointerType: e.pointerType,
+                    button: e.button,
+                    buttons: e.buttons
+                });
             }
 
-            function onDragMove(e) {
+            function onPointerDown(e) {
+                logEvent('DOWN', e);
+                isDragging = true;
+                lastEventX = e.clientX;
+                lastEventY = e.clientY;
+                circle.style.cursor = 'grabbing';
+                circle.style.background = '#2ecc71'; // Green when dragging
+                e.preventDefault();
+            }
+
+            function onPointerMove(e) {
                 if (!isDragging) return;
 
-                let currentX, currentY;
-                if (e.type === 'mousemove') {
-                    currentX = e.clientX;
-                    currentY = e.clientY;
-                } else if (e.type === 'pointermove') {
-                    currentX = e.clientX;
-                    currentY = e.clientY;
-                }
+                logEvent('MOVE', e);
 
-                const deltaX = currentX - startX;
-                const deltaY = currentY - startY;
+                const deltaX = e.clientX - lastEventX;
+                const deltaY = e.clientY - lastEventY;
 
-                const newX = initialX + deltaX;
-                const newY = initialY + deltaY;
+                currentX += deltaX;
+                currentY += deltaY;
 
-                // Update position (using left/top with transform: translate(-50%, -50%))
-                circle.style.left = newX + 'px';
-                circle.style.top = newY + 'px';
+                lastEventX = e.clientX;
+                lastEventY = e.clientY;
+
+                // Update position directly without transform
+                circle.style.left = currentX + 'px';
+                circle.style.top = currentY + 'px';
+                circle.style.transform = 'translate(-50%, -50%)';
 
                 e.preventDefault();
-                e.stopPropagation();
             }
 
-            function onDragEnd(e) {
+            function onPointerUp(e) {
                 if (isDragging) {
+                    logEvent('UP', e);
                     isDragging = false;
                     circle.style.cursor = 'move';
+                    circle.style.background = '#e74c3c'; // Back to red
                 }
             }
 
-            // Add both mouse and pointer event listeners for VR compatibility
-            circle.addEventListener('mousedown', onDragStart);
-            circle.addEventListener('pointerdown', onDragStart);
+            // Try ONLY pointer events (might work better in VR)
+            circle.addEventListener('pointerdown', onPointerDown);
+            document.addEventListener('pointermove', onPointerMove);
+            document.addEventListener('pointerup', onPointerUp);
+            document.addEventListener('pointercancel', onPointerUp);
 
-            document.addEventListener('mousemove', onDragMove);
-            document.addEventListener('pointermove', onDragMove);
+            // Also try click event to see if that fires in VR
+            circle.addEventListener('click', (e) => {
+                console.log('[TEST CIRCLE] CLICK event fired!', e);
+                circle.style.background = '#3498db'; // Blue on click
+                setTimeout(() => {
+                    if (!isDragging) circle.style.background = '#e74c3c';
+                }, 200);
+            });
 
-            document.addEventListener('mouseup', onDragEnd);
-            document.addEventListener('pointerup', onDragEnd);
-
-            console.log('Test circle drag listeners initialized');
+            console.log('[TEST CIRCLE] Drag listeners initialized - pointerdown, pointermove, pointerup');
         })();
     </script>
 </body>
