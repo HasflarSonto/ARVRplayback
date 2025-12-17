@@ -302,7 +302,7 @@
         }
 
         .action-block.pickup {
-            background: #e74c3c;
+            background: #4ec9b0;
             color: #1e1e1e;
         }
 
@@ -392,12 +392,15 @@
         .action-block {
             background: #2d2d30;
             border-left: 3px solid #0e639c;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             border-radius: 2px;
             overflow: visible;
             flex-shrink: 0;
             position: relative;
             width: 100%;
+            min-height: 48px;
+            display: flex;
+            flex-direction: column;
         }
 
         .action-header {
@@ -407,7 +410,8 @@
             justify-content: space-between;
             align-items: center;
             user-select: none;
-            min-height: 24px;
+            min-height: 48px;
+            flex-shrink: 0;
         }
 
         .action-header:hover {
@@ -421,6 +425,8 @@
             align-items: center;
             gap: 4px;
             font-size: 10px;
+            flex-wrap: wrap;
+            max-width: 100%;
         }
 
         .action-icon {
@@ -432,12 +438,17 @@
             font-size: 8px;
             color: #858585;
             border-top: 1px solid #3e3e42;
-            display: none;
+            max-height: 0;
+            overflow: hidden;
             background: #252526;
+            width: 100%;
+            box-sizing: border-box;
+            transition: max-height 0.2s ease-out;
         }
 
         .action-details.expanded {
-            display: block;
+            max-height: 500px;
+            overflow: visible;
         }
 
         .action-expand-icon {
@@ -451,7 +462,11 @@
         }
 
         .action-detail-row {
-            padding: 2px 0;
+            padding: 3px 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.6;
         }
 
         .action-detail-label {
@@ -623,6 +638,7 @@
         <button id="exportBtn">Export JSON</button>
         <button id="debugBtn" style="background: #e74c3c;">Debug</button>
         <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
+        <span id="debugInfo" style="margin-left: 20px; color: #f48771; font-size: 10px; font-family: monospace;"></span>
     </div>
 
     <div class="main-container">
@@ -929,6 +945,31 @@
                         currentTime = message.time;
                         updatePlayhead();
                     }
+                } else if (message && message.type === 'sliderValue') {
+                    // Unity slider sends currentTime in SECONDS - use it directly
+                    if (typeof message.currentTime === 'number') {
+                        currentTime = message.currentTime;
+
+                        // CRITICAL DEBUG: Display debug info on screen
+                        const webViewDuration = taskData?.totalDuration || 0;
+                        const unityDuration = message.totalDuration || 0;
+                        const normalizedValue = message.value || 0;
+                        const durMatch = Math.abs(webViewDuration - unityDuration) < 0.01;
+
+                        // Show debug info on screen
+                        const debugInfo = document.getElementById('debugInfo');
+                        if (debugInfo) {
+                            debugInfo.textContent = `Time:${message.currentTime.toFixed(2)}s | Norm:${normalizedValue.toFixed(3)} | WebDur:${webViewDuration.toFixed(2)}s | UnityDur:${unityDuration.toFixed(2)}s | ${durMatch ? '✓ MATCH' : '✗ MISMATCH'}`;
+                        }
+
+                        updatePlayhead();
+
+                        // Update time display
+                        const timeDisplay = document.getElementById('currentTime');
+                        if (timeDisplay) {
+                            timeDisplay.textContent = currentTime.toFixed(2);
+                        }
+                    }
                 }
             } catch (error) {
                 console.error('Error processing message:', error);
@@ -1064,6 +1105,30 @@
             console.log('════════════════════════════════════════════════');
             logDebugMessage('loadTask() Data', `Task: "${taskData.taskName}", Duration: ${taskData.totalDuration}s, Steps: ${taskData.steps?.length || 0}`);
 
+            // FIXED zoom algorithm: Use consistent pixels-per-second regardless of duration
+            // This ensures the scale is always the same, making sync with Unity slider work correctly
+            const duration = taskData.totalDuration;
+
+            // Use a FIXED zoom level that's reasonable for viewing
+            // 100 px/s means: 1 second = 100 pixels
+            // For a 10s recording: 1000px width
+            // For a 5s recording: 500px width
+            // This is MUCH better than forcing everything to 2000px!
+            pixelsPerSecond = 100;
+
+            const timelineWidth = duration * pixelsPerSecond;
+
+            console.log(`📏 Timeline Setup: duration=${duration.toFixed(3)}s, zoom=${pixelsPerSecond}px/s, width=${timelineWidth.toFixed(0)}px`);
+
+            // CRITICAL: Verify all event timestamps are within duration
+            let maxEventTime = 0;
+            taskData.steps.forEach(step => {
+                const eventTime = step.action === 'Move' ? (step.endTime || step.timestamp) : step.timestamp;
+                if (eventTime > maxEventTime) maxEventTime = eventTime;
+            });
+            console.log(`📊 Max event timestamp: ${maxEventTime.toFixed(3)}s (duration: ${duration.toFixed(3)}s, diff: ${(duration - maxEventTime).toFixed(3)}s)`);
+            logDebugMessage('Auto-Zoom', `Fixed zoom: ${pixelsPerSecond}px/s → ${timelineWidth.toFixed(0)}px timeline for ${duration.toFixed(3)}s`);
+
             try {
                 // TEST: Verify JSON panel is accessible
                 const jsonPanel = document.getElementById('jsonContent');
@@ -1135,16 +1200,15 @@
                 marker.style.background = i % 5 === 0 ? '#858585' : '#3e3e42';
                 ruler.appendChild(marker);
 
-                if (i % 5 === 0) {
-                    const label = document.createElement('div');
-                    label.textContent = i + 's';
-                    label.style.position = 'absolute';
-                    label.style.left = (labelWidth + i * pixelsPerSecond + 4) + 'px';
-                    label.style.top = '4px';
-                    label.style.fontSize = '11px';
-                    label.style.color = '#858585';
-                    ruler.appendChild(label);
-                }
+                // Show label for every second
+                const label = document.createElement('div');
+                label.textContent = i + 's';
+                label.style.position = 'absolute';
+                label.style.left = (labelWidth + i * pixelsPerSecond + 4) + 'px';
+                label.style.top = '4px';
+                label.style.fontSize = '11px';
+                label.style.color = i % 5 === 0 ? '#858585' : '#606060';
+                ruler.appendChild(label);
             }
 
             // Group steps by object and sort by timestamp
@@ -1373,8 +1437,21 @@
             block.dataset.action = step.action;
 
             const labelWidth = 100;
-            const left = labelWidth + step.timestamp * pixelsPerSecond;
-            
+
+            // SIMPLIFIED: Direct time-to-pixels conversion (same as playhead)
+            // position = labelWidth + (timestamp × pixelsPerSecond)
+            const pixelPosition = step.timestamp * pixelsPerSecond;
+            const left = labelWidth + pixelPosition;
+
+            // Debug: Show first event position on screen
+            if ((step.action === 'PickUp' || step.action === 'PutDown') && step.stepNumber === 1) {
+                const debugInfo = document.getElementById('debugInfo');
+                if (debugInfo) {
+                    debugInfo.textContent = `First ${step.action}: ${step.timestamp.toFixed(2)}s × ${pixelsPerSecond}px/s = ${left.toFixed(0)}px`;
+                }
+                console.log(`📍 FIRST ${step.action}: time=${step.timestamp.toFixed(3)}s, zoom=${pixelsPerSecond}px/s, pos=${left.toFixed(1)}px`);
+            }
+
             // PickUp and PutDown are point events - show as wider blocks with centered time indicator
             if (step.action === 'PickUp' || step.action === 'PutDown') {
                 block.style.left = (left - 30) + 'px'; // Center the block on the timestamp (60px wide, so -30px offset)
@@ -1387,9 +1464,10 @@
                 if (!step.startTime) step.startTime = step.timestamp;
                 if (!step.endTime) step.endTime = step.timestamp + 1.0; // Default 1 second duration
 
-                const labelWidth = 100;
-                const startLeft = labelWidth + step.startTime * pixelsPerSecond;
+                // Direct formula: position = labelWidth + (time × zoom)
+                const startLeft = labelWidth + (step.startTime * pixelsPerSecond);
                 const width = (step.endTime - step.startTime) * pixelsPerSecond;
+
                 block.style.left = startLeft + 'px';
                 block.style.width = Math.max(20, width) + 'px';
                 
@@ -1997,9 +2075,44 @@
         }
 
         function updatePlayhead() {
+            if (!taskData || taskData.totalDuration <= 0) return;
+
             const playhead = document.getElementById('playhead');
             const labelWidth = 100;
-            playhead.style.left = (labelWidth + currentTime * pixelsPerSecond) + 'px';
+
+            // SIMPLIFIED: Direct time-to-pixels conversion
+            // position = labelWidth + (currentTime × pixelsPerSecond)
+            const pixelPosition = currentTime * pixelsPerSecond;
+            const leftPosition = labelWidth + pixelPosition;
+
+            playhead.style.left = leftPosition + 'px';
+
+            // Update debug info
+            const debugInfo = document.getElementById('debugInfo');
+            if (debugInfo && currentTime > 0) {
+                // Find closest event
+                let closestEvent = null;
+                let minDiff = Infinity;
+                if (taskData && taskData.steps) {
+                    taskData.steps.forEach(step => {
+                        if (step.action === 'PickUp' || step.action === 'PutDown') {
+                            // Simple time difference
+                            const timeDiff = Math.abs(step.timestamp - currentTime);
+
+                            if (timeDiff < minDiff) {
+                                minDiff = timeDiff;
+                                closestEvent = step;
+                            }
+                        }
+                    });
+                }
+
+                if (closestEvent && minDiff < 1.0) {
+                    debugInfo.textContent = `Time: ${currentTime.toFixed(2)}s | Nearest: ${closestEvent.action} @ ${closestEvent.timestamp.toFixed(2)}s | Diff: ${minDiff.toFixed(2)}s`;
+                } else {
+                    debugInfo.textContent = `Time: ${currentTime.toFixed(2)}s | Zoom: ${pixelsPerSecond}px/s`;
+                }
+            }
         }
 
         function adjustZoom(factor) {
