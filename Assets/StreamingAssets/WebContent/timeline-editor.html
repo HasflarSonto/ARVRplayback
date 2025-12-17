@@ -1159,53 +1159,61 @@
             }
         }
 
-        // Visual feedback: Show valid movement range for selected block
-        let rangeHighlight = null;
+        // Visual feedback: Show valid movement ranges for all PutDown blocks
+        let rangeHighlights = [];
 
-        function showMovementRange(step) {
-            // Remove existing highlight
-            hideMovementRange();
+        function showAllMovementRanges() {
+            // Clear existing highlights
+            hideAllMovementRanges();
 
-            if (step.action !== 'PutDown') return;
-
-            // Find the corresponding PickUp block
-            const pickupBlock = taskData.steps.find(s =>
-                s.objectId === step.objectId && s.action === 'PickUp'
-            );
-
-            if (!pickupBlock) return;
-
-            // Create highlight element
-            rangeHighlight = document.createElement('div');
-            rangeHighlight.style.position = 'absolute';
-            rangeHighlight.style.top = '0';
-            rangeHighlight.style.height = '100%';
-            rangeHighlight.style.background = 'rgba(100, 150, 255, 0.15)'; // Faint blue
-            rangeHighlight.style.pointerEvents = 'none';
-            rangeHighlight.style.zIndex = '1';
+            if (!taskData || !taskData.steps) return;
 
             const labelWidth = 100;
-            // Highlight starts at PickUp time, extends to end of timeline
-            const startPos = labelWidth + pickupBlock.timestamp * pixelsPerSecond;
-            const endPos = labelWidth + taskData.totalDuration * pixelsPerSecond;
-
-            rangeHighlight.style.left = startPos + 'px';
-            rangeHighlight.style.width = (endPos - startPos) + 'px';
-
-            // Add to timeline container
             const timeline = document.getElementById('timeline');
-            if (timeline) {
-                timeline.appendChild(rangeHighlight);
-            }
+            if (!timeline) return;
 
-            console.log(`[RANGE] Showing movement range: ${pickupBlock.timestamp.toFixed(2)}s → ${taskData.totalDuration.toFixed(2)}s`);
+            // Find all PutDown blocks and create range highlights
+            taskData.steps.forEach(step => {
+                if (step.action !== 'PutDown') return;
+
+                // Find the corresponding PickUp block
+                const pickupBlock = taskData.steps.find(s =>
+                    s.objectId === step.objectId && s.action === 'PickUp'
+                );
+
+                if (!pickupBlock) return;
+
+                // Create highlight element
+                const rangeHighlight = document.createElement('div');
+                rangeHighlight.style.position = 'absolute';
+                rangeHighlight.style.top = '0';
+                rangeHighlight.style.height = '100%';
+                rangeHighlight.style.background = 'rgba(100, 150, 255, 0.15)'; // Faint blue
+                rangeHighlight.style.pointerEvents = 'none';
+                rangeHighlight.style.zIndex = '1';
+                rangeHighlight.className = 'movement-range-highlight';
+
+                // Highlight starts at PickUp time, extends to end of timeline
+                const startPos = labelWidth + pickupBlock.timestamp * pixelsPerSecond;
+                const endPos = labelWidth + taskData.totalDuration * pixelsPerSecond;
+
+                rangeHighlight.style.left = startPos + 'px';
+                rangeHighlight.style.width = (endPos - startPos) + 'px';
+
+                timeline.appendChild(rangeHighlight);
+                rangeHighlights.push(rangeHighlight);
+
+                console.log(`[RANGE] Added permanent range for ${step.objectId}: ${pickupBlock.timestamp.toFixed(2)}s → ${taskData.totalDuration.toFixed(2)}s`);
+            });
         }
 
-        function hideMovementRange() {
-            if (rangeHighlight && rangeHighlight.parentNode) {
-                rangeHighlight.parentNode.removeChild(rangeHighlight);
-                rangeHighlight = null;
-            }
+        function hideAllMovementRanges() {
+            rangeHighlights.forEach(highlight => {
+                if (highlight && highlight.parentNode) {
+                    highlight.parentNode.removeChild(highlight);
+                }
+            });
+            rangeHighlights = [];
         }
 
         function renderTimeline() {
@@ -1320,6 +1328,9 @@
             updateJSONOutput();
 
             updatePlayhead();
+
+            // Show movement ranges for all PutDown blocks
+            showAllMovementRanges();
 
             logDebugMessage('renderTimeline() SUCCESS', 'Timeline rendering complete!');
         }
@@ -1602,15 +1613,9 @@
                     block.style.border = '3px solid #f48771';
                     block.style.background = block.style.background.replace('0.8', '1.0'); // Brighter
                     scrollAccumulator = 0; // Reset accumulator on selection
-
-                    // Add background highlight to show valid movement range
-                    showMovementRange(step);
                 } else {
                     block.style.border = '1px solid transparent';
                     block.style.background = block.style.background.replace('1.0', '0.8'); // Normal
-
-                    // Remove background highlight
-                    hideMovementRange();
                 }
 
                 console.log(`[BLOCK] ${step.action} ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
@@ -1662,9 +1667,6 @@
                         // Recenter block on new timestamp
                         const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
                         block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
-
-                        // Update the movement range highlight
-                        showMovementRange(step);
                     }
                 } else if (step.action === 'PickUp') {
                     // PickUp blocks are locked - should not reach here
