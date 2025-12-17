@@ -19,6 +19,10 @@ namespace VRInteractionRecording
         private VisualCueManager visualCueManager;
 
         [SerializeField]
+        [Tooltip("Reference to MovementGoalManager for Move block goals")]
+        private MovementGoalManager movementGoalManager;
+
+        [SerializeField]
         [Tooltip("Maximum distance (in Unity units) from target position to consider placement correct")]
         private float placementThreshold = 0.5f;
 
@@ -53,12 +57,25 @@ namespace VRInteractionRecording
             {
                 visualCueManager = FindFirstObjectByType<VisualCueManager>();
             }
+
+            if (movementGoalManager == null)
+            {
+                movementGoalManager = FindFirstObjectByType<MovementGoalManager>();
+            }
         }
 
         /// <summary>
         /// Starts playback of a recorded interaction
         /// </summary>
         public void StartPlayback(RecordingData recording)
+        {
+            StartPlayback(recording, null);
+        }
+
+        /// <summary>
+        /// Starts playback with TaskInstruction containing Move blocks
+        /// </summary>
+        public void StartPlayback(RecordingData recording, TaskInstruction taskInstruction)
         {
             if (recording == null)
             {
@@ -79,6 +96,12 @@ namespace VRInteractionRecording
 
             // Build interaction sequences (grab-release pairs)
             BuildInteractionSequences();
+
+            // Load and create movement goals from TaskInstruction
+            if (taskInstruction != null && movementGoalManager != null)
+            {
+                LoadMovementGoals(taskInstruction);
+            }
 
             // Reset all objects to initial states
             ResetToInitialStates();
@@ -108,6 +131,12 @@ namespace VRInteractionRecording
             {
                 visualCueManager.ClearAllHighlights();
                 visualCueManager.HideAllGhosts();
+            }
+
+            // Clear movement goals
+            if (movementGoalManager != null)
+            {
+                movementGoalManager.ClearAllMovementGoals();
             }
 
             Debug.Log("InteractionPlaybackManager: Playback stopped");
@@ -255,7 +284,7 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Called when an object is grabbed during playback
-        /// Shows the ghost object at the target location
+        /// Shows the ghost object at the target location and movement goals
         /// </summary>
         public void OnObjectGrabbedDuringPlayback(GameObject grabbedObject)
         {
@@ -263,9 +292,16 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(grabbedObject);
 
+            // Show movement goal if it exists
+            if (movementGoalManager != null)
+            {
+                movementGoalManager.ShowMovementGoal(objectId);
+                Debug.Log($"[InteractionPlaybackManager] Showing movement goal for {objectId}");
+            }
+
             // Find the release event for this object (where it should be placed)
             InteractionEvent releaseEvent = FindReleaseEventForObject(objectId);
-            
+
             if (releaseEvent != null)
             {
                 // Cache the target event for later distance checking
@@ -281,13 +317,36 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Called when an object is released during playback
-        /// Checks if object is placed within threshold of target position
+        /// Checks if movement goal completed and object is placed correctly
         /// </summary>
         public void OnObjectReleasedDuringPlayback(GameObject releasedObject)
         {
             if (!isPlaybackActive || currentRecording == null) return;
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
+
+            // Check if movement goal exists and is completed
+            bool movementGoalCompleted = true;
+            if (movementGoalManager != null)
+            {
+                movementGoalCompleted = movementGoalManager.IsMovementGoalCompleted(objectId);
+                float progress = movementGoalManager.GetMovementGoalProgress(objectId);
+
+                if (!movementGoalCompleted)
+                {
+                    Debug.LogWarning($"[InteractionPlaybackManager] Movement goal not completed! Progress: {progress:P0}");
+                    Debug.LogWarning($"[InteractionPlaybackManager] Object must follow the green path before placement is accepted");
+
+                    // Don't hide the movement goal - keep it visible
+                    return; // Reject release until movement goal is completed
+                }
+                else
+                {
+                    Debug.Log($"[InteractionPlaybackManager] Movement goal completed! Progress: {progress:P0}");
+                    // Hide movement goal
+                    movementGoalManager.HideMovementGoal(objectId);
+                }
+            }
 
             // Find the target release event (where it should be placed)
             InteractionEvent targetReleaseEvent = FindReleaseEventForObject(objectId);
@@ -381,6 +440,47 @@ namespace VRInteractionRecording
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Loads movement goals from TaskInstruction Move blocks
+        /// </summary>
+        private void LoadMovementGoals(TaskInstruction taskInstruction)
+        {
+            if (taskInstruction == null || taskInstruction.steps == null) return;
+
+            Debug.Log($"[InteractionPlaybackManager] Loading movement goals from {taskInstruction.steps.Count} steps");
+
+            foreach (InstructionStep step in taskInstruction.steps)
+            {
+                if (step.IsMove() && currentRecording != null)
+                {
+                    Debug.Log($"[InteractionPlaybackManager] Found Move block for {step.objectId} ({step.startTime}s → {step.endTime}s)");
+
+                    // Extract path snapshots from recording between startTime and endTime
+                    List<TransformSnapshot> pathSnapshots = new List<TransformSnapshot>();
+                    foreach (TransformSnapshot snapshot in currentRecording.transformSnapshots)
+                    {
+                        if (snapshot.objectId == step.objectId &&
+                            snapshot.timestamp >= step.startTime &&
+                            snapshot.timestamp <= step.endTime)
+                        {
+                            pathSnapshots.Add(snapshot);
+                        }
+                    }
+
+                    if (pathSnapshots.Count >= 2)
+                    {
+                        // Create movement goal
+                        movementGoalManager.CreateMovementGoal(step, pathSnapshots);
+                        Debug.Log($"[InteractionPlaybackManager] Created movement goal with {pathSnapshots.Count} snapshots");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[InteractionPlaybackManager] Insufficient snapshots for Move block ({pathSnapshots.Count} found)");
+                    }
+                }
+            }
         }
 
         /// <summary>
