@@ -114,6 +114,7 @@ namespace VRInteractionRecording
         // Physics state management (to freeze objects)
         private Dictionary<GameObject, Rigidbody> objectRigidbodies = new Dictionary<GameObject, Rigidbody>();
         private Dictionary<GameObject, bool> originalKinematicStates = new Dictionary<GameObject, bool>();
+        private Dictionary<GameObject, bool> originalGravityStates = new Dictionary<GameObject, bool>();
 
         // Timeline markers
         private List<GameObject> timelineMarkers = new List<GameObject>(); // All marker GameObjects
@@ -1076,7 +1077,7 @@ namespace VRInteractionRecording
         }
 
         /// <summary>
-        /// Freezes all objects by making them kinematic
+        /// Freezes all objects by making them kinematic and disabling gravity
         /// </summary>
         private void FreezeAllObjects()
         {
@@ -1084,23 +1085,27 @@ namespace VRInteractionRecording
 
             objectRigidbodies.Clear();
             originalKinematicStates.Clear();
+            originalGravityStates.Clear();
 
             foreach (var kvp in objectStateManager.InteractableObjects)
             {
                 GameObject obj = kvp.Value.gameObject;
                 Rigidbody rb = obj.GetComponent<Rigidbody>();
-                
+
                 if (rb != null)
                 {
                     objectRigidbodies[obj] = rb;
                     originalKinematicStates[obj] = rb.isKinematic;
+                    originalGravityStates[obj] = rb.useGravity;
+
                     rb.isKinematic = true; // Freeze the object
+                    rb.useGravity = false; // Disable gravity
                 }
             }
         }
 
         /// <summary>
-        /// Unfreezes all objects by restoring their original kinematic state
+        /// Unfreezes all objects by restoring their original kinematic and gravity states
         /// IMPORTANT: This finds ALL objects from ObjectStateManager and FORCES them to be unfrozen
         /// </summary>
         private void UnfreezeAllObjects()
@@ -1108,7 +1113,8 @@ namespace VRInteractionRecording
             Debug.LogError("───────────────────────────────────────────");
             Debug.LogError("🔓 UnfreezeAllObjects() STARTED");
             Debug.LogError($"   Tracked objects: {objectRigidbodies.Count}");
-            Debug.LogError($"   Original states: {originalKinematicStates.Count}");
+            Debug.LogError($"   Original kinematic states: {originalKinematicStates.Count}");
+            Debug.LogError($"   Original gravity states: {originalGravityStates.Count}");
 
             int unfrozenCount = 0;
 
@@ -1121,11 +1127,25 @@ namespace VRInteractionRecording
                 if (rb != null && originalKinematicStates.ContainsKey(obj))
                 {
                     bool wasKinematic = rb.isKinematic;
+                    bool wasGravity = rb.useGravity;
+
                     rb.isKinematic = originalKinematicStates[obj];
+
+                    // Restore gravity if we saved it
+                    if (originalGravityStates.ContainsKey(obj))
+                    {
+                        rb.useGravity = originalGravityStates[obj];
+                    }
+                    else
+                    {
+                        // Default: enable gravity if not kinematic
+                        rb.useGravity = !rb.isKinematic;
+                    }
+
                     rb.linearVelocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
 
-                    Debug.LogError($"   ✅ {obj.name}: kinematic {wasKinematic} → {rb.isKinematic}");
+                    Debug.LogError($"   ✅ {obj.name}: kinematic {wasKinematic} → {rb.isKinematic}, gravity {wasGravity} → {rb.useGravity}");
                     unfrozenCount++;
                 }
             }
@@ -1148,19 +1168,32 @@ namespace VRInteractionRecording
                     if (rb != null)
                     {
                         bool wasKinematic = rb.isKinematic;
+                        bool wasGravity = rb.useGravity;
 
                         // If we tracked it, restore original state
                         if (originalKinematicStates.ContainsKey(obj))
                         {
                             rb.isKinematic = originalKinematicStates[obj];
-                            Debug.LogError($"   📝 {obj.name}: restored to original ({rb.isKinematic})");
+
+                            // Restore gravity
+                            if (originalGravityStates.ContainsKey(obj))
+                            {
+                                rb.useGravity = originalGravityStates[obj];
+                            }
+                            else
+                            {
+                                rb.useGravity = !rb.isKinematic;
+                            }
+
+                            Debug.LogError($"   📝 {obj.name}: restored to original (kinematic={rb.isKinematic}, gravity={rb.useGravity})");
                         }
-                        // Otherwise, FORCE it to be non-kinematic (unfrozen)
+                        // Otherwise, FORCE it to be non-kinematic with gravity enabled (unfrozen)
                         // This ensures objects are never left frozen after edit mode
-                        else if (rb.isKinematic)
+                        else if (rb.isKinematic || !rb.useGravity)
                         {
                             rb.isKinematic = false;
-                            Debug.LogError($"   🔓 {obj.name}: FORCED to non-kinematic (was: {wasKinematic})");
+                            rb.useGravity = true; // FORCE gravity back on
+                            Debug.LogError($"   🔓 {obj.name}: FORCED to non-kinematic with gravity (was: kinematic={wasKinematic}, gravity={wasGravity})");
                             forcedUnfreezeCount++;
                         }
 
@@ -1170,7 +1203,7 @@ namespace VRInteractionRecording
                     }
                 }
 
-                Debug.LogError($"   Forced {forcedUnfreezeCount} objects to non-kinematic");
+                Debug.LogError($"   Forced {forcedUnfreezeCount} objects to non-kinematic with gravity");
             }
             else
             {
@@ -1180,11 +1213,12 @@ namespace VRInteractionRecording
             // Clear tracking dictionaries
             objectRigidbodies.Clear();
             originalKinematicStates.Clear();
+            originalGravityStates.Clear();
 
             Debug.LogError("✅ Tracking dictionaries cleared");
-            Debug.LogError("✅ ALL OBJECTS UNFROZEN (gravity restored)");
+            Debug.LogError("✅ ALL OBJECTS UNFROZEN (gravity fully restored)");
             Debug.LogError("───────────────────────────────────────────");
-            Debug.Log("RecordingPlaybackEditor: All objects unfrozen (gravity restored)");
+            Debug.Log("RecordingPlaybackEditor: All objects unfrozen (gravity fully restored)");
         }
 
         /// <summary>
