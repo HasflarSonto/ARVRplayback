@@ -636,7 +636,7 @@
         <button id="loadTaskBtn">Load Task JSON</button>
         <button id="loadRecordingBtn">Load Recording Data</button>
         <button id="exportBtn">Export JSON</button>
-        <button id="bakeBtn" style="background: #27ae60;">🎯 Bake Movement Goals</button>
+        <button id="bakeBtn" style="background: #27ae60;">Bake</button>
         <button id="debugBtn" style="background: #e74c3c;">Debug</button>
         <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
         <span id="debugInfo" style="margin-left: 20px; color: #f48771; font-size: 10px; font-family: monospace;"></span>
@@ -1149,6 +1149,19 @@
                 document.getElementById('totalTime').textContent = taskData.totalDuration.toFixed(2);
                 logDebugMessage('loadTask() UI', 'Updated task name and duration');
 
+                // Count Move blocks and update debug info
+                const moveBlocks = taskData.steps ? taskData.steps.filter(step => step.action === 'Move') : [];
+                const debugInfo = document.getElementById('debugInfo');
+                if (debugInfo) {
+                    if (moveBlocks.length > 0) {
+                        debugInfo.textContent = `${moveBlocks.length} object(s) moved | 0 movement paths`;
+                        debugInfo.style.color = '#f48771'; // red
+                    } else {
+                        debugInfo.textContent = `0 object(s) moved | 0 movement paths`;
+                        debugInfo.style.color = '#858585'; // gray
+                    }
+                }
+
                 renderTimeline();
                 logDebugMessage('loadTask() Timeline', 'renderTimeline() completed');
 
@@ -1294,6 +1307,13 @@
                 const originalText = bakeBtn.textContent;
                 bakeBtn.textContent = '✅ Baked!';
                 bakeBtn.style.background = '#2ecc71';
+
+                // Update debug info to show baked status
+                const debugInfo = document.getElementById('debugInfo');
+                if (debugInfo) {
+                    debugInfo.textContent = `${moveBlocks.length} object(s) moved | ${moveBlocks.length} movement paths (BAKED)`;
+                    debugInfo.style.color = '#5bc0de'; // cyan - indicates baked and ready
+                }
 
                 setTimeout(() => {
                     bakeBtn.textContent = originalText;
