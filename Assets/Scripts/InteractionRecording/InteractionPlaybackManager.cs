@@ -37,6 +37,10 @@ namespace VRInteractionRecording
         private Dictionary<string, InteractionEvent> targetReleaseEvents = new Dictionary<string, InteractionEvent>(); // Cache target positions
         private List<InteractionSequence> interactionSequences = new List<InteractionSequence>(); // List of grab-release pairs in order
 
+        // Movement goal tracking
+        private int totalMoveBlocksCount = 0;
+        private int createdMovementPathsCount = 0;
+
         // Events
         public System.Action OnPlaybackStarted;
         public System.Action OnPlaybackStopped;
@@ -45,6 +49,7 @@ namespace VRInteractionRecording
         public System.Action<string, float, float> OnObjectIncorrectlyPlaced; // Passes object ID, distance, rotation difference
         public System.Action<int, int> OnInteractionSequenceProgress; // Passes current step, total steps
         public System.Action OnAllInteractionsCompleted; // Fired when all tasks are finished
+        public System.Action<int, int> OnMovementGoalsLoaded; // Passes total move blocks, created paths
 
         private void Start()
         {
@@ -97,10 +102,27 @@ namespace VRInteractionRecording
             // Build interaction sequences (grab-release pairs)
             BuildInteractionSequences();
 
+            // Reset movement goal counters
+            totalMoveBlocksCount = 0;
+            createdMovementPathsCount = 0;
+
             // Load and create movement goals from TaskInstruction
             if (taskInstruction != null && movementGoalManager != null)
             {
                 LoadMovementGoals(taskInstruction);
+                Debug.LogError($"[InteractionPlaybackManager] Movement goals loaded: {totalMoveBlocksCount} Move blocks, {createdMovementPathsCount} paths created");
+                OnMovementGoalsLoaded?.Invoke(totalMoveBlocksCount, createdMovementPathsCount);
+            }
+            else
+            {
+                if (taskInstruction == null)
+                {
+                    Debug.LogError("[InteractionPlaybackManager] No TaskInstruction provided - no movement paths will be shown");
+                }
+                if (movementGoalManager == null)
+                {
+                    Debug.LogError("[InteractionPlaybackManager] MovementGoalManager is NULL - cannot create movement paths!");
+                }
             }
 
             // Reset all objects to initial states
@@ -433,13 +455,22 @@ namespace VRInteractionRecording
         {
             if (taskInstruction == null || taskInstruction.steps == null) return;
 
-            Debug.Log($"[InteractionPlaybackManager] Loading movement goals from {taskInstruction.steps.Count} steps");
+            Debug.LogError($"[InteractionPlaybackManager] 🔍 Loading movement goals from {taskInstruction.steps.Count} total steps");
 
             foreach (InstructionStep step in taskInstruction.steps)
             {
-                if (step.IsMove() && currentRecording != null)
+                Debug.LogError($"[InteractionPlaybackManager]   Step: action={step.action}, objectId={step.objectId}, startTime={step.startTime}, endTime={step.endTime}");
+
+                if (step.IsMove())
                 {
-                    Debug.Log($"[InteractionPlaybackManager] Found Move block for {step.objectId} ({step.startTime}s → {step.endTime}s)");
+                    totalMoveBlocksCount++;
+                    Debug.LogError($"[InteractionPlaybackManager] ✅ Found Move block #{totalMoveBlocksCount} for {step.objectId} ({step.startTime}s → {step.endTime}s)");
+
+                    if (currentRecording == null)
+                    {
+                        Debug.LogError($"[InteractionPlaybackManager] ❌ currentRecording is NULL - cannot extract path snapshots!");
+                        continue;
+                    }
 
                     // Extract path snapshots from recording between startTime and endTime
                     List<TransformSnapshot> pathSnapshots = new List<TransformSnapshot>();
@@ -453,18 +484,23 @@ namespace VRInteractionRecording
                         }
                     }
 
+                    Debug.LogError($"[InteractionPlaybackManager]   Found {pathSnapshots.Count} snapshots for this Move block");
+
                     if (pathSnapshots.Count >= 2)
                     {
                         // Create movement goal
                         movementGoalManager.CreateMovementGoal(step, pathSnapshots);
-                        Debug.Log($"[InteractionPlaybackManager] Created movement goal with {pathSnapshots.Count} snapshots");
+                        createdMovementPathsCount++;
+                        Debug.LogError($"[InteractionPlaybackManager] ✅ Created movement path #{createdMovementPathsCount} with {pathSnapshots.Count} snapshots");
                     }
                     else
                     {
-                        Debug.LogWarning($"[InteractionPlaybackManager] Insufficient snapshots for Move block ({pathSnapshots.Count} found)");
+                        Debug.LogError($"[InteractionPlaybackManager] ❌ Insufficient snapshots for Move block ({pathSnapshots.Count} found, need at least 2)");
                     }
                 }
             }
+
+            Debug.LogError($"[InteractionPlaybackManager] 📊 Final count: {totalMoveBlocksCount} Move blocks found, {createdMovementPathsCount} movement paths created");
         }
 
         /// <summary>
@@ -486,6 +522,16 @@ namespace VRInteractionRecording
         /// Gets the total number of interaction steps
         /// </summary>
         public int TotalSteps => interactionSequences.Count;
+
+        /// <summary>
+        /// Gets the total number of Move blocks found
+        /// </summary>
+        public int TotalMoveBlocks => totalMoveBlocksCount;
+
+        /// <summary>
+        /// Gets the number of movement paths successfully created
+        /// </summary>
+        public int CreatedMovementPaths => createdMovementPathsCount;
 
         /// <summary>
         /// Data structure for an interaction sequence (grab-release pair)

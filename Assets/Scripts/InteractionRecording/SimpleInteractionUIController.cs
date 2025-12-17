@@ -147,6 +147,7 @@ namespace VRInteractionRecording
                 playbackManager.OnObjectIncorrectlyPlaced += OnObjectIncorrectlyPlaced;
                 playbackManager.OnInteractionSequenceProgress += OnInteractionSequenceProgress;
                 playbackManager.OnAllInteractionsCompleted += OnAllInteractionsCompleted;
+                playbackManager.OnMovementGoalsLoaded += OnMovementGoalsLoaded;
             }
 
             // Initialize UI state
@@ -171,6 +172,7 @@ namespace VRInteractionRecording
                 playbackManager.OnObjectIncorrectlyPlaced -= OnObjectIncorrectlyPlaced;
                 playbackManager.OnInteractionSequenceProgress -= OnInteractionSequenceProgress;
                 playbackManager.OnAllInteractionsCompleted -= OnAllInteractionsCompleted;
+                playbackManager.OnMovementGoalsLoaded -= OnMovementGoalsLoaded;
             }
         }
 
@@ -852,6 +854,25 @@ namespace VRInteractionRecording
             // Playback will automatically stop, but we update UI here
             isPlaybackActive = false;
             UpdateUIState();
+        }
+
+        private void OnMovementGoalsLoaded(int totalMoveBlocks, int createdPaths)
+        {
+            Debug.LogError($"[SimpleInteractionUIController] OnMovementGoalsLoaded called: {totalMoveBlocks} Move blocks, {createdPaths} paths created");
+
+            if (statusText != null)
+            {
+                if (createdPaths > 0)
+                {
+                    statusText.text = $"Movement: {createdPaths} path(s) loaded";
+                    statusText.color = Color.cyan;
+                }
+                else if (totalMoveBlocks > 0)
+                {
+                    statusText.text = $"Movement: {totalMoveBlocks} block(s), 0 paths";
+                    statusText.color = Color.red;
+                }
+            }
         }
     }
 }

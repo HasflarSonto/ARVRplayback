@@ -47,24 +47,34 @@ namespace VRInteractionRecording
         /// </summary>
         public void CreateMovementGoal(InstructionStep moveStep, List<TransformSnapshot> pathSnapshots)
         {
+            Debug.LogError($"[MovementGoalManager] 🎯 CreateMovementGoal called for {moveStep?.objectId ?? "NULL"}");
+
             if (moveStep == null || !moveStep.IsMove())
             {
-                Debug.LogWarning("[MovementGoalManager] Cannot create movement goal - step is not a Move action");
+                Debug.LogError("[MovementGoalManager] ❌ Cannot create movement goal - step is not a Move action");
                 return;
             }
 
             if (pathSnapshots == null || pathSnapshots.Count < 2)
             {
-                Debug.LogWarning("[MovementGoalManager] Cannot create movement goal - path has insufficient snapshots");
+                Debug.LogError($"[MovementGoalManager] ❌ Cannot create movement goal - path has insufficient snapshots ({pathSnapshots?.Count ?? 0} provided)");
+                return;
+            }
+
+            if (objectStateManager == null)
+            {
+                Debug.LogError("[MovementGoalManager] ❌ ObjectStateManager is NULL!");
                 return;
             }
 
             GameObject obj = objectStateManager.GetObjectFromId(moveStep.objectId);
             if (obj == null)
             {
-                Debug.LogWarning($"[MovementGoalManager] Cannot create movement goal - object not found: {moveStep.objectId}");
+                Debug.LogError($"[MovementGoalManager] ❌ Cannot create movement goal - object not found: {moveStep.objectId}");
                 return;
             }
+
+            Debug.LogError($"[MovementGoalManager] ✅ Found object: {obj.name}");
 
             // Create movement goal
             MovementGoal goal = new MovementGoal
@@ -87,9 +97,16 @@ namespace VRInteractionRecording
             // Create visual path line (just show the path, no validation)
             goal.pathLine = CreateSimplePathLine(moveStep.objectId, goal.pathPoints);
 
+            if (goal.pathLine == null)
+            {
+                Debug.LogError($"[MovementGoalManager] ❌ Failed to create path line!");
+                return;
+            }
+
             activeMovementGoals[moveStep.objectId] = goal;
 
-            Debug.Log($"[MovementGoalManager] Created simple movement path for {moveStep.objectId} with {goal.pathPoints.Count} points");
+            Debug.LogError($"[MovementGoalManager] ✅ Created simple movement path for {moveStep.objectId} with {goal.pathPoints.Count} points");
+            Debug.LogError($"[MovementGoalManager]    Path line GameObject: {goal.pathLine.gameObject.name}, active: {goal.pathLine.gameObject.activeSelf}");
         }
 
         /// <summary>
