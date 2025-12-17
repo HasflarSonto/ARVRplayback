@@ -1165,6 +1165,12 @@ namespace VRInteractionRecording
                     GameObject obj = kvp.Value.gameObject;
                     if (obj == null) continue;
 
+                    // Skip panels and UI objects - they should stay kinematic
+                    if (ShouldSkipGravityRestore(obj))
+                    {
+                        continue;
+                    }
+
                     Rigidbody rb = obj.GetComponent<Rigidbody>();
 
                     if (rb != null)
@@ -1228,6 +1234,13 @@ namespace VRInteractionRecording
                     GameObject obj = kvp.Value.gameObject;
                     if (obj != null)
                     {
+                        // Skip panels and UI objects - they should stay kinematic
+                        if (ShouldSkipGravityRestore(obj))
+                        {
+                            Debug.LogError($"   ⏭️ {obj.name} SKIPPED (Panel/UI object)");
+                            continue;
+                        }
+
                         Rigidbody rb = obj.GetComponent<Rigidbody>();
                         if (rb != null && (rb.isKinematic || !rb.useGravity))
                         {
@@ -1244,6 +1257,55 @@ namespace VRInteractionRecording
             Debug.LogError("✅ ALL OBJECTS UNFROZEN (gravity fully restored)");
             Debug.LogError("───────────────────────────────────────────");
             Debug.Log("RecordingPlaybackEditor: All objects unfrozen (gravity fully restored)");
+        }
+
+        /// <summary>
+        /// Checks if an object should be skipped during gravity restoration
+        /// Returns true for panels, UI objects, and other objects that should stay kinematic
+        /// </summary>
+        private bool ShouldSkipGravityRestore(GameObject obj)
+        {
+            if (obj == null) return true;
+
+            string objName = obj.name.ToLower();
+
+            // Skip any object with "panel" in the name
+            if (objName.Contains("panel"))
+            {
+                return true;
+            }
+
+            // Skip any object with "ui" in the name
+            if (objName.Contains("ui"))
+            {
+                return true;
+            }
+
+            // Skip any object with "canvas" in the name
+            if (objName.Contains("canvas"))
+            {
+                return true;
+            }
+
+            // Skip any object with "menu" in the name
+            if (objName.Contains("menu"))
+            {
+                return true;
+            }
+
+            // Check if object is a child of a Canvas or has a Canvas component
+            if (obj.GetComponentInParent<Canvas>() != null)
+            {
+                return true;
+            }
+
+            // Check if object has RectTransform (UI element)
+            if (obj.GetComponent<RectTransform>() != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
