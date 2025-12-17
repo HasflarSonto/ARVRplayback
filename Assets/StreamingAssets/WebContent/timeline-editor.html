@@ -389,7 +389,7 @@
             flex-direction: column;
         }
 
-        .action-block {
+        .json-action-block {
             background: #2d2d30;
             border-left: 3px solid #0e639c;
             margin-bottom: 4px;
@@ -457,7 +457,7 @@
             transition: transform 0.2s;
         }
 
-        .action-block.expanded .action-expand-icon {
+        .json-action-block.expanded .action-expand-icon {
             transform: rotate(90deg);
         }
 
@@ -1916,7 +1916,7 @@
                 const timestamp = step.timestamp !== undefined ? step.timestamp.toFixed(2) + 's' : 'N/A';
                 const stepNum = step.stepNumber !== undefined ? step.stepNumber : (index + 1);
 
-                html += `<div class="action-block" style="border-left-color: ${borderColor};" data-step="${index}">`;
+                html += `<div class="json-action-block" style="border-left-color: ${borderColor};" data-step="${index}">`;
                 html += `<div class="action-header">`;
                 html += `<div class="action-title">`;
                 html += `<span class="action-expand-icon">▶</span>`;
