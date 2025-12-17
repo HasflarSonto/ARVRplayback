@@ -1534,6 +1534,8 @@
         function makeDraggable(block, step) {
             // VR-friendly: Use click to select block, then scroll to move it
             let isSelected = false;
+            let scrollAccumulator = 0;
+            let lastScrollTime = 0;
 
             block.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1544,6 +1546,7 @@
                 if (isSelected) {
                     block.style.border = '3px solid #f48771';
                     block.style.background = block.style.background.replace('0.8', '1.0'); // Brighter
+                    scrollAccumulator = 0; // Reset accumulator on selection
                 } else {
                     block.style.border = '1px solid transparent';
                     block.style.background = block.style.background.replace('1.0', '0.8'); // Normal
@@ -1559,25 +1562,37 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                const labelWidth = 100;
-                const scrollAmount = -e.deltaY * 0.1; // Convert scroll to pixels (invert direction)
+                const now = Date.now();
+                const timeDelta = now - lastScrollTime;
+                lastScrollTime = now;
 
-                console.log(`[BLOCK SCROLL] deltaY=${e.deltaY}, scrollAmount=${scrollAmount}`);
+                // Clamp deltaY to prevent huge jumps from fast scrolling
+                const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
+
+                // Accumulate scroll with damping
+                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
+
+                // Apply movement
+                const labelWidth = 100;
+                const timestampDelta = -scrollAccumulator / pixelsPerSecond;
+
+                console.log(`[BLOCK SCROLL] deltaY=${e.deltaY}, clamped=${clampedDeltaY}, accum=${scrollAccumulator.toFixed(2)}, timeDelta=${timestampDelta.toFixed(3)}s`);
 
                 // For PickUp/PutDown blocks, adjust timestamp
                 if (step.action === 'PickUp' || step.action === 'PutDown') {
                     const blockWidth = 60;
-                    const timestampDelta = scrollAmount / pixelsPerSecond;
                     step.timestamp = Math.max(0, step.timestamp + timestampDelta);
 
                     // Recenter block on new timestamp
                     const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
                     block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
                 } else {
-                    const timestampDelta = scrollAmount / pixelsPerSecond;
                     step.timestamp = Math.max(0, step.timestamp + timestampDelta);
                     block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
                 }
+
+                // Reset accumulator after applying
+                scrollAccumulator = 0;
 
                 updateJSONOutput();
             });
@@ -1586,6 +1601,8 @@
         function makeMoveBlockDraggable(block, step) {
             // VR-friendly: Use click to select block, then scroll to move it
             let isSelected = false;
+            let scrollAccumulator = 0;
+            let lastScrollTime = 0;
 
             block.addEventListener('click', (e) => {
                 // Don't select if clicking on resize handle
@@ -1599,6 +1616,7 @@
                 if (isSelected) {
                     block.style.border = '3px solid #f48771';
                     block.style.opacity = '1.0';
+                    scrollAccumulator = 0; // Reset accumulator on selection
                 } else {
                     block.style.border = '1px solid transparent';
                     block.style.opacity = '0.9';
@@ -1614,15 +1632,24 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                const labelWidth = 100;
-                const scrollAmount = -e.deltaY * 0.1; // Convert scroll to pixels
-                const timeDelta = scrollAmount / pixelsPerSecond;
+                const now = Date.now();
+                const timeDelta = now - lastScrollTime;
+                lastScrollTime = now;
 
-                console.log(`[MOVE BLOCK SCROLL] deltaY=${e.deltaY}, timeDelta=${timeDelta}`);
+                // Clamp deltaY to prevent huge jumps from fast scrolling
+                const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
+
+                // Accumulate scroll with damping
+                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
+
+                const labelWidth = 100;
+                const timestampDelta = -scrollAccumulator / pixelsPerSecond;
+
+                console.log(`[MOVE BLOCK SCROLL] deltaY=${e.deltaY}, clamped=${clampedDeltaY}, accum=${scrollAccumulator.toFixed(2)}, timeDelta=${timestampDelta.toFixed(3)}s`);
 
                 // Move both start and end time
-                const newStartTime = Math.max(0, step.startTime + timeDelta);
-                const newEndTime = step.endTime + timeDelta;
+                const newStartTime = Math.max(0, step.startTime + timestampDelta);
+                const newEndTime = step.endTime + timestampDelta;
 
                 step.startTime = newStartTime;
                 step.endTime = Math.max(newStartTime + 0.1, newEndTime); // Min 0.1s duration
@@ -1631,6 +1658,9 @@
                 const width = (step.endTime - step.startTime) * pixelsPerSecond;
                 block.style.left = newLeft + 'px';
                 block.style.width = Math.max(20, width) + 'px';
+
+                // Reset accumulator after applying
+                scrollAccumulator = 0;
 
                 updateJSONOutput();
             });
@@ -2254,11 +2284,15 @@
             circle.addEventListener('wheel', (e) => {
                 if (!isSelected) return;
 
-                console.log(`[TEST CIRCLE SCROLL] deltaX=${e.deltaX}, deltaY=${e.deltaY}`);
+                // Clamp delta values to prevent huge jumps
+                const clampedDeltaX = Math.max(-100, Math.min(100, e.deltaX));
+                const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
 
-                // Move based on scroll direction
-                currentX -= e.deltaX * 0.5;
-                currentY -= e.deltaY * 0.5;
+                console.log(`[TEST CIRCLE SCROLL] deltaX=${e.deltaX}, deltaY=${e.deltaY}, clamped=(${clampedDeltaX}, ${clampedDeltaY})`);
+
+                // Move based on scroll direction with reduced sensitivity
+                currentX -= clampedDeltaX * 0.3;
+                currentY -= clampedDeltaY * 0.3;
 
                 circle.style.left = currentX + 'px';
                 circle.style.top = currentY + 'px';
