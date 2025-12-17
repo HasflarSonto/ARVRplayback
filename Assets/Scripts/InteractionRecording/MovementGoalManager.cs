@@ -107,14 +107,6 @@ namespace VRInteractionRecording
                 goal.pathLine.gameObject.SetActive(true);
             }
 
-            if (goal.waypointVisuals != null)
-            {
-                foreach (GameObject visual in goal.waypointVisuals)
-                {
-                    if (visual != null) visual.SetActive(true);
-                }
-            }
-
             Debug.Log($"[MovementGoalManager] Showing movement goal for {objectId}");
         }
 
