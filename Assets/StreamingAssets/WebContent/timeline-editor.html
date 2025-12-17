@@ -1159,6 +1159,55 @@
             }
         }
 
+        // Visual feedback: Show valid movement range for selected block
+        let rangeHighlight = null;
+
+        function showMovementRange(step) {
+            // Remove existing highlight
+            hideMovementRange();
+
+            if (step.action !== 'PutDown') return;
+
+            // Find the corresponding PickUp block
+            const pickupBlock = taskData.steps.find(s =>
+                s.objectId === step.objectId && s.action === 'PickUp'
+            );
+
+            if (!pickupBlock) return;
+
+            // Create highlight element
+            rangeHighlight = document.createElement('div');
+            rangeHighlight.style.position = 'absolute';
+            rangeHighlight.style.top = '0';
+            rangeHighlight.style.height = '100%';
+            rangeHighlight.style.background = 'rgba(100, 150, 255, 0.15)'; // Faint blue
+            rangeHighlight.style.pointerEvents = 'none';
+            rangeHighlight.style.zIndex = '1';
+
+            const labelWidth = 100;
+            // Highlight starts at PickUp time, extends to end of timeline
+            const startPos = labelWidth + pickupBlock.timestamp * pixelsPerSecond;
+            const endPos = labelWidth + taskData.totalDuration * pixelsPerSecond;
+
+            rangeHighlight.style.left = startPos + 'px';
+            rangeHighlight.style.width = (endPos - startPos) + 'px';
+
+            // Add to timeline container
+            const timeline = document.getElementById('timeline');
+            if (timeline) {
+                timeline.appendChild(rangeHighlight);
+            }
+
+            console.log(`[RANGE] Showing movement range: ${pickupBlock.timestamp.toFixed(2)}s → ${taskData.totalDuration.toFixed(2)}s`);
+        }
+
+        function hideMovementRange() {
+            if (rangeHighlight && rangeHighlight.parentNode) {
+                rangeHighlight.parentNode.removeChild(rangeHighlight);
+                rangeHighlight = null;
+            }
+        }
+
         function renderTimeline() {
             logDebugMessage('renderTimeline()', 'Function called');
 
@@ -1535,6 +1584,17 @@
             block.addEventListener('click', (e) => {
                 e.stopPropagation();
 
+                // PickUp blocks are LOCKED - cannot be moved
+                if (step.action === 'PickUp') {
+                    console.log(`[BLOCK] PickUp blocks are locked and cannot be moved`);
+                    // Flash to indicate locked
+                    block.style.background = block.style.background.replace('0.8', '0.5');
+                    setTimeout(() => {
+                        block.style.background = block.style.background.replace('0.5', '0.8');
+                    }, 200);
+                    return;
+                }
+
                 // Toggle selection
                 isSelected = !isSelected;
 
@@ -1542,9 +1602,15 @@
                     block.style.border = '3px solid #f48771';
                     block.style.background = block.style.background.replace('0.8', '1.0'); // Brighter
                     scrollAccumulator = 0; // Reset accumulator on selection
+
+                    // Add background highlight to show valid movement range
+                    showMovementRange(step);
                 } else {
                     block.style.border = '1px solid transparent';
                     block.style.background = block.style.background.replace('1.0', '0.8'); // Normal
+
+                    // Remove background highlight
+                    hideMovementRange();
                 }
 
                 console.log(`[BLOCK] ${step.action} ${isSelected ? 'SELECTED' : 'DESELECTED'}`);
@@ -1571,17 +1637,40 @@
                 const labelWidth = 100;
                 const timestampDelta = -scrollAccumulator / pixelsPerSecond;
 
-                console.log(`[BLOCK SCROLL] deltaY=${e.deltaY}, clamped=${clampedDeltaY}, accum=${scrollAccumulator.toFixed(2)}, timeDelta=${timestampDelta.toFixed(3)}s`);
-
-                // For PickUp/PutDown blocks, adjust timestamp
-                if (step.action === 'PickUp' || step.action === 'PutDown') {
+                // For PutDown blocks, enforce movement restrictions
+                if (step.action === 'PutDown') {
                     const blockWidth = 60;
-                    step.timestamp = Math.max(0, step.timestamp + timestampDelta);
 
-                    // Recenter block on new timestamp
-                    const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
-                    block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
+                    // Find the corresponding PickUp block for this object
+                    const pickupBlock = taskData.steps.find(s =>
+                        s.objectId === step.objectId && s.action === 'PickUp'
+                    );
+
+                    if (pickupBlock) {
+                        // Calculate new timestamp
+                        let newTimestamp = step.timestamp + timestampDelta;
+
+                        // RULE: PutDown can only move FORWARD (increase time)
+                        // RULE: PutDown cannot move before its PickUp
+                        newTimestamp = Math.max(pickupBlock.timestamp + 0.1, newTimestamp); // Min 0.1s after pickup
+                        newTimestamp = Math.max(step.timestamp, newTimestamp); // Only forward
+
+                        console.log(`[PUTDOWN SCROLL] old=${step.timestamp.toFixed(3)}s, new=${newTimestamp.toFixed(3)}s, pickup=${pickupBlock.timestamp.toFixed(3)}s`);
+
+                        step.timestamp = newTimestamp;
+
+                        // Recenter block on new timestamp
+                        const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
+                        block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
+
+                        // Update the movement range highlight
+                        showMovementRange(step);
+                    }
+                } else if (step.action === 'PickUp') {
+                    // PickUp blocks are locked - should not reach here
+                    console.log(`[PICKUP] Locked - cannot move`);
                 } else {
+                    // Other block types
                     step.timestamp = Math.max(0, step.timestamp + timestampDelta);
                     block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
                 }
