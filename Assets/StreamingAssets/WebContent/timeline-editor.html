@@ -1110,11 +1110,10 @@
             const duration = taskData.totalDuration;
 
             // Use a FIXED zoom level that's reasonable for viewing
-            // 100 px/s means: 1 second = 100 pixels
-            // For a 10s recording: 1000px width
-            // For a 5s recording: 500px width
-            // This is MUCH better than forcing everything to 2000px!
-            pixelsPerSecond = 100;
+            // 50 px/s means: 1 second = 50 pixels
+            // For a 10s recording: 500px width
+            // For a 20s recording: 1000px width
+            pixelsPerSecond = 50;
 
             const timelineWidth = duration * pixelsPerSecond;
 
@@ -1438,10 +1437,9 @@
 
             const labelWidth = 100;
 
-            // SIMPLIFIED: Direct time-to-pixels conversion (same as playhead)
+            // EXACT same formula as playhead - NO offset!
             // position = labelWidth + (timestamp × pixelsPerSecond)
-            const pixelPosition = step.timestamp * pixelsPerSecond;
-            const left = labelWidth + pixelPosition;
+            const left = labelWidth + (step.timestamp * pixelsPerSecond);
 
             // Debug: Show first event position on screen
             if ((step.action === 'PickUp' || step.action === 'PutDown') && step.stepNumber === 1) {
@@ -1452,9 +1450,9 @@
                 console.log(`📍 FIRST ${step.action}: time=${step.timestamp.toFixed(3)}s, zoom=${pixelsPerSecond}px/s, pos=${left.toFixed(1)}px`);
             }
 
-            // PickUp and PutDown are point events - show as wider blocks with centered time indicator
+            // PickUp and PutDown are point events - place at EXACT timestamp position (same as playhead)
             if (step.action === 'PickUp' || step.action === 'PutDown') {
-                block.style.left = (left - 30) + 'px'; // Center the block on the timestamp (60px wide, so -30px offset)
+                block.style.left = left + 'px'; // NO offset - exact timestamp position
                 block.style.width = '60px';
                 block.style.justifyContent = 'center';
             } 
@@ -1552,18 +1550,10 @@
                 const labelWidth = 100;
                 const newLeft = Math.max(labelWidth, startLeft + deltaX);
 
-                // For PickUp/PutDown, center the block on the timestamp
-                if (step.action === 'PickUp' || step.action === 'PutDown') {
-                    // Account for the -30px offset when calculating timestamp from the block's left edge
-                    // The block is 60px wide and centered, so add 30px to get the center position
-                    const timestamp = (newLeft + 30 - labelWidth) / pixelsPerSecond;
-                    step.timestamp = Math.max(0, timestamp);
-                    block.style.left = (labelWidth + step.timestamp * pixelsPerSecond - 30) + 'px'; // Center 60px wide block
-                } else {
-                    const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
-                    step.timestamp = Math.max(0, timestamp);
-                    block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
-                }
+                // Direct calculation - NO offset
+                const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
+                step.timestamp = Math.max(0, timestamp);
+                block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
 
                 updateJSONOutput();
                 renderTimeline(); // Re-render to update playhead position
