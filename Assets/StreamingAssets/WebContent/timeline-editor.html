@@ -1569,8 +1569,8 @@
                 // Clamp deltaY to prevent huge jumps from fast scrolling
                 const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
 
-                // Accumulate scroll with damping
-                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
+                // Accumulate scroll with increased sensitivity
+                scrollAccumulator += clampedDeltaY * 0.2; // Increased sensitivity
 
                 // Apply movement
                 const labelWidth = 100;
@@ -1639,8 +1639,8 @@
                 // Clamp deltaY to prevent huge jumps from fast scrolling
                 const clampedDeltaY = Math.max(-100, Math.min(100, e.deltaY));
 
-                // Accumulate scroll with damping
-                scrollAccumulator += clampedDeltaY * 0.05; // Reduced sensitivity
+                // Accumulate scroll with increased sensitivity
+                scrollAccumulator += clampedDeltaY * 0.2; // Increased sensitivity
 
                 const labelWidth = 100;
                 const timestampDelta = -scrollAccumulator / pixelsPerSecond;
@@ -2290,9 +2290,9 @@
 
                 console.log(`[TEST CIRCLE SCROLL] deltaX=${e.deltaX}, deltaY=${e.deltaY}, clamped=(${clampedDeltaX}, ${clampedDeltaY})`);
 
-                // Move based on scroll direction with reduced sensitivity
-                currentX -= clampedDeltaX * 0.3;
-                currentY -= clampedDeltaY * 0.3;
+                // Move based on scroll direction with increased sensitivity
+                currentX -= clampedDeltaX * 1.0;
+                currentY -= clampedDeltaY * 1.0;
 
                 circle.style.left = currentX + 'px';
                 circle.style.top = currentY + 'px';
