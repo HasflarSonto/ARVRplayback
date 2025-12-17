@@ -307,13 +307,98 @@ namespace VRInteractionRecording
         public void Pause()
         {
             isPlaying = false;
-            
+
             // Freeze objects when paused (gravity off)
             FreezeAllObjects();
-            
+
             if (playPauseButtonText != null)
             {
                 playPauseButtonText.text = "Play";
+            }
+        }
+
+        /// <summary>
+        /// Updates PutDown timestamp and recalculates green preview position
+        /// Called from WebView when user moves PutDown block on timeline
+        /// </summary>
+        public void UpdatePutDownTimestamp(string objectId, float newTimestamp)
+        {
+            Debug.Log($"[RecordingPlaybackEditor] UpdatePutDownTimestamp: {objectId} → {newTimestamp:F3}s");
+
+            // Find the interaction sequence for this object
+            InteractionSequence sequence = interactionSequences.Find(s => s.objectId == objectId);
+            if (sequence == null)
+            {
+                Debug.LogWarning($"[RecordingPlaybackEditor] No interaction sequence found for {objectId}");
+                return;
+            }
+
+            // Update the release timestamp
+            sequence.releaseEvent.timestamp = newTimestamp;
+
+            // Interpolate position/rotation at the new timestamp
+            if (objectSnapshotsByTime.ContainsKey(objectId))
+            {
+                List<TransformSnapshot> snapshots = objectSnapshotsByTime[objectId];
+
+                // Find surrounding snapshots
+                TransformSnapshot before = null;
+                TransformSnapshot after = null;
+
+                foreach (var snapshot in snapshots)
+                {
+                    if (snapshot.timestamp <= newTimestamp)
+                    {
+                        before = snapshot;
+                    }
+                    else if (snapshot.timestamp > newTimestamp && after == null)
+                    {
+                        after = snapshot;
+                        break;
+                    }
+                }
+
+                if (before != null && after != null)
+                {
+                    // Interpolate between before and after
+                    float t = (newTimestamp - before.timestamp) / (after.timestamp - before.timestamp);
+                    Vector3 newPosition = Vector3.Lerp(before.position, after.position, t);
+                    Quaternion newRotation = Quaternion.Slerp(before.rotation, after.rotation, t);
+
+                    sequence.releaseEvent.position = newPosition;
+                    sequence.releaseEvent.rotation = newRotation;
+
+                    Debug.Log($"[RecordingPlaybackEditor] Interpolated release position: {newPosition}, rotation: {newRotation.eulerAngles}");
+                }
+                else if (before != null)
+                {
+                    // Use the last known position
+                    sequence.releaseEvent.position = before.position;
+                    sequence.releaseEvent.rotation = before.rotation;
+                }
+
+                // Update the green ghost highlight
+                UpdateEndPositionHighlight(objectId, sequence.releaseEvent.position, sequence.releaseEvent.rotation);
+            }
+        }
+
+        /// <summary>
+        /// Updates the green ghost highlight position for an object
+        /// </summary>
+        private void UpdateEndPositionHighlight(string objectId, Vector3 position, Quaternion rotation)
+        {
+            if (visualCueManager == null) return;
+
+            GameObject obj = objectStateManager.GetObjectFromId(objectId);
+            if (obj != null)
+            {
+                // Hide old ghost
+                visualCueManager.HideGhostObject(obj);
+
+                // Show new ghost at updated position
+                visualCueManager.ShowGhostObject(obj, position, rotation);
+
+                Debug.Log($"[RecordingPlaybackEditor] Updated green ghost for {objectId} at {position}");
             }
         }
 
@@ -1140,12 +1225,15 @@ namespace VRInteractionRecording
             // Create markers for each interaction event
             foreach (InteractionEvent interactionEvent in currentRecording.interactionEvents)
             {
-                float normalizedTime = currentRecording.recordingDuration > 0 
-                    ? interactionEvent.timestamp / currentRecording.recordingDuration 
+                float normalizedTime = currentRecording.recordingDuration > 0
+                    ? interactionEvent.timestamp / currentRecording.recordingDuration
                     : 0f;
 
                 // Clamp to valid range
                 normalizedTime = Mathf.Clamp01(normalizedTime);
+
+                // DEBUG: Log marker positions
+                Debug.Log($"📍 Unity Marker: {interactionEvent.eventType} at timestamp={interactionEvent.timestamp:F3}s, normalized={normalizedTime:F3}, duration={currentRecording.recordingDuration:F3}s");
 
                 // Create marker
                 GameObject marker = CreateMarker(

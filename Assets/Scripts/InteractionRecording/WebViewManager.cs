@@ -1220,6 +1220,11 @@ namespace VRInteractionRecording
                             HandlePlacementUpdate(message);
                             break;
 
+                        case "putdownTimestampChanged":
+                            Debug.LogError("⏱️ PutDown timestamp changed from timeline editor");
+                            HandlePutDownTimestampChange(message, playbackEditor);
+                            break;
+
                         default:
                             Debug.LogError($"⚠️ Unknown message type: {messageObj.type}");
                             break;
@@ -1292,6 +1297,44 @@ namespace VRInteractionRecording
             {
                 Debug.LogError($"❌ Error handling placement update: {e.Message}");
             }
+        }
+
+        private void HandlePutDownTimestampChange(string message, RecordingPlaybackEditor playbackEditor)
+        {
+            try
+            {
+                var msg = JsonUtility.FromJson<PutDownTimestampMessage>(message);
+
+                Debug.LogError($"⏱️ PutDown Timestamp Update:");
+                Debug.LogError($"   Object: {msg.objectId}");
+                Debug.LogError($"   New Timestamp: {msg.timestamp:F3}s");
+
+                // Call public method on RecordingPlaybackEditor to update the green highlight
+                var method = playbackEditor.GetType().GetMethod("UpdatePutDownTimestamp",
+                    System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (method != null)
+                {
+                    method.Invoke(playbackEditor, new object[] { msg.objectId, msg.timestamp });
+                    Debug.LogError($"✅ Called UpdatePutDownTimestamp({msg.objectId}, {msg.timestamp:F3}s)");
+                }
+                else
+                {
+                    Debug.LogError("❌ UpdatePutDownTimestamp method not found on RecordingPlaybackEditor");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"❌ Error handling putdown timestamp change: {e.Message}");
+            }
+        }
+
+        [System.Serializable]
+        private class PutDownTimestampMessage
+        {
+            public string type;
+            public string objectId;
+            public float timestamp;
         }
 
         [System.Serializable]

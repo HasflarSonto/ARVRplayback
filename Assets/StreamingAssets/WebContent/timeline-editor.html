@@ -1159,7 +1159,7 @@
             }
         }
 
-        // Visual feedback: Show valid movement ranges for all PutDown blocks
+        // Visual feedback: Show valid movement ranges for all PutDown blocks on their track
         let rangeHighlights = [];
 
         function showAllMovementRanges() {
@@ -1169,10 +1169,8 @@
             if (!taskData || !taskData.steps) return;
 
             const labelWidth = 100;
-            const timeline = document.getElementById('timeline');
-            if (!timeline) return;
 
-            // Find all PutDown blocks and create range highlights
+            // Find all PutDown blocks and create range highlights on their tracks
             taskData.steps.forEach(step => {
                 if (step.action !== 'PutDown') return;
 
@@ -1188,12 +1186,23 @@
                     step.originalTimestamp = step.timestamp;
                 }
 
-                // Create highlight element
+                // Find the track for this object
+                const tracks = document.querySelectorAll('.timeline-track');
+                let targetTrack = null;
+                tracks.forEach(track => {
+                    if (track.dataset.objectId === step.objectId) {
+                        targetTrack = track;
+                    }
+                });
+
+                if (!targetTrack) return;
+
+                // Create highlight element on the track
                 const rangeHighlight = document.createElement('div');
                 rangeHighlight.style.position = 'absolute';
                 rangeHighlight.style.top = '0';
                 rangeHighlight.style.height = '100%';
-                rangeHighlight.style.background = 'rgba(100, 150, 255, 0.15)'; // Faint blue
+                rangeHighlight.style.background = 'rgba(100, 150, 255, 0.2)'; // Faint blue
                 rangeHighlight.style.pointerEvents = 'none';
                 rangeHighlight.style.zIndex = '1';
                 rangeHighlight.className = 'movement-range-highlight';
@@ -1206,10 +1215,10 @@
                 rangeHighlight.style.left = startPos + 'px';
                 rangeHighlight.style.width = (endPos - startPos) + 'px';
 
-                timeline.appendChild(rangeHighlight);
+                targetTrack.appendChild(rangeHighlight);
                 rangeHighlights.push(rangeHighlight);
 
-                console.log(`[RANGE] Added permanent range for ${step.objectId}: ${pickupBlock.timestamp.toFixed(2)}s → ${step.originalTimestamp.toFixed(2)}s (original)`);
+                console.log(`[RANGE] Added track range for ${step.objectId}: ${pickupBlock.timestamp.toFixed(2)}s → ${step.originalTimestamp.toFixed(2)}s`);
             });
         }
 
@@ -1220,6 +1229,19 @@
                 }
             });
             rangeHighlights = [];
+        }
+
+        // Notify Unity when PutDown timestamp changes so it can update green preview
+        function notifyUnityOfTimestampChange(objectId, newTimestamp) {
+            if (typeof window.vuplex !== 'undefined' && window.vuplex.postMessage) {
+                const message = {
+                    type: 'putdownTimestampChanged',
+                    objectId: objectId,
+                    timestamp: newTimestamp
+                };
+                window.vuplex.postMessage(JSON.stringify(message));
+                console.log(`[UNITY MSG] Sent putdownTimestampChanged: ${objectId} → ${newTimestamp.toFixed(3)}s`);
+            }
         }
 
         function renderTimeline() {
@@ -1680,6 +1702,9 @@
                         // Recenter block on new timestamp
                         const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
                         block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
+
+                        // Notify Unity about the timestamp change
+                        notifyUnityOfTimestampChange(step.objectId, step.timestamp);
                     }
                 } else if (step.action === 'PickUp') {
                     // PickUp blocks are locked - should not reach here
