@@ -263,6 +263,19 @@ namespace VRInteractionRecording
                 if (webViewComponent != null)
                 {
                     LogDebug("WebViewManager: Found Vuplex WebView component");
+
+                    // Enable drag mode on existing WebView
+                    var dragModeProperty = vuplexType.GetProperty("DragMode");
+                    if (dragModeProperty != null)
+                    {
+                        System.Type dragModeEnumType = System.Type.GetType("Vuplex.WebView.DragMode, Vuplex.WebView");
+                        if (dragModeEnumType != null)
+                        {
+                            var dragWithinPageValue = System.Enum.Parse(dragModeEnumType, "DragWithinPage");
+                            dragModeProperty.SetValue(webViewComponent, dragWithinPageValue);
+                            Debug.LogError("[WebViewManager] ✅ Enabled DragMode = DragWithinPage on existing WebView");
+                        }
+                    }
                 }
             }
 
@@ -772,7 +785,30 @@ namespace VRInteractionRecording
                             keyboardEnabledProperty.SetValue(prefab, false);
                             Debug.LogError("[WebViewManager] ✅ Disabled keyboard on CanvasWebViewPrefab");
                         }
-                        
+
+                        // Enable drag mode for VR interaction support
+                        var dragModeProperty = vuplexType.GetProperty("DragMode");
+                        if (dragModeProperty != null)
+                        {
+                            // Get DragMode enum type
+                            System.Type dragModeEnumType = System.Type.GetType("Vuplex.WebView.DragMode, Vuplex.WebView");
+                            if (dragModeEnumType != null)
+                            {
+                                // Try DragWithinPage mode first (allows dragging elements within the page)
+                                var dragWithinPageValue = System.Enum.Parse(dragModeEnumType, "DragWithinPage");
+                                dragModeProperty.SetValue(prefab, dragWithinPageValue);
+                                Debug.LogError("[WebViewManager] ✅ Enabled DragMode = DragWithinPage for VR drag support");
+                            }
+                            else
+                            {
+                                Debug.LogWarning("[WebViewManager] ⚠️ DragMode enum type not found");
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogWarning("[WebViewManager] ⚠️ DragMode property not found on CanvasWebViewPrefab");
+                        }
+
                         webViewComponent = prefab;
                         Debug.LogError("[WebViewManager] ✅ Created CanvasWebViewPrefab automatically!");
                     }
@@ -1094,9 +1130,16 @@ namespace VRInteractionRecording
             {
                 // Calculate current time from normalized value
                 float currentTime = normalizedValue * totalDuration;
-                
+
+                // Debug: Log occasionally to verify values
+                if (UnityEngine.Random.value < 0.05f) // 5% sample
+                {
+                    Debug.Log($"📤 Unity Slider → WebView: normalized={normalizedValue:F3}, currentTime={currentTime:F3}s, totalDuration={totalDuration:F2}s");
+                }
+
                 // Create message JSON with both normalized value and current time
-                string message = $"{{\"type\":\"sliderValue\",\"value\":{normalizedValue},\"currentTime\":{currentTime},\"totalDuration\":{totalDuration}}}";
+                // Use InvariantCulture to ensure decimal points (not commas) in JSON
+                string message = $"{{\"type\":\"sliderValue\",\"value\":{normalizedValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"currentTime\":{currentTime.ToString(System.Globalization.CultureInfo.InvariantCulture)},\"totalDuration\":{totalDuration.ToString(System.Globalization.CultureInfo.InvariantCulture)}}}";
 
                 // For Vuplex, we need to get the WebView property first
                 System.Type webViewType = webViewComponent.GetType();
