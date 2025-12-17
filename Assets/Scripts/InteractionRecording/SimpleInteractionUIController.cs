@@ -864,13 +864,21 @@ namespace VRInteractionRecording
             {
                 if (createdPaths > 0)
                 {
-                    statusText.text = $"Movement: {createdPaths} path(s) loaded";
+                    // Show successful path loading
+                    statusText.text = $"{totalMoveBlocks} object(s) moved | {createdPaths} movement path(s)";
                     statusText.color = Color.cyan;
                 }
                 else if (totalMoveBlocks > 0)
                 {
-                    statusText.text = $"Movement: {totalMoveBlocks} block(s), 0 paths";
+                    // Show that Move blocks were found but no paths created
+                    statusText.text = $"{totalMoveBlocks} object(s) moved | 0 movement paths";
                     statusText.color = Color.red;
+                }
+                else
+                {
+                    // No Move blocks found
+                    statusText.text = "0 object(s) moved | 0 movement paths";
+                    statusText.color = Color.gray;
                 }
             }
         }
