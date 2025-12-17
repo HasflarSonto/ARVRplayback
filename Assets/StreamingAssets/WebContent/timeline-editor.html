@@ -1437,23 +1437,23 @@
 
             const labelWidth = 100;
 
-            // EXACT same formula as playhead - NO offset!
-            // position = labelWidth + (timestamp × pixelsPerSecond)
-            const left = labelWidth + (step.timestamp * pixelsPerSecond);
+            // Calculate timestamp position (same as playhead)
+            const timestampPosition = labelWidth + (step.timestamp * pixelsPerSecond);
 
             // Debug: Show first event position on screen
             if ((step.action === 'PickUp' || step.action === 'PutDown') && step.stepNumber === 1) {
                 const debugInfo = document.getElementById('debugInfo');
                 if (debugInfo) {
-                    debugInfo.textContent = `First ${step.action}: ${step.timestamp.toFixed(2)}s × ${pixelsPerSecond}px/s = ${left.toFixed(0)}px`;
+                    debugInfo.textContent = `First ${step.action}: ${step.timestamp.toFixed(2)}s × ${pixelsPerSecond}px/s = ${timestampPosition.toFixed(0)}px`;
                 }
-                console.log(`📍 FIRST ${step.action}: time=${step.timestamp.toFixed(3)}s, zoom=${pixelsPerSecond}px/s, pos=${left.toFixed(1)}px`);
+                console.log(`📍 FIRST ${step.action}: time=${step.timestamp.toFixed(3)}s, zoom=${pixelsPerSecond}px/s, pos=${timestampPosition.toFixed(1)}px`);
             }
 
-            // PickUp and PutDown are point events - place at EXACT timestamp position (same as playhead)
+            // PickUp and PutDown are point events - center the block on the timestamp
             if (step.action === 'PickUp' || step.action === 'PutDown') {
-                block.style.left = left + 'px'; // NO offset - exact timestamp position
-                block.style.width = '60px';
+                const blockWidth = 60;
+                block.style.left = (timestampPosition - blockWidth / 2) + 'px'; // Center on timestamp
+                block.style.width = blockWidth + 'px';
                 block.style.justifyContent = 'center';
             } 
             // Move is a duration event - needs start and end times
@@ -1548,12 +1548,26 @@
                 if (!isDragging) return;
                 const deltaX = e.clientX - startX;
                 const labelWidth = 100;
-                const newLeft = Math.max(labelWidth, startLeft + deltaX);
+                const newLeft = startLeft + deltaX;
 
-                // Direct calculation - NO offset
-                const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
-                step.timestamp = Math.max(0, timestamp);
-                block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
+                // For PickUp/PutDown blocks (60px wide), calculate timestamp from center
+                if (step.action === 'PickUp' || step.action === 'PutDown') {
+                    const blockWidth = 60;
+                    // Block left edge is at (timestamp position - blockWidth/2)
+                    // So: timestamp position = block left edge + blockWidth/2
+                    const timestampPosition = newLeft + blockWidth / 2;
+                    const timestamp = (timestampPosition - labelWidth) / pixelsPerSecond;
+                    step.timestamp = Math.max(0, timestamp);
+
+                    // Recenter block on new timestamp
+                    const newTimestampPosition = labelWidth + step.timestamp * pixelsPerSecond;
+                    block.style.left = (newTimestampPosition - blockWidth / 2) + 'px';
+                } else {
+                    // Other blocks: left edge at timestamp position
+                    const timestamp = (newLeft - labelWidth) / pixelsPerSecond;
+                    step.timestamp = Math.max(0, timestamp);
+                    block.style.left = (labelWidth + step.timestamp * pixelsPerSecond) + 'px';
+                }
 
                 updateJSONOutput();
                 renderTimeline(); // Re-render to update playhead position
