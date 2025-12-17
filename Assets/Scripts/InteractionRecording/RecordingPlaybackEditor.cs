@@ -491,13 +491,15 @@ namespace VRInteractionRecording
                     obj.transform.localScale = before.scale;
                 }
 
-                // Ensure object stays frozen (kinematic) during playback
-                if (objectRigidbodies.ContainsKey(obj))
+                // Ensure object stays frozen (kinematic) during active playback ONLY
+                // Only modify physics if we have tracking data (means we're in active edit session)
+                if (currentRecording != null && objectRigidbodies.ContainsKey(obj))
                 {
                     Rigidbody rb = objectRigidbodies[obj];
                     if (rb != null)
                     {
                         rb.isKinematic = true;
+                        rb.useGravity = false;
                         rb.linearVelocity = Vector3.zero;
                         rb.angularVelocity = Vector3.zero;
                     }
@@ -1216,6 +1218,29 @@ namespace VRInteractionRecording
             originalGravityStates.Clear();
 
             Debug.LogError("✅ Tracking dictionaries cleared");
+
+            // FINAL SAFETY CHECK: One more pass to absolutely ensure everything is unfrozen
+            if (objectStateManager != null)
+            {
+                Debug.LogError("🔍 FINAL SAFETY CHECK - Forcing all objects to have gravity");
+                foreach (var kvp in objectStateManager.InteractableObjects)
+                {
+                    GameObject obj = kvp.Value.gameObject;
+                    if (obj != null)
+                    {
+                        Rigidbody rb = obj.GetComponent<Rigidbody>();
+                        if (rb != null && (rb.isKinematic || !rb.useGravity))
+                        {
+                            Debug.LogError($"   ⚠️ {obj.name} STILL FROZEN! Forcing: kinematic={rb.isKinematic}→false, gravity={rb.useGravity}→true");
+                            rb.isKinematic = false;
+                            rb.useGravity = true;
+                            rb.linearVelocity = Vector3.zero;
+                            rb.angularVelocity = Vector3.zero;
+                        }
+                    }
+                }
+            }
+
             Debug.LogError("✅ ALL OBJECTS UNFROZEN (gravity fully restored)");
             Debug.LogError("───────────────────────────────────────────");
             Debug.Log("RecordingPlaybackEditor: All objects unfrozen (gravity fully restored)");
