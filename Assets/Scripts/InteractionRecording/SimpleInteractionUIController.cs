@@ -316,7 +316,25 @@ namespace VRInteractionRecording
 
                 if (currentRecording != null)
                 {
-                    playbackManager.StartPlayback(currentRecording);
+                    // Check if there's a baked TaskInstruction with Move blocks
+                    TaskInstruction bakedTask = null;
+                    if (webViewManager != null)
+                    {
+                        bakedTask = webViewManager.GetBakedTaskInstruction();
+                    }
+
+                    // Start playback with or without baked task instruction
+                    if (bakedTask != null)
+                    {
+                        Debug.Log($"SimpleInteractionUIController: Starting playback with baked TaskInstruction ({bakedTask.steps.Count} steps)");
+                        playbackManager.StartPlayback(currentRecording, bakedTask);
+                    }
+                    else
+                    {
+                        Debug.Log("SimpleInteractionUIController: Starting playback without Move blocks");
+                        playbackManager.StartPlayback(currentRecording);
+                    }
+
                     isPlaybackActive = true;
                 }
                 else

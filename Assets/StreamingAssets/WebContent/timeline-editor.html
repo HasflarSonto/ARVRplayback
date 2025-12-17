@@ -636,6 +636,7 @@
         <button id="loadTaskBtn">Load Task JSON</button>
         <button id="loadRecordingBtn">Load Recording Data</button>
         <button id="exportBtn">Export JSON</button>
+        <button id="bakeBtn" style="background: #27ae60;">🎯 Bake Movement Goals</button>
         <button id="debugBtn" style="background: #e74c3c;">Debug</button>
         <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
         <span id="debugInfo" style="margin-left: 20px; color: #f48771; font-size: 10px; font-family: monospace;"></span>
@@ -993,6 +994,7 @@
             document.getElementById('loadTaskBtn').addEventListener('click', () => loadJSON('task'));
             document.getElementById('loadRecordingBtn').addEventListener('click', () => loadJSON('recording'));
             document.getElementById('exportBtn').addEventListener('click', exportJSON);
+            document.getElementById('bakeBtn').addEventListener('click', bakeMovementGoals);
             document.getElementById('copyJsonBtn').addEventListener('click', copyJSON);
             document.getElementById('playPauseBtn').addEventListener('click', togglePlay);
             document.getElementById('stopBtn').addEventListener('click', stopPlayback);
@@ -1256,6 +1258,52 @@
                 };
                 window.vuplex.postMessage(JSON.stringify(message));
                 console.log(`[UNITY MSG] Sent moveBlockAdded: ${moveStep.objectId} [${moveStep.startTime.toFixed(3)}s → ${moveStep.endTime.toFixed(3)}s]`);
+            }
+        }
+
+        // Bakes all Move blocks into the playback system
+        function bakeMovementGoals() {
+            if (!taskData || !taskData.steps) {
+                alert('No task data loaded! Please load a recording first.');
+                console.error('[BAKE] No task data available');
+                return;
+            }
+
+            // Count Move blocks
+            const moveBlocks = taskData.steps.filter(step => step.action === 'Move');
+
+            if (moveBlocks.length === 0) {
+                alert('No Move blocks found! Add Move blocks to the timeline first.');
+                console.error('[BAKE] No Move blocks found');
+                return;
+            }
+
+            console.log(`[BAKE] Baking ${moveBlocks.length} Move blocks into playback system`);
+
+            // Send complete task instruction to Unity for baking
+            if (typeof window.vuplex !== 'undefined' && window.vuplex.postMessage) {
+                const message = {
+                    type: 'bakeMovementGoals',
+                    taskInstruction: taskData
+                };
+                window.vuplex.postMessage(JSON.stringify(message));
+                console.log(`[BAKE] Sent bakeMovementGoals with ${taskData.steps.length} steps (${moveBlocks.length} Move blocks)`);
+
+                // Visual feedback
+                const bakeBtn = document.getElementById('bakeBtn');
+                const originalText = bakeBtn.textContent;
+                bakeBtn.textContent = '✅ Baked!';
+                bakeBtn.style.background = '#2ecc71';
+
+                setTimeout(() => {
+                    bakeBtn.textContent = originalText;
+                    bakeBtn.style.background = '#27ae60';
+                }, 2000);
+
+                alert(`Successfully baked ${moveBlocks.length} movement goal(s) into playback!\n\nYou can now start playback to test the movement goals.`);
+            } else {
+                alert('Error: Cannot communicate with Unity. Make sure you are running in VR.');
+                console.error('[BAKE] Vuplex not available');
             }
         }
 

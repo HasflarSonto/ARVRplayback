@@ -57,6 +57,9 @@ namespace VRInteractionRecording
 
         // WebView component reference (will be set when Vuplex is added)
         private UnityEngine.Object webViewComponent;
+
+        // Baked TaskInstruction from timeline editor
+        private TaskInstruction bakedTaskInstruction;
         private float lastUpdateTime = 0f;
         private float timeBetweenUpdates;
         
@@ -1232,6 +1235,11 @@ namespace VRInteractionRecording
                             HandleMoveBlockAdded(message, playbackEditor);
                             break;
 
+                        case "bakeMovementGoals":
+                            Debug.LogError("🎂 Bake movement goals request from timeline editor");
+                            HandleBakeMovementGoals(message);
+                            break;
+
                         default:
                             Debug.LogError($"⚠️ Unknown message type: {messageObj.type}");
                             break;
@@ -1410,6 +1418,65 @@ namespace VRInteractionRecording
             {
                 Debug.LogError($"❌ Error handling move block added: {e.Message}\n{e.StackTrace}");
             }
+        }
+
+        private void HandleBakeMovementGoals(string message)
+        {
+            try
+            {
+                var msg = JsonUtility.FromJson<BakeMovementGoalsMessage>(message);
+
+                Debug.LogError($"🎂 Bake Movement Goals:");
+                Debug.LogError($"   Task Name: {msg.taskInstruction.taskName}");
+                Debug.LogError($"   Total Steps: {msg.taskInstruction.steps.Count}");
+
+                // Count Move blocks
+                int moveBlockCount = 0;
+                foreach (var step in msg.taskInstruction.steps)
+                {
+                    if (step.action == "Move")
+                    {
+                        moveBlockCount++;
+                    }
+                }
+
+                Debug.LogError($"   Move Blocks: {moveBlockCount}");
+
+                // Store the baked task instruction
+                bakedTaskInstruction = msg.taskInstruction;
+
+                Debug.LogError($"✅ Task instruction baked successfully!");
+                Debug.LogError($"   Use GetBakedTaskInstruction() to retrieve it for playback");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"❌ Error handling bake movement goals: {e.Message}\n{e.StackTrace}");
+            }
+        }
+
+        /// <summary>
+        /// Gets the baked TaskInstruction from the timeline editor
+        /// Returns null if nothing has been baked yet
+        /// </summary>
+        public TaskInstruction GetBakedTaskInstruction()
+        {
+            return bakedTaskInstruction;
+        }
+
+        /// <summary>
+        /// Clears the baked TaskInstruction
+        /// </summary>
+        public void ClearBakedTaskInstruction()
+        {
+            bakedTaskInstruction = null;
+            Debug.Log("[WebViewManager] Cleared baked task instruction");
+        }
+
+        [System.Serializable]
+        private class BakeMovementGoalsMessage
+        {
+            public string type;
+            public TaskInstruction taskInstruction;
         }
 
         [System.Serializable]
