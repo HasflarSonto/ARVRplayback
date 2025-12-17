@@ -317,7 +317,7 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Called when an object is released during playback
-        /// Checks if movement goal completed and object is placed correctly
+        /// Hides movement goal and checks if object is placed correctly
         /// </summary>
         public void OnObjectReleasedDuringPlayback(GameObject releasedObject)
         {
@@ -325,27 +325,11 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
 
-            // Check if movement goal exists and is completed
-            bool movementGoalCompleted = true;
+            // Hide movement goal if it exists (no validation, just visual guidance)
             if (movementGoalManager != null)
             {
-                movementGoalCompleted = movementGoalManager.IsMovementGoalCompleted(objectId);
-                float progress = movementGoalManager.GetMovementGoalProgress(objectId);
-
-                if (!movementGoalCompleted)
-                {
-                    Debug.LogWarning($"[InteractionPlaybackManager] Movement goal not completed! Progress: {progress:P0}");
-                    Debug.LogWarning($"[InteractionPlaybackManager] Object must follow the green path before placement is accepted");
-
-                    // Don't hide the movement goal - keep it visible
-                    return; // Reject release until movement goal is completed
-                }
-                else
-                {
-                    Debug.Log($"[InteractionPlaybackManager] Movement goal completed! Progress: {progress:P0}");
-                    // Hide movement goal
-                    movementGoalManager.HideMovementGoal(objectId);
-                }
+                movementGoalManager.HideMovementGoal(objectId);
+                Debug.Log($"[InteractionPlaybackManager] Hiding movement goal for {objectId}");
             }
 
             // Find the target release event (where it should be placed)
