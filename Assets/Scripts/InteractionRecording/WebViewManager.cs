@@ -184,7 +184,9 @@ namespace VRInteractionRecording
             // Vuplex supports streaming-assets:// URL scheme for StreamingAssets
             // Format: streaming-assets://WebContent/timeline-editor.html
             // This works on all platforms (editor, Android, etc.)
-            string streamingAssetsURL = "streaming-assets://WebContent/timeline-editor.html";
+            // Add cache-busting query parameter to force reload of HTML changes
+            string cacheBuster = System.DateTime.Now.Ticks.ToString();
+            string streamingAssetsURL = $"streaming-assets://WebContent/timeline-editor.html?v={cacheBuster}";
 
             // Verify file exists in editor
             #if UNITY_EDITOR
