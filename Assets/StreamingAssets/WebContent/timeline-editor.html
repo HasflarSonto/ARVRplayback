@@ -1392,13 +1392,22 @@
                 return;
             }
 
-            // Count Move blocks
+            // Count Move blocks and PickUp/PutDown pairs
             const moveBlocks = taskData.steps.filter(step => step.action === 'Move');
+            const pickUpCount = taskData.steps.filter(step => step.action === 'PickUp').length;
+            const putDownCount = taskData.steps.filter(step => step.action === 'PutDown').length;
+
+            console.log(`[BAKE] Task has ${moveBlocks.length} Move blocks, ${pickUpCount} PickUps, ${putDownCount} PutDowns`);
+
+            // You can bake even without Move blocks (just PickUp/PutDown sequences)
+            if (moveBlocks.length === 0 && pickUpCount === 0) {
+                alert('Nothing to bake! Add Move blocks or PickUp/PutDown actions to the timeline first.');
+                console.error('[BAKE] No Move blocks or PickUp/PutDown actions found');
+                return;
+            }
 
             if (moveBlocks.length === 0) {
-                alert('No Move blocks found! Add Move blocks to the timeline first.');
-                console.error('[BAKE] No Move blocks found');
-                return;
+                console.log('[BAKE] No Move blocks, but baking PickUp/PutDown sequences');
             }
 
             console.log(`[BAKE] Baking ${moveBlocks.length} Move blocks into playback system`);
