@@ -87,6 +87,9 @@ namespace VRInteractionRecording
         {
             timeBetweenUpdates = 1f / updateFrequency;
 
+            // Hook into Unity log system to send logs to WebView debug panel
+            Application.logMessageReceived += HandleUnityLog;
+
             // Disable old VideoPlayer components to prevent errors
             DisableOldVideoComponents();
 
@@ -942,46 +945,84 @@ namespace VRInteractionRecording
                 }
 
                 // Try to set up message handler for Vuplex
-                // IMPORTANT: MessageEmitted is on the CanvasWebViewPrefab, not the WebView property
-                // Check on the prefab type (webViewType), not actualWebViewType
+                // CRITICAL: We need to find where MessageEmitted event exists
+                Debug.LogError("═══ SEARCHING FOR MESSAGE HANDLER ═══");
+                Debug.LogError($"🔍 webViewType (prefab): {webViewType.FullName}");
+                Debug.LogError($"🔍 actualWebViewType (inner): {actualWebViewType.FullName}");
+
+                // List all events on webViewType (prefab)
+                var prefabEvents = webViewType.GetEvents(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                Debug.LogError($"📋 Events on webViewType (prefab): {prefabEvents.Length}");
+                foreach (var evt in prefabEvents)
+                {
+                    Debug.LogError($"   - {evt.Name} ({evt.EventHandlerType.Name})");
+                }
+
+                // List all events on actualWebViewType (inner)
+                var innerEvents = actualWebViewType.GetEvents(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                Debug.LogError($"📋 Events on actualWebViewType (inner): {innerEvents.Length}");
+                foreach (var evt in innerEvents)
+                {
+                    Debug.LogError($"   - {evt.Name} ({evt.EventHandlerType.Name})");
+                }
+
+                // Try to find MessageEmitted on prefab first
                 var messageEmittedEvent = webViewType.GetEvent("MessageEmitted");
                 if (messageEmittedEvent != null)
                 {
+                    Debug.LogError("✅ Found MessageEmitted on prefab!");
                     var handlerType = messageEmittedEvent.EventHandlerType;
                     var handler = Delegate.CreateDelegate(handlerType, this, typeof(WebViewManager).GetMethod("OnVuplexMessage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance));
                     messageEmittedEvent.AddEventHandler(webViewComponent, handler); // Use webViewComponent (prefab), not actualWebView
-                    Debug.LogError("✅ MessageEmitted event handler set up");
+                    Debug.LogError("✅ MessageEmitted event handler set up on prefab");
                     LogDebug("WebViewManager: MessageEmitted event handler set up on CanvasWebViewPrefab");
 
                     // Mark as ready after message handler is set up and URL is loaded
-                    // Give it time for the URL to load and JavaScript to initialize
-                    // AND for Vuplex to inject its APIs into the JavaScript context
                     Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 4 seconds (will execute at ~{Time.time + 4f:F2}s)");
-                    Invoke(nameof(MarkWebViewReady), 4f); // Extra time for Vuplex API injection
+                    Invoke(nameof(MarkWebViewReady), 4f);
                 }
                 else
                 {
-                    // Try SetMessageHandler as fallback (on actual WebView)
-                    var setMessageHandlerMethod = actualWebViewType.GetMethod("SetMessageHandler", new Type[] { typeof(Action<string>) });
-                    if (setMessageHandlerMethod != null)
-                    {
-                        setMessageHandlerMethod.Invoke(actualWebView, new object[] { new Action<string>(OnWebViewMessage) });
-                        Debug.LogError("✅ SetMessageHandler set up");
-                        LogDebug("WebViewManager: SetMessageHandler set up on WebView");
+                    Debug.LogError("❌ MessageEmitted not found on prefab, trying inner WebView...");
 
-                        // Mark as ready after message handler is set up
-                        // Increased delay for Vuplex API injection
-                        Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 3 seconds (will execute at ~{Time.time + 3f:F2}s)");
-                        Invoke(nameof(MarkWebViewReady), 3f);
+                    // Try MessageEmitted on inner WebView
+                    messageEmittedEvent = actualWebViewType.GetEvent("MessageEmitted");
+                    if (messageEmittedEvent != null)
+                    {
+                        Debug.LogError("✅ Found MessageEmitted on inner WebView!");
+                        var handlerType = messageEmittedEvent.EventHandlerType;
+                        var handler = Delegate.CreateDelegate(handlerType, this, typeof(WebViewManager).GetMethod("OnVuplexMessage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance));
+                        messageEmittedEvent.AddEventHandler(actualWebView, handler); // Use actualWebView (inner)
+                        Debug.LogError("✅ MessageEmitted event handler set up on inner WebView");
+                        LogDebug("WebViewManager: MessageEmitted event handler set up on inner WebView");
+
+                        Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 4 seconds (will execute at ~{Time.time + 4f:F2}s)");
+                        Invoke(nameof(MarkWebViewReady), 4f);
                     }
                     else
                     {
-                        Debug.LogError("⚠️ No message handler method found - will mark ready after delay");
-                        LogDebug("WebViewManager: No message handler method found - will mark ready after delay");
-                        // Mark as ready anyway after a delay to allow URL to load
-                        // Increased delay for Vuplex API injection
-                        Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 4 seconds (will execute at ~{Time.time + 4f:F2}s)");
-                        Invoke(nameof(MarkWebViewReady), 4f);
+                        Debug.LogError("❌ MessageEmitted not found on inner WebView either, trying SetMessageHandler...");
+
+                        // Try SetMessageHandler as fallback (on actual WebView)
+                        var setMessageHandlerMethod = actualWebViewType.GetMethod("SetMessageHandler", new Type[] { typeof(Action<string>) });
+                        if (setMessageHandlerMethod != null)
+                        {
+                            setMessageHandlerMethod.Invoke(actualWebView, new object[] { new Action<string>(OnWebViewMessage) });
+                            Debug.LogError("✅ SetMessageHandler set up");
+                            LogDebug("WebViewManager: SetMessageHandler set up on WebView");
+
+                            Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 3 seconds (will execute at ~{Time.time + 3f:F2}s)");
+                            Invoke(nameof(MarkWebViewReady), 3f);
+                        }
+                        else
+                        {
+                            Debug.LogError("❌ SetMessageHandler not found either!");
+                            Debug.LogError("⚠️ No message handler method found - will mark ready after delay");
+                            LogDebug("WebViewManager: No message handler method found - will mark ready after delay");
+                            // Mark as ready anyway after a delay to allow URL to load
+                            Debug.LogError($"⏰ Scheduling MarkWebViewReady() in 4 seconds (will execute at ~{Time.time + 4f:F2}s)");
+                            Invoke(nameof(MarkWebViewReady), 4f);
+                        }
                     }
                 }
 
@@ -998,11 +1039,19 @@ namespace VRInteractionRecording
         /// </summary>
         private void OnVuplexMessage(object sender, EventArgs e)
         {
+            Debug.LogError($"[OnVuplexMessage] RECEIVED MESSAGE from WebView");
+            Debug.LogError($"   Event type: {e?.GetType().Name}");
+
             // Extract message from event args
             var messageProperty = e.GetType().GetProperty("Value");
+            Debug.LogError($"   messageProperty null? {messageProperty == null}");
+
             if (messageProperty != null)
             {
                 string message = messageProperty.GetValue(e) as string;
+                Debug.LogError($"   message null? {message == null}");
+                Debug.LogError($"   message length: {message?.Length ?? 0}");
+                Debug.LogError($"   message preview: {(message?.Length > 100 ? message.Substring(0, 100) : message)}");
                 OnWebViewMessage(message);
             }
         }
@@ -1183,17 +1232,31 @@ namespace VRInteractionRecording
         {
             LogDebug($"WebViewManager: Received message from WebView: {message}");
             Debug.LogError($"═══════════════════════════════════════════");
-            Debug.LogError($"📨 WebView Message Received: {message}");
+            Debug.LogError($"📨 [OnWebViewMessage] ENTRY POINT");
+            Debug.LogError($"   message null? {message == null}");
+            Debug.LogError($"   message length: {message?.Length ?? 0}");
+
+            if (message != null && message.Contains("bakeMovementGoals"))
+            {
+                Debug.LogError($"   ✅ MESSAGE CONTAINS 'bakeMovementGoals'!");
+                Debug.LogError($"   Full message: {message}");
+            }
+
+            Debug.LogError($"📨 WebView Message Received: {(message?.Length > 200 ? message.Substring(0, 200) + "..." : message)}");
 
             // Parse JSON message
             try
             {
+                Debug.LogError($"   Checking if message contains 'type' field...");
+                Debug.LogError($"   Contains 'type'? {message.Contains("\"type\"")}");
+
                 // Simple JSON parsing (you might want to use a proper JSON library)
                 if (message.Contains("\"type\""))
                 {
                     // Extract the type field
                     var messageObj = JsonUtility.FromJson<SerializableMessage>(message);
-                    Debug.LogError($"📋 Message type: {messageObj.type}");
+                    Debug.LogError($"📋 Message type: '{messageObj.type}'");
+                    Debug.LogError($"   Checking switch cases...");
 
                     // Get RecordingPlaybackEditor reference
                     var playbackEditor = FindFirstObjectByType<RecordingPlaybackEditor>();
@@ -1238,21 +1301,34 @@ namespace VRInteractionRecording
                             break;
 
                         case "bakeMovementGoals":
-                            Debug.LogError("🎂 Bake movement goals request from timeline editor");
+                            Debug.LogError("🎂 Bake movement goals request from timeline editor (OLD - too large)");
                             HandleBakeMovementGoals(message);
                             break;
 
+                        case "bakeMovementGoalsReady":
+                            Debug.LogError("🎂 Bake ready notification - pulling data via ExecuteJavaScript");
+                            HandleBakeMovementGoalsReady(message);
+                            break;
+
                         default:
-                            Debug.LogError($"⚠️ Unknown message type: {messageObj.type}");
+                            Debug.LogError($"⚠️ Unknown message type: '{messageObj.type}'");
+                            Debug.LogError($"   Available: loadTimelineData, displayJSON, statusUpdate, playbackStatus, updateTime, sliderValue, play, pause, stop, updatePlacement, putdownTimestampChanged, moveBlockAdded, bakeMovementGoals, bakeMovementGoalsReady");
                             break;
                     }
 
                     Debug.LogError($"═══════════════════════════════════════════");
                 }
+                else
+                {
+                    Debug.LogError($"❌ Message does NOT contain 'type' field!");
+                    Debug.LogError($"   Raw message: {message}");
+                }
             }
             catch (Exception e)
             {
-                Debug.LogError($"❌ Error parsing message: {e.Message}");
+                Debug.LogError($"❌ ERROR parsing message: {e.Message}");
+                Debug.LogError($"   Stack: {e.StackTrace}");
+                Debug.LogError($"   Message: {message}");
                 LogDebug($"WebViewManager: Error parsing message: {e.Message}");
             }
         }
@@ -1426,33 +1502,185 @@ namespace VRInteractionRecording
         {
             try
             {
+                Debug.LogError("═══════════════════════════════════════════");
+                Debug.LogError("🎂 [HandleBakeMovementGoals] STARTING");
+                Debug.LogError($"   Raw message length: {message?.Length ?? 0}");
+                Debug.LogError($"   Raw message preview: {(message?.Length > 200 ? message.Substring(0, 200) : message)}");
+
                 var msg = JsonUtility.FromJson<BakeMovementGoalsMessage>(message);
 
-                Debug.LogError($"🎂 Bake Movement Goals:");
+                Debug.LogError($"   ✅ JSON parsed successfully");
+                Debug.LogError($"   msg null? {msg == null}");
+                Debug.LogError($"   msg.taskInstruction null? {msg?.taskInstruction == null}");
+
+                if (msg?.taskInstruction == null)
+                {
+                    Debug.LogError("   ❌ TaskInstruction is NULL after parsing!");
+                    return;
+                }
+
                 Debug.LogError($"   Task Name: {msg.taskInstruction.taskName}");
-                Debug.LogError($"   Total Steps: {msg.taskInstruction.steps.Count}");
+                Debug.LogError($"   msg.taskInstruction.steps null? {msg.taskInstruction.steps == null}");
+                Debug.LogError($"   Total Steps: {msg.taskInstruction.steps?.Count ?? 0}");
 
                 // Count Move blocks
                 int moveBlockCount = 0;
-                foreach (var step in msg.taskInstruction.steps)
+                if (msg.taskInstruction.steps != null)
                 {
-                    if (step.action == "Move")
+                    foreach (var step in msg.taskInstruction.steps)
                     {
-                        moveBlockCount++;
+                        Debug.LogError($"      Step {step.stepNumber}: {step.action} - {step.objectId}");
+                        if (step.action == "Move")
+                        {
+                            moveBlockCount++;
+                            Debug.LogError($"         ✅ Found Move block: {step.startTime}s → {step.endTime}s");
+                        }
                     }
                 }
 
-                Debug.LogError($"   Move Blocks: {moveBlockCount}");
+                Debug.LogError($"   Move Blocks Found: {moveBlockCount}");
 
                 // Store the baked task instruction
                 bakedTaskInstruction = msg.taskInstruction;
 
                 Debug.LogError($"✅ Task instruction baked successfully!");
-                Debug.LogError($"   Use GetBakedTaskInstruction() to retrieve it for playback");
+                Debug.LogError($"   Stored in bakedTaskInstruction field");
+                Debug.LogError($"   bakedTaskInstruction null? {bakedTaskInstruction == null}");
+                Debug.LogError($"   bakedTaskInstruction.steps.Count: {bakedTaskInstruction?.steps?.Count ?? 0}");
+                Debug.LogError("═══════════════════════════════════════════");
             }
             catch (Exception e)
             {
                 Debug.LogError($"❌ Error handling bake movement goals: {e.Message}\n{e.StackTrace}");
+            }
+        }
+
+        private void HandleBakeMovementGoalsReady(string message)
+        {
+            try
+            {
+                Debug.LogError("═══════════════════════════════════════════");
+                Debug.LogError("🎂 [HandleBakeMovementGoalsReady] STARTING");
+
+                // Parse the simple notification
+                var msg = JsonUtility.FromJson<BakeReadyMessage>(message);
+                Debug.LogError($"   Move Blocks: {msg.moveBlockCount}");
+                Debug.LogError($"   Total Steps: {msg.totalSteps}");
+
+                // Pull the full data from JavaScript via ExecuteJavaScript
+                Debug.LogError("   Pulling full TaskInstruction from window.bakedTaskInstruction...");
+
+                string jsCode = "JSON.stringify(window.bakedTaskInstruction)";
+
+                // Use reflection to call ExecuteJavaScript
+                System.Type webViewType = webViewComponent.GetType();
+                UnityEngine.Object actualWebView = webViewComponent;
+
+                // Get the WebView property (for CanvasWebViewPrefab)
+                var webViewProperty = webViewType.GetProperty("WebView");
+                if (webViewProperty != null)
+                {
+                    actualWebView = webViewProperty.GetValue(webViewComponent) as UnityEngine.Object;
+                    if (actualWebView != null)
+                    {
+                        webViewType = actualWebView.GetType();
+                    }
+                }
+
+                if (actualWebView != null)
+                {
+                    var executeMethod = webViewType.GetMethod("ExecuteJavaScript", new Type[] { typeof(string) });
+                    if (executeMethod != null)
+                    {
+                        Debug.LogError("   ✅ Calling ExecuteJavaScript...");
+                        var task = executeMethod.Invoke(actualWebView, new object[] { jsCode });
+
+                        // Wait for the task to complete
+                        var taskType = task.GetType();
+                        var getAwaiterMethod = taskType.GetMethod("GetAwaiter");
+                        var awaiter = getAwaiterMethod.Invoke(task, null);
+                        var getResultMethod = awaiter.GetType().GetMethod("GetResult");
+
+                        StartCoroutine(WaitForJavaScriptResult(awaiter, getResultMethod));
+                    }
+                    else
+                    {
+                        Debug.LogError("   ❌ ExecuteJavaScript method not found!");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"❌ Error handling bake ready: {e.Message}\n{e.StackTrace}");
+            }
+        }
+
+        private System.Collections.IEnumerator WaitForJavaScriptResult(object awaiter, System.Reflection.MethodInfo getResultMethod)
+        {
+            var isCompletedProperty = awaiter.GetType().GetProperty("IsCompleted");
+
+            Debug.LogError("   ⏳ Waiting for JavaScript to complete...");
+
+            // Wait for completion
+            while (!(bool)isCompletedProperty.GetValue(awaiter))
+            {
+                yield return null;
+            }
+
+            Debug.LogError("   ✅ ExecuteJavaScript completed");
+
+            try
+            {
+                string jsonResult = getResultMethod.Invoke(awaiter, null) as string;
+                Debug.LogError($"   Result length: {jsonResult?.Length ?? 0}");
+                Debug.LogError($"   Result preview: {(jsonResult?.Length > 200 ? jsonResult.Substring(0, 200) : jsonResult)}");
+
+                // Parse the TaskInstruction
+                bakedTaskInstruction = JsonUtility.FromJson<TaskInstruction>(jsonResult);
+
+                Debug.LogError($"   ✅ TaskInstruction parsed successfully!");
+                Debug.LogError($"   Task Name: {bakedTaskInstruction.taskName}");
+                Debug.LogError($"   Steps: {bakedTaskInstruction.steps?.Count ?? 0}");
+
+                // Count Move blocks
+                int moveCount = 0;
+                if (bakedTaskInstruction.steps != null)
+                {
+                    foreach (var step in bakedTaskInstruction.steps)
+                    {
+                        if (step.action == "Move")
+                        {
+                            moveCount++;
+                            Debug.LogError($"      Move: {step.objectId} ({step.startTime}s → {step.endTime}s)");
+                        }
+                    }
+                }
+                Debug.LogError($"   Move blocks found: {moveCount}");
+
+                // Send success status back to WebView
+                var statusData = new
+                {
+                    type = "playbackStatus",
+                    stage = "baked",
+                    message = $"Bake complete! Ready for playback.",
+                    taskReceived = true,
+                    moveBlocksCount = moveCount,
+                    pathsCreated = 0
+                };
+
+                string jsonMessage = $"{{\"type\":\"playbackStatus\",\"stage\":\"baked\",\"message\":\"Bake complete! Ready for playback.\",\"taskReceived\":true,\"moveBlocksCount\":{moveCount},\"pathsCreated\":0}}";
+                SendMessageToWebViewInternal(jsonMessage);
+
+                Debug.LogError("   ✅ BAKING COMPLETE - YOU CAN NOW CLICK PLAYBACK!");
+                Debug.LogError("═══════════════════════════════════════════");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"   ❌ Error parsing result: {e.Message}\n{e.StackTrace}");
+
+                // Send error status back to WebView
+                string jsonMessage = $"{{\"type\":\"playbackStatus\",\"stage\":\"error\",\"message\":\"Failed to parse TaskInstruction: {e.Message}\",\"taskReceived\":false,\"moveBlocksCount\":0,\"pathsCreated\":0}}";
+                SendMessageToWebViewInternal(jsonMessage);
             }
         }
 
@@ -1479,6 +1707,14 @@ namespace VRInteractionRecording
         {
             public string type;
             public TaskInstruction taskInstruction;
+        }
+
+        [System.Serializable]
+        private class BakeReadyMessage
+        {
+            public string type;
+            public int moveBlockCount;
+            public int totalSteps;
         }
 
         [System.Serializable]
@@ -2039,8 +2275,79 @@ namespace VRInteractionRecording
             }
         }
 
+        /// <summary>
+        /// Handles Unity log messages and forwards Debug.LogError to WebView debug panel
+        /// </summary>
+        private void HandleUnityLog(string logString, string stackTrace, LogType type)
+        {
+            // Only forward Error messages to WebView debug panel
+            if (type != LogType.Error) return;
+
+            // Filter out Vuplex internal messages that spam the console
+            if (logString.Contains("Vuplex Message Parse Success") ||
+                logString.Contains("Raw Value String"))
+            {
+                return;
+            }
+
+            SendLogToWebView(logString, type);
+        }
+
+        /// <summary>
+        /// Sends a Unity log message to the WebView debug panel
+        /// </summary>
+        private void SendLogToWebView(string message, LogType type)
+        {
+            // Only send if WebView is ready
+            if (!isWebViewReady || webViewComponent == null) return;
+
+            try
+            {
+                // Escape special characters in the message for JavaScript
+                string escapedMessage = message.Replace("\\", "\\\\")
+                                               .Replace("\"", "\\\"")
+                                               .Replace("\n", "\\n")
+                                               .Replace("\r", "");
+
+                // Create JavaScript code to call logDebugMessage function in the WebView
+                string jsCode = $"if (typeof logDebugMessage === 'function') {{ logDebugMessage('UNITY', \"{escapedMessage}\", true); }}";
+
+                // Use reflection to call ExecuteJavaScript on the Vuplex WebView
+                System.Type webViewType = webViewComponent.GetType();
+                UnityEngine.Object actualWebView = webViewComponent;
+
+                // Get the WebView property (for CanvasWebViewPrefab)
+                var webViewProperty = webViewType.GetProperty("WebView");
+                if (webViewProperty != null)
+                {
+                    actualWebView = webViewProperty.GetValue(webViewComponent) as UnityEngine.Object;
+                    if (actualWebView != null)
+                    {
+                        webViewType = actualWebView.GetType();
+                    }
+                }
+
+                // Call ExecuteJavaScript method
+                if (actualWebView != null)
+                {
+                    var executeMethod = webViewType.GetMethod("ExecuteJavaScript", new Type[] { typeof(string) });
+                    if (executeMethod != null)
+                    {
+                        executeMethod.Invoke(actualWebView, new object[] { jsCode });
+                    }
+                }
+            }
+            catch
+            {
+                // Silently fail - don't create error loops
+            }
+        }
+
         private void OnDestroy()
         {
+            // Unhook Unity log system
+            Application.logMessageReceived -= HandleUnityLog;
+
             if (timelineSlider != null)
             {
                 timelineSlider.onValueChanged.RemoveListener(OnSliderValueChanged);

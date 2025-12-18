@@ -527,12 +527,12 @@
             right: 20px;
             width: 500px;
             max-height: 80vh;
-            background: rgba(30, 30, 30, 0.85);
+            background: rgba(30, 30, 30, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(14, 99, 156, 0.5);
             border-radius: 6px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            z-index: 10000;
+            z-index: 999999;
             display: none;
             flex-direction: column;
         }
@@ -640,6 +640,15 @@
         <button id="debugBtn" style="background: #e74c3c;">Debug</button>
         <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
         <span id="debugInfo" style="margin-left: 20px; color: #f48771; font-size: 10px; font-family: monospace;"></span>
+        <div id="bakeStatus" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.95); padding: 8px; border-radius: 4px; font-size: 9px; font-family: monospace; max-width: 300px; display: none; z-index: 999998; border: 1px solid #5bc0de;">
+            <div id="bakeStatusContent"></div>
+        </div>
+
+        <!-- Baking Debug Console -->
+        <div id="bakeDebugConsole" style="position: fixed; bottom: 10px; right: 10px; width: 400px; height: 300px; background: rgba(0,0,0,0.95); border: 2px solid #27ae60; border-radius: 4px; padding: 8px; font-family: monospace; font-size: 9px; color: #00ff00; overflow-y: auto; z-index: 999999; display: none;">
+            <div style="font-weight: bold; margin-bottom: 8px; color: #27ae60; font-size: 11px;">🔍 BAKING DEBUG CONSOLE</div>
+            <div id="bakeDebugContent" style="white-space: pre-wrap; word-wrap: break-word;"></div>
+        </div>
     </div>
 
     <div class="main-container">
@@ -940,6 +949,9 @@
                         updateStatus(message.message, 'info');
                         logDebugMessage('Unity Status', message.message);
                     }
+                } else if (message && message.type === 'playbackStatus') {
+                    // Unity sent us playback status update (for bake status box)
+                    updateBakeStatus(message);
                 } else if (message && message.type === 'updateTime') {
                     // Update playhead position
                     if (typeof message.time === 'number') {
@@ -1047,6 +1059,99 @@
             const panel = document.getElementById('debugPanel');
             if (panel && panel.classList.contains('visible')) {
                 updateDebugPanel();
+            }
+        }
+
+        function logBakeDebug(message, color = '#00ff00') {
+            const console = document.getElementById('bakeDebugConsole');
+            const content = document.getElementById('bakeDebugContent');
+
+            if (!console || !content) return;
+
+            // Show console
+            console.style.display = 'block';
+
+            // Add timestamp
+            const time = new Date().toLocaleTimeString();
+            const line = `[${time}] ${message}\n`;
+
+            const span = document.createElement('span');
+            span.style.color = color;
+            span.textContent = line;
+            content.appendChild(span);
+
+            // Auto-scroll to bottom
+            console.scrollTop = console.scrollHeight;
+        }
+
+        function clearBakeDebug() {
+            const content = document.getElementById('bakeDebugContent');
+            if (content) content.innerHTML = '';
+        }
+
+        function updateBakeStatus(statusMessage) {
+            // Log to bake debug console
+            logBakeDebug('─────────────────────────────────────────', '#00ffff');
+            logBakeDebug('📨 UNITY RESPONSE RECEIVED', '#00ffff');
+            logBakeDebug(`Stage: ${statusMessage.stage}`, '#ffff00');
+            logBakeDebug(`Message: ${statusMessage.message}`, '#ffffff');
+            logBakeDebug(`Task Received: ${statusMessage.taskReceived}`, statusMessage.taskReceived ? '#00ff00' : '#ff0000');
+            logBakeDebug(`Move Blocks: ${statusMessage.moveBlocksCount}`, '#00ff00');
+            logBakeDebug(`Paths Created: ${statusMessage.pathsCreated}`, statusMessage.pathsCreated > 0 ? '#00ff00' : '#ff0000');
+            logBakeDebug('─────────────────────────────────────────', '#00ffff');
+
+            const bakeStatus = document.getElementById('bakeStatus');
+            const bakeStatusContent = document.getElementById('bakeStatusContent');
+
+            if (!bakeStatus || !bakeStatusContent) return;
+
+            console.log('[updateBakeStatus] Received status:', statusMessage);
+
+            // Build status HTML
+            let statusHTML = '<div style="color: #5bc0de; font-weight: bold; margin-bottom: 4px;">📦 PLAYBACK STATUS</div>';
+
+            if (statusMessage.stage) {
+                const stageColor = statusMessage.stage === 'started' ? '#2ecc71' :
+                                   statusMessage.stage === 'processing' ? '#f39c12' :
+                                   statusMessage.stage === 'completed' ? '#2ecc71' :
+                                   statusMessage.stage === 'error' ? '#e74c3c' : '#aaa';
+                statusHTML += `<div style="color: ${stageColor};">${statusMessage.stage.toUpperCase()}</div>`;
+            }
+
+            if (statusMessage.message) {
+                statusHTML += `<div style="color: #ddd; margin-top: 4px; font-size: 8px;">${statusMessage.message}</div>`;
+            }
+
+            if (statusMessage.taskReceived !== undefined) {
+                const icon = statusMessage.taskReceived ? '✅' : '❌';
+                const color = statusMessage.taskReceived ? '#2ecc71' : '#e74c3c';
+                statusHTML += `<div style="color: ${color}; margin-top: 4px;">${icon} Task Received: ${statusMessage.taskReceived}</div>`;
+            }
+
+            if (statusMessage.moveBlocksCount !== undefined) {
+                statusHTML += `<div style="color: #aaa; margin-top: 4px;">Move Blocks: ${statusMessage.moveBlocksCount}</div>`;
+            }
+
+            if (statusMessage.pathsCreated !== undefined) {
+                const color = statusMessage.pathsCreated > 0 ? '#2ecc71' : '#e74c3c';
+                statusHTML += `<div style="color: ${color};">Paths Created: ${statusMessage.pathsCreated}</div>`;
+            }
+
+            if (statusMessage.details && statusMessage.details.length > 0) {
+                statusHTML += '<div style="color: #f39c12; margin-top: 4px; font-size: 8px;">Details:</div>';
+                statusMessage.details.forEach(detail => {
+                    statusHTML += `<div style="color: #ddd; font-size: 7px;">  • ${detail}</div>`;
+                });
+            }
+
+            bakeStatusContent.innerHTML = statusHTML;
+            bakeStatus.style.display = 'block';
+
+            // Auto-hide after 10 seconds if completed or error
+            if (statusMessage.stage === 'completed' || statusMessage.stage === 'error') {
+                setTimeout(() => {
+                    bakeStatus.style.display = 'none';
+                }, 10000);
             }
         }
 
@@ -1284,14 +1389,66 @@
 
             console.log(`[BAKE] Baking ${moveBlocks.length} Move blocks into playback system`);
 
-            // Send complete task instruction to Unity for baking
+            // Clear previous debug logs
+            clearBakeDebug();
+            logBakeDebug('═══════════════════════════════════════════', '#ffff00');
+            logBakeDebug('🎂 BAKING PROCESS STARTED', '#ffff00');
+            logBakeDebug(`Found ${moveBlocks.length} Move blocks`, '#00ff00');
+            logBakeDebug(`Total steps in taskData: ${taskData.steps.length}`, '#00ff00');
+
+            // Store taskData in a global variable that Unity can access via ExecuteJavaScript
+            window.bakedTaskInstruction = taskData;
+            logBakeDebug('✅ Stored taskData in window.bakedTaskInstruction', '#00ff00');
+
+            // Send simple notification to Unity (not the whole data - too large!)
             if (typeof window.vuplex !== 'undefined' && window.vuplex.postMessage) {
+                logBakeDebug('✅ window.vuplex exists', '#00ff00');
+                logBakeDebug('✅ window.vuplex.postMessage exists', '#00ff00');
+
+                // Send a SIMPLE message - just notify that baking is ready
                 const message = {
-                    type: 'bakeMovementGoals',
-                    taskInstruction: taskData
+                    type: 'bakeMovementGoalsReady',
+                    moveBlockCount: moveBlocks.length,
+                    totalSteps: taskData.steps.length
                 };
-                window.vuplex.postMessage(JSON.stringify(message));
-                console.log(`[BAKE] Sent bakeMovementGoals with ${taskData.steps.length} steps (${moveBlocks.length} Move blocks)`);
+
+                logBakeDebug('Creating simple notification message...', '#00ffff');
+                const jsonString = JSON.stringify(message);
+                logBakeDebug(`✅ JSON created, length: ${jsonString.length} chars (SMALL!)`, '#00ff00');
+                logBakeDebug(`Message: ${jsonString}`, '#aaaaaa');
+
+                logBakeDebug('Calling window.vuplex.postMessage()...', '#ffff00');
+                try {
+                    window.vuplex.postMessage(jsonString);
+                    logBakeDebug('✅ postMessage() completed successfully!', '#00ff00');
+                } catch (e) {
+                    logBakeDebug(`❌ ERROR calling postMessage: ${e.message}`, '#ff0000');
+                }
+
+                logBakeDebug(`Unity can retrieve full data from: window.bakedTaskInstruction`, '#00ffff');
+                logBakeDebug('Waiting for Unity to pull data via ExecuteJavaScript...', '#ffff00');
+                logBakeDebug('═══════════════════════════════════════════', '#ffff00');
+
+                // Show detailed bake status in top right
+                const bakeStatus = document.getElementById('bakeStatus');
+                const bakeStatusContent = document.getElementById('bakeStatusContent');
+                if (bakeStatus && bakeStatusContent) {
+                    let statusHTML = '<div style="color: #5bc0de; font-weight: bold; margin-bottom: 4px;">📦 BAKE STATUS</div>';
+                    statusHTML += `<div style="color: #2ecc71;">✅ Sent to Unity</div>`;
+                    statusHTML += `<div style="color: #aaa; margin-top: 4px;">Total Steps: ${taskData.steps.length}</div>`;
+                    statusHTML += `<div style="color: #aaa;">Move Blocks: ${moveBlocks.length}</div>`;
+                    statusHTML += '<div style="color: #f39c12; margin-top: 4px;">Details:</div>';
+
+                    // List each Move block
+                    moveBlocks.forEach((block, idx) => {
+                        statusHTML += `<div style="color: #ddd; font-size: 8px;">  ${idx+1}. ${block.objectName || block.objectId}: ${block.startTime.toFixed(2)}s → ${block.endTime.toFixed(2)}s</div>`;
+                    });
+
+                    statusHTML += '<div style="color: #5bc0de; margin-top: 4px; font-size: 8px;">Waiting for Unity playback...</div>';
+
+                    bakeStatusContent.innerHTML = statusHTML;
+                    bakeStatus.style.display = 'block';
+                }
 
                 // Visual feedback
                 const bakeBtn = document.getElementById('bakeBtn');
@@ -1675,7 +1832,7 @@
 
             block.addEventListener('click', (e) => {
                 // Don't select if clicking on resize handle
-                if (!e.target.classList.contains('resize-handle') && 
+                if (!e.target.classList.contains('resize-handle') &&
                     !e.target.closest('.resize-handle')) {
                     e.stopPropagation();
                     selectStep(step);
@@ -2369,50 +2526,72 @@
         }
 
         function deleteAction(step) {
-            // Remove from task data - use multiple matching strategies
-            let index = -1;
-            
-            // Strategy 1: Exact match by stepNumber, action, and objectId
-            index = taskData.steps.findIndex(s => 
-                s.stepNumber === step.stepNumber && 
-                s.action === step.action && 
-                s.objectId === step.objectId
-            );
-            
-            // Strategy 2: For Move blocks, match by startTime/endTime and objectId
-            if (index === -1 && step.action === 'Move') {
-                const stepStart = step.startTime || step.timestamp;
-                const stepEnd = step.endTime || (step.timestamp + 1.0);
-                index = taskData.steps.findIndex(s => {
-                    if (s.action !== 'Move' || s.objectId !== step.objectId) return false;
-                    const sStart = s.startTime || s.timestamp;
-                    const sEnd = s.endTime || (s.timestamp + 1.0);
-                    return Math.abs(stepStart - sStart) < 0.05 && Math.abs(stepEnd - sEnd) < 0.05;
-                });
-            }
-            
-            // Strategy 3: Match by action, objectId, and timestamp (for point events)
-            if (index === -1 && step.action !== 'Move') {
-                index = taskData.steps.findIndex(s => 
-                    s.action === step.action && 
-                    s.objectId === step.objectId &&
-                    Math.abs(s.timestamp - step.timestamp) < 0.05
+            console.log('[DELETE] Deleting action from properties panel:', step.action, step.objectId);
+
+            // If deleting a PickUp, find and delete the corresponding PlaceDown
+            if (step.action === 'PickUp') {
+                const objectId = step.objectId;
+                const pickupTime = step.timestamp;
+
+                // Find the next PlaceDown for this object after this PickUp
+                const correspondingPlaceDown = taskData.steps.find(s =>
+                    s.objectId === objectId &&
+                    s.action === 'PlaceDown' &&
+                    s.timestamp > pickupTime &&
+                    !taskData.steps.some(ps =>
+                        ps.objectId === objectId &&
+                        ps.action === 'PickUp' &&
+                        ps.timestamp > pickupTime &&
+                        ps.timestamp < s.timestamp
+                    )
                 );
+
+                if (correspondingPlaceDown) {
+                    console.log('[DELETE] Also deleting corresponding PlaceDown at', correspondingPlaceDown.timestamp);
+                    // Remove both from taskData
+                    taskData.steps = taskData.steps.filter(s =>
+                        s !== step && s !== correspondingPlaceDown
+                    );
+                } else {
+                    console.log('[DELETE] No corresponding PlaceDown found, deleting PickUp only');
+                    taskData.steps = taskData.steps.filter(s => s !== step);
+                }
             }
-            
-            // Strategy 4: Last resort - match by objectId and action only (delete first match)
-            if (index === -1) {
-                index = taskData.steps.findIndex(s => 
-                    s.action === step.action && 
-                    s.objectId === step.objectId
-                );
+            // If deleting a PlaceDown, find and delete the corresponding PickUp
+            else if (step.action === 'PlaceDown') {
+                const objectId = step.objectId;
+                const placeDownTime = step.timestamp;
+
+                // Find the previous PickUp for this object before this PlaceDown
+                const correspondingPickUp = [...taskData.steps]
+                    .reverse()
+                    .find(s =>
+                        s.objectId === objectId &&
+                        s.action === 'PickUp' &&
+                        s.timestamp < placeDownTime &&
+                        !taskData.steps.some(ps =>
+                            ps.objectId === objectId &&
+                            ps.action === 'PlaceDown' &&
+                            ps.timestamp < placeDownTime &&
+                            ps.timestamp > s.timestamp
+                        )
+                    );
+
+                if (correspondingPickUp) {
+                    console.log('[DELETE] Also deleting corresponding PickUp at', correspondingPickUp.timestamp);
+                    // Remove both from taskData
+                    taskData.steps = taskData.steps.filter(s =>
+                        s !== step && s !== correspondingPickUp
+                    );
+                } else {
+                    console.log('[DELETE] No corresponding PickUp found, deleting PlaceDown only');
+                    taskData.steps = taskData.steps.filter(s => s !== step);
+                }
             }
-            
-            if (index !== -1) {
-                taskData.steps.splice(index, 1);
-            } else {
-                console.error('Failed to delete step - no match found:', step);
-                console.log('Available steps:', taskData.steps);
+            // For other actions (Move, etc.), just delete them
+            else {
+                console.log('[DELETE] Deleting single action:', step.action);
+                taskData.steps = taskData.steps.filter(s => s !== step);
             }
 
             // Renumber remaining steps

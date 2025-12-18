@@ -116,13 +116,16 @@ namespace VRInteractionRecording
             // Create movement paths based on baked TaskInstruction
             if (taskInstruction != null)
             {
+                SendPlaybackStatus("processing", "Creating movement paths...", true, 0, 0);
                 CreateMovementPathsFromTaskInstruction(taskInstruction);
                 Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from baked TaskInstruction");
+                SendPlaybackStatus("completed", $"Created {createdMovementPathsCount} paths from {totalMoveBlocksCount} Move blocks", true, totalMoveBlocksCount, createdMovementPathsCount);
                 OnMovementGoalsLoaded?.Invoke(totalMoveBlocksCount, createdMovementPathsCount);
             }
             else
             {
                 Debug.LogError("[InteractionPlaybackManager] No TaskInstruction - no movement paths created (need to Bake in edit mode)");
+                SendPlaybackStatus("error", "No TaskInstruction received from WebView", false, 0, 0);
                 OnMovementGoalsLoaded?.Invoke(0, 0);
             }
 
@@ -315,7 +318,8 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(grabbedObject);
 
-            // Path lines are always visible now, no need to show/hide
+            // Show the green movement path when object is picked up
+            ShowPathLine(objectId);
 
             // Find the release event for this object (where it should be placed)
             InteractionEvent releaseEvent = FindReleaseEventForObject(objectId);
@@ -343,7 +347,8 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
 
-            // Path lines stay visible, no need to hide
+            // Hide the green movement path when object is released
+            HidePathLine(objectId);
 
             // Find the target release event (where it should be placed)
             InteractionEvent targetReleaseEvent = FindReleaseEventForObject(objectId);
@@ -523,13 +528,13 @@ namespace VRInteractionRecording
                     lineRenderer.SetPosition(i, snapshots[i].position);
                 }
 
-                // Keep it VISIBLE - simple and always on if Move block exists
-                pathObj.SetActive(true);
+                // Start HIDDEN - will show when object is picked up
+                pathObj.SetActive(false);
 
                 pathLines[objectId] = lineRenderer;
                 createdMovementPathsCount++;
 
-                Debug.LogError($"[InteractionPlaybackManager] ✅ Created VISIBLE GREEN path for {objectId} ({snapshots.Count} points)");
+                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path for {objectId} ({snapshots.Count} points) - hidden until pickup");
             }
         }
 
@@ -737,6 +742,45 @@ namespace VRInteractionRecording
         /// Gets the number of movement paths successfully created
         /// </summary>
         public int CreatedMovementPaths => createdMovementPathsCount;
+
+        /// <summary>
+        /// Sends playback status to WebView for display in bake status box
+        /// </summary>
+        private void SendPlaybackStatus(string stage, string message, bool taskReceived, int moveBlocksCount, int pathsCreated)
+        {
+            try
+            {
+                WebViewManager webViewManager = FindFirstObjectByType<WebViewManager>();
+                if (webViewManager == null)
+                {
+                    Debug.LogError("[InteractionPlaybackManager] WebViewManager not found!");
+                    return;
+                }
+
+                // Create message manually as JSON string (SendMessageToWebView wraps in "data" field)
+                string jsonMessage = $"{{\"type\":\"playbackStatus\",\"stage\":\"{stage}\",\"message\":\"{message}\",\"taskReceived\":{taskReceived.ToString().ToLower()},\"moveBlocksCount\":{moveBlocksCount},\"pathsCreated\":{pathsCreated}}}";
+
+                Debug.LogError($"[InteractionPlaybackManager] Sending status to WebView: {jsonMessage}");
+
+                // Use reflection to call SendMessageToWebViewInternal directly (bypasses data wrapper)
+                var sendMethod = webViewManager.GetType().GetMethod("SendMessageToWebViewInternal",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                if (sendMethod != null)
+                {
+                    sendMethod.Invoke(webViewManager, new object[] { jsonMessage });
+                    Debug.LogError("[InteractionPlaybackManager] ✅ Status sent successfully");
+                }
+                else
+                {
+                    Debug.LogError("[InteractionPlaybackManager] ❌ SendMessageToWebViewInternal not found!");
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[InteractionPlaybackManager] Error sending status: {e.Message}\n{e.StackTrace}");
+            }
+        }
 
         /// <summary>
         /// Data structure for an interaction sequence (grab-release pair)
