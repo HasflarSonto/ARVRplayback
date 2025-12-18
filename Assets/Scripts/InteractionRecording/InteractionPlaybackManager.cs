@@ -113,19 +113,18 @@ namespace VRInteractionRecording
             totalMoveBlocksCount = 0;
             createdMovementPathsCount = 0;
 
-            // ALWAYS create movement paths for all grab-release sequences
-            // NO LONGER NEED MovementGoalManager - we create lines directly now!
-            CreateMovementPathsFromRecording();
-            Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from recording");
-            OnMovementGoalsLoaded?.Invoke(interactionSequences.Count, createdMovementPathsCount);
-
-            // VISUAL TEST: Create a big red cube to verify this code runs
-            GameObject testCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            testCube.name = "TEST_PLAYBACK_RUNNING";
-            testCube.transform.position = new Vector3(0, 2, 2);
-            testCube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            testCube.GetComponent<Renderer>().material.color = Color.red;
-            Debug.LogError("[InteractionPlaybackManager] ✅✅✅ TEST RED CUBE CREATED AT (0,2,2) ✅✅✅");
+            // Create movement paths based on baked TaskInstruction
+            if (taskInstruction != null)
+            {
+                CreateMovementPathsFromTaskInstruction(taskInstruction);
+                Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from baked TaskInstruction");
+                OnMovementGoalsLoaded?.Invoke(totalMoveBlocksCount, createdMovementPathsCount);
+            }
+            else
+            {
+                Debug.LogError("[InteractionPlaybackManager] No TaskInstruction - no movement paths created (need to Bake in edit mode)");
+                OnMovementGoalsLoaded?.Invoke(0, 0);
+            }
 
             // Reset all objects to initial states
             ResetToInitialStates();
@@ -316,12 +315,8 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(grabbedObject);
 
-            // Show movement goal if it exists
-            if (movementGoalManager != null)
-            {
-                movementGoalManager.ShowMovementGoal(objectId);
-                Debug.Log($"[InteractionPlaybackManager] Showing movement goal for {objectId}");
-            }
+            // Show path line for this object
+            ShowPathLine(objectId);
 
             // Find the release event for this object (where it should be placed)
             InteractionEvent releaseEvent = FindReleaseEventForObject(objectId);
@@ -349,12 +344,8 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
 
-            // Hide movement goal if it exists (no validation, just visual guidance)
-            if (movementGoalManager != null)
-            {
-                movementGoalManager.HideMovementGoal(objectId);
-                Debug.Log($"[InteractionPlaybackManager] Hiding movement goal for {objectId}");
-            }
+            // Hide path line for this object
+            HidePathLine(objectId);
 
             // Find the target release event (where it should be placed)
             InteractionEvent targetReleaseEvent = FindReleaseEventForObject(objectId);
@@ -451,8 +442,102 @@ namespace VRInteractionRecording
         }
 
         /// <summary>
-        /// Creates movement paths for all grab-release sequences from recording data
-        /// COPIED EXACTLY from RecordingPlaybackEditor.CreatePathForObject
+        /// Creates movement paths ONLY for objects with Move blocks in TaskInstruction
+        /// This connects to the WebView baking system
+        /// </summary>
+        private void CreateMovementPathsFromTaskInstruction(TaskInstruction taskInstruction)
+        {
+            if (currentRecording == null || currentRecording.transformSnapshots == null)
+            {
+                Debug.LogError("[InteractionPlaybackManager] No recording data available");
+                return;
+            }
+
+            if (taskInstruction.steps == null || taskInstruction.steps.Count == 0)
+            {
+                Debug.LogError("[InteractionPlaybackManager] TaskInstruction has no steps");
+                return;
+            }
+
+            Debug.LogError($"[InteractionPlaybackManager] Processing TaskInstruction with {taskInstruction.steps.Count} steps");
+
+            // Only create paths for objects with Move blocks
+            foreach (InstructionStep step in taskInstruction.steps)
+            {
+                if (!step.IsMove())
+                {
+                    continue; // Skip non-Move steps
+                }
+
+                totalMoveBlocksCount++;
+                string objectId = step.objectId;
+                float startTime = step.startTime;
+                float endTime = step.endTime;
+
+                Debug.LogError($"[InteractionPlaybackManager] Found Move block for {objectId} ({startTime:F2}s → {endTime:F2}s)");
+
+                // Extract snapshots between startTime and endTime
+                List<TransformSnapshot> snapshots = new List<TransformSnapshot>();
+                foreach (TransformSnapshot snapshot in currentRecording.transformSnapshots)
+                {
+                    if (snapshot.objectId == objectId &&
+                        snapshot.timestamp >= startTime &&
+                        snapshot.timestamp <= endTime)
+                    {
+                        snapshots.Add(snapshot);
+                    }
+                }
+
+                Debug.LogError($"[InteractionPlaybackManager] Extracted {snapshots.Count} snapshots for {objectId}");
+
+                if (snapshots.Count < 2)
+                {
+                    Debug.LogError($"[InteractionPlaybackManager] ❌ Not enough snapshots for {objectId}");
+                    continue;
+                }
+
+                if (pathLines.ContainsKey(objectId))
+                {
+                    Debug.LogError($"[InteractionPlaybackManager] Path already exists for {objectId}, skipping");
+                    continue;
+                }
+
+                // Create LineRenderer - EXACT COPY from RecordingPlaybackEditor
+                GameObject pathObj = new GameObject($"PathLine_{objectId}");
+                pathObj.transform.SetParent(transform);
+                LineRenderer lineRenderer = pathObj.AddComponent<LineRenderer>();
+
+                // Configure line renderer
+                lineRenderer.positionCount = snapshots.Count;
+                lineRenderer.startWidth = 0.01f;
+                lineRenderer.endWidth = 0.01f;
+                lineRenderer.useWorldSpace = true;
+                lineRenderer.material = GetPathLineMaterial();
+                lineRenderer.startColor = new Color(0f, 1f, 0f, 1f); // GREEN
+                lineRenderer.endColor = new Color(0f, 1f, 0f, 1f);
+                lineRenderer.textureMode = LineTextureMode.Tile;
+                lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                lineRenderer.receiveShadows = false;
+
+                // Set positions from snapshots
+                for (int i = 0; i < snapshots.Count; i++)
+                {
+                    lineRenderer.SetPosition(i, snapshots[i].position);
+                }
+
+                // Start HIDDEN - will show when object is grabbed
+                pathObj.SetActive(false);
+
+                pathLines[objectId] = lineRenderer;
+                createdMovementPathsCount++;
+
+                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path for {objectId} ({snapshots.Count} points)");
+            }
+        }
+
+        /// <summary>
+        /// OLD METHOD - Creates movement paths for ALL grab-release sequences
+        /// Kept for reference but not used anymore
         /// </summary>
         private void CreateMovementPathsFromRecording()
         {
@@ -520,10 +605,37 @@ namespace VRInteractionRecording
                     lineRenderer.SetPosition(i, snapshots[i].position);
                 }
 
+                // Start HIDDEN - will show when object is grabbed
+                pathObj.SetActive(false);
+
                 pathLines[objectId] = lineRenderer;
                 createdMovementPathsCount++;
 
-                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path line for {objectId} with {snapshots.Count} points");
+                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path line for {objectId} with {snapshots.Count} points (hidden, will show on grab)");
+            }
+        }
+
+        /// <summary>
+        /// Shows path line for an object
+        /// </summary>
+        private void ShowPathLine(string objectId)
+        {
+            if (pathLines.ContainsKey(objectId) && pathLines[objectId] != null)
+            {
+                pathLines[objectId].gameObject.SetActive(true);
+                Debug.LogError($"[InteractionPlaybackManager] Showing path line for {objectId}");
+            }
+        }
+
+        /// <summary>
+        /// Hides path line for an object
+        /// </summary>
+        private void HidePathLine(string objectId)
+        {
+            if (pathLines.ContainsKey(objectId) && pathLines[objectId] != null)
+            {
+                pathLines[objectId].gameObject.SetActive(false);
+                Debug.LogError($"[InteractionPlaybackManager] Hiding path line for {objectId}");
             }
         }
 
