@@ -2544,12 +2544,12 @@
 
             let stepsToDelete = [step];
 
-            // If deleting a PickUp, find and delete the corresponding PlaceDown
+            // If deleting a PickUp, find and delete the corresponding PutDown
             if (step.action === 'PickUp') {
                 const objectId = step.objectId;
                 const pickupTime = step.timestamp;
 
-                // Find the next PlaceDown for this object after this PickUp (simple: just next one for same object)
+                // Find the next PutDown for this object after this PickUp (simple: just next one for same object)
                 let foundPickUp = false;
                 for (let i = 0; i < taskData.steps.length; i++) {
                     const s = taskData.steps[i];
@@ -2560,34 +2560,34 @@
                         continue;
                     }
 
-                    // After finding PickUp, find next PlaceDown for same object
-                    if (foundPickUp && s.objectId === objectId && s.action === 'PlaceDown') {
-                        console.log('[DELETE] Found corresponding PlaceDown at', s.timestamp);
+                    // After finding PickUp, find next PutDown for same object
+                    if (foundPickUp && s.objectId === objectId && s.action === 'PutDown') {
+                        console.log('[DELETE] Found corresponding PutDown at', s.timestamp);
                         stepsToDelete.push(s);
                         break;
                     }
                 }
 
                 if (stepsToDelete.length === 1) {
-                    console.log('[DELETE] No corresponding PlaceDown found after PickUp');
+                    console.log('[DELETE] No corresponding PutDown found after PickUp');
                 }
             }
-            // If deleting a PlaceDown, find and delete the corresponding PickUp
-            else if (step.action === 'PlaceDown') {
+            // If deleting a PutDown, find and delete the corresponding PickUp
+            else if (step.action === 'PutDown') {
                 const objectId = step.objectId;
-                const placeDownTime = step.timestamp;
+                const putDownTime = step.timestamp;
 
-                // Find the previous PickUp for this object before this PlaceDown (simple: just previous one for same object)
+                // Find the previous PickUp for this object before this PutDown (simple: just previous one for same object)
                 for (let i = taskData.steps.length - 1; i >= 0; i--) {
                     const s = taskData.steps[i];
 
-                    // Find the PlaceDown we're deleting
+                    // Find the PutDown we're deleting
                     if (s === step) {
                         continue;
                     }
 
-                    // Before PlaceDown, find previous PickUp for same object
-                    if (s.timestamp < placeDownTime && s.objectId === objectId && s.action === 'PickUp') {
+                    // Before PutDown, find previous PickUp for same object
+                    if (s.timestamp < putDownTime && s.objectId === objectId && s.action === 'PickUp') {
                         console.log('[DELETE] Found corresponding PickUp at', s.timestamp);
                         stepsToDelete.push(s);
                         break;
@@ -2595,7 +2595,7 @@
                 }
 
                 if (stepsToDelete.length === 1) {
-                    console.log('[DELETE] No corresponding PickUp found before PlaceDown');
+                    console.log('[DELETE] No corresponding PickUp found before PutDown');
                 }
             }
             // For other actions (Move, etc.), just delete them
