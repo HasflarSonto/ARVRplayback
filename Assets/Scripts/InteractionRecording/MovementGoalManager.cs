@@ -165,20 +165,30 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Creates a simple LineRenderer for the movement path (bright green, no validation)
+        /// EXACTLY matching how RecordingPlaybackEditor creates white path lines
         /// </summary>
         private LineRenderer CreateSimplePathLine(string objectId, List<Vector3> pathPoints)
         {
             GameObject lineObj = new GameObject($"MovementPath_{objectId}");
+            lineObj.transform.SetParent(transform); // Parent to this manager - CRITICAL!
+
             LineRenderer lineRenderer = lineObj.AddComponent<LineRenderer>();
 
-            // Use default material - simpler and more reliable
+            // Configure EXACTLY like RecordingPlaybackEditor
+            lineRenderer.positionCount = pathPoints.Count;
+            lineRenderer.startWidth = 0.02f; // Slightly thicker than edit mode (0.01f) for visibility
+            lineRenderer.endWidth = 0.02f;
+            lineRenderer.useWorldSpace = true;
             lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
 
-            // Make line THICK and bright green
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
-            lineRenderer.positionCount = pathPoints.Count;
-            lineRenderer.useWorldSpace = true;
+            // Make it BRIGHT GREEN instead of white
+            Color brightGreen = new Color(0f, 1f, 0f, 1f);
+            lineRenderer.startColor = brightGreen;
+            lineRenderer.endColor = brightGreen;
+
+            lineRenderer.textureMode = LineTextureMode.Tile;
+            lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            lineRenderer.receiveShadows = false;
 
             // Set positions
             for (int i = 0; i < pathPoints.Count; i++)
@@ -186,21 +196,11 @@ namespace VRInteractionRecording
                 lineRenderer.SetPosition(i, pathPoints[i]);
             }
 
-            // Make it BRIGHT GREEN
-            Color brightGreen = new Color(0f, 1f, 0f, 1f);
-            lineRenderer.startColor = brightGreen;
-            lineRenderer.endColor = brightGreen;
-            lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            lineRenderer.receiveShadows = false;
-
-            // Try to make it render on top
-            lineRenderer.sortingOrder = 1000;
-
-            // TESTING: Start visible to see if path is created correctly
+            // TESTING: Start visible
             lineObj.SetActive(true);
-            Debug.LogError($"[MovementGoalManager] ✅ Path line created and set to ACTIVE for {objectId}");
-            Debug.LogError($"[MovementGoalManager]    Points: {pathPoints.Count}, Width: {lineRenderer.startWidth}, Color: {brightGreen}");
-            Debug.LogError($"[MovementGoalManager]    First point: {pathPoints[0]}, Last point: {pathPoints[pathPoints.Count - 1]}");
+            Debug.LogError($"[MovementGoalManager] ✅ Path line created for {objectId}");
+            Debug.LogError($"[MovementGoalManager]    Points: {pathPoints.Count}, Parent: {lineObj.transform.parent.name}");
+            Debug.LogError($"[MovementGoalManager]    First: {pathPoints[0]}, Last: {pathPoints[pathPoints.Count - 1]}");
 
             return lineRenderer;
         }
