@@ -638,6 +638,7 @@
         <button id="exportBtn">Export JSON</button>
         <button id="bakeBtn" style="background: #27ae60;">Bake</button>
         <button id="debugBtn" style="background: #e74c3c;">Debug</button>
+        <button id="toggleBakeDebugBtn" style="background: #27ae60;">🔍 Bake Debug</button>
         <span id="taskName" style="margin-left: 20px; color: #858585; font-size: 12px;">No task loaded</span>
         <span id="debugInfo" style="margin-left: 20px; color: #f48771; font-size: 10px; font-family: monospace;"></span>
         <div id="bakeStatus" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.95); padding: 8px; border-radius: 4px; font-size: 9px; font-family: monospace; max-width: 300px; display: none; z-index: 999998; border: 1px solid #5bc0de;">
@@ -1006,6 +1007,7 @@
             document.getElementById('fileInput').addEventListener('change', handleFileLoad);
             document.getElementById('debugBtn').addEventListener('click', toggleDebugPanel);
             document.getElementById('debugCloseBtn').addEventListener('click', toggleDebugPanel);
+            document.getElementById('toggleBakeDebugBtn').addEventListener('click', toggleBakeDebugConsole);
         }
 
         function toggleDebugPanel() {
@@ -1068,8 +1070,7 @@
 
             if (!console || !content) return;
 
-            // Show console
-            console.style.display = 'block';
+            // Don't auto-show - user controls visibility via button
 
             // Add timestamp
             const time = new Date().toLocaleTimeString();
@@ -1080,13 +1081,26 @@
             span.textContent = line;
             content.appendChild(span);
 
-            // Auto-scroll to bottom
-            console.scrollTop = console.scrollHeight;
+            // Auto-scroll to bottom (if visible)
+            if (console.style.display !== 'none') {
+                console.scrollTop = console.scrollHeight;
+            }
         }
 
         function clearBakeDebug() {
             const content = document.getElementById('bakeDebugContent');
             if (content) content.innerHTML = '';
+        }
+
+        function toggleBakeDebugConsole() {
+            const console = document.getElementById('bakeDebugConsole');
+            if (!console) return;
+
+            if (console.style.display === 'none' || console.style.display === '') {
+                console.style.display = 'block';
+            } else {
+                console.style.display = 'none';
+            }
         }
 
         function updateBakeStatus(statusMessage) {
