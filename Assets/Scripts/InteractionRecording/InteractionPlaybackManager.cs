@@ -114,16 +114,18 @@ namespace VRInteractionRecording
             createdMovementPathsCount = 0;
 
             // ALWAYS create movement paths for all grab-release sequences
-            if (movementGoalManager != null)
-            {
-                CreateMovementPathsFromRecording();
-                Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from recording");
-                OnMovementGoalsLoaded?.Invoke(interactionSequences.Count, createdMovementPathsCount);
-            }
-            else
-            {
-                Debug.LogError("[InteractionPlaybackManager] MovementGoalManager is NULL - cannot create movement paths!");
-            }
+            // NO LONGER NEED MovementGoalManager - we create lines directly now!
+            CreateMovementPathsFromRecording();
+            Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from recording");
+            OnMovementGoalsLoaded?.Invoke(interactionSequences.Count, createdMovementPathsCount);
+
+            // VISUAL TEST: Create a big red cube to verify this code runs
+            GameObject testCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            testCube.name = "TEST_PLAYBACK_RUNNING";
+            testCube.transform.position = new Vector3(0, 2, 2);
+            testCube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            testCube.GetComponent<Renderer>().material.color = Color.red;
+            Debug.LogError("[InteractionPlaybackManager] ✅✅✅ TEST RED CUBE CREATED AT (0,2,2) ✅✅✅");
 
             // Reset all objects to initial states
             ResetToInitialStates();
