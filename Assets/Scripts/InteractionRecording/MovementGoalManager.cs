@@ -190,8 +190,9 @@ namespace VRInteractionRecording
             lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             lineRenderer.receiveShadows = false;
 
-            // Start hidden - will be shown when object is grabbed
-            lineObj.SetActive(false);
+            // TESTING: Start visible to see if path is created correctly
+            lineObj.SetActive(true);
+            Debug.LogError($"[MovementGoalManager] ✅ Path line created and set to ACTIVE for {objectId}");
 
             return lineRenderer;
         }
