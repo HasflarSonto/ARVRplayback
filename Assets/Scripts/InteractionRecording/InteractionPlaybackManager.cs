@@ -23,6 +23,10 @@ namespace VRInteractionRecording
         private MovementGoalManager movementGoalManager;
 
         [SerializeField]
+        [Tooltip("Material for path lines (copied from RecordingPlaybackEditor)")]
+        private Material pathLineMaterial;
+
+        [SerializeField]
         [Tooltip("Maximum distance (in Unity units) from target position to consider placement correct")]
         private float placementThreshold = 0.5f;
 
@@ -36,6 +40,9 @@ namespace VRInteractionRecording
         private Dictionary<string, bool> objectInteractionCompleted = new Dictionary<string, bool>();
         private Dictionary<string, InteractionEvent> targetReleaseEvents = new Dictionary<string, InteractionEvent>(); // Cache target positions
         private List<InteractionSequence> interactionSequences = new List<InteractionSequence>(); // List of grab-release pairs in order
+
+        // Path lines (copied from RecordingPlaybackEditor)
+        private Dictionary<string, LineRenderer> pathLines = new Dictionary<string, LineRenderer>();
 
         // Movement goal tracking
         private int totalMoveBlocksCount = 0;
@@ -443,7 +450,7 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Creates movement paths for all grab-release sequences from recording data
-        /// This bypasses the TaskInstruction system and always shows paths
+        /// COPIED EXACTLY from RecordingPlaybackEditor.CreatePathForObject
         /// </summary>
         private void CreateMovementPathsFromRecording()
         {
@@ -457,43 +464,81 @@ namespace VRInteractionRecording
 
             foreach (InteractionSequence sequence in interactionSequences)
             {
+                string objectId = sequence.objectId;
+
                 // Extract snapshots between grab and release
-                List<TransformSnapshot> pathSnapshots = new List<TransformSnapshot>();
+                List<TransformSnapshot> snapshots = new List<TransformSnapshot>();
                 float startTime = sequence.grabEvent.timestamp;
                 float endTime = sequence.releaseEvent.timestamp;
 
                 foreach (TransformSnapshot snapshot in currentRecording.transformSnapshots)
                 {
-                    if (snapshot.objectId == sequence.objectId &&
+                    if (snapshot.objectId == objectId &&
                         snapshot.timestamp >= startTime &&
                         snapshot.timestamp <= endTime)
                     {
-                        pathSnapshots.Add(snapshot);
+                        snapshots.Add(snapshot);
                     }
                 }
 
-                Debug.LogError($"[InteractionPlaybackManager] Object {sequence.objectId}: {pathSnapshots.Count} snapshots from {startTime:F2}s to {endTime:F2}s");
+                Debug.LogError($"[InteractionPlaybackManager] Object {objectId}: {snapshots.Count} snapshots from {startTime:F2}s to {endTime:F2}s");
 
-                if (pathSnapshots.Count >= 2)
+                if (snapshots.Count < 2)
                 {
-                    // Create a fake InstructionStep for MovementGoalManager
-                    InstructionStep fakeStep = new InstructionStep
-                    {
-                        action = "Move",
-                        objectId = sequence.objectId,
-                        startTime = startTime,
-                        endTime = endTime
-                    };
+                    Debug.LogError($"[InteractionPlaybackManager] ❌ Not enough snapshots for {objectId}");
+                    continue;
+                }
 
-                    movementGoalManager.CreateMovementGoal(fakeStep, pathSnapshots);
-                    createdMovementPathsCount++;
-                    Debug.LogError($"[InteractionPlaybackManager] ✅ Created movement path for {sequence.objectId}");
-                }
-                else
+                if (pathLines.ContainsKey(objectId))
                 {
-                    Debug.LogError($"[InteractionPlaybackManager] ❌ Not enough snapshots for {sequence.objectId}");
+                    Debug.LogError($"[InteractionPlaybackManager] Path already exists for {objectId}");
+                    continue;
                 }
+
+                // Create LineRenderer for this object's path - EXACT COPY from RecordingPlaybackEditor
+                GameObject pathObj = new GameObject($"PathLine_{objectId}");
+                pathObj.transform.SetParent(transform);
+                LineRenderer lineRenderer = pathObj.AddComponent<LineRenderer>();
+
+                // Configure line renderer - EXACT COPY
+                lineRenderer.positionCount = snapshots.Count;
+                lineRenderer.startWidth = 0.01f;
+                lineRenderer.endWidth = 0.01f;
+                lineRenderer.useWorldSpace = true;
+                lineRenderer.material = GetPathLineMaterial();
+                lineRenderer.startColor = new Color(0f, 1f, 0f, 1f); // GREEN instead of white
+                lineRenderer.endColor = new Color(0f, 1f, 0f, 1f);
+                lineRenderer.textureMode = LineTextureMode.Tile;
+                lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                lineRenderer.receiveShadows = false;
+
+                // Set positions from snapshots
+                for (int i = 0; i < snapshots.Count; i++)
+                {
+                    lineRenderer.SetPosition(i, snapshots[i].position);
+                }
+
+                pathLines[objectId] = lineRenderer;
+                createdMovementPathsCount++;
+
+                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path line for {objectId} with {snapshots.Count} points");
             }
+        }
+
+        /// <summary>
+        /// Gets or creates path line material - EXACT COPY from RecordingPlaybackEditor
+        /// </summary>
+        private Material GetPathLineMaterial()
+        {
+            if (pathLineMaterial != null)
+            {
+                return pathLineMaterial;
+            }
+
+            // Create a simple material for dotted lines
+            Material mat = new Material(Shader.Find("Sprites/Default"));
+            mat.color = Color.white;
+            return mat;
         }
 
         /// <summary>
