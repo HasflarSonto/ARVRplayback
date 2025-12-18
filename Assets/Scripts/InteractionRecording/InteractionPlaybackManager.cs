@@ -106,23 +106,16 @@ namespace VRInteractionRecording
             totalMoveBlocksCount = 0;
             createdMovementPathsCount = 0;
 
-            // Load and create movement goals from TaskInstruction
-            if (taskInstruction != null && movementGoalManager != null)
+            // ALWAYS create movement paths for all grab-release sequences
+            if (movementGoalManager != null)
             {
-                LoadMovementGoals(taskInstruction);
-                Debug.LogError($"[InteractionPlaybackManager] Movement goals loaded: {totalMoveBlocksCount} Move blocks, {createdMovementPathsCount} paths created");
-                OnMovementGoalsLoaded?.Invoke(totalMoveBlocksCount, createdMovementPathsCount);
+                CreateMovementPathsFromRecording();
+                Debug.LogError($"[InteractionPlaybackManager] Created {createdMovementPathsCount} movement paths from recording");
+                OnMovementGoalsLoaded?.Invoke(interactionSequences.Count, createdMovementPathsCount);
             }
             else
             {
-                if (taskInstruction == null)
-                {
-                    Debug.LogError("[InteractionPlaybackManager] No TaskInstruction provided - no movement paths will be shown");
-                }
-                if (movementGoalManager == null)
-                {
-                    Debug.LogError("[InteractionPlaybackManager] MovementGoalManager is NULL - cannot create movement paths!");
-                }
+                Debug.LogError("[InteractionPlaybackManager] MovementGoalManager is NULL - cannot create movement paths!");
             }
 
             // Reset all objects to initial states
@@ -446,6 +439,61 @@ namespace VRInteractionRecording
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Creates movement paths for all grab-release sequences from recording data
+        /// This bypasses the TaskInstruction system and always shows paths
+        /// </summary>
+        private void CreateMovementPathsFromRecording()
+        {
+            if (currentRecording == null || currentRecording.transformSnapshots == null)
+            {
+                Debug.LogError("[InteractionPlaybackManager] No recording data available");
+                return;
+            }
+
+            Debug.LogError($"[InteractionPlaybackManager] Creating movement paths for {interactionSequences.Count} interaction sequences");
+
+            foreach (InteractionSequence sequence in interactionSequences)
+            {
+                // Extract snapshots between grab and release
+                List<TransformSnapshot> pathSnapshots = new List<TransformSnapshot>();
+                float startTime = sequence.grabEvent.timestamp;
+                float endTime = sequence.releaseEvent.timestamp;
+
+                foreach (TransformSnapshot snapshot in currentRecording.transformSnapshots)
+                {
+                    if (snapshot.objectId == sequence.objectId &&
+                        snapshot.timestamp >= startTime &&
+                        snapshot.timestamp <= endTime)
+                    {
+                        pathSnapshots.Add(snapshot);
+                    }
+                }
+
+                Debug.LogError($"[InteractionPlaybackManager] Object {sequence.objectId}: {pathSnapshots.Count} snapshots from {startTime:F2}s to {endTime:F2}s");
+
+                if (pathSnapshots.Count >= 2)
+                {
+                    // Create a fake InstructionStep for MovementGoalManager
+                    InstructionStep fakeStep = new InstructionStep
+                    {
+                        action = "Move",
+                        objectId = sequence.objectId,
+                        startTime = startTime,
+                        endTime = endTime
+                    };
+
+                    movementGoalManager.CreateMovementGoal(fakeStep, pathSnapshots);
+                    createdMovementPathsCount++;
+                    Debug.LogError($"[InteractionPlaybackManager] ✅ Created movement path for {sequence.objectId}");
+                }
+                else
+                {
+                    Debug.LogError($"[InteractionPlaybackManager] ❌ Not enough snapshots for {sequence.objectId}");
+                }
+            }
         }
 
         /// <summary>
