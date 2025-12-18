@@ -171,10 +171,12 @@ namespace VRInteractionRecording
             GameObject lineObj = new GameObject($"MovementPath_{objectId}");
             LineRenderer lineRenderer = lineObj.AddComponent<LineRenderer>();
 
-            // Setup line renderer
-            lineRenderer.material = GetMovementPathMaterial();
-            lineRenderer.startWidth = pathLineWidth;
-            lineRenderer.endWidth = pathLineWidth;
+            // Use default material - simpler and more reliable
+            lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+
+            // Make line THICK and bright green
+            lineRenderer.startWidth = 0.1f;
+            lineRenderer.endWidth = 0.1f;
             lineRenderer.positionCount = pathPoints.Count;
             lineRenderer.useWorldSpace = true;
 
@@ -184,15 +186,21 @@ namespace VRInteractionRecording
                 lineRenderer.SetPosition(i, pathPoints[i]);
             }
 
-            // Make it bright and visible
-            lineRenderer.startColor = movementPathColor;
-            lineRenderer.endColor = movementPathColor;
+            // Make it BRIGHT GREEN
+            Color brightGreen = new Color(0f, 1f, 0f, 1f);
+            lineRenderer.startColor = brightGreen;
+            lineRenderer.endColor = brightGreen;
             lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             lineRenderer.receiveShadows = false;
+
+            // Try to make it render on top
+            lineRenderer.sortingOrder = 1000;
 
             // TESTING: Start visible to see if path is created correctly
             lineObj.SetActive(true);
             Debug.LogError($"[MovementGoalManager] ✅ Path line created and set to ACTIVE for {objectId}");
+            Debug.LogError($"[MovementGoalManager]    Points: {pathPoints.Count}, Width: {lineRenderer.startWidth}, Color: {brightGreen}");
+            Debug.LogError($"[MovementGoalManager]    First point: {pathPoints[0]}, Last point: {pathPoints[pathPoints.Count - 1]}");
 
             return lineRenderer;
         }
