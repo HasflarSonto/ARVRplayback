@@ -107,7 +107,8 @@ namespace VRInteractionRecording
             targetReleaseEvents.Clear(); // Clear cached target positions
 
             // Build interaction sequences (grab-release pairs)
-            BuildInteractionSequences();
+            // If taskInstruction provided, filter based on it (respects deletions from timeline editor)
+            BuildInteractionSequences(taskInstruction);
 
             // Reset movement goal counters
             totalMoveBlocksCount = 0;
@@ -200,8 +201,9 @@ namespace VRInteractionRecording
 
         /// <summary>
         /// Builds a list of interaction sequences (grab-release pairs) in chronological order
+        /// If taskInstruction is provided, only includes sequences that appear in the task (respects deletions)
         /// </summary>
-        private void BuildInteractionSequences()
+        private void BuildInteractionSequences(TaskInstruction taskInstruction = null)
         {
             interactionSequences.Clear();
 
@@ -237,7 +239,45 @@ namespace VRInteractionRecording
                 }
             }
 
-            Debug.Log($"InteractionPlaybackManager: Built {interactionSequences.Count} interaction sequences");
+            Debug.LogError($"[InteractionPlaybackManager] Built {interactionSequences.Count} interaction sequences from recording");
+
+            // If taskInstruction provided, filter out sequences that were deleted from the timeline
+            if (taskInstruction != null && taskInstruction.steps != null)
+            {
+                Debug.LogError($"[InteractionPlaybackManager] Filtering sequences based on TaskInstruction with {taskInstruction.steps.Count} steps");
+
+                // Create a set of (objectId, timestamp) pairs for all PickUp actions in the task
+                HashSet<string> validPickUps = new HashSet<string>();
+                foreach (var step in taskInstruction.steps)
+                {
+                    if (step.action == "PickUp")
+                    {
+                        // Create a key combining objectId and rounded timestamp
+                        string key = $"{step.objectId}_{step.timestamp:F2}";
+                        validPickUps.Add(key);
+                    }
+                }
+
+                Debug.LogError($"[InteractionPlaybackManager] Found {validPickUps.Count} PickUp actions in TaskInstruction");
+
+                // Filter sequences to only include those with PickUp in the task
+                List<InteractionSequence> filteredSequences = new List<InteractionSequence>();
+                foreach (var sequence in interactionSequences)
+                {
+                    string key = $"{sequence.objectId}_{sequence.grabEvent.timestamp:F2}";
+                    if (validPickUps.Contains(key))
+                    {
+                        filteredSequences.Add(sequence);
+                    }
+                    else
+                    {
+                        Debug.LogError($"[InteractionPlaybackManager] ❌ Filtered out sequence for {sequence.objectId} at {sequence.grabEvent.timestamp:F2}s (deleted from timeline)");
+                    }
+                }
+
+                interactionSequences = filteredSequences;
+                Debug.LogError($"[InteractionPlaybackManager] ✅ After filtering: {interactionSequences.Count} interaction sequences remain");
+            }
         }
 
         /// <summary>
