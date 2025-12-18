@@ -40,6 +40,44 @@ namespace VRInteractionRecording
             {
                 objectStateManager = FindFirstObjectByType<ObjectStateManager>();
             }
+
+            // TEST: Create a simple test line to verify LineRenderer works
+            CreateTestLine();
+        }
+
+        private void CreateTestLine()
+        {
+            Debug.LogError("[MovementGoalManager] Creating TEST line at known position");
+
+            GameObject testLineObj = new GameObject("TEST_MovementPath");
+            testLineObj.transform.SetParent(transform);
+            LineRenderer lineRenderer = testLineObj.AddComponent<LineRenderer>();
+
+            // Simple straight line from origin
+            Vector3[] positions = new Vector3[]
+            {
+                new Vector3(0, 1, 0),
+                new Vector3(0, 1, 1),
+                new Vector3(0, 1, 2)
+            };
+
+            lineRenderer.positionCount = positions.Length;
+            lineRenderer.startWidth = 0.05f;
+            lineRenderer.endWidth = 0.05f;
+            lineRenderer.useWorldSpace = true;
+            lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            lineRenderer.startColor = Color.green;
+            lineRenderer.endColor = Color.green;
+            lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            lineRenderer.receiveShadows = false;
+
+            for (int i = 0; i < positions.Length; i++)
+            {
+                lineRenderer.SetPosition(i, positions[i]);
+            }
+
+            testLineObj.SetActive(true);
+            Debug.LogError($"[MovementGoalManager] TEST line created at Y=1, from Z=0 to Z=2");
         }
 
         /// <summary>
