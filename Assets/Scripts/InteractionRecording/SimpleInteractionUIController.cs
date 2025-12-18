@@ -320,22 +320,43 @@ namespace VRInteractionRecording
                 {
                     // Check if there's a baked TaskInstruction with Move blocks
                     TaskInstruction bakedTask = null;
+
+                    Debug.LogError("═══════════════════════════════════════════");
+                    Debug.LogError("[SimpleInteractionUIController] PLAYBACK BUTTON CLICKED");
+                    Debug.LogError($"   webViewManager null? {webViewManager == null}");
+
                     if (webViewManager != null)
                     {
                         bakedTask = webViewManager.GetBakedTaskInstruction();
+                        Debug.LogError($"   bakedTask null? {bakedTask == null}");
+                        if (bakedTask != null)
+                        {
+                            Debug.LogError($"   bakedTask.steps null? {bakedTask.steps == null}");
+                            if (bakedTask.steps != null)
+                            {
+                                Debug.LogError($"   bakedTask.steps.Count = {bakedTask.steps.Count}");
+                                int moveCount = 0;
+                                foreach (var step in bakedTask.steps)
+                                {
+                                    if (step.IsMove()) moveCount++;
+                                }
+                                Debug.LogError($"   Move blocks in bakedTask = {moveCount}");
+                            }
+                        }
                     }
 
                     // Start playback with or without baked task instruction
                     if (bakedTask != null)
                     {
-                        Debug.Log($"SimpleInteractionUIController: Starting playback with baked TaskInstruction ({bakedTask.steps.Count} steps)");
+                        Debug.LogError($"✅ Starting playback WITH baked TaskInstruction ({bakedTask.steps.Count} steps)");
                         playbackManager.StartPlayback(currentRecording, bakedTask);
                     }
                     else
                     {
-                        Debug.Log("SimpleInteractionUIController: Starting playback without Move blocks");
+                        Debug.LogError("❌ Starting playback WITHOUT TaskInstruction (bakedTask is NULL)");
                         playbackManager.StartPlayback(currentRecording);
                     }
+                    Debug.LogError("═══════════════════════════════════════════");
 
                     isPlaybackActive = true;
                 }
