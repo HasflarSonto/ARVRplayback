@@ -315,8 +315,7 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(grabbedObject);
 
-            // Show path line for this object
-            ShowPathLine(objectId);
+            // Path lines are always visible now, no need to show/hide
 
             // Find the release event for this object (where it should be placed)
             InteractionEvent releaseEvent = FindReleaseEventForObject(objectId);
@@ -344,8 +343,7 @@ namespace VRInteractionRecording
 
             string objectId = objectStateManager.GetObjectId(releasedObject);
 
-            // Hide path line for this object
-            HidePathLine(objectId);
+            // Path lines stay visible, no need to hide
 
             // Find the target release event (where it should be placed)
             InteractionEvent targetReleaseEvent = FindReleaseEventForObject(objectId);
@@ -525,13 +523,13 @@ namespace VRInteractionRecording
                     lineRenderer.SetPosition(i, snapshots[i].position);
                 }
 
-                // Start HIDDEN - will show when object is grabbed
-                pathObj.SetActive(false);
+                // Keep it VISIBLE - simple and always on if Move block exists
+                pathObj.SetActive(true);
 
                 pathLines[objectId] = lineRenderer;
                 createdMovementPathsCount++;
 
-                Debug.LogError($"[InteractionPlaybackManager] ✅ Created GREEN path for {objectId} ({snapshots.Count} points)");
+                Debug.LogError($"[InteractionPlaybackManager] ✅ Created VISIBLE GREEN path for {objectId} ({snapshots.Count} points)");
             }
         }
 
